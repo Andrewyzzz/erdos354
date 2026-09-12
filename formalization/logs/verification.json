@@ -1,9 +1,9 @@
 {
   "status": "PASS",
-  "scope": "Certificate, mesh and representation foundations; actual normalized floor-sequence permanent descent and low-gap completeness under a qualifying block; unbounded qualifying gaps imply indexed completeness; incompleteness implies eventual successor-event factor four. Irrationality gives unbounded actual events. FE/DB/BG, global normalization, strong completeness and Erd\u0151s 354(i) remain unproved.",
+  "scope": "Certificate, meshes, legal representations, actual normalized floor-sequence permanent descent and event factor-four consequence of incompleteness; irrationality gives unbounded events. Uniform prefix/internal/cyclic gap bounds and the exact FE counting recurrence (8.1) are proved, with deficits and growth identified as counts of actual values. The finite-event decay estimate, changing-period comparison, DB/BG, global normalization, strong completeness and Erd\u0151s 354(i) remain unproved.",
   "fresh_project_build": false,
   "dependency_cache_reused": true,
-  "audited_theorems": 148,
+  "audited_theorems": 183,
   "allowed_axioms": [
     "Classical.choice",
     "Quot.sound",
@@ -264,6 +264,101 @@
       "propext"
     ],
     "Dyadic354.ExactBlock.three_pairs": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FECounting.basic_copies_disjoint": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FECounting.basic_copies_subset": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FECounting.card_translate": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FECounting.deficit_eq_holes": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FECounting.deficit_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FECounting.deficit_step": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FECounting.deficit_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FECounting.digitSum_bounds": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FECounting.digitSum_event_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FECounting.growth_eq_newValues": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FECounting.growth_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FECounting.padding_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FECounting.padding_identity": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FECounting.padding_step": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FECounting.period_step": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FECounting.total_lt_period": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FECounting.translate_translate": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FECounting.values_step": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FECounting.values_subset_period": [
       "Classical.choice",
       "Quot.sound",
       "propext"
@@ -659,6 +754,85 @@
       "Quot.sound",
       "propext"
     ],
+    "Dyadic354.PrefixBounds.actual_prefix_encloses": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.PrefixBounds.actual_prefix_gap": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.PrefixBounds.actual_prefix_span": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.PrefixBounds.internal_missing_run_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.PrefixBounds.total_eq": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.PrefixBounds.total_ge_first": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.PrefixBounds.total_step": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.PrefixBounds.uniform_cyclic_gap": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.PrefixMesh.internal_run_bound": [
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.PrefixMesh.next_weight_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.PrefixMesh.prefix_encloses": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.PrefixMesh.prefix_gap_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.PrefixMesh.prefix_span": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.PrefixMesh.prefix_step": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.PrefixMesh.prefix_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.PrefixMesh.translate_union_mesh": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
     "Dyadic354.Representations.binary_scaled": [
       "Classical.choice",
       "Quot.sound",
@@ -737,7 +911,7 @@
     ]
   },
   "source_sha256": {
-    "Dyadic354/Audit.lean": "7d634c7b4c1302ff97114de47ca54b1c13e69de080b9f94d28c45fb9542cf165",
+    "Dyadic354/Audit.lean": "2d76beecf5568b10b6187c716bce14b4a9ec39aad317d4a18732d0e018e6ecf2",
     "Dyadic354/Basic.lean": "46a1bab425aaaa1afaaf782cd7d0b40dd6e7df24998621c7f10b635f672fd444",
     "Dyadic354/BlockLength.lean": "54d48399cc2b01e0a38a57b0875a15e040bb6acbe53a15f05ec8eb2e5dc49139",
     "Dyadic354/Certificate.lean": "e31d86900d1cb397d7a158f5ba8eb3aa74688d93b1d4951fad0f8ed989ff5d3a",
@@ -747,6 +921,7 @@
     "Dyadic354/EventGaps.lean": "7b49ea490b91a02e6ab88a1227384ff67d482115ece5b3d2cf96cd99e71d030e",
     "Dyadic354/EventInfinitude.lean": "72808aeff97c19587d987f03ab7d96be7b58116bc92f0115952d0f3dd0dc4746",
     "Dyadic354/ExactBlock.lean": "114a7859509e34da0bf8d543c80118008399e962d4557980b770902d8dd2114a",
+    "Dyadic354/FECounting.lean": "8b1ffd556bd883ff26de3c3891388a37a73508a6c45ee4dbb7e49f95f93be647",
     "Dyadic354/FloorDescent.lean": "c3199f847ff28f92cb914019ec34c5c11d7ed674c8d4390964146931d07a98ce",
     "Dyadic354/FloorSequence.lean": "152f501ea75ef6681acb50dd352ea43cde17df2a7fbf7d3eccfdefb40c466a09",
     "Dyadic354/InitialMesh.lean": "1781589dc0c30c9714b8ad987788473ca0257b43854c465c648f598365390bda",
@@ -755,6 +930,8 @@
     "Dyadic354/NodeRepresentations.lean": "42b67ead8d02eb3bd188596e52afd1c69aafa8d6082602841ceee36b59c6cd3f",
     "Dyadic354/PairReindex.lean": "a4ede0c4728bd690f0743acafd91a729c30f4ca1f7c3fa5a0f10f3bb98acb7d6",
     "Dyadic354/PermanentMesh.lean": "e7eea032dd2e1579d73187d2447b584c369870bbcac30603ef6da470c7006add",
+    "Dyadic354/PrefixBounds.lean": "827df1e9c68f8950e5dd7939383c77ff6077cd6d00046d85f510908232ddb87a",
+    "Dyadic354/PrefixMesh.lean": "d8acd058a252c3b303cce6e17ab2b2da6ef2539df5d18fe8a0ffa673507e92cc",
     "Dyadic354/Representations.lean": "2800c95ac8e6100c830ac34e37dcea87e9c513654acf2a35bbe255b84e977860",
     "Dyadic354/Statements.lean": "623b20bab06c99013dcbefed752aa80ce29a879930eefc1d069e4944bc5ceb0e",
     "Dyadic354/UnitMesh.lean": "2374a02614070487e2a29b25a7c93c30282ba503937320cb5eb351f754332476",

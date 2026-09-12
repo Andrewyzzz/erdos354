@@ -1,6 +1,6 @@
 COMMAND: ["lake", "env", "lean", "Dyadic354/Audit.lean"]
-CWD: /var/folders/jh/s0mgjxhd7qn3zb1wp19mgsp40000gn/T/erdos354-lean-clean-xzxtdryy/formalization
-UTC: 2026-09-12T16:43:42.276436+00:00
+CWD: /var/folders/jh/s0mgjxhd7qn3zb1wp19mgsp40000gn/T/erdos354-lean-clean-a1qsk_62/formalization
+UTC: 2026-09-12T16:56:38.624797+00:00
 def Dyadic354.PartI : Prop :=
 ∀ (α β : ℝ), 0 < α → 0 < β → Irrational (α / β) → Dyadic354.IndexedComplete (Dyadic354.interleave α β 2)
 def Dyadic354.StrongCompleteness : Prop :=
@@ -339,6 +339,78 @@ Dyadic354.EventInfinitude.incomplete_nextEvent_factor_four (α β : ℝ) (hirr :
   (hab0 : Dyadic354.FloorSequence.term α 0 < 2 * Dyadic354.FloorSequence.term β 0)
   (hinc : ¬Dyadic354.IndexedComplete (Dyadic354.interleave α β 2)) :
   ∃ N, ∀ (n : ℕ), N ≤ n → Dyadic354.EventInfinitude.nextEvent α β hirr n ≤ 4 * n
+def Dyadic354.PrefixBounds.total : ℝ → ℝ → ℕ → ℤ :=
+fun α β n => ∑ i ∈ Finset.range (2 * n), Dyadic354.interleave α β 2 i
+def Dyadic354.PrefixBounds.period : ℝ → ℝ → ℕ → ℤ :=
+fun α β n => Dyadic354.FloorSequence.term α n + Dyadic354.FloorSequence.term β n
+@[reducible] def Dyadic354.FECounting.values : ℝ → ℝ → ℕ → Finset ℤ :=
+fun α β n => Dyadic354.PermanentMesh.prefixSums (Dyadic354.interleave α β 2) (2 * n)
+def Dyadic354.FECounting.digitSum : ℝ → ℝ → ℕ → ℤ :=
+fun α β n => Dyadic354.FloorSequence.correction α n + Dyadic354.FloorSequence.correction β n
+def Dyadic354.FECounting.padding : ℝ → ℝ → ℕ → ℤ :=
+fun α β n => Dyadic354.PrefixBounds.period α β n - Dyadic354.PrefixBounds.total α β n
+def Dyadic354.FECounting.deficit : ℝ → ℝ → ℕ → ℤ :=
+fun α β n => Dyadic354.PrefixBounds.period α β n - ↑(Dyadic354.FECounting.values α β n).card
+def Dyadic354.FECounting.growth : ℝ → ℝ → ℕ → ℤ :=
+fun α β n => ↑(Dyadic354.FECounting.values α β (n + 1)).card - 2 * ↑(Dyadic354.FECounting.values α β n).card
+def Dyadic354.FECounting.holes : ℝ → ℝ → ℕ → Finset ℤ :=
+fun α β n => Finset.Ico 0 (Dyadic354.PrefixBounds.period α β n) \ Dyadic354.FECounting.values α β n
+def Dyadic354.FECounting.newValues : ℝ → ℝ → ℕ → Finset ℤ :=
+fun α β n =>
+  Dyadic354.FECounting.values α β (n + 1) \
+    (Dyadic354.FECounting.values α β n ∪
+      Dyadic354.Mesh.translate (Dyadic354.FECounting.values α β n) (Dyadic354.PrefixBounds.period α β n))
+Dyadic354.PrefixMesh.prefix_gap_bound (v : ℕ → ℤ) (hp : ∀ (i : ℕ), 0 < v i) (hd : ∀ (i : ℕ), v (i + 1) ≤ 2 * v i)
+  (n : ℕ) : Dyadic354.Mesh.gap (Dyadic354.PermanentMesh.prefixSums v n) ≤ (v 0).toNat
+Dyadic354.PrefixBounds.total_ge_first (α β : ℝ) (hb0 : 0 < Dyadic354.FloorSequence.term β 0)
+  (hba0 : Dyadic354.FloorSequence.term β 0 < Dyadic354.FloorSequence.term α 0)
+  (hab0 : Dyadic354.FloorSequence.term α 0 < 2 * Dyadic354.FloorSequence.term β 0) (n : ℕ) (hn : 2 ≤ n) :
+  Dyadic354.FloorSequence.term α n ≤ Dyadic354.PrefixBounds.total α β n
+Dyadic354.PrefixBounds.uniform_cyclic_gap (α β : ℝ) (hb0 : 0 < Dyadic354.FloorSequence.term β 0)
+  (hba0 : Dyadic354.FloorSequence.term β 0 < Dyadic354.FloorSequence.term α 0)
+  (hab0 : Dyadic354.FloorSequence.term α 0 < 2 * Dyadic354.FloorSequence.term β 0) (n : ℕ) (hn : 2 ≤ n) :
+  Dyadic354.FloorDescent.gapAt α β n ⋯ ≤ (Dyadic354.FloorSequence.term β 0).toNat - 1
+Dyadic354.PrefixBounds.internal_missing_run_bound (α β : ℝ) (hb0 : 0 < Dyadic354.FloorSequence.term β 0)
+  (hba0 : Dyadic354.FloorSequence.term β 0 < Dyadic354.FloorSequence.term α 0)
+  (hab0 : Dyadic354.FloorSequence.term α 0 < 2 * Dyadic354.FloorSequence.term β 0) (n : ℕ) (a : ℤ) (r : ℕ) (ha : 0 ≤ a)
+  (hr : a + ↑r - 1 ≤ Dyadic354.PrefixBounds.total α β n)
+  (hmiss : ∀ i < r, a + ↑i ∉ Dyadic354.PermanentMesh.prefixSums (Dyadic354.interleave α β 2) (2 * n)) :
+  r ≤ (Dyadic354.FloorSequence.term β 0).toNat - 1
+Dyadic354.FECounting.values_step (α β : ℝ) (n : ℕ) :
+  Dyadic354.FECounting.values α β (n + 1) =
+    Dyadic354.FECounting.values α β n ∪
+          Dyadic354.Mesh.translate (Dyadic354.FECounting.values α β n) (Dyadic354.FloorSequence.term α n) ∪
+        Dyadic354.Mesh.translate (Dyadic354.FECounting.values α β n) (Dyadic354.FloorSequence.term β n) ∪
+      Dyadic354.Mesh.translate (Dyadic354.FECounting.values α β n) (Dyadic354.PrefixBounds.period α β n)
+Dyadic354.FECounting.basic_copies_disjoint (α β : ℝ) (hb0 : 0 < Dyadic354.FloorSequence.term β 0)
+  (hba0 : Dyadic354.FloorSequence.term β 0 < Dyadic354.FloorSequence.term α 0)
+  (hab0 : Dyadic354.FloorSequence.term α 0 < 2 * Dyadic354.FloorSequence.term β 0) (n : ℕ) :
+  Disjoint (Dyadic354.FECounting.values α β n)
+    (Dyadic354.Mesh.translate (Dyadic354.FECounting.values α β n) (Dyadic354.PrefixBounds.period α β n))
+Dyadic354.FECounting.growth_nonneg (α β : ℝ) (hb0 : 0 < Dyadic354.FloorSequence.term β 0)
+  (hba0 : Dyadic354.FloorSequence.term β 0 < Dyadic354.FloorSequence.term α 0)
+  (hab0 : Dyadic354.FloorSequence.term α 0 < 2 * Dyadic354.FloorSequence.term β 0) (n : ℕ) :
+  0 ≤ Dyadic354.FECounting.growth α β n
+Dyadic354.FECounting.deficit_step (α β : ℝ) (n : ℕ) :
+  Dyadic354.FECounting.deficit α β (n + 1) =
+    2 * Dyadic354.FECounting.deficit α β n + Dyadic354.FECounting.digitSum α β n - Dyadic354.FECounting.growth α β n
+Dyadic354.FECounting.padding_identity (α β : ℝ) (n : ℕ) :
+  Dyadic354.FECounting.padding α β n =
+    Dyadic354.FloorSequence.term α 0 + Dyadic354.FloorSequence.term β 0 +
+      ∑ i ∈ Finset.range n, Dyadic354.FECounting.digitSum α β i
+Dyadic354.FECounting.padding_bound (α β : ℝ)
+  (hba0 : Dyadic354.FloorSequence.term β 0 < Dyadic354.FloorSequence.term α 0)
+  (hab0 : Dyadic354.FloorSequence.term α 0 < 2 * Dyadic354.FloorSequence.term β 0) (n : ℕ) :
+  0 < Dyadic354.FECounting.padding α β n ∧
+    Dyadic354.FECounting.padding α β n < 3 * Dyadic354.FloorSequence.term β 0 + 2 * ↑n
+Dyadic354.FECounting.deficit_eq_holes (α β : ℝ) (hb0 : 0 < Dyadic354.FloorSequence.term β 0)
+  (hba0 : Dyadic354.FloorSequence.term β 0 < Dyadic354.FloorSequence.term α 0)
+  (hab0 : Dyadic354.FloorSequence.term α 0 < 2 * Dyadic354.FloorSequence.term β 0) (n : ℕ) :
+  Dyadic354.FECounting.deficit α β n = ↑(Dyadic354.FECounting.holes α β n).card
+Dyadic354.FECounting.growth_eq_newValues (α β : ℝ) (hb0 : 0 < Dyadic354.FloorSequence.term β 0)
+  (hba0 : Dyadic354.FloorSequence.term β 0 < Dyadic354.FloorSequence.term α 0)
+  (hab0 : Dyadic354.FloorSequence.term α 0 < 2 * Dyadic354.FloorSequence.term β 0) (n : ℕ) :
+  Dyadic354.FECounting.growth α β n = ↑(Dyadic354.FECounting.newValues α β n).card
 'Dyadic354.mem_finiteSubsetSums' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Dyadic354.Linear.eval_add' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Dyadic354.Linear.eval_sub' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -487,6 +559,41 @@ Dyadic354.EventInfinitude.incomplete_nextEvent_factor_four (α β : ℝ) (hirr :
 'Dyadic354.EventInfinitude.nextEvent_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Dyadic354.EventInfinitude.no_event_before_next' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Dyadic354.EventInfinitude.incomplete_nextEvent_factor_four' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.PrefixMesh.translate_union_mesh' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.PrefixMesh.prefix_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.PrefixMesh.prefix_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.PrefixMesh.prefix_encloses' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.PrefixMesh.prefix_span' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.PrefixMesh.next_weight_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.PrefixMesh.prefix_gap_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.PrefixMesh.internal_run_bound' depends on axioms: [propext, Quot.sound]
+'Dyadic354.PrefixBounds.total_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.PrefixBounds.total_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.PrefixBounds.actual_prefix_encloses' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.PrefixBounds.actual_prefix_span' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.PrefixBounds.actual_prefix_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.PrefixBounds.total_ge_first' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.PrefixBounds.uniform_cyclic_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.PrefixBounds.internal_missing_run_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.FECounting.translate_translate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.FECounting.values_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.FECounting.period_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.FECounting.digitSum_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.FECounting.digitSum_event_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.FECounting.total_lt_period' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.FECounting.basic_copies_subset' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.FECounting.basic_copies_disjoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.FECounting.card_translate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.FECounting.growth_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.FECounting.deficit_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.FECounting.padding_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.FECounting.padding_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.FECounting.padding_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.FECounting.deficit_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.FECounting.deficit_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.FECounting.values_subset_period' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.FECounting.deficit_eq_holes' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.FECounting.growth_eq_newValues' depends on axioms: [propext, Classical.choice, Quot.sound]
 
 EXIT CODE: 0
-ELAPSED SECONDS: 14.634
+ELAPSED SECONDS: 18.379

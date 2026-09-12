@@ -1,6 +1,6 @@
-# 第五批状态
+# 第六批状态
 
-**已证明单位网格推出完全性、合格长间隔的有限下降论证，以及不完全时的最终事件倍率界；#354(i) 与集合强完全性尚未形式化完成。**
+**已补齐统一前缀缺口界，并进入 FE：精确计数递推 (8.1) 及其实际计数含义已证明；FE 衰减估计、#354(i) 与集合强完全性尚未形式化完成。**
 
 实际证书由 Lean 内核计算核验，通过通用 soundness 定理得到全部合法整数参数上的
 系数覆盖与六项子集和语义。第二批证明主稿 Lemma 2.1、2.2、2.3，并补齐最长缺失段、
@@ -8,7 +8,8 @@
 代数投影链，共增加 32 个定理。第四批增加 44 个定理，完成地板递推、成对重排、
 实际局部块、gcd 坐标、条件永久下降及长度估计。第五批增加 21 个定理，补齐低缺口
 完全性、良基下降、无理比值下的事件无限性及真实后继事件倍率界。
-有限数据使用 `decide +kernel`，累计 148 个本地定理的
+第六批增加 35 个定理，完成 §1.1 的统一前缀/内部/模缺口界，以及 §8 的有限计数基础。
+有限数据使用 `decide +kernel`，累计 183 个本地定理的
 传递公理依赖均为 `propext`、`Classical.choice`、`Quot.sound` 的子集。
 最终构建与审计见 `logs/verification.json`，独立目录重建见
 `logs/fresh-verification.json`；完整实际输出保存在同目录的日志。
@@ -247,7 +248,7 @@ FE/DB/BG 仍未完成。
 | `EventInfinitude.no_event_before_next` | 给定层与最小后继之间确实没有事件 |
 | `EventInfinitude.incomplete_nextEvent_factor_four` | 对由无理性保证存在的真实后继，最终有 `nextEvent(n)≤4n` |
 
-### 当前结论、前提和证明边界
+### 第五批结论、前提和证明边界
 
 1. **单位网格真正推出完全性。** `unit_mesh_half_line` 从原前缀中的有限网格出发，
    要求 gap≤1、跨度足以接入第一项、未来正整数权重相邻至多翻倍。
@@ -272,6 +273,66 @@ FE/DB/BG 仍未完成。
 因此第3里程碑的定性永久下降—事件倍率结论已经接通；仍不称 §2–6 每一项陈述
 均已逐字形式化。后续的 FE/DB/BG 累计矛盾仍是主要未完成部分。
 
+## 第六批已编译定理与主稿对应（35个）
+
+以下名称均省略共同前缀 `Dyadic354.`；全部辅助定理纳入审计。
+
+| 声明名 | 对应内容 |
+|---|---|
+| `PrefixMesh.translate_union_mesh` | §1.1：平移凸包可分离，显式支付两凸包之间的新缺口 |
+| `PrefixMesh.prefix_zero` | 空前缀的不同和值集合恰为 `{0}` |
+| `PrefixMesh.prefix_step` | 追加一个原索引的精确子集和集合等式，不只是包含关系 |
+| `PrefixMesh.prefix_encloses` | 非负权重前缀的实际两端点为 0 与总和 |
+| `PrefixMesh.prefix_span` | 实际前缀跨度等于权重总和 |
+| `PrefixMesh.next_weight_bound` | 相邻至多翻倍蕴含 `c_n≤Σ_{i<n}c_i+c_0` |
+| `PrefixMesh.prefix_gap_bound` | §1.1：任意正整数权重序列满足两倍界时，所有前缀 gap≤首项 |
+| `PrefixMesh.internal_run_bound` | 实际凸包内的连续缺失区间长度≤gap界−1 |
+| `PrefixBounds.total_eq` | 冻结交错列的总和等于两列逐层总和 |
+| `PrefixBounds.total_step` | `S_(n+1)=S_n+L_n` |
+| `PrefixBounds.actual_prefix_encloses` | 实际地板前缀端点为 0、S_n |
+| `PrefixBounds.actual_prefix_span` | 实际地板前缀跨度等于 S_n |
+| `PrefixBounds.actual_prefix_gap` | §1.1：通过已证明的成对重排，得到原前缀 gap≤N |
+| `PrefixBounds.total_ge_first` | `n≥2` 时 `S_n≥a_n`，直接归纳证明 |
+| `PrefixBounds.uniform_cyclic_gap` | **(1.1)：`n≥2` 时实际 gcd 模前缀缺口 `h_n≤N−1`** |
+| `PrefixBounds.internal_missing_run_bound` | §8：每个实际前缀 `[0,S_n]` 内的连续缺失段≤N−1 |
+| `FECounting.translate_translate` | 连续平移等于平移量之和 |
+| `FECounting.values_step` | `P_(n+1)=P_n∪(P_n+a_n)∪(P_n+b_n)∪(P_n+L_n)` |
+| `FECounting.period_step` | `L_(n+1)=2L_n+w_n` |
+| `FECounting.digitSum_bounds` | 实际两列数字和 `0≤w_n≤2` |
+| `FECounting.digitSum_event_iff` | `w_n≠0` 当且仅当 n+1 是真实到达事件 |
+| `FECounting.total_lt_period` | 正地板初值下 `S_n<L_n` |
+| `FECounting.basic_copies_subset` | 两个基本复制集合都包含于下一实际前缀 |
+| `FECounting.basic_copies_disjoint` | `P_n` 与 `P_n+L_n` 严格不交 |
+| `FECounting.card_translate` | 平移保持不同整数值的个数 |
+| `FECounting.growth_nonneg` | 从不交基本复制证明 `G_n≥0`，不是截断减法定义 |
+| `FECounting.values_subset_period` | 全部 P_n 实际位于整数窗口 `[0,L_n)` |
+| `FECounting.deficit_nonneg` | 不同和值的计数不超过窗口长度，故 `Q_n≥0` |
+| `FECounting.padding_step` | `B_(n+1)=B_n+w_n` |
+| `FECounting.padding_identity` | `B_n=M+N+Σ_{i<n}w_i` |
+| `FECounting.padding_bound` | §8：`0<B_n<3N+2n` |
+| `FECounting.deficit_step` | **(8.1)：`Q_(n+1)=2Q_n+w_n−G_n`** |
+| `FECounting.deficit_zero` | 初值 `Q_0=M+N−1` |
+| `FECounting.deficit_eq_holes` | Q_n 恰为 `[0,L_n)` 内实际缺失整数位置的个数 |
+| `FECounting.growth_eq_newValues` | G_n 恰为下一前缀中、两基本复制之外新增整数值的个数 |
+
+### 本批接口及未完成边界
+
+- 统一缺口定理要求归一化整数初值 `0<b_0<a_0<2b_0`，不要求无理性、事件存在或
+  长块。`actual_prefix_gap` 和内部缺失段界对所有 n 成立；`uniform_cyclic_gap`
+  通过跨度投影到实际 gcd，需要 `n≥2`。没有混淆普通整数缺口与循环模缺口。
+- 第六批用归纳直接证明 `S_n≥a_n`：先验证第2层，再使用地板递推推进。
+  没有逐字形式化主稿更强的指数下界；所需跨度结论已经独立证明，不是额外前提。
+- `values` 是原始索引有限子集的**不同整数和值**集合。四个平移采用 Finset 并集，
+  重叠和值自动去重；只证明两个基本复制互不相交，没有声称四个复制均不相交。
+- B、Q、G 都定义为整数差，非负性由数学证明导出。Q 和 G 的计数等价定理连接
+  实际窗口缺失位置及实际新增和值，避免把代数递推与需要的对象脱节。
+- **本批只完成 FE 的计数基础，不是 FE 衰减定理。** 还没有形式化周期缺失函数的
+  边界变差 J、缺失段计数不等式 (8.2)、移位边界 (8.3)、变周期比较 (8.4)、
+  非零事件边界 (8.5)，以及非重叠两步衰减和累计误差预算。
+
+下一批优先实现周期缺失函数与边界计数，并连接本批已经核验的内部缺失段界，
+随后处理两种不同周期之间的比较；不能将 FE 直接作为参数或占位假设。
+
 ## 固定但未证明的目标
 
 - `Dyadic354.PartI`：任意正实数 α、β，无理比值，固定底数 2，地板交错列的有限索引和最终覆盖。
@@ -283,17 +344,17 @@ FE/DB/BG 仍未完成。
 
 ## 后续数学义务
 
-1. §1：固定前缀网格界及主稿的统一 `h_n≤N−1` 界尚未证明；第五批定性下降已不依赖它，
-   但后续 FE 仍用到相应内部缺失段界，需要补齐。
+1. §8：在已证明的内部缺失段界与实际计数定义上建立周期边界不等式、变周期比较，
+   再完成有限事件衰减及非重叠块的累计误差控制。
 2. §6：主稿明确的 N−1 次更新预算与实数 `limsup≤3` 尚未单列形式化；后续需要的
    最终倍率4界已经证明，不必把这两项视为该界的未完成依赖。
 3. §1、§7：一般正实数参数的合法向上归一化、截尾、去重、有限删除；本批仍以已归一化初值为条件。
-4. §8–11：完整 FE、DB、BG，变周期边界、连分数匹配层和返回成本极限。
+4. §9–11：DB、BG，连分数匹配层和返回成本极限。
 5. 两种完全性及上游 Formal Conjectures 原题的最终连接与陈述核对。
 
-本批没有剩余编译阻断。已检查部分没有发现数学缺口；新单位网格论证始终保留
-原索引合法性。事件无限性首轮编译失败是把实数不等式交给整数算术策略；现已改为
-标准有序域引理，原失败日志保留，未改弱数学命题。
+本批没有剩余编译阻断。已检查部分没有发现数学缺口；原索引合法性、和值去重及
+周期窗口范围都在定理中明确保留。实际编译修复涉及重排函数的显式展开、常数下标
+归约、有限集并集结合顺序、库接口及严格风格检查；历史失败日志保留，未改弱数学命题。
 尚未完成的 FE/DB/BG 无限论证没有因此得到验证。后续若出现阻断，应单独保存最小失败文件、
 完整目标上下文和缺失引理。
 

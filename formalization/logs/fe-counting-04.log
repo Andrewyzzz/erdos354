@@ -1,0 +1,7 @@
+COMMAND: ["lake", "build", "Dyadic354.FECounting"]
+UTC: 2026-09-12T16:53:01.345013+00:00
+✔ [1801/1801] Built Dyadic354.FECounting (11s)
+Build completed successfully (1801 jobs).
+
+EXIT CODE: 0
+ELAPSED SECONDS: 16.166

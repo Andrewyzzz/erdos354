@@ -1,8 +1,9 @@
-# Erdős 354(i): permanent descent and eventual event bounds
+# Erdős 354(i): uniform prefix bounds and FE counting foundations
 
 已完成有限模板证书、网格基础、合法块表示、初始网格，并将条件永久下降接到
 实际地板序列、gcd 模数与到达层事件；进一步证明低缺口完全性、良基下降及
-不完全时的最终事件倍率4界，无理比值保证事件无界，累计审计 148 个定理。
+不完全时的最终事件倍率4界，无理比值保证事件无界。现已补齐统一前缀/模缺口界，
+并证明 FE 的精确计数递推 (8.1)，累计审计 183 个定理。
 **整篇 #354(i) 与集合强完全性尚未证明。**
 实际完成的声明和后续义务见 [STATUS.md](STATUS.md)，环境见
 [ENVIRONMENT.md](ENVIRONMENT.md)。
@@ -22,7 +23,7 @@ python3 scripts/verify.py --fresh
 `lean-toolchain`、`lakefile.toml`、`lake-manifest.json` 中，不需要更新版本。
 `verify.py` 默认构建根模块 `Dyadic354`，它导入目标定义、证书、循环缺口、网格、
 合法表示、初始网格、局部永久下降、实际地板/重排/事件接口、长度估计、
-单位网格完全性、有限下降、事件无限性及公理审计。
+单位网格完全性、有限下降、事件无限性、统一前缀界、FE 计数基础及公理审计。
 脚本再次执行 `Audit.lean`，核对全部本地定理的审计清单，检查实际公理闭包；
 缺少输出或出现允许列表以外的公理都会以非零退出码结束。运行开始时会清除旧的
 PASS 状态，成功记录附带实际 Lean 源码和依赖锁文件的 SHA-256。
@@ -91,8 +92,18 @@ gap 直接定义为所有实际相邻点距离的最大值，`meshOn_iff_gap_le`
 当前组合结论 `incomplete_nextEvent_factor_four` 的明确前提是无理比值、
 归一化地板初值和不完全性，结论是实际后继事件最终满足倍率4界。
 
-仍未证明一般参数的合法归一化、供 FE 使用的统一前缀缺口界、FE/DB/BG、
-强完全性或上游目标对接。**没有证明无界合格长间隔必然存在，也尚未证明
+第六批 `PrefixMesh.prefix_gap_bound` 证明首项控制全部前缀 gap，包含平移凸包
+分离时的新桥接缺口。`PrefixBounds.uniform_cyclic_gap` 实例化到实际地板列，
+给出 `n≥2` 时 `h_n≤N−1`；内部缺失段≤N−1 的界对每个 n 成立。
+跨度条件 `S_n≥a_n` 由第2层起的直接归纳证明，不借用未形式化的指数下界。
+
+`FECounting.values_step` 与 `deficit_step` 证明主稿 (8.1)。Q、G 使用整数差定义，
+非负性由不交基本复制及真实窗口范围证明；`deficit_eq_holes` 和 `growth_eq_newValues`
+进一步识别实际缺失/新增整数值的个数，所有 Finset 都按不同和值计数，不计掩码重数。
+同时已证明 `B_n=M+N+Σw_i`、`0<B_n<3N+2n` 及数字和与到达事件的等价。
+
+仍未证明一般参数的合法归一化、FE 的周期边界与变周期比较、完整 FE 衰减估计、
+DB/BG、强完全性或上游目标对接。**没有证明无界合格长间隔必然存在，也尚未证明
 “倍率有界却不完全”会导致矛盾，不能把上述条件性结果当作原题证明。**
 
 ## Source map
@@ -119,6 +130,9 @@ gap 直接定义为所有实际相邻点距离的最大值，`meshOn_iff_gap_le`
 | `Dyadic354/LowGap.lean` | 合格长块与低缺口推出冻结交错列完全性 |
 | `Dyadic354/EventGaps.lean` | 延迟永久下降的良基论证、不完全时的相邻事件界 |
 | `Dyadic354/EventInfinitude.lean` | 无理性保证事件无界、真实最小后继及最终倍率4界 |
+| `Dyadic354/PrefixMesh.lean` | 凸包分离时的桥接界、原前缀递推、统一 gap 与内部缺失段界 |
+| `Dyadic354/PrefixBounds.lean` | 实际前缀总和、跨度及 (1.1) 的统一 gcd 模缺口界 |
+| `Dyadic354/FECounting.lean` | 真实不同和值的四平移递推、B/Q/G、非负性及实际缺失/新增计数 |
 | `Dyadic354/Audit.lean` | 目标类型输出与全部已完成定理的公理审计 |
 | `scripts/generate_data.py` | 数据翻译及与 JSON 的一致性检查 |
 | `scripts/verify.py` | 构建、公理允许列表、独立目录重建 |

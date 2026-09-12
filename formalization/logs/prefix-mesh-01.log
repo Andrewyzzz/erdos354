@@ -1,0 +1,7 @@
+COMMAND: ["lake", "build", "Dyadic354.PrefixMesh"]
+UTC: 2026-09-12T16:48:34.534012+00:00
+✔ [1797/1797] Built Dyadic354.PrefixMesh (9.8s)
+Build completed successfully (1797 jobs).
+
+EXIT CODE: 0
+ELAPSED SECONDS: 14.471

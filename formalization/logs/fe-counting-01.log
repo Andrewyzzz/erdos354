@@ -1,0 +1,53 @@
+COMMAND: ["lake", "build", "Dyadic354.FECounting"]
+UTC: 2026-09-12T16:50:30.752429+00:00
+✖ [1800/1801] Building Dyadic354.PrefixBounds (20s)
+trace: .> LEAN_PATH=/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/Cli/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/batteries/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/Qq/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/aesop/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/importGraph/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/plausible/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/mathlib/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean /Users/andrewyz/.elan/toolchains/leanprover--lean4---v4.27.0/bin/lean /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/Dyadic354/PrefixBounds.lean -o /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean/Dyadic354/PrefixBounds.olean -i /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean/Dyadic354/PrefixBounds.ilean -c /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/ir/Dyadic354/PrefixBounds.c --setup /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/ir/Dyadic354/PrefixBounds.setup.json --json
+error: Dyadic354/PrefixBounds.lean:45:2: Type mismatch: After simplification, term
+  hg
+ has type
+  Mesh.gap (prefixSums (PairReindex.sortedTail α β 0) (2 * n)) ≤ (term β 0).toNat
+but is expected to have type
+  Mesh.gap (prefixSums (interleave α β 2) (2 * n)) ≤ (term β 0).toNat
+error: Dyadic354/PrefixBounds.lean:61:8: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  0 ≤ f - 2*g ≤ 1
+  c ≥ 2
+  -1 ≤ 2*b - d ≤ 0
+  a ≥ 1
+  a - b ≤ -1
+  a + b + g - h + i ≤ -1
+  2*a - b ≥ 1
+  -1 ≤ 2*a - e ≤ 0
+where
+ a := term β 0
+ b := term α 0
+ c := ↑n
+ d := term α (0 + 1)
+ e := term β (0 + 1)
+ f := term α (1 + 1)
+ g := term α 1
+ h := term α 2
+ i := term β 1
+error: Dyadic354/PrefixBounds.lean:59:19: This simp argument is unused:
+  Nat.zero_add
+
+Hint: Omit it from the simp argument list.
+  s̵i̵m̵p̵ ̵o̵n̵l̵y̵ ̵[̵N̵a̵t̵.̵z̵e̵r̵o̵_̵a̵d̵d̵,̵ ̵t̵o̵t̵a̵l̵_̵e̵q̵,̵ ̵F̵i̵n̵s̵e̵t̵.̵s̵u̵m̵_̵r̵a̵n̵g̵e̵_̵s̵u̵c̵c̵,̵
+  ̵ ̵ ̵ ̵ ̵ ̵ ̵ ̵ ̵ ̵ ̵F̵i̵n̵s̵e̵t̵.̵s̵u̵m̵_̵r̵a̵n̵g̵e̵_̵z̵e̵r̵o̵,̵ ̵F̵i̵n̵s̵e̵t̵.̵s̵u̵m̵_̵e̵m̵p̵t̵y̵,̵ ̵z̵e̵r̵o̵_̵a̵d̵d̵]̵s̲i̲m̲p̲ ̲o̲n̲l̲y̲ ̲[̲t̲o̲t̲a̲l̲_̲e̲q̲,̲ ̲F̲i̲n̲s̲e̲t̲.̲s̲u̲m̲_̲r̲a̲n̲g̲e̲_̲s̲u̲c̲c̲,̲ ̲F̲i̲n̲s̲e̲t̲.̲s̲u̲m̲_̲r̲a̲n̲g̲e̲_̲z̲e̲r̲o̲,̲ ̲F̲i̲n̲s̲e̲t̲.̲s̲u̲m̲_̲e̲m̲p̲t̲y̲,̲
+  ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲z̲e̲r̲o̲_̲a̲d̲d̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Dyadic354/PrefixBounds.lean:60:33: This simp argument is unused:
+  Finset.sum_empty
+
+Hint: Omit it from the simp argument list.
+  simp only [Nat.zero_add, total_eq, Finset.sum_range_succ, Finset.sum_range_zero, F̵i̵n̵s̵e̵t̵.̵s̵u̵m̵_̵e̵m̵p̵t̵y̵,̵ ̵zero_add]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Lean exited with code 1
+Some required targets logged failures:
+- Dyadic354.PrefixBounds
+error: build failed
+
+EXIT CODE: 1
+ELAPSED SECONDS: 24.833

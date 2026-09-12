@@ -4,6 +4,7 @@ import Dyadic354.Mesh
 import Dyadic354.PermanentMesh
 import Dyadic354.BlockLength
 import Dyadic354.EventInfinitude
+import Dyadic354.FECounting
 
 #print Dyadic354.PartI
 #print Dyadic354.StrongCompleteness
@@ -76,6 +77,28 @@ import Dyadic354.EventInfinitude
 #check Dyadic354.EventInfinitude.zero_tail_dyadic
 #check Dyadic354.EventInfinitude.events_unbounded
 #check Dyadic354.EventInfinitude.incomplete_nextEvent_factor_four
+
+#print Dyadic354.PrefixBounds.total
+#print Dyadic354.PrefixBounds.period
+#print Dyadic354.FECounting.values
+#print Dyadic354.FECounting.digitSum
+#print Dyadic354.FECounting.padding
+#print Dyadic354.FECounting.deficit
+#print Dyadic354.FECounting.growth
+#print Dyadic354.FECounting.holes
+#print Dyadic354.FECounting.newValues
+#check Dyadic354.PrefixMesh.prefix_gap_bound
+#check Dyadic354.PrefixBounds.total_ge_first
+#check Dyadic354.PrefixBounds.uniform_cyclic_gap
+#check Dyadic354.PrefixBounds.internal_missing_run_bound
+#check Dyadic354.FECounting.values_step
+#check Dyadic354.FECounting.basic_copies_disjoint
+#check Dyadic354.FECounting.growth_nonneg
+#check Dyadic354.FECounting.deficit_step
+#check Dyadic354.FECounting.padding_identity
+#check Dyadic354.FECounting.padding_bound
+#check Dyadic354.FECounting.deficit_eq_holes
+#check Dyadic354.FECounting.growth_eq_newValues
 
 #print axioms Dyadic354.mem_finiteSubsetSums
 #print axioms Dyadic354.Linear.eval_add
@@ -229,3 +252,39 @@ import Dyadic354.EventInfinitude
 #print axioms Dyadic354.EventInfinitude.nextEvent_spec
 #print axioms Dyadic354.EventInfinitude.no_event_before_next
 #print axioms Dyadic354.EventInfinitude.incomplete_nextEvent_factor_four
+
+#print axioms Dyadic354.PrefixMesh.translate_union_mesh
+#print axioms Dyadic354.PrefixMesh.prefix_zero
+#print axioms Dyadic354.PrefixMesh.prefix_step
+#print axioms Dyadic354.PrefixMesh.prefix_encloses
+#print axioms Dyadic354.PrefixMesh.prefix_span
+#print axioms Dyadic354.PrefixMesh.next_weight_bound
+#print axioms Dyadic354.PrefixMesh.prefix_gap_bound
+#print axioms Dyadic354.PrefixMesh.internal_run_bound
+#print axioms Dyadic354.PrefixBounds.total_eq
+#print axioms Dyadic354.PrefixBounds.total_step
+#print axioms Dyadic354.PrefixBounds.actual_prefix_encloses
+#print axioms Dyadic354.PrefixBounds.actual_prefix_span
+#print axioms Dyadic354.PrefixBounds.actual_prefix_gap
+#print axioms Dyadic354.PrefixBounds.total_ge_first
+#print axioms Dyadic354.PrefixBounds.uniform_cyclic_gap
+#print axioms Dyadic354.PrefixBounds.internal_missing_run_bound
+#print axioms Dyadic354.FECounting.translate_translate
+#print axioms Dyadic354.FECounting.values_step
+#print axioms Dyadic354.FECounting.period_step
+#print axioms Dyadic354.FECounting.digitSum_bounds
+#print axioms Dyadic354.FECounting.digitSum_event_iff
+#print axioms Dyadic354.FECounting.total_lt_period
+#print axioms Dyadic354.FECounting.basic_copies_subset
+#print axioms Dyadic354.FECounting.basic_copies_disjoint
+#print axioms Dyadic354.FECounting.card_translate
+#print axioms Dyadic354.FECounting.growth_nonneg
+#print axioms Dyadic354.FECounting.deficit_nonneg
+#print axioms Dyadic354.FECounting.padding_step
+#print axioms Dyadic354.FECounting.padding_identity
+#print axioms Dyadic354.FECounting.padding_bound
+#print axioms Dyadic354.FECounting.deficit_step
+#print axioms Dyadic354.FECounting.deficit_zero
+#print axioms Dyadic354.FECounting.values_subset_period
+#print axioms Dyadic354.FECounting.deficit_eq_holes
+#print axioms Dyadic354.FECounting.growth_eq_newValues
