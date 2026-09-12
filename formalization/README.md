@@ -1,6 +1,7 @@
-# Erdős 354(i): certificate and finite mesh formalization
+# Erdős 354(i): certificate, representations and local mesh descent
 
-已完成有限模板证书、三个基础网格引理和逐步传播推论的 Lean 内核形式化。
+已完成有限模板证书、三个基础网格引理、合法块表示、初始网格及显式局部条件下
+永久下降的 Lean 内核形式化，累计审计 83 个定理。
 **整篇 #354(i) 与集合强完全性尚未证明。**
 实际完成的声明和后续义务见 [STATUS.md](STATUS.md)，环境见
 [ENVIRONMENT.md](ENVIRONMENT.md)。
@@ -18,7 +19,8 @@ python3 scripts/verify.py --fresh
 
 已有依赖缓存时可略去 `lake exe cache get`。工具链和全部依赖锁定在
 `lean-toolchain`、`lakefile.toml`、`lake-manifest.json` 中，不需要更新版本。
-`verify.py` 默认构建根模块 `Dyadic354`，它导入目标定义、证书、循环缺口、网格及公理审计。
+`verify.py` 默认构建根模块 `Dyadic354`，它导入目标定义、证书、循环缺口、网格、
+合法表示、初始网格、局部永久下降及公理审计。
 脚本再次执行 `Audit.lean`，核对全部本地定理的审计清单，检查实际公理闭包；
 缺少输出或出现允许列表以外的公理都会以非零退出码结束。运行开始时会清除旧的
 PASS 状态，成功记录附带实际 Lean 源码和依赖锁文件的 SHA-256。
@@ -42,8 +44,9 @@ PASS 状态，成功记录附带实际 Lean 源码和依赖锁文件的 SHA-256�
 核验；生成脚本只转换数据，不被当作数学正确性的信任来源。JSON 中的 `lo/hi`
 作为待检验的候选端点读入，其正确性必须通过 Lean 对掩码重算的检查。
 
-这里的六项是主稿 §3 给出的代数表达式。把它们嵌入实际地板序列、与旧前缀和
-精确倍增块拼接、构造永久网格，仍属于后续工作。
+这里的六项是主稿 §3 给出的代数表达式。第三批已经证明它们与旧前缀、精确倍增块
+的合法不交拼接，并从实际12条模板构造初始有限子集和网格。
+原索引映射及其单射性已证明；从实数地板递推自动导出局部权重恒等式仍待完成。
 
 第二批新增的 `CyclicGaps.erosion_exact`、`Mesh.translate_union_gap_span` 和
 `Mesh.projection_gap` 分别对应主稿 Lemma 2.1、2.2、2.3。
@@ -56,6 +59,15 @@ gap 直接定义为所有实际相邻点距离的最大值，`meshOn_iff_gap_le`
 命中表述的等价。所有模缺口定理都要求正模数，覆盖模数 1；空集和单点整数网格
 的 gap 约定为 0，单点 span 为 0。循环缺口仅对非空剩余集定义，满集缺口为 0。
 
+第三批 `InitialMesh.prefix_initial_mesh` 在明确的块恒等式、非负旧权重及总和界下，
+构造原前缀内的网格，证明 gap ≤ max(1,旧缺口)，span > `8dKq+15`。
+`PermanentMesh.certificate_permanent_descent` 再从该构造推出全部后续合适模数上的
+前缀缺口 ≤ 旧缺口−1（自然数截断减法），没有把网格存在或下降本身作为前提。
+
+该局部定理仍要求未来项为正、相邻项至多翻倍、首项上界和模数上界。
+主稿按 `b,a` 追加未来项；冻结原题按 `a,b` 交错。重排、地板递推、实际 gcd 模数、
+事件时刻与长块存在性尚未对接。因此不能称第2–6节、FE/DB/BG 或整篇已形式化。
+
 ## Source map
 
 | File | Purpose |
@@ -66,6 +78,11 @@ gap 直接定义为所有实际相邻点距离的最大值，`meshOn_iff_gap_le`
 | `Dyadic354/CertificateData.lean` | 原始 JSON 的可重生成数据与实际证书定理 |
 | `Dyadic354/CyclicGaps.lean` | 最长循环缺失段、精确侵蚀、满集及模数1边界 |
 | `Dyadic354/Mesh.lean` | 实际相邻点距离、窗口等价、平移传播、模投影与逐步归纳 |
+| `Dyadic354/CoefficientInterval.lean` | Bézout 有界系数区间、反射与二进制有限支持 |
+| `Dyadic354/Representations.lean` | 不交表示、倍增块与原索引单射 |
+| `Dyadic354/NodeRepresentations.lean` | 实际旧代表、余量界、节点表示及窗口命中 |
+| `Dyadic354/InitialMesh.lean` | 缩短窗口链、常数预算、实际有限子集和初始网格 |
+| `Dyadic354/PermanentMesh.lean` | 原前缀追加合法性、任意后续模数投影与局部下降 |
 | `Dyadic354/Audit.lean` | 目标类型输出与全部已完成定理的公理审计 |
 | `scripts/generate_data.py` | 数据翻译及与 JSON 的一致性检查 |
 | `scripts/verify.py` | 构建、公理允许列表、独立目录重建 |

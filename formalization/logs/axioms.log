@@ -1,6 +1,6 @@
 COMMAND: ["lake", "env", "lean", "Dyadic354/Audit.lean"]
 CWD: /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization
-UTC: 2026-09-12T15:27:50.506767+00:00
+UTC: 2026-09-12T16:07:18.519199+00:00
 def Dyadic354.PartI : Prop :=
 ∀ (α β : ℝ), 0 < α → 0 < β → Irrational (α / β) → Dyadic354.IndexedComplete (Dyadic354.interleave α β 2)
 def Dyadic354.StrongCompleteness : Prop :=
@@ -106,6 +106,108 @@ Dyadic354.Mesh.propagate_iterate (W : Finset ℤ) (hW : W.Nonempty) (c : ℕ →
   Dyadic354.Mesh.gap (Dyadic354.Mesh.extend W c n) ≤ k ∧
     c n ≤ Dyadic354.Mesh.span (Dyadic354.Mesh.extend W c n) ⋯ ∧
       Dyadic354.Mesh.span (Dyadic354.Mesh.extend W c n) ⋯ = Dyadic354.Mesh.span W hW + ∑ i ∈ Finset.range n, c i
+@[reducible] def Dyadic354.Representations.PackedIndex : ℕ → ℕ → Type :=
+fun n ℓ => Fin (2 * n) ⊕ Dyadic354.Representations.BlockIndex ℓ ⊕ Fin 6
+def Dyadic354.Representations.position : (n ℓ : ℕ) → Dyadic354.Representations.PackedIndex n ℓ → ℕ :=
+fun n ℓ x =>
+  match x with
+  | Sum.inl i => ↑i
+  | Sum.inr (Sum.inl (Sum.inl i)) => 2 * n + 2 * ↑i
+  | Sum.inr (Sum.inl (Sum.inr i)) => 2 * n + 2 * ↑i + 1
+  | Sum.inr (Sum.inr i) => 2 * n + 2 * ℓ + ↑i
+def Dyadic354.Representations.packedWeights : (n ℓ : ℕ) →
+  (Fin (2 * n) → ℤ) →
+    Dyadic354.Certificate.Digits →
+      Dyadic354.Certificate.Digits →
+        Dyadic354.Certificate.Digits → ℤ → ℤ → ℤ → Dyadic354.Representations.PackedIndex n ℓ → ℤ :=
+fun n ℓ old first second third d p q =>
+  Sum.elim old
+    (Sum.elim (Dyadic354.Representations.blockWeights ℓ d p q)
+      (Dyadic354.Certificate.weights first second third d (2 ^ ℓ) p q))
+def Dyadic354.InitialMesh.threshold : ℤ → ℤ → ℤ :=
+fun p q => 2 * q * (p - 1) + 4 * (p + q) + 64
+Dyadic354.CoefficientInterval.bounded_interval (p q K z : ℤ) (hq : 0 < q) (hqp : q < p) (hK : p ≤ K)
+  (hcop : IsCoprime p q) (hzlo : q * (p - 1) ≤ z) (hzhi : z ≤ (p + q) * (K - 1) - q * (p - 1)) :
+  ∃ x y, 0 ≤ x ∧ x < K ∧ 0 ≤ y ∧ y < K ∧ p * x + q * y = z
+Dyadic354.Representations.block_interval (ℓ : ℕ) (d p q z : ℤ) (hq : 0 < q) (hqp : q < p) (hK : p ≤ 2 ^ ℓ)
+  (hcop : IsCoprime p q) (hzlo : q * (p - 1) ≤ z) (hzhi : z ≤ (p + q) * (2 ^ ℓ - 1) - q * (p - 1)) :
+  Dyadic354.IsSubsetSum (Dyadic354.Representations.blockWeights ℓ d p q) (d * z)
+Dyadic354.NodeRepresentations.node_representation (n ℓ : ℕ) (old : Fin (2 * n) → ℤ)
+  (first second third : Dyadic354.Certificate.Digits) (node : Dyadic354.Certificate.Node) (d p q S z : ℤ) (hd : 0 < d)
+  (hq : 0 < q) (hqp : q < p) (hK : p ≤ 2 ^ ℓ) (hcop : IsCoprime p q)
+  (hbounds : ∀ (f : ℤ), Dyadic354.IsSubsetSum old f → 0 ≤ f ∧ f ≤ S)
+  (hn : Dyadic354.Certificate.NodeMeaning first second node p q)
+  (hzlo : d * 2 ^ ℓ * node.lo.eval p q + Dyadic354.NodeRepresentations.margin d p q S ≤ z)
+  (hzhi : z ≤ d * 2 ^ ℓ * node.hi.eval p q - Dyadic354.NodeRepresentations.margin d p q S)
+  (hres :
+    ∃ f,
+      Dyadic354.IsSubsetSum old f ∧
+        (d ∣ z - Dyadic354.Certificate.constant first second third node.mask0 node.thirdMask - f ∨
+          d ∣ z - (Dyadic354.Certificate.constant first second third node.mask0 node.thirdMask + 1) - f)) :
+  Dyadic354.IsSubsetSum (Dyadic354.Representations.packedWeights n ℓ old first second third d p q) z
+Dyadic354.NodeRepresentations.node_window (n ℓ d : ℕ) [NeZero d] (old : Fin (2 * n) → ℤ)
+  (first second third : Dyadic354.Certificate.Digits) (node : Dyadic354.Certificate.Node) (p q S a : ℤ) (k : ℕ)
+  (hq : 0 < q) (hqp : q < p) (hK : p ≤ 2 ^ ℓ) (hcop : IsCoprime p q)
+  (hbounds : ∀ (f : ℤ), Dyadic354.IsSubsetSum old f → 0 ≤ f ∧ f ≤ S)
+  (hn : Dyadic354.Certificate.NodeMeaning first second node p q) (hk : 0 < k)
+  (hg : Dyadic354.CyclicGaps.gap (Dyadic354.NodeRepresentations.oldResidues n d old) ⋯ ≤ k)
+  (halo : ↑d * 2 ^ ℓ * node.lo.eval p q + Dyadic354.NodeRepresentations.margin (↑d) p q S ≤ a)
+  (hahi : a + ↑k - 1 ≤ ↑d * 2 ^ ℓ * node.hi.eval p q - Dyadic354.NodeRepresentations.margin (↑d) p q S) :
+  ∃ z,
+    Dyadic354.IsSubsetSum (Dyadic354.Representations.packedWeights n ℓ old first second third (↑d) p q) z ∧
+      a ≤ z ∧ z < a + ↑k
+Dyadic354.InitialMesh.certificate_initial_mesh (n ℓ d : ℕ) [NeZero d] (old : Fin (2 * n) → ℤ)
+  (first second third : Dyadic354.Certificate.Digits) (p q : ℤ) (hfirst : first ≠ (false, false)) (hq : 0 < q)
+  (hqp : q < p) (hpq : p < 2 * q) (hcop : IsCoprime p q) (hpos : ∀ (i : Fin (2 * n)), 0 ≤ old i)
+  (hS : ∑ i, old i < ↑d * (p + q)) (hK : Dyadic354.InitialMesh.threshold p q ≤ 2 ^ ℓ) :
+  have S := ∑ i, old i;
+  have k := max 1 (Dyadic354.CyclicGaps.gap (Dyadic354.NodeRepresentations.oldResidues n d old) ⋯);
+  have P :=
+    Dyadic354.finiteSubsetSums (Dyadic354.Representations.packedWeights n ℓ old first second third (↑d) p q)
+      Finset.univ;
+  have W :=
+    {z ∈ P |
+      Dyadic354.InitialMesh.leftEnd (↑d) (2 ^ ℓ) p q S ≤ z ∧ z ≤ Dyadic354.InitialMesh.rightEnd (↑d) (2 ^ ℓ) p q S};
+  ∃ (hW : W.Nonempty),
+    Dyadic354.Mesh.gap W ≤ k ∧
+      Dyadic354.InitialMesh.rightEnd (↑d) (2 ^ ℓ) p q S - Dyadic354.InitialMesh.leftEnd (↑d) (2 ^ ℓ) p q S -
+            2 * (↑k - 1) ≤
+          Dyadic354.Mesh.span W hW ∧
+        8 * ↑d * 2 ^ ℓ * q + 15 < Dyadic354.Mesh.span W hW
+Dyadic354.InitialMesh.prefix_initial_mesh (n ℓ d : ℕ) [NeZero d] (v : ℕ → ℤ)
+  (first second third : Dyadic354.Certificate.Digits) (p q : ℤ) (hfirst : first ≠ (false, false)) (hq : 0 < q)
+  (hqp : q < p) (hpq : p < 2 * q) (hcop : IsCoprime p q) (hpos : ∀ (i : Fin (2 * n)), 0 ≤ v ↑i)
+  (hS : ∑ i, v ↑i < ↑d * (p + q)) (hK : Dyadic354.InitialMesh.threshold p q ≤ 2 ^ ℓ)
+  (ha : ∀ (i : Fin ℓ), v (2 * n + 2 * ↑i) = ↑d * p * 2 ^ ↑i)
+  (hb : ∀ (i : Fin ℓ), v (2 * n + 2 * ↑i + 1) = ↑d * q * 2 ^ ↑i)
+  (hsix : ∀ (i : Fin 6), v (2 * n + 2 * ℓ + ↑i) = Dyadic354.Certificate.weights first second third (↑d) (2 ^ ℓ) p q i) :
+  have old := fun i => v ↑i;
+  have k := max 1 (Dyadic354.CyclicGaps.gap (Dyadic354.NodeRepresentations.oldResidues n d old) ⋯);
+  ∃ W,
+    ∃ (hW : W.Nonempty),
+      W ⊆ Dyadic354.finiteSubsetSums v (Finset.range (2 * (n + ℓ + 3))) ∧
+        Dyadic354.Mesh.gap W ≤ k ∧ 8 * ↑d * 2 ^ ℓ * q + 15 < Dyadic354.Mesh.span W hW
+Dyadic354.PermanentMesh.permanent_projection (v : ℕ → ℤ) (N : ℕ) (W : Finset ℤ) (hW : W.Nonempty) (k : ℕ)
+  (hsub : W ⊆ Dyadic354.PermanentMesh.prefixSums v N) (hg : Dyadic354.Mesh.gap W ≤ k)
+  (hs : v N ≤ Dyadic354.Mesh.span W hW) (hpos : ∀ (t : ℕ), 0 < v (N + t))
+  (hdbl : ∀ (t : ℕ), v (N + (t + 1)) ≤ 2 * v (N + t)) (t m : ℕ) (_hm : NeZero m) :
+  ↑m ≤ v (N + t) →
+    Dyadic354.CyclicGaps.gap (Dyadic354.Mesh.residues (Dyadic354.PermanentMesh.prefixSums v (N + t)) m) ⋯ ≤ k - 1
+Dyadic354.PermanentMesh.certificate_permanent_descent (n ℓ d : ℕ) [NeZero d] (v : ℕ → ℤ)
+  (first second third : Dyadic354.Certificate.Digits) (p q : ℤ) (hfirst : first ≠ (false, false)) (hq : 0 < q)
+  (hqp : q < p) (hpq : p < 2 * q) (hcop : IsCoprime p q) (hpos : ∀ (i : Fin (2 * n)), 0 ≤ v ↑i)
+  (hS : ∑ i, v ↑i < ↑d * (p + q)) (hK : Dyadic354.InitialMesh.threshold p q ≤ 2 ^ ℓ)
+  (ha : ∀ (i : Fin ℓ), v (2 * n + 2 * ↑i) = ↑d * p * 2 ^ ↑i)
+  (hb : ∀ (i : Fin ℓ), v (2 * n + 2 * ↑i + 1) = ↑d * q * 2 ^ ↑i)
+  (hsix : ∀ (i : Fin 6), v (2 * n + 2 * ℓ + ↑i) = Dyadic354.Certificate.weights first second third (↑d) (2 ^ ℓ) p q i)
+  (hnext : v (2 * (n + ℓ + 3)) ≤ 8 * ↑d * 2 ^ ℓ * q + 15) (hfuture : ∀ (t : ℕ), 0 < v (2 * (n + ℓ + 3) + t))
+  (hdbl : ∀ (t : ℕ), v (2 * (n + ℓ + 3) + (t + 1)) ≤ 2 * v (2 * (n + ℓ + 3) + t)) :
+  have old := fun i => v ↑i;
+  ∀ (t m : ℕ) (_hm : NeZero m),
+    ↑m ≤ v (2 * (n + ℓ + 3) + t) →
+      Dyadic354.CyclicGaps.gap (Dyadic354.Mesh.residues (Dyadic354.PermanentMesh.prefixSums v (2 * (n + ℓ + 3) + t)) m)
+          ⋯ ≤
+        Dyadic354.CyclicGaps.gap (Dyadic354.NodeRepresentations.oldResidues n d old) ⋯ - 1
 'Dyadic354.mem_finiteSubsetSums' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Dyadic354.Linear.eval_add' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Dyadic354.Linear.eval_sub' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -157,6 +259,38 @@ Dyadic354.Mesh.propagate_iterate (W : Finset ℤ) (hW : W.Nonempty) (c : ℕ →
 'Dyadic354.Mesh.projection_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Dyadic354.Mesh.extend_nonempty' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Dyadic354.Mesh.propagate_iterate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.CoefficientInterval.lower_interval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.CoefficientInterval.bounded_interval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.CoefficientInterval.binary_sum_exists' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.Representations.subsetSum_disjSum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.Representations.subsetSum_embed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.Representations.binary_scaled' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.Representations.block_interval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.Representations.position_injective' depends on axioms: [propext, Quot.sound]
+'Dyadic354.Representations.position_lt' depends on axioms: [propext, Quot.sound]
+'Dyadic354.Representations.packed_weights_match' depends on axioms: [propext]
+'Dyadic354.Representations.packed_to_prefix' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.Representations.prefix_block_offset' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.NodeRepresentations.residual_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.NodeRepresentations.old_sum_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.NodeRepresentations.mask_representation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.NodeRepresentations.node_representation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.NodeRepresentations.oldResidues_nonempty' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.NodeRepresentations.lift_oldResidues_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.NodeRepresentations.node_window' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.InitialMesh.margin_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.InitialMesh.trimmed_chain_covers' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.InitialMesh.chain_windows' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.InitialMesh.mesh_from_windows' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.InitialMesh.span_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.InitialMesh.certificate_initial_mesh' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.InitialMesh.prefix_initial_mesh' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.PermanentMesh.prefix_nonempty' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.PermanentMesh.extend_step_subset' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.PermanentMesh.extend_subset_prefix' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.PermanentMesh.gap_of_subset' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.PermanentMesh.permanent_projection' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.PermanentMesh.certificate_permanent_descent' depends on axioms: [propext, Classical.choice, Quot.sound]
 
 EXIT CODE: 0
-ELAPSED SECONDS: 12.666
+ELAPSED SECONDS: 11.685

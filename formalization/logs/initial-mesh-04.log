@@ -1,0 +1,45 @@
+COMMAND: ["lake", "build", "Dyadic354.InitialMesh"]
+UTC: 2026-09-12T15:58:34.208645+00:00
+✖ [1194/1194] Building Dyadic354.InitialMesh (8.3s)
+trace: .> LEAN_PATH=/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/Cli/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/batteries/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/Qq/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/aesop/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/importGraph/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/plausible/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/mathlib/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean /Users/andrewyz/.elan/toolchains/leanprover--lean4---v4.27.0/bin/lean /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/Dyadic354/InitialMesh.lean -o /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean/Dyadic354/InitialMesh.olean -i /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean/Dyadic354/InitialMesh.ilean -c /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/ir/Dyadic354/InitialMesh.c --setup /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/ir/Dyadic354/InitialMesh.setup.json --json
+error: Dyadic354/InitialMesh.lean:40:51: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  u - v ≥ 0
+  r - s ≥ 1
+  o ≥ 0
+  n ≥ 0
+  n - o ≥ 1
+  h + 2*j - l ≥ 0
+  7*h + 6*j - m ≤ 0
+  d ≥ 0
+  c - e + f ≤ 0
+  c + d + e - g ≤ 1
+  b ≥ 0
+  b - 2*c - d ≥ -1
+where
+ b := Q
+ c := B
+ d := ↑k
+ e := a
+ f := Q * (p + 2 * q)
+ g := Q * (7 * p + 6 * q)
+ h := p
+ j := q
+ l := (Certificate.nodeAt t 0).lo.eval p q
+ m := (Certificate.nodeAt t (t.chain.length - 1)).hi.eval p q
+ n := ↑(t.chain.length - 1)
+ o := ↑i
+ r := (Certificate.nodeAt t ↑⟨i, hi⟩).hi.eval p q
+ s := (Certificate.nodeAt t (↑⟨i, hi⟩ + 1)).lo.eval p q
+ u := (Certificate.nodeAt t (i + 1)).lo.eval p q
+ v := (Certificate.nodeAt t i).hi.eval p q
+error: Dyadic354/InitialMesh.lean:76:62: unused variable `hk`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+error: Lean exited with code 1
+Some required targets logged failures:
+- Dyadic354.InitialMesh
+error: build failed
+
+EXIT CODE: 1
+ELAPSED SECONDS: 10.600

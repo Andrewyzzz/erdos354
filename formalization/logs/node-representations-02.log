@@ -1,0 +1,8 @@
+COMMAND: ["lake", "build", "Dyadic354.NodeRepresentations"]
+UTC: 2026-09-12T15:55:38.318173+00:00
+✔ [1190/1191] Built Dyadic354.Representations (7.2s)
+✔ [1191/1191] Built Dyadic354.NodeRepresentations (3.8s)
+Build completed successfully (1191 jobs).
+
+EXIT CODE: 0
+ELAPSED SECONDS: 13.933

@@ -1,0 +1,27 @@
+COMMAND: ["lake", "build", "Dyadic354.PermanentMesh"]
+UTC: 2026-09-12T16:00:07.061721+00:00
+✔ [1194/1195] Built Dyadic354.InitialMesh (8.7s)
+✖ [1195/1195] Building Dyadic354.PermanentMesh (1.8s)
+trace: .> LEAN_PATH=/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/Cli/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/batteries/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/Qq/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/aesop/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/importGraph/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/plausible/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/mathlib/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean /Users/andrewyz/.elan/toolchains/leanprover--lean4---v4.27.0/bin/lean /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/Dyadic354/PermanentMesh.lean -o /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean/Dyadic354/PermanentMesh.olean -i /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean/Dyadic354/PermanentMesh.ilean -c /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/ir/Dyadic354/PermanentMesh.c --setup /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/ir/Dyadic354/PermanentMesh.setup.json --json
+error: Dyadic354/PermanentMesh.lean:5:3: unexpected token 'prefix'; expected identifier
+error: Dyadic354/PermanentMesh.lean:7:47: unexpected token 'prefix'; expected ')', '_', '↑', '↥', '⇑', identifier or term
+error: Dyadic354/PermanentMesh.lean:7:53: unexpected identifier; expected ':'
+error: Dyadic354/PermanentMesh.lean:12:13: unexpected token 'prefix'; expected term
+error: Dyadic354/PermanentMesh.lean:12:20: unexpected identifier; expected ':'
+error: Dyadic354/PermanentMesh.lean:12:63: unexpected identifier; expected ':'
+error: Dyadic354/PermanentMesh.lean:30:13: unexpected token 'prefix'; expected term
+error: Dyadic354/PermanentMesh.lean:30:20: unexpected identifier; expected ':'
+error: Dyadic354/PermanentMesh.lean:31:54: unexpected identifier; expected ':'
+error: Dyadic354/PermanentMesh.lean:50:41: unexpected token 'prefix'; expected term
+error: Dyadic354/PermanentMesh.lean:50:48: unexpected identifier; expected ':'
+error: Dyadic354/PermanentMesh.lean:55:43: unexpected identifier; expected ':'
+error: Dyadic354/PermanentMesh.lean:63:55: unexpected identifier; expected ':'
+error: Dyadic354/PermanentMesh.lean:89:37: unexpected token 'prefix'; expected ')', '↑', '↥', '⇑' or term
+error: Dyadic354/PermanentMesh.lean:89:43: unexpected identifier; expected ':'
+error: Lean exited with code 1
+Some required targets logged failures:
+- Dyadic354.PermanentMesh
+error: build failed
+
+EXIT CODE: 1
+ELAPSED SECONDS: 14.993

@@ -1,0 +1,7 @@
+COMMAND: ["lake", "build", "Dyadic354.PermanentMesh"]
+UTC: 2026-09-12T16:06:45.141442+00:00
+✔ [1195/1195] Built Dyadic354.PermanentMesh (4.2s)
+Build completed successfully (1195 jobs).
+
+EXIT CODE: 0
+ELAPSED SECONDS: 5.936

@@ -1,6 +1,7 @@
 import Dyadic354.Statements
 import Dyadic354.CertificateData
 import Dyadic354.Mesh
+import Dyadic354.PermanentMesh
 
 #print Dyadic354.PartI
 #print Dyadic354.StrongCompleteness
@@ -28,6 +29,19 @@ import Dyadic354.Mesh
 #check Dyadic354.Mesh.translate_union_gap_span
 #check Dyadic354.Mesh.projection_gap
 #check Dyadic354.Mesh.propagate_iterate
+
+#print Dyadic354.Representations.PackedIndex
+#print Dyadic354.Representations.position
+#print Dyadic354.Representations.packedWeights
+#print Dyadic354.InitialMesh.threshold
+#check Dyadic354.CoefficientInterval.bounded_interval
+#check Dyadic354.Representations.block_interval
+#check Dyadic354.NodeRepresentations.node_representation
+#check Dyadic354.NodeRepresentations.node_window
+#check Dyadic354.InitialMesh.certificate_initial_mesh
+#check Dyadic354.InitialMesh.prefix_initial_mesh
+#check Dyadic354.PermanentMesh.permanent_projection
+#check Dyadic354.PermanentMesh.certificate_permanent_descent
 
 #print axioms Dyadic354.mem_finiteSubsetSums
 #print axioms Dyadic354.Linear.eval_add
@@ -81,3 +95,36 @@ import Dyadic354.Mesh
 #print axioms Dyadic354.Mesh.projection_gap
 #print axioms Dyadic354.Mesh.extend_nonempty
 #print axioms Dyadic354.Mesh.propagate_iterate
+
+#print axioms Dyadic354.CoefficientInterval.lower_interval
+#print axioms Dyadic354.CoefficientInterval.bounded_interval
+#print axioms Dyadic354.CoefficientInterval.binary_sum_exists
+#print axioms Dyadic354.Representations.subsetSum_disjSum
+#print axioms Dyadic354.Representations.subsetSum_embed
+#print axioms Dyadic354.Representations.binary_scaled
+#print axioms Dyadic354.Representations.block_interval
+#print axioms Dyadic354.Representations.position_injective
+#print axioms Dyadic354.Representations.position_lt
+#print axioms Dyadic354.Representations.packed_weights_match
+#print axioms Dyadic354.Representations.packed_to_prefix
+#print axioms Dyadic354.Representations.prefix_block_offset
+#print axioms Dyadic354.NodeRepresentations.residual_bounds
+#print axioms Dyadic354.NodeRepresentations.old_sum_bounds
+#print axioms Dyadic354.NodeRepresentations.mask_representation
+#print axioms Dyadic354.NodeRepresentations.node_representation
+#print axioms Dyadic354.NodeRepresentations.oldResidues_nonempty
+#print axioms Dyadic354.NodeRepresentations.lift_oldResidues_iff
+#print axioms Dyadic354.NodeRepresentations.node_window
+#print axioms Dyadic354.InitialMesh.margin_budget
+#print axioms Dyadic354.InitialMesh.trimmed_chain_covers
+#print axioms Dyadic354.InitialMesh.chain_windows
+#print axioms Dyadic354.InitialMesh.mesh_from_windows
+#print axioms Dyadic354.InitialMesh.span_budget
+#print axioms Dyadic354.InitialMesh.certificate_initial_mesh
+#print axioms Dyadic354.InitialMesh.prefix_initial_mesh
+#print axioms Dyadic354.PermanentMesh.prefix_nonempty
+#print axioms Dyadic354.PermanentMesh.extend_step_subset
+#print axioms Dyadic354.PermanentMesh.extend_subset_prefix
+#print axioms Dyadic354.PermanentMesh.gap_of_subset
+#print axioms Dyadic354.PermanentMesh.permanent_projection
+#print axioms Dyadic354.PermanentMesh.certificate_permanent_descent

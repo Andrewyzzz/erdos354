@@ -1,0 +1,105 @@
+COMMAND: ["lake", "build", "Dyadic354.InitialMesh"]
+UTC: 2026-09-12T15:57:42.815123+00:00
+✔ [1193/1194] Built Dyadic354.NodeRepresentations (8.0s)
+✖ [1194/1194] Building Dyadic354.InitialMesh (2.9s)
+trace: .> LEAN_PATH=/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/Cli/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/batteries/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/Qq/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/aesop/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/importGraph/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/plausible/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/mathlib/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean /Users/andrewyz/.elan/toolchains/leanprover--lean4---v4.27.0/bin/lean /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/Dyadic354/InitialMesh.lean -o /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean/Dyadic354/InitialMesh.olean -i /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean/Dyadic354/InitialMesh.ilean -c /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/ir/Dyadic354/InitialMesh.c --setup /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/ir/Dyadic354/InitialMesh.setup.json --json
+error: Dyadic354/InitialMesh.lean:38:34: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  o ≥ 0
+  n ≥ 0
+  n - o ≥ 0
+  h + 2*j - l ≥ 0
+  7*h + 6*j - m ≤ 0
+  d ≥ 0
+  c - e + r ≤ 0
+  c - e + f ≤ 0
+  c + d + e - g ≤ 1
+  c + d + e - s ≤ 1
+  c + d + e - u ≥ 2
+  b ≥ 0
+  b - 2*c - d ≥ -1
+where
+ b := Q
+ c := B
+ d := ↑k
+ e := a
+ f := Q * (p + 2 * q)
+ g := Q * (7 * p + 6 * q)
+ h := p
+ j := q
+ l := (Certificate.nodeAt t 0).lo.eval p q
+ m := (Certificate.nodeAt t (t.chain.length - 1)).hi.eval p q
+ n := ↑(t.chain.length - 1)
+ o := ↑i
+ r := Q * (Certificate.nodeAt t i).lo.eval p q
+ s := Q * (Certificate.nodeAt t i).hi.eval p q
+ u := Q * (Certificate.nodeAt t ↑⟨i, ⋯⟩).hi.eval p q
+error: Dyadic354/InitialMesh.lean:39:2: No goals to be solved
+error: Dyadic354/InitialMesh.lean:83:17: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  e - g ≤ 0
+  d - f ≥ 0
+  c - d ≤ 0
+  b - e ≥ 0
+  a ≥ 1
+  a - b + e ≥ 1
+  a - b + c ≤ 1
+  a + c - d ≥ 1
+  a + c - h ≤ 0
+where
+ a := ↑k
+ b := hi
+ c := lo
+ d := u
+ e := v
+ f := W.min' ⋯
+ g := W.max' ⋯
+ h := {z ∈ P | lo ≤ z ∧ z ≤ hi}.min' hW
+error: Dyadic354/InitialMesh.lean:83:27: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  e - g ≤ 0
+  d - f ≥ 0
+  c - d ≤ 0
+  b - e ≥ 0
+  a ≥ 1
+  a - b + h ≤ 0
+  a - b + e ≥ 1
+  a - b + c ≤ 1
+  a + c - d ≥ 1
+where
+ a := ↑k
+ b := hi
+ c := lo
+ d := u
+ e := v
+ f := W.min' ⋯
+ g := W.max' ⋯
+ h := {z ∈ P | lo ≤ z ∧ z ≤ hi}.max' hW
+error: Dyadic354/InitialMesh.lean:95:4: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  e - g ≤ 0
+  d - f ≥ 0
+  c - d ≤ 0
+  b - e ≥ 0
+  a ≥ 1
+  a - b + e ≥ 1
+  a - b + c ≤ 1
+  a + c - d ≥ 1
+  2*a - b + c + h - i ≤ 1
+where
+ a := ↑k
+ b := hi
+ c := lo
+ d := u
+ e := v
+ f := W.min' ⋯
+ g := W.max' ⋯
+ h := {z ∈ P | lo ≤ z ∧ z ≤ hi}.max' hW
+ i := {z ∈ P | lo ≤ z ∧ z ≤ hi}.min' hW
+error: Lean exited with code 1
+Some required targets logged failures:
+- Dyadic354.InitialMesh
+error: build failed
+
+EXIT CODE: 1
+ELAPSED SECONDS: 15.773

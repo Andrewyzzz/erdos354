@@ -1,9 +1,9 @@
 {
   "status": "PASS",
-  "scope": "Finite certificate and three mesh lemmas with iterated propagation; not Erd\u0151s 354(i).",
+  "scope": "Finite certificate, mesh foundations, legal block representations, initial mesh and local algebraic permanent descent. Floor/event adapters and Erd\u0151s 354(i) remain unproved.",
   "fresh_project_build": true,
   "dependency_cache_reused": true,
-  "audited_theorems": 51,
+  "audited_theorems": 83,
   "allowed_axioms": [
     "Classical.choice",
     "Quot.sound",
@@ -72,6 +72,21 @@
       "Quot.sound",
       "propext"
     ],
+    "Dyadic354.CoefficientInterval.binary_sum_exists": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.CoefficientInterval.bounded_interval": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.CoefficientInterval.lower_interval": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
     "Dyadic354.CyclicGaps.erode_nonempty": [
       "Classical.choice",
       "Quot.sound",
@@ -129,6 +144,41 @@
       "propext"
     ],
     "Dyadic354.CyclicGaps.not_missingRun_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.InitialMesh.certificate_initial_mesh": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.InitialMesh.chain_windows": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.InitialMesh.margin_budget": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.InitialMesh.mesh_from_windows": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.InitialMesh.prefix_initial_mesh": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.InitialMesh.span_budget": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.InitialMesh.trimmed_chain_covers": [
       "Classical.choice",
       "Quot.sound",
       "propext"
@@ -248,6 +298,112 @@
       "Quot.sound",
       "propext"
     ],
+    "Dyadic354.NodeRepresentations.lift_oldResidues_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.NodeRepresentations.mask_representation": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.NodeRepresentations.node_representation": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.NodeRepresentations.node_window": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.NodeRepresentations.oldResidues_nonempty": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.NodeRepresentations.old_sum_bounds": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.NodeRepresentations.residual_bounds": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.PermanentMesh.certificate_permanent_descent": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.PermanentMesh.extend_step_subset": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.PermanentMesh.extend_subset_prefix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.PermanentMesh.gap_of_subset": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.PermanentMesh.permanent_projection": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.PermanentMesh.prefix_nonempty": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.Representations.binary_scaled": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.Representations.block_interval": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.Representations.packed_to_prefix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.Representations.packed_weights_match": [
+      "propext"
+    ],
+    "Dyadic354.Representations.position_injective": [
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.Representations.position_lt": [
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.Representations.prefix_block_offset": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.Representations.subsetSum_disjSum": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.Representations.subsetSum_embed": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
     "Dyadic354.indexedComplete_iff": [
       "Classical.choice",
       "Quot.sound",
@@ -260,12 +416,17 @@
     ]
   },
   "source_sha256": {
-    "Dyadic354/Audit.lean": "59d95340d798689be216fcb5a24d1610a268386c4b81e410a59a98e1d7f85984",
+    "Dyadic354/Audit.lean": "568c7d9181d1bd82c96cf5b6e3fb1aa495744d9dc9963a05d7a6f2b66ed33d5c",
     "Dyadic354/Basic.lean": "46a1bab425aaaa1afaaf782cd7d0b40dd6e7df24998621c7f10b635f672fd444",
     "Dyadic354/Certificate.lean": "e31d86900d1cb397d7a158f5ba8eb3aa74688d93b1d4951fad0f8ed989ff5d3a",
     "Dyadic354/CertificateData.lean": "16fbd45515c8cfd1665f0e2a3184de42bdaa0859e134fcaa3e4894ef512b3a1c",
+    "Dyadic354/CoefficientInterval.lean": "bc804686095736cb25c83bb73a924b36ad3050c0921b0beed8612be8473595ee",
     "Dyadic354/CyclicGaps.lean": "4e965aeebefffd97893e582eb7cba380f8770456e29e795b09326707f4b5c5d2",
+    "Dyadic354/InitialMesh.lean": "948ed6902bb4e0b114fe7206b2e673bbc3037556f37e39f0958cfd28204f827f",
     "Dyadic354/Mesh.lean": "333c65dfc0cce04089a803fe53d7cdb48911124cf1ad7344876ae8a576c16795",
+    "Dyadic354/NodeRepresentations.lean": "42b67ead8d02eb3bd188596e52afd1c69aafa8d6082602841ceee36b59c6cd3f",
+    "Dyadic354/PermanentMesh.lean": "94e54921c582820a6abb0a81695daf23218958a3446ffe4d846cbd927c112b98",
+    "Dyadic354/Representations.lean": "2800c95ac8e6100c830ac34e37dcea87e9c513654acf2a35bbe255b84e977860",
     "Dyadic354/Statements.lean": "623b20bab06c99013dcbefed752aa80ce29a879930eefc1d069e4944bc5ceb0e",
     "Dyadic354.lean": "74042517586cadcbb0f604935164bdccb30e4c5686573e0b18ed720ca789295f",
     "lake-manifest.json": "5db7b78bdcaea358d67359ddcf24565fb8fefaf4cd3d8ee26a13002768da0716",

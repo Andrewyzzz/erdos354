@@ -1,10 +1,11 @@
-# 第二批状态
+# 第三批状态
 
-**证书模块、三个基础网格引理及逐步传播推论已形式化；#354(i) 与集合强完全性尚未形式化完成。**
+**已完成证书、网格基础、合法块表示、初始网格，以及显式局部假设下的代数永久下降；#354(i) 与集合强完全性尚未形式化完成。**
 
 实际证书由 Lean 内核计算核验，通过通用 soundness 定理得到全部合法整数参数上的
 系数覆盖与六项子集和语义。第二批证明主稿 Lemma 2.1、2.2、2.3，并补齐最长缺失段、
-实际相邻点距离与窗口表述之间的连接。有限数据使用 `decide +kernel`，累计 51 个本地定理的
+实际相邻点距离与窗口表述之间的连接。第三批增加主稿 §3–4 的有限表示链及 §5 的局部
+代数投影链，共增加 32 个定理。有限数据使用 `decide +kernel`，累计 83 个本地定理的
 传递公理依赖均为 `propext`、`Classical.choice`、`Quot.sound` 的子集。
 最终构建与审计见 `logs/verification.json`，独立目录重建见
 `logs/fresh-verification.json`；完整实际输出保存在同目录的日志。
@@ -83,6 +84,68 @@
 `span(W) ≥ c > 0`；所需 `k>0` 从这些条件推导，并未作为额外前提附加。
 投影定理同样从 `span(W) ≥ m > 0` 推导正gap；没有把不同模数视作同一个群。
 
+## 第三批已编译定理与主稿对应（32个）
+
+以下名称均以 `Dyadic354.` 开头；所有辅助定理也纳入审计，没有只审计末端结论。
+准确参数与类型见 `logs/axioms.log` 和相应 Lean 源码。
+
+| 声明名（省略共同前缀） | 对应内容 |
+|---|---|
+| `CoefficientInterval.lower_interval` | §3.1：Bézout 系数取模，构造有界 x、y |
+| `CoefficientInterval.bounded_interval` | §3.1：反射得到全部 `[F,(p+q)(K-1)-F]` |
+| `CoefficientInterval.binary_sum_exists` | 小于 `2^ℓ` 的自然数由不同二进制位置求和 |
+| `Representations.subsetSum_disjSum` | 不交索引类型上的合法子集和拼接 |
+| `Representations.subsetSum_embed` | 单射映射到指定索引集，保留不重复性 |
+| `Representations.binary_scaled` | 整数倍二进制系数由 `Fin ℓ` 位置实现 |
+| `Representations.block_interval` | §3.1：两条倍增块真正实现旧系数区间 |
+| `Representations.position_injective` | 旧前缀、两条倍增块、六项的原索引两两不交 |
+| `Representations.position_lt` | 全部原索引严格小于 `2(n+ℓ+3)` |
+| `Representations.packed_weights_match` | 显式两条倍增恒等式及六项恒等式对应局部模型 |
+| `Representations.packed_to_prefix` | 局部表示转为原始前缀有限索引和 |
+| `Representations.prefix_block_offset` | §3.2：旧前缀 + 倍增块 + 六项偏移的合法拼接 |
+| `NodeRepresentations.residual_bounds` | §3.2：实际旧代表与常数22下的剩余系数上下界 |
+| `NodeRepresentations.old_sum_bounds` | 非负旧权重的每个子集和在 `[0,Σold]` 内 |
+| `NodeRepresentations.mask_representation` | §3.2：单掩码在缩短节点区间内实现对应余数 |
+| `NodeRepresentations.node_representation` | §3.2：每个已核验节点实现两类旧余数 |
+| `NodeRepresentations.oldResidues_nonempty` | 旧前缀模集包含空和余数 |
+| `NodeRepresentations.lift_oldResidues_iff` | 模集成员等价于实际旧代表与整除条件 |
+| `NodeRepresentations.node_window` | §3.2：侵蚀后每个节点内 k 窗口命中实际子集和 |
+| `InitialMesh.margin_budget` | (4.1)：`dK-2B ≥ 64d-42 ≥ 22d`，包括 d=1 |
+| `InitialMesh.trimmed_chain_covers` | §4：缩短窗口链覆盖，不假设端点单调 |
+| `InitialMesh.chain_windows` | §4：全局区间内每个 k 窗口命中实际子集和 |
+| `InitialMesh.mesh_from_windows` | (4.2)：实际有限网格、两端损失及跨度界 |
+| `InitialMesh.span_budget` | (4.3)：跨度下界严格大于 `8dKq+15` |
+| `InitialMesh.certificate_initial_mesh` | 从原始12条模板及局部块条件构造实际子集和网格 |
+| `InitialMesh.prefix_initial_mesh` | 初始网格每个点均为原前缀合法有限索引和 |
+| `PermanentMesh.prefix_nonempty` | 每个原前缀含空和 |
+| `PermanentMesh.extend_step_subset` | 追加一个新索引不与旧支持冲突 |
+| `PermanentMesh.extend_subset_prefix` | 每一步传播网格仍包含于实际前缀子集和 |
+| `PermanentMesh.gap_of_subset` | 非空模集增大时循环缺口不增 |
+| `PermanentMesh.permanent_projection` | 给定合法初始网格及未来权重界，任意后续较小模数上的前缀缺口界 |
+| `PermanentMesh.certificate_permanent_descent` | 从实际模板出发，在显式局部块及未来权重条件下，所有后续合适模数的缺口不超过旧缺口减1 |
+
+### 这一批结论的准确边界
+
+`certificate_initial_mesh` 的条件为正整数模数 d，整数 `0<q<p<2q`，
+`IsCoprime p q`，非负旧权重且旧总和 `<d(p+q)`，`K=2^ℓ≥K_*`，非零首位型。
+`IsCoprime` 是 Mathlib 标准的整数 Bézout 定义。系数并未限制在有限枚举范围内。
+网格由这些权重的有限子集和值构造，既不是抽象余数网格，也没有把网格存在作为假设。
+
+`prefix_initial_mesh` 进一步把位置显式映射为旧前缀 `[0,2n)`、
+倍增块的 `2n+2i` / `2n+2i+1`、六项的 `2n+2ℓ+j`。
+该映射已证明是单射；与给定序列 v 的对应由两条块恒等式和六项恒等式明确表达。
+还没有从原题的实数地板函数、事件与 gcd 自动推导这些局部假设。
+
+`certificate_permanent_descent` 没有假设网格存在或缺口下降；二者在定理内部证明。
+但仍显式要求未来权重为正、后一项不超过前一项两倍、第一未来项
+`≤8dKq+15`，以及所选新模数不超过当前未来项。它量化所有这样的未来延拓与模数。
+**这只是 §5 的局部代数版本，不能声称 §2–6 已全部形式化。**
+
+特别注意未来项的顺序：主稿传播使用 `b_r,a_r,b_{r+1},a_{r+1},…`；
+冻结的原题定义是 `a_r,b_r,a_{r+1},b_{r+1},…`。不能未经证明就把后者代入
+两倍界条件。后续需要显式的索引置换及完整成对前缀和值不变证明，再推导未来界。
+本批没有改动冻结的原题定义来消除这一接口义务。
+
 ## 固定但未证明的目标
 
 - `Dyadic354.PartI`：任意正实数 α、β，无理比值，固定底数 2，地板交错列的有限索引和最终覆盖。
@@ -94,15 +157,16 @@
 
 ## 后续数学义务
 
-1. §1 与 §3：地板递推、到达层事件、实际前缀；把本批六个局部位置嵌入原序列索引。
-2. §3.1–3.2：旧系数区间、实际前缀代表大小、合法不交索引拼接；本批尚未证明这些表示区间。
-3. §4–6：缩短节点窗口、由实际子集和构造初始整数网格、永久下降及事件倍率有界。
+1. §1 与 §3：实数地板递推、到达层事件、gcd/Bézout 对应；从原序列推导本批局部块、六项及旧总和条件。索引单射本身已经证明。
+2. §5：未来项 `b,a` 重排、成对前缀和值不变、未来两倍界及首项界；把本批局部代数下降定理实例化到实际 `D_t,h_t`。
+3. §5–6：长度条件蕴含 `K≥K_*`、低缺口蕴含完全性、不相交更新时刻、有限次严格下降和事件倍率有界。
 4. §8–11：完整 FE、DB、BG，变周期边界、连分数匹配层和返回成本极限。
 5. §1、§7：合法向上截尾、去重、有限删除、两种完全性及上游原题的最终连接。
 
-本批没有剩余编译阻断，也未发现三个有限网格引理中的数学缺口。`propagate_iterate`
-是给定初始网格后的通用保持定理，尚不构成第3–6节的永久下降链证明。此结论不评价上述尚未
-形式化的无限论证。后续若出现阻断，应单独保存最小失败文件、目标上下文和缺失引理。
+本批没有剩余编译阻断，所完成的有限表示、余量预算与局部代数下降未发现数学缺口。
+编译修复涉及索引类型的定义展开、保留标识符、库参数顺序及严格风格检查，未改弱数学命题。
+上述尚未完成的无限论证没有因此得到验证。后续若出现阻断，应单独保存最小失败文件、
+完整目标上下文和缺失引理。
 
 ## 发布状态
 
