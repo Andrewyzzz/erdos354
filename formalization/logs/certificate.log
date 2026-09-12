@@ -1,0 +1,35 @@
+COMMAND: ["lake", "build", "Dyadic354.Certificate"]
+UTC: 2026-09-12T15:11:59.398846+00:00
+✖ [3066/3067] Building Dyadic354.Basic (27s)
+trace: .> LEAN_PATH=/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/Cli/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/batteries/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/Qq/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/aesop/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/importGraph/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/plausible/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/mathlib/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean /Users/andrewyz/.elan/toolchains/leanprover--lean4---v4.27.0/bin/lean /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/Dyadic354/Basic.lean -o /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean/Dyadic354/Basic.olean -i /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean/Dyadic354/Basic.ilean -c /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/ir/Dyadic354/Basic.c --setup /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/ir/Dyadic354/Basic.setup.json --json
+error: Dyadic354/Basic.lean:71:30: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  e ≤ -1
+  e + f ≤ 0
+  2*e + f ≤ 0
+  c - 2*d ≤ -1
+  c - d ≥ 1
+where
+ c := p
+ d := q
+ e := v.a
+ f := v.b
+error: Dyadic354/Basic.lean:71:30: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  f ≤ -1
+  e + f ≤ 0
+  2*e + f ≤ 0
+  c - 2*d ≤ -1
+  c - d ≥ 1
+where
+ c := p
+ d := q
+ e := v.a
+ f := v.b
+error: Lean exited with code 1
+Some required targets logged failures:
+- Dyadic354.Basic
+error: build failed
+
+EXIT CODE: 1
+ELAPSED SECONDS: 33.257

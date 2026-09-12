@@ -1,0 +1,86 @@
+COMMAND: ["lake", "build"]
+UTC: 2026-09-12T15:13:57.356956+00:00
+✔ [1760/1764] Built Dyadic354.Certificate (7.3s)
+✔ [1761/1764] Built Dyadic354.CertificateData (3.9s)
+ℹ [1762/1764] Built Dyadic354.Audit (6.0s)
+info: Dyadic354/Audit.lean:4:0: def Dyadic354.PartI : Prop :=
+∀ (α β : ℝ), 0 < α → 0 < β → Irrational (α / β) → Dyadic354.IndexedComplete (Dyadic354.interleave α β 2)
+info: Dyadic354/Audit.lean:5:0: def Dyadic354.StrongCompleteness : Prop :=
+∀ (α β : ℝ), 0 < α → 0 < β → Irrational (α / β) → Dyadic354.SetStronglyComplete (Dyadic354.dyadicValueSet α β)
+info: Dyadic354/Audit.lean:6:0: def Dyadic354.IndexedComplete : (ℕ → ℤ) → Prop :=
+fun w => ∀ᶠ (k : ℤ) in Filter.atTop, Dyadic354.IsSubsetSum w k
+info: Dyadic354/Audit.lean:7:0: def Dyadic354.SetStronglyComplete : Set ℤ → Prop :=
+fun A => ∀ (B : Set ℤ), B.Finite → Dyadic354.SetComplete (A \ B)
+info: Dyadic354/Audit.lean:8:0: def Dyadic354.Certificate.MathematicallyCorrect : List Dyadic354.Certificate.Template → Prop :=
+fun data =>
+  ∀ (first second : Dyadic354.Certificate.Digits),
+    first ≠ (false, false) →
+      ∀ (p q : ℤ),
+        0 < q →
+          q < p → p < 2 * q → ∃ t ∈ data, t.first = first ∧ t.second = second ∧ Dyadic354.Certificate.ChainMeaning t p q
+info: Dyadic354/Audit.lean:9:0: def Dyadic354.Certificate.ChainMeaning : Dyadic354.Certificate.Template → ℤ → ℤ → Prop :=
+fun t p q =>
+  0 < t.chain.length ∧
+    (∀ (i : Fin t.chain.length),
+        Dyadic354.Certificate.NodeMeaning t.first t.second (Dyadic354.Certificate.nodeAt t ↑i) p q) ∧
+      (∀ (i : Fin (t.chain.length - 1)),
+          (Dyadic354.Certificate.nodeAt t (↑i + 1)).lo.eval p q < (Dyadic354.Certificate.nodeAt t ↑i).hi.eval p q ∧
+            (Dyadic354.Certificate.nodeAt t ↑i).lo.eval p q < (Dyadic354.Certificate.nodeAt t (↑i + 1)).hi.eval p q) ∧
+        (Dyadic354.Certificate.nodeAt t 0).lo.eval p q ≤ p + 2 * q ∧
+          7 * p + 6 * q ≤ (Dyadic354.Certificate.nodeAt t (t.chain.length - 1)).hi.eval p q ∧
+            ∀ (z : ℤ),
+              p + 2 * q ≤ z →
+                z ≤ 7 * p + 6 * q →
+                  ∃ i,
+                    (Dyadic354.Certificate.nodeAt t ↑i).lo.eval p q ≤ z ∧
+                      z ≤ (Dyadic354.Certificate.nodeAt t ↑i).hi.eval p q
+info: Dyadic354/Audit.lean:10:0: def Dyadic354.Certificate.NodeMeaning : Dyadic354.Certificate.Digits →
+  Dyadic354.Certificate.Digits → Dyadic354.Certificate.Node → ℤ → ℤ → Prop :=
+fun first second n p q =>
+  n.mask0 < 16 ∧
+    n.mask1 < 16 ∧
+      n.thirdMask < 4 ∧
+        n.lo.eval p q =
+            max ((Dyadic354.Certificate.coefficient n.mask0 n.thirdMask).eval p q)
+              ((Dyadic354.Certificate.coefficient n.mask1 n.thirdMask).eval p q) ∧
+          n.hi.eval p q =
+              min ((Dyadic354.Certificate.coefficient n.mask0 n.thirdMask).eval p q)
+                    ((Dyadic354.Certificate.coefficient n.mask1 n.thirdMask).eval p q) +
+                  p +
+                q ∧
+            n.lo.eval p q < n.hi.eval p q ∧
+              ∀ (third : Dyadic354.Certificate.Digits),
+                ∃ c,
+                  0 ≤ c ∧
+                    c + 1 ≤ 22 ∧
+                      Dyadic354.Certificate.constant first second third n.mask0 n.thirdMask = c ∧
+                        Dyadic354.Certificate.constant first second third n.mask1 n.thirdMask = c + 1 ∧
+                          ∀ (d K : ℤ),
+                            Dyadic354.IsSubsetSum (Dyadic354.Certificate.weights first second third d K p q)
+                                (d * K * (Dyadic354.Certificate.coefficient n.mask0 n.thirdMask).eval p q + c) ∧
+                              Dyadic354.IsSubsetSum (Dyadic354.Certificate.weights first second third d K p q)
+                                (d * K * (Dyadic354.Certificate.coefficient n.mask1 n.thirdMask).eval p q + c + 1)
+info: Dyadic354/Audit.lean:11:0: Dyadic354.Certificate.certificate_correct : Dyadic354.Certificate.MathematicallyCorrect Dyadic354.Certificate.templates
+info: Dyadic354/Audit.lean:13:0: 'Dyadic354.mem_finiteSubsetSums' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:14:0: 'Dyadic354.Linear.eval_add' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:15:0: 'Dyadic354.Linear.eval_sub' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:16:0: 'Dyadic354.Linear.cone_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:17:0: 'Dyadic354.Linear.nonneg_on_cone' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:18:0: 'Dyadic354.Linear.positive_on_cone' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:19:0: 'Dyadic354.indexedComplete_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:20:0: 'Dyadic354.Certificate.offset_eq_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:21:0: 'Dyadic354.Certificate.offset_isSubsetSum' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:22:0: 'Dyadic354.Certificate.weights_explicit' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:23:0: 'Dyadic354.Certificate.endpoints_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:24:0: 'Dyadic354.Certificate.node_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:25:0: 'Dyadic354.Certificate.interval_chain_covers' depends on axioms: [propext, Quot.sound]
+info: Dyadic354/Audit.lean:26:0: 'Dyadic354.Certificate.chain_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:27:0: 'Dyadic354.Certificate.checkCertificate_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:28:0: 'Dyadic354.Certificate.certificate_checked' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:29:0: 'Dyadic354.Certificate.certificate_correct' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:30:0: 'Dyadic354.Certificate.certificate_counts' depends on axioms: [propext]
+✔ [1763/1764] Built Dyadic354 (2.1s)
+Build completed successfully (1764 jobs).
+
+EXIT CODE: 0
+ELAPSED SECONDS: 24.980

@@ -1,0 +1,57 @@
+COMMAND: ["lake", "build", "Dyadic354.Certificate", "Dyadic354.CertificateData"]
+UTC: 2026-09-12T15:13:13.252813+00:00
+✖ [955/956] Building Dyadic354.Certificate (7.2s)
+trace: .> LEAN_PATH=/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/Cli/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/batteries/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/Qq/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/aesop/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/importGraph/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/plausible/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/mathlib/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean /Users/andrewyz/.elan/toolchains/leanprover--lean4---v4.27.0/bin/lean /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/Dyadic354/Certificate.lean -o /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean/Dyadic354/Certificate.olean -i /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean/Dyadic354/Certificate.ilean -c /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/ir/Dyadic354/Certificate.c --setup /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/ir/Dyadic354/Certificate.setup.json --json
+error: Dyadic354/Certificate.lean:44:2: No goals to be solved
+error: Dyadic354/Certificate.lean:205:72: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  f + g ≥ 0
+  d + e ≥ 0
+  c ≥ 1
+  a - 2*b ≤ -1
+  a - b ≥ 1
+  a + 2*b - h - i ≤ -1
+where
+ a := p
+ b := q
+ c := ↑t.chain.length
+ d := ({ a := 1, b := 2 }.sub (nodeAt t 0).lo).a * p
+ e := ({ a := 1, b := 2 }.sub (nodeAt t 0).lo).b * q
+ f := ((nodeAt t (t.chain.length - 1)).hi.sub { a := 7, b := 6 }).a * p
+ g := ((nodeAt t (t.chain.length - 1)).hi.sub { a := 7, b := 6 }).b * q
+ h := (nodeAt t 0).lo.a * p
+ i := (nodeAt t 0).lo.b * q
+error: Dyadic354/Certificate.lean:207:24: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  f + g ≥ 0
+  d + e ≥ 0
+  c ≥ 1
+  a - 2*b ≤ -1
+  a - b ≥ 1
+  a + 2*b - h ≥ 0
+  7*a + 6*b - i - j ≥ 1
+where
+ a := p
+ b := q
+ c := ↑t.chain.length
+ d := ({ a := 1, b := 2 }.sub (nodeAt t 0).lo).a * p
+ e := ({ a := 1, b := 2 }.sub (nodeAt t 0).lo).b * q
+ f := ((nodeAt t (t.chain.length - 1)).hi.sub { a := 7, b := 6 }).a * p
+ g := ((nodeAt t (t.chain.length - 1)).hi.sub { a := 7, b := 6 }).b * q
+ h := (nodeAt t 0).lo.eval p q
+ i := (nodeAt t (t.chain.length - 1)).hi.a * p
+ j := (nodeAt t (t.chain.length - 1)).hi.b * q
+error: Dyadic354/Certificate.lean:204:13: This simp argument is unused:
+  Linear.eval_sub
+
+Hint: Omit it from the simp argument list.
+  simp only [Linear.eval_̵s̵u̵b̵,̵ ̵L̵i̵n̵e̵a̵r̵.̵e̵v̵a̵l̵] at hf hl
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Lean exited with code 1
+Some required targets logged failures:
+- Dyadic354.Certificate
+error: build failed
+
+EXIT CODE: 1
+ELAPSED SECONDS: 8.501

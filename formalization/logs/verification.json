@@ -1,0 +1,111 @@
+{
+  "status": "PASS",
+  "scope": "First-batch finite certificate and definitions; not Erd\u0151s 354(i).",
+  "fresh_project_build": false,
+  "dependency_cache_reused": true,
+  "audited_theorems": 20,
+  "allowed_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "axioms": {
+    "Dyadic354.Certificate.all_templates_checked": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.Certificate.all_templates_correct": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.Certificate.certificate_checked": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.Certificate.certificate_correct": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.Certificate.certificate_counts": [
+      "propext"
+    ],
+    "Dyadic354.Certificate.chain_sound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.Certificate.checkCertificate_sound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.Certificate.endpoints_sound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.Certificate.interval_chain_covers": [
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.Certificate.node_sound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.Certificate.offset_eq_sum": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.Certificate.offset_isSubsetSum": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.Certificate.weights_explicit": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.Linear.cone_identity": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.Linear.eval_add": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.Linear.eval_sub": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.Linear.nonneg_on_cone": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.Linear.positive_on_cone": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.indexedComplete_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.mem_finiteSubsetSums": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ]
+  }
+}
