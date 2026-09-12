@@ -1,0 +1,10 @@
+COMMAND: ["lake", "build", "Dyadic354.PeriodChange"]
+UTC: 2026-09-12T17:11:05.967723+00:00
+ℹ [1802/1809] Replayed Dyadic354.CyclicBoundary
+info: Dyadic354/CyclicBoundary.lean:78:6: Try this:
+  [apply] abel_nf
+✔ [1809/1809] Built Dyadic354.PeriodChange (10s)
+Build completed successfully (1809 jobs).
+
+EXIT CODE: 0
+ELAPSED SECONDS: 15.695

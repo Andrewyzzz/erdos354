@@ -1,0 +1,97 @@
+COMMAND: ["lake", "build", "Dyadic354.BGGeometric"]
+UTC: 2026-09-12T17:57:30.796603+00:00
+✖ [3066/3066] Building Dyadic354.BGGeometric (19s)
+trace: .> LEAN_PATH=/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/Cli/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/batteries/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/Qq/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/aesop/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/importGraph/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/plausible/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/mathlib/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean /Users/andrewyz/.elan/toolchains/leanprover--lean4---v4.27.0/bin/lean /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/Dyadic354/BGGeometric.lean -o /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean/Dyadic354/BGGeometric.olean -i /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean/Dyadic354/BGGeometric.ilean -c /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/ir/Dyadic354/BGGeometric.c --setup /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/ir/Dyadic354/BGGeometric.setup.json --json
+error: Dyadic354/BGGeometric.lean:37:52: linarith failed to find a contradiction
+case h
+D : ℕ → ℤ
+K : ℕ → ℕ
+hmono : Monotone K
+T E x R r k : ℕ
+hR : 1 ≤ R
+hx : 0 < x
+hEx : E ≤ x
+hE : {i ∈ Finset.range (T + 1) | D i ≠ 0}.card ≤ E
+hT : 2 * (2 * R + 1) ^ r * x ≤ T
+hcost : ∀ (a b : ℕ), x ≤ a → b ≤ T → D a = 0 → D b = 0 → R * a < b → K a + k ≤ K b
+B : ℕ := 2 * R + 1
+hB : 1 ≤ B
+i : ℕ
+hi : i ≤ r
+hpow : B ^ i ≤ B ^ r
+htop : 2 * B ^ i * x ≤ T
+hpow1 : 1 ≤ B ^ i
+a✝ : 2 * B ^ i * x - B ^ i * x < E
+⊢ False
+failed
+error: Dyadic354/BGGeometric.lean:38:80: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  n ≥ 0
+  m ≥ 0
+  m - n ≤ -1
+  l ≥ 1
+  j ≥ 0
+  j - l ≥ 0
+  h ≥ 0
+  g ≥ 0
+  g - h ≥ 0
+  f ≥ 0
+  e ≥ 0
+  e - f ≥ 0
+  e - m ≥ 0
+  d ≥ 0
+  c ≥ 0
+  c - d ≥ 0
+  c ≤ 0
+  b ≥ 1
+  b - c ≥ 0
+  a ≥ 1
+where
+ a := ↑R
+ b := ↑x
+ c := ↑E
+ d := ↑{i ∈ Finset.range (T + 1) | D i ≠ 0}.card
+ e := ↑T
+ f := ↑(2 * (2 * R + 1) ^ r) * ↑x
+ g := ↑r
+ h := ↑i
+ j := ↑(B ^ r)
+ l := ↑(B ^ i)
+ m := ↑(2 * B ^ i) * ↑x
+ n := ↑(B ^ i) * ↑x
+error: Dyadic354/BGGeometric.lean:57:4: linarith failed to find a contradiction
+case h
+D : ℕ → ℤ
+K : ℕ → ℕ
+hmono : Monotone K
+T E x R r k : ℕ
+hR : 1 ≤ R
+hx : 0 < x
+hEx : E ≤ x
+hE : {i ∈ Finset.range (T + 1) | D i ≠ 0}.card ≤ E
+hT : 2 * (2 * R + 1) ^ r * x ≤ T
+hcost : ∀ (a b : ℕ), x ≤ a → b ≤ T → D a = 0 → D b = 0 → R * a < b → K a + k ≤ K b
+B : ℕ := 2 * R + 1
+hB : 1 ≤ B
+z : ℕ → ℕ
+hz : ∀ i ≤ r, B ^ i * x ≤ z i ∧ z i ≤ 2 * B ^ i * x ∧ D (z i) = 0
+hbounds : ∀ i ≤ r, x ≤ z i ∧ z i ≤ T ∧ D (z i) = 0
+i : ℕ
+hi : i + 1 ≤ r
+hlo : B ^ i * x ≤ z i ∧ z i ≤ 2 * B ^ i * x ∧ D (z i) = 0
+hhi :
+  (2 * R + 1) ^ i * (2 * R + 1) * x ≤ z (i + 1) ∧
+    z (i + 1) ≤ 2 * ((2 * R + 1) ^ i * (2 * R + 1)) * x ∧ D (z (i + 1)) = 0
+hb0 : x ≤ z i ∧ z i ≤ T ∧ D (z i) = 0
+hb1 : x ≤ z (i + 1) ∧ z (i + 1) ≤ T ∧ D (z (i + 1)) = 0
+hp : 0 < B ^ i * x
+a✝ : z (i + 1) ≤ R * z i
+⊢ False
+failed
+error: Lean exited with code 1
+Some required targets logged failures:
+- Dyadic354.BGGeometric
+error: build failed
+
+EXIT CODE: 1
+ELAPSED SECONDS: 21.939

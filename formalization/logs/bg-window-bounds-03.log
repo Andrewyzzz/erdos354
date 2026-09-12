@@ -1,0 +1,10 @@
+COMMAND: ["lake", "build", "Dyadic354.BGWindowBounds"]
+UTC: 2026-09-12T18:00:51.033409+00:00
+ℹ [3086/3116] Replayed Dyadic354.CyclicBoundary
+info: Dyadic354/CyclicBoundary.lean:78:6: Try this:
+  [apply] abel_nf
+✔ [3116/3116] Built Dyadic354.BGWindowBounds (16s)
+Build completed successfully (3116 jobs).
+
+EXIT CODE: 0
+ELAPSED SECONDS: 19.454

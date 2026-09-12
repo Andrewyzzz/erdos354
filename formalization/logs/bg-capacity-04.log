@@ -1,0 +1,7 @@
+COMMAND: ["lake", "build", "Dyadic354.BGCapacity"]
+UTC: 2026-09-12T18:11:23.199844+00:00
+✔ [3066/3066] Built Dyadic354.BGCapacity (27s)
+Build completed successfully (3066 jobs).
+
+EXIT CODE: 0
+ELAPSED SECONDS: 32.708

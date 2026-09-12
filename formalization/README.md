@@ -1,9 +1,9 @@
-# Erdős 354(i): uniform prefix bounds and FE counting foundations
+# Erdős 354(i): FE, DB, BG and normalized completeness
 
 已完成有限模板证书、网格基础、合法块表示、初始网格，并将条件永久下降接到
 实际地板序列、gcd 模数与到达层事件；进一步证明低缺口完全性、良基下降及
-不完全时的最终事件倍率4界，无理比值保证事件无界。现已补齐统一前缀/模缺口界，
-并证明 FE 的精确计数递推 (8.1)，累计审计 183 个定理。
+不完全时的最终事件倍率4界，无理比值保证事件无界。现已完成 FE、FE-R、DB、BG
+及其累计矛盾，推出归一化完全性，累计审计 358 个定理。
 **整篇 #354(i) 与集合强完全性尚未证明。**
 实际完成的声明和后续义务见 [STATUS.md](STATUS.md)，环境见
 [ENVIRONMENT.md](ENVIRONMENT.md)。
@@ -23,7 +23,7 @@ python3 scripts/verify.py --fresh
 `lean-toolchain`、`lakefile.toml`、`lake-manifest.json` 中，不需要更新版本。
 `verify.py` 默认构建根模块 `Dyadic354`，它导入目标定义、证书、循环缺口、网格、
 合法表示、初始网格、局部永久下降、实际地板/重排/事件接口、长度估计、
-单位网格完全性、有限下降、事件无限性、统一前缀界、FE 计数基础及公理审计。
+单位网格完全性、有限下降、事件无限性、统一前缀界、FE／DB／BG 全链及公理审计。
 脚本再次执行 `Audit.lean`，核对全部本地定理的审计清单，检查实际公理闭包；
 缺少输出或出现允许列表以外的公理都会以非零退出码结束。运行开始时会清除旧的
 PASS 状态，成功记录附带实际 Lean 源码和依赖锁文件的 SHA-256。
@@ -102,9 +102,22 @@ gap 直接定义为所有实际相邻点距离的最大值，`meshOn_iff_gap_le`
 进一步识别实际缺失/新增整数值的个数，所有 Finset 都按不同和值计数，不计掩码重数。
 同时已证明 `B_n=M+N+Σw_i`、`0<B_n<3N+2n` 及数字和与到达事件的等价。
 
-仍未证明一般参数的合法归一化、FE 的周期边界与变周期比较、完整 FE 衰减估计、
-DB/BG、强完全性或上游目标对接。**没有证明无界合格长间隔必然存在，也尚未证明
-“倍率有界却不完全”会导致矛盾，不能把上述条件性结果当作原题证明。**
+第七批完成 FE 的周期边界、变周期比较、非重叠衰减与误差预算，得到原稿常数的
+`FE.deficit_exponential_bound` 和真实连续种子界 `FER.seed_exponential_bound`。
+`DB.digit_propagation` 从有限系数的合法表示给出数字预算增量；
+`DBScale.advance_increment` 把它接到已定义并证明存在的首个好分母 crossing。
+
+长窗口、层高及精度由 Dirichlet 逼近和 crossing 最小性实际构造。
+返回成本用稀疏二进制比值的全有理紧集证明，对任意共同乘数有效。
+`BG.bounded_event_windows_complete` 完成累计矛盾，
+`BG.normalized_complete` 进一步用已证明的倍率4后继事件界消去事件窗口前提。
+归一化主定理的全部数学前提仅为
+`0 < ⌊β⌋ < ⌊α⌋ < 2⌊β⌋` 和 `Irrational (α/β)`；没有假设 FE、DB、BG 或长平台存在。
+
+本实现采用经过证明的替代接口，不逐字复现连分数枚举、显式最小 popcount 或原稿
+每个渐近中间常数，具体对应见 `STATUS.md` 第七批部分。
+**仍需完成一般正参数的合法归一化、取尾与集合去重/有限删除，以及上游原题对接。
+归一化完全性不等于任意正参数的 `PartI`，更不等于集合强完全性。**
 
 ## Source map
 
@@ -133,6 +146,16 @@ DB/BG、强完全性或上游目标对接。**没有证明无界合格长间隔�
 | `Dyadic354/PrefixMesh.lean` | 凸包分离时的桥接界、原前缀递推、统一 gap 与内部缺失段界 |
 | `Dyadic354/PrefixBounds.lean` | 实际前缀总和、跨度及 (1.1) 的统一 gcd 模缺口界 |
 | `Dyadic354/FECounting.lean` | 真实不同和值的四平移递推、B/Q/G、非负性及实际缺失/新增计数 |
+| `Dyadic354/CyclicBoundary.lean`、`PeriodicWord.lean`、`FEShift.lean` | 周期缺失函数、变差与移位新增和值 |
+| `Dyadic354/FEMissingRuns.lean`、`IntervalSums.lean`、`PeriodChange.lean`、`EventBoundary.lean` | 缺失段边界计数、区间求和、变周期比较与非零事件边界 |
+| `Dyadic354/FERecurrence.lean`、`EventDecay.lean`、`FE.lean` | 非重叠事件块、势函数误差控制及 FE |
+| `Dyadic354/ContiguousSeed.lean`、`FER.lean` | 实际最长连续区间与 FE-R |
+| `Dyadic354/DBDigits.lean`、`DBPhases.lean`、`DBWindows.lean` | 实际数字预算、Bézout 相位与合法有限系数窗口 |
+| `Dyadic354/DBCover.lean`、`DB.lean` | 连续覆盖、索引合法拼接与 DB 增量 |
+| `Dyadic354/RationalWindows.lean`、`CubicGrowth.lean`、`DBScale.lean` | 好有理数 crossing、立方深度矛盾与实际 DB 尺度 |
+| `Dyadic354/BGSparseCompact.lean`、`BGBinaryRatio.lean`、`BGReturns.lean` | 有理紧集、二进制支持、统一返回成本发散 |
+| `Dyadic354/BGExactLayers.lean`、`BGWindowBounds.lean`、`BGWindows.lean` | 非精确层计数、逼近精度和实际任意长稀疏窗口 |
+| `Dyadic354/BGGeometric.lean`、`BGCapacity.lean`、`BG.lean` | 不重叠返回累计、窗口容量、BG 及归一化完全性 |
 | `Dyadic354/Audit.lean` | 目标类型输出与全部已完成定理的公理审计 |
 | `scripts/generate_data.py` | 数据翻译及与 JSON 的一致性检查 |
 | `scripts/verify.py` | 构建、公理允许列表、独立目录重建 |

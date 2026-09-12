@@ -1,0 +1,87 @@
+COMMAND: ["lake", "build", "Dyadic354.CyclicBoundary"]
+UTC: 2026-09-12T17:06:17.635497+00:00
+✖ [1802/1802] Building Dyadic354.CyclicBoundary (13s)
+trace: .> LEAN_PATH=/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/Cli/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/batteries/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/Qq/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/aesop/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/importGraph/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/plausible/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/mathlib/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean /Users/andrewyz/.elan/toolchains/leanprover--lean4---v4.27.0/bin/lean /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/Dyadic354/CyclicBoundary.lean -o /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean/Dyadic354/CyclicBoundary.olean -i /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean/Dyadic354/CyclicBoundary.ilean -c /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/ir/Dyadic354/CyclicBoundary.c --setup /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/ir/Dyadic354/CyclicBoundary.setup.json --json
+error: Dyadic354/CyclicBoundary.lean:15:0: automatically included section variable(s) unused in theorem `Dyadic354.CyclicBoundary.sum_shift`:
+  [DecidableEq G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+error: Dyadic354/CyclicBoundary.lean:21:0: automatically included section variable(s) unused in theorem `Dyadic354.CyclicBoundary.variation_nonneg`:
+  [DecidableEq G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+error: Dyadic354/CyclicBoundary.lean:24:0: automatically included section variable(s) unused in theorem `Dyadic354.CyclicBoundary.variation_zero`:
+  [DecidableEq G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+error: Dyadic354/CyclicBoundary.lean:28:6: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ∑ x, |f (x + -t) - f x|
+in the target expression
+  variation f (-t) = variation f t
+
+G : Type u_1
+inst✝² : AddCommGroup G
+inst✝¹ : Fintype G
+inst✝ : DecidableEq G
+f : G → ℤ
+t : G
+h : ∑ x, |f (x + t + -t) - f (x + t)| = ∑ x, |f (x + -t) - f x|
+⊢ variation f (-t) = variation f t
+error: Dyadic354/CyclicBoundary.lean:42:13: unsolved goals
+G : Type u_1
+inst✝² : AddCommGroup G
+inst✝¹ : Fintype G
+inst✝ : DecidableEq G
+f : G → ℤ
+s t : G
+⊢ ∑ x, |f (x + s) - f x| + ∑ x, |f (x + t) - f x| = variation f s + variation f t
+error: Dyadic354/CyclicBoundary.lean:45:0: automatically included section variable(s) unused in theorem `Dyadic354.CyclicBoundary.missing_bounds`:
+  [AddCommGroup G]
+  [Fintype G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [AddCommGroup G] [Fintype G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+error: Dyadic354/CyclicBoundary.lean:61:15: This simp argument is unused:
+  Finset.sum_ite
+
+Hint: Omit it from the simp argument list.
+  simp [exits,̵ ̵F̵i̵n̵s̵e̵t̵.̵s̵u̵m̵_̵i̵t̵e̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+info: Dyadic354/CyclicBoundary.lean:75:6: Try this:
+  [apply] abel_nf
+error: Dyadic354/CyclicBoundary.lean:89:6: Tactic `apply` failed: could not unify the conclusion of `le_trans h`
+  ||f (x + s + t) - f (x + t)| - |f (x + s) - f x|| ≤ ?m.155
+with the goal
+  |(fun x => |f (x + s) - f x|) (x + t) - (fun x => |f (x + s) - f x|) x| ≤
+    |f (x + s + t) - f (x + s)| + |f (x + t) - f x|
+
+Note: The full type of `le_trans h` is
+  |f (x + s + t) - f (x + t) - (f (x + s) - f x)| ≤ ?m.155 → ||f (x + s + t) - f (x + t)| - |f (x + s) - f x|| ≤ ?m.155
+
+case h
+G : Type u_1
+inst✝² : AddCommGroup G
+inst✝¹ : Fintype G
+inst✝ : DecidableEq G
+f : G → ℤ
+s t x : G
+a✝ : x ∈ Finset.univ
+h : ||f (x + s + t) - f (x + t)| - |f (x + s) - f x|| ≤ |f (x + s + t) - f (x + t) - (f (x + s) - f x)|
+he : x + t + s = x + s + t
+⊢ |(fun x => |f (x + s) - f x|) (x + t) - (fun x => |f (x + s) - f x|) x| ≤
+    |f (x + s + t) - f (x + s)| + |f (x + t) - f x|
+error: Lean exited with code 1
+Some required targets logged failures:
+- Dyadic354.CyclicBoundary
+error: build failed
+
+EXIT CODE: 1
+ELAPSED SECONDS: 18.099

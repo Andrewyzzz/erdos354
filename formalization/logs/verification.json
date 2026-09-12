@@ -1,15 +1,220 @@
 {
   "status": "PASS",
-  "scope": "Certificate, meshes, legal representations, actual normalized floor-sequence permanent descent and event factor-four consequence of incompleteness; irrationality gives unbounded events. Uniform prefix/internal/cyclic gap bounds and the exact FE counting recurrence (8.1) are proved, with deficits and growth identified as counts of actual values. The finite-event decay estimate, changing-period comparison, DB/BG, global normalization, strong completeness and Erd\u0151s 354(i) remain unproved.",
+  "scope": "Certificate, meshes, legal representations, actual normalized floor-sequence permanent descent, uniform gap bounds, FE and FE-R with manuscript constants, DB at all good rational approximations and at the defined first good-denominator crossing, and BG including actual long windows, unbounded return costs and the cumulative contradiction. BG.normalized_complete proves indexed completeness assuming only 0 < floor(beta) < floor(alpha) < 2*floor(beta) and irrational alpha/beta. Global parameter normalization, strong set completeness and the unrestricted frozen Erd\u0151s 354(i) target remain unproved. The rational-window and compact-return arguments are proved alternatives to the manuscript continued-fraction enumeration and explicit minimum-popcount formulation.",
   "fresh_project_build": false,
   "dependency_cache_reused": true,
-  "audited_theorems": 183,
+  "audited_theorems": 358,
   "allowed_axioms": [
     "Classical.choice",
     "Quot.sound",
     "propext"
   ],
   "axioms": {
+    "Dyadic354.BG.bounded_event_windows_complete": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.BG.normalized_complete": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.BG.support_nonempty_of_event": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.BGBinaryRatio.normalize_power": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.BGBinaryRatio.ratio_mem": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.BGCapacity.event_power_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.BGCapacity.eventual_capacity": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.BGCapacity.logarithmic_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.BGCapacity.seed_size_eventually": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.BGExactLayers.delta_error_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.BGExactLayers.exact_of_quiet": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.BGExactLayers.nonexact_count": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.BGExactLayers.nonexact_sees_event": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.BGExactLayers.quiet_scaling": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.BGExactLayers.window_count_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.BGGeometric.cost_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.BGGeometric.exact_in_interval": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.BGReturns.exact_word_relation": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.BGReturns.return_cost_unbounded": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.BGReturns.return_ratio_mem": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.BGReturns.support_card": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.BGReturns.support_polynomials": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.BGReturns.word_polynomial": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.BGReturns.word_step": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.BGSparseCompact.atom_rational": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.BGSparseCompact.atoms_compact": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.BGSparseCompact.eventually_not_bounded": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.BGSparseCompact.finset_sum_mem": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.BGSparseCompact.irrational_not_mem_ratios": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.BGSparseCompact.irrational_separation": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.BGSparseCompact.ratio_rational": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.BGSparseCompact.ratios_compact": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.BGSparseCompact.sum_rational": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.BGSparseCompact.sums_compact": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.BGSparseCompact.sums_mono": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.BGSparseCompact.zero_mem_sums": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.BGWindowBounds.crossing_close": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.BGWindowBounds.height_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.BGWindowBounds.precision_to_delta": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.BGWindows.arbitrarily_large_windows": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.BGWindows.inverse_scale_small": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
     "Dyadic354.BlockLength.coordinate_upper": [
       "Classical.choice",
       "Quot.sound",
@@ -117,6 +322,96 @@
       "Quot.sound",
       "propext"
     ],
+    "Dyadic354.ContiguousSeed.interval_width_le": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.ContiguousSeed.next_hole": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.ContiguousSeed.represented_card_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.ContiguousSeed.width_attained": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.ContiguousSeed.width_count_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.CubicGrowth.exponential_eventually_dominates": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.CubicGrowth.no_eventual_cubic_advance": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.CubicGrowth.no_eventual_quartic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.CyclicBoundary.missing_bounds": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.CyclicBoundary.sum_shift": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.CyclicBoundary.variation_add_le": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.CyclicBoundary.variation_boundary_le": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.CyclicBoundary.variation_double": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.CyclicBoundary.variation_missing": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.CyclicBoundary.variation_neg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.CyclicBoundary.variation_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.CyclicBoundary.variation_shift": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.CyclicBoundary.variation_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
     "Dyadic354.CyclicGaps.erode_nonempty": [
       "Classical.choice",
       "Quot.sound",
@@ -174,6 +469,226 @@
       "propext"
     ],
     "Dyadic354.CyclicGaps.not_missingRun_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.DB.digit_propagation": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.DB.incomplete_seed_budget": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.DB.incomplete_seed_lt_error": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.DB.interval_complete": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.DBCover.coefficient_approximation": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.DBCover.propagated_interval": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.DBCover.real_normalization": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.DBDigits.column_suffix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.DBDigits.digit_budget": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.DBDigits.error_le_length": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.DBDigits.error_lt_budget": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.DBDigits.error_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.DBDigits.prefix_suffix_add": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.DBDigits.residual_bounds": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.DBDigits.residual_step": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.DBDigits.residual_telescope": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.DBDigits.subset_error_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.DBDigits.suffix_approximation": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.DBDigits.suffix_legality": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.DBPhases.phase_after": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.DBPhases.residue_lift": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.DBScale.advance_increment": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.DBScale.arbitrarily_large_advance": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.DBScale.block_matching_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.DBScale.block_sufficient": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.DBScale.large_advance_matching": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.DBScale.matching_bounds": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.DBScale.matching_exp_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.DBScale.threshold_bounds": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.DBScale.threshold_ge_two": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.DBWindows.endpoints_legal": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.DBWindows.global_after": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.DBWindows.global_at_or_after": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.DBWindows.span_large": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.DBWindows.start_bounds": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.DBWindows.window_after": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.EventBoundary.actual_nonzero_boundary": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.EventBoundary.add_shift_cancel": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.EventBoundary.compare_segment": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.EventBoundary.first_digit_one": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.EventBoundary.second_digit_one": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.EventBoundary.segment_variation_le": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.EventDecay.block_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.EventDecay.power_le_exp": [
       "Classical.choice",
       "Quot.sound",
       "propext"
@@ -264,6 +779,31 @@
       "propext"
     ],
     "Dyadic354.ExactBlock.three_pairs": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FE.constant_positive": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FE.deficit_exponential_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FE.normalized_power_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FE.potential_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FE.rate_positive": [
       "Classical.choice",
       "Quot.sound",
       "propext"
@@ -359,6 +899,196 @@
       "propext"
     ],
     "Dyadic354.FECounting.values_subset_period": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FEMissingRuns.actual_holes_boundary_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FEMissingRuns.holes_boundary_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FEMissingRuns.holes_split_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FEMissingRuns.internal_holes_card": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FEMissingRuns.successor_after_hole": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FER.exp_count_le_pow": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FER.seed_constant_positive": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FER.seed_exponential_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FER.seed_interval_exists": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FER.term_lower": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FER.total_lower": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FERecurrence.eventCount_card": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FERecurrence.eventCount_le": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FERecurrence.eventCount_mono": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FERecurrence.eventCount_step": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FERecurrence.eventCount_step_bounds": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FERecurrence.eventCount_unbounded": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FERecurrence.initial_second_ge_two": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FERecurrence.normalized_le_potential": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FERecurrence.normalized_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FERecurrence.normalized_step": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FERecurrence.normalized_step_le_potential": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FERecurrence.normalized_two_step": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FERecurrence.normalized_zero_step": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FERecurrence.potential_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FERecurrence.potential_two_step": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FERecurrence.potential_zero_step": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FERecurrence.rho_bounds": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FERecurrence.sigma_bounds": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FERecurrence.two_step_scaled": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FEShift.boundary_a_le": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FEShift.boundary_b_eq_a": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FEShift.boundary_double_a_le": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FEShift.boundary_eq_cyclic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FEShift.exits_le_new_values": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FEShift.length_cast": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FEShift.length_positive": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.FEShift.variation_le_new_values": [
       "Classical.choice",
       "Quot.sound",
       "propext"
@@ -489,6 +1219,36 @@
       "propext"
     ],
     "Dyadic354.InitialMesh.trimmed_chain_covers": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.IntervalSums.interval_le_period": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.IntervalSums.mono": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.IntervalSums.replace_variation": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.IntervalSums.split": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.IntervalSums.sum_period_start": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.IntervalSums.two_arcs_cover": [
       "Classical.choice",
       "Quot.sound",
       "propext"
@@ -724,6 +1484,76 @@
       "Quot.sound",
       "propext"
     ],
+    "Dyadic354.PeriodChange.actual_changing_period_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.PeriodChange.basic_word": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.PeriodChange.changing_period_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.PeriodChange.missing_difference": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.PeriodChange.sum_indicator_le_card": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.PeriodicWord.cast_injective": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.PeriodicWord.cast_mem_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.PeriodicWord.sum_period": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.PeriodicWord.variation_eq_sum": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.PeriodicWord.word_add_period": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.PeriodicWord.word_bounds": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.PeriodicWord.word_on_period": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.PeriodicWord.word_periodic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.PeriodicWord.word_sub_period": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
     "Dyadic354.PermanentMesh.certificate_permanent_descent": [
       "Classical.choice",
       "Quot.sound",
@@ -833,6 +1663,51 @@
       "Quot.sound",
       "propext"
     ],
+    "Dyadic354.RationalWindows.before_crossing": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.RationalWindows.bounded_good_finite": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.RationalWindows.cast_mul_den": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.RationalWindows.crossingRat_spec": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.RationalWindows.crossing_exists": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.RationalWindows.crossing_minimal": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.RationalWindows.crossing_spec": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.RationalWindows.good_den_unbounded": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.RationalWindows.good_distance_lt_one": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
     "Dyadic354.Representations.binary_scaled": [
       "Classical.choice",
       "Quot.sound",
@@ -911,27 +1786,56 @@
     ]
   },
   "source_sha256": {
-    "Dyadic354/Audit.lean": "2d76beecf5568b10b6187c716bce14b4a9ec39aad317d4a18732d0e018e6ecf2",
+    "Dyadic354/Audit.lean": "b49091f171a5a763105cbf09dd6cafa50aed0d9a71a5cbffa4e6130a9e8c29d5",
+    "Dyadic354/BG.lean": "3753ad828056e1ff269db9d0d45cb63d3edcdd6fa10d47884a7314cb6bafb661",
+    "Dyadic354/BGBinaryRatio.lean": "d23440dd5edf822a43e470699ec295cf3fcf795257c090968d6ab9fafa753f80",
+    "Dyadic354/BGCapacity.lean": "c23b1408d662f52492bc5d87666da5bb5e0d03e5f2d0556cfbc9e2e3e4fd6b76",
+    "Dyadic354/BGExactLayers.lean": "cb0b4cd360763924fd203811041e8c73c6ff6478bf1a67c439ecc992f26c0361",
+    "Dyadic354/BGGeometric.lean": "83146d00a0f5fd295ded44102b6f540a531c1973e0692e79827317b71fc323cf",
+    "Dyadic354/BGReturns.lean": "02506d1a819a70e472b59d29b8e2db39413aeadb226ce4808eab42acd7d15c5d",
+    "Dyadic354/BGSparseCompact.lean": "62cdefdcaea303f06450ad2a59bc75295e460717b944aeed8502e1dd7f184c93",
+    "Dyadic354/BGWindowBounds.lean": "d0d91a57001ffa36b907e013db03d476d2ec70e0ac12d484900dadf4da5dcc05",
+    "Dyadic354/BGWindows.lean": "e4c89adf21ab257e83d1b5a7b7def1d3592564aa61e8884840d0d0f2ed515dd0",
     "Dyadic354/Basic.lean": "46a1bab425aaaa1afaaf782cd7d0b40dd6e7df24998621c7f10b635f672fd444",
     "Dyadic354/BlockLength.lean": "54d48399cc2b01e0a38a57b0875a15e040bb6acbe53a15f05ec8eb2e5dc49139",
     "Dyadic354/Certificate.lean": "e31d86900d1cb397d7a158f5ba8eb3aa74688d93b1d4951fad0f8ed989ff5d3a",
     "Dyadic354/CertificateData.lean": "16fbd45515c8cfd1665f0e2a3184de42bdaa0859e134fcaa3e4894ef512b3a1c",
     "Dyadic354/CoefficientInterval.lean": "bc804686095736cb25c83bb73a924b36ad3050c0921b0beed8612be8473595ee",
+    "Dyadic354/ContiguousSeed.lean": "f46dab264149331f9f2acd7d2612d393b8b293b6402b5280d0b361142dde820c",
+    "Dyadic354/CubicGrowth.lean": "cfb74509865892fac9409e0577985a8a648a2520a4a4a67947c18b90a91cb816",
+    "Dyadic354/CyclicBoundary.lean": "fe1d5c02ead19c0087050696a01960c0eb1f37a5cfb4949a2c0c49b4dbc1d340",
     "Dyadic354/CyclicGaps.lean": "4e965aeebefffd97893e582eb7cba380f8770456e29e795b09326707f4b5c5d2",
+    "Dyadic354/DB.lean": "bb642b24deef522303ffadbf609b6f7b7997e827d1c8e2c5b81509a5387a449b",
+    "Dyadic354/DBCover.lean": "d15f1e9b9bf2764c3486e080c9b670713602f505c6859825f0926cbfdfbd9920",
+    "Dyadic354/DBDigits.lean": "504eef5a9bf44295ea18cc4fd5630690412864c1271900a8026fa083508fbcc3",
+    "Dyadic354/DBPhases.lean": "978e1340ce4fa359ca8d368b6c72b7ba875ec0e053c226f5233eaf4c27d5dd18",
+    "Dyadic354/DBScale.lean": "5efd903b70cba469135a1fc53cdacc3aeeeee3b5b92ce8cceef4f0ca15ba6410",
+    "Dyadic354/DBWindows.lean": "fa4e656ab5bd43c74bfcf59e3dbe3509ddad7f33ce4a7239dc91f5c33801ba43",
+    "Dyadic354/EventBoundary.lean": "30298ae7fba455ba412c4b1353cae5c06e19aca81b7f1d308682d9d6ea2cef66",
+    "Dyadic354/EventDecay.lean": "9333258a02fbce255a9e8d45b8a36cfd19fe3b50715d2f91ada48a447c3b4aef",
     "Dyadic354/EventGaps.lean": "7b49ea490b91a02e6ab88a1227384ff67d482115ece5b3d2cf96cd99e71d030e",
     "Dyadic354/EventInfinitude.lean": "72808aeff97c19587d987f03ab7d96be7b58116bc92f0115952d0f3dd0dc4746",
     "Dyadic354/ExactBlock.lean": "114a7859509e34da0bf8d543c80118008399e962d4557980b770902d8dd2114a",
+    "Dyadic354/FE.lean": "e0449378212bf2d03eb36a25910289a3444440f46253f2afd5e65f6ae035a300",
     "Dyadic354/FECounting.lean": "8b1ffd556bd883ff26de3c3891388a37a73508a6c45ee4dbb7e49f95f93be647",
+    "Dyadic354/FEMissingRuns.lean": "56c885c4a9f9c237541ba39409c59e87077f5239ba2f660d8569b7d89ed6c53c",
+    "Dyadic354/FER.lean": "5864bc74fcf62dfa8a1cf586ac3c5c13ce71dafdf3d43ed5c6ea830becaf4df1",
+    "Dyadic354/FERecurrence.lean": "36cc82b06ddf788fb17868c58650f13dfc5f99ab12493f97e452226e9cb1fa44",
+    "Dyadic354/FEShift.lean": "ac5c8c9076b9aa9b5d3aa6412c50d5301595e43c86891bc3bca59e58e2237a6b",
     "Dyadic354/FloorDescent.lean": "c3199f847ff28f92cb914019ec34c5c11d7ed674c8d4390964146931d07a98ce",
     "Dyadic354/FloorSequence.lean": "152f501ea75ef6681acb50dd352ea43cde17df2a7fbf7d3eccfdefb40c466a09",
     "Dyadic354/InitialMesh.lean": "1781589dc0c30c9714b8ad987788473ca0257b43854c465c648f598365390bda",
+    "Dyadic354/IntervalSums.lean": "0d16412b02ed90694714e99ce3b6ec7e2849dffef96eea37ebe9d7395e5b8e6d",
     "Dyadic354/LowGap.lean": "5b7daeb96146f74d6eadbe137a5797037f7ef4849ad3a0054e090d990f28d615",
     "Dyadic354/Mesh.lean": "333c65dfc0cce04089a803fe53d7cdb48911124cf1ad7344876ae8a576c16795",
     "Dyadic354/NodeRepresentations.lean": "42b67ead8d02eb3bd188596e52afd1c69aafa8d6082602841ceee36b59c6cd3f",
     "Dyadic354/PairReindex.lean": "a4ede0c4728bd690f0743acafd91a729c30f4ca1f7c3fa5a0f10f3bb98acb7d6",
+    "Dyadic354/PeriodChange.lean": "6e596c93c8f2b50e886ee771177dbe88f467d931fa0932a432b8a0c7bc09432a",
+    "Dyadic354/PeriodicWord.lean": "24e62d06f58e5195478b511e784e595b7e0949fb1086146d83bf19dfcab15cf3",
     "Dyadic354/PermanentMesh.lean": "e7eea032dd2e1579d73187d2447b584c369870bbcac30603ef6da470c7006add",
     "Dyadic354/PrefixBounds.lean": "827df1e9c68f8950e5dd7939383c77ff6077cd6d00046d85f510908232ddb87a",
     "Dyadic354/PrefixMesh.lean": "d8acd058a252c3b303cce6e17ab2b2da6ef2539df5d18fe8a0ffa673507e92cc",
+    "Dyadic354/RationalWindows.lean": "6fbb87a396193e742320462827c12a20524a9a481eab60a42bb5f35c53cc9b42",
     "Dyadic354/Representations.lean": "2800c95ac8e6100c830ac34e37dcea87e9c513654acf2a35bbe255b84e977860",
     "Dyadic354/Statements.lean": "623b20bab06c99013dcbefed752aa80ce29a879930eefc1d069e4944bc5ceb0e",
     "Dyadic354/UnitMesh.lean": "2374a02614070487e2a29b25a7c93c30282ba503937320cb5eb351f754332476",

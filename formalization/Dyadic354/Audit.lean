@@ -5,6 +5,10 @@ import Dyadic354.PermanentMesh
 import Dyadic354.BlockLength
 import Dyadic354.EventInfinitude
 import Dyadic354.FECounting
+import Dyadic354.DB
+import Dyadic354.BGReturns
+import Dyadic354.RationalWindows
+import Dyadic354.BG
 
 #print Dyadic354.PartI
 #print Dyadic354.StrongCompleteness
@@ -288,3 +292,195 @@ import Dyadic354.FECounting
 #print axioms Dyadic354.FECounting.values_subset_period
 #print axioms Dyadic354.FECounting.deficit_eq_holes
 #print axioms Dyadic354.FECounting.growth_eq_newValues
+
+#check Dyadic354.FE.deficit_exponential_bound
+#check Dyadic354.FER.seed_exponential_bound
+#check Dyadic354.DB.digit_propagation
+#check Dyadic354.BGExactLayers.nonexact_count
+#check Dyadic354.BGReturns.return_cost_unbounded
+
+#print axioms Dyadic354.BGBinaryRatio.normalize_power
+#print axioms Dyadic354.BGBinaryRatio.ratio_mem
+#print axioms Dyadic354.BGExactLayers.delta_error_bound
+#print axioms Dyadic354.BGExactLayers.quiet_scaling
+#print axioms Dyadic354.BGExactLayers.exact_of_quiet
+#print axioms Dyadic354.BGExactLayers.nonexact_sees_event
+#print axioms Dyadic354.BGExactLayers.window_count_bound
+#print axioms Dyadic354.BGExactLayers.nonexact_count
+#print axioms Dyadic354.BGReturns.word_step
+#print axioms Dyadic354.BGReturns.word_polynomial
+#print axioms Dyadic354.BGReturns.support_card
+#print axioms Dyadic354.BGReturns.support_polynomials
+#print axioms Dyadic354.BGReturns.exact_word_relation
+#print axioms Dyadic354.BGReturns.return_ratio_mem
+#print axioms Dyadic354.BGReturns.return_cost_unbounded
+#print axioms Dyadic354.BGSparseCompact.atoms_compact
+#print axioms Dyadic354.BGSparseCompact.atom_rational
+#print axioms Dyadic354.BGSparseCompact.sums_compact
+#print axioms Dyadic354.BGSparseCompact.sum_rational
+#print axioms Dyadic354.BGSparseCompact.zero_mem_sums
+#print axioms Dyadic354.BGSparseCompact.sums_mono
+#print axioms Dyadic354.BGSparseCompact.finset_sum_mem
+#print axioms Dyadic354.BGSparseCompact.ratios_compact
+#print axioms Dyadic354.BGSparseCompact.ratio_rational
+#print axioms Dyadic354.BGSparseCompact.irrational_not_mem_ratios
+#print axioms Dyadic354.BGSparseCompact.irrational_separation
+#print axioms Dyadic354.BGSparseCompact.eventually_not_bounded
+#print axioms Dyadic354.ContiguousSeed.interval_width_le
+#print axioms Dyadic354.ContiguousSeed.width_attained
+#print axioms Dyadic354.ContiguousSeed.next_hole
+#print axioms Dyadic354.ContiguousSeed.represented_card_bound
+#print axioms Dyadic354.ContiguousSeed.width_count_bound
+#print axioms Dyadic354.CyclicBoundary.sum_shift
+#print axioms Dyadic354.CyclicBoundary.variation_nonneg
+#print axioms Dyadic354.CyclicBoundary.variation_zero
+#print axioms Dyadic354.CyclicBoundary.variation_neg
+#print axioms Dyadic354.CyclicBoundary.variation_add_le
+#print axioms Dyadic354.CyclicBoundary.missing_bounds
+#print axioms Dyadic354.CyclicBoundary.variation_missing
+#print axioms Dyadic354.CyclicBoundary.variation_double
+#print axioms Dyadic354.CyclicBoundary.variation_shift
+#print axioms Dyadic354.CyclicBoundary.variation_boundary_le
+#print axioms Dyadic354.DB.interval_complete
+#print axioms Dyadic354.DB.incomplete_seed_lt_error
+#print axioms Dyadic354.DB.incomplete_seed_budget
+#print axioms Dyadic354.DB.digit_propagation
+#print axioms Dyadic354.DBCover.real_normalization
+#print axioms Dyadic354.DBCover.coefficient_approximation
+#print axioms Dyadic354.DBCover.propagated_interval
+#print axioms Dyadic354.DBDigits.residual_bounds
+#print axioms Dyadic354.DBDigits.residual_step
+#print axioms Dyadic354.DBDigits.residual_telescope
+#print axioms Dyadic354.DBDigits.digit_budget
+#print axioms Dyadic354.DBDigits.error_nonneg
+#print axioms Dyadic354.DBDigits.error_lt_budget
+#print axioms Dyadic354.DBDigits.error_le_length
+#print axioms Dyadic354.DBDigits.column_suffix
+#print axioms Dyadic354.DBDigits.subset_error_bound
+#print axioms Dyadic354.DBDigits.suffix_legality
+#print axioms Dyadic354.DBDigits.suffix_approximation
+#print axioms Dyadic354.DBDigits.prefix_suffix_add
+#print axioms Dyadic354.DBPhases.residue_lift
+#print axioms Dyadic354.DBPhases.phase_after
+#print axioms Dyadic354.DBWindows.start_bounds
+#print axioms Dyadic354.DBWindows.window_after
+#print axioms Dyadic354.DBWindows.global_after
+#print axioms Dyadic354.DBWindows.span_large
+#print axioms Dyadic354.DBWindows.endpoints_legal
+#print axioms Dyadic354.DBWindows.global_at_or_after
+#print axioms Dyadic354.EventBoundary.segment_variation_le
+#print axioms Dyadic354.EventBoundary.compare_segment
+#print axioms Dyadic354.EventBoundary.add_shift_cancel
+#print axioms Dyadic354.EventBoundary.first_digit_one
+#print axioms Dyadic354.EventBoundary.second_digit_one
+#print axioms Dyadic354.EventBoundary.actual_nonzero_boundary
+#print axioms Dyadic354.EventDecay.block_bound
+#print axioms Dyadic354.EventDecay.power_le_exp
+#print axioms Dyadic354.FE.potential_zero
+#print axioms Dyadic354.FE.normalized_power_bound
+#print axioms Dyadic354.FE.rate_positive
+#print axioms Dyadic354.FE.constant_positive
+#print axioms Dyadic354.FE.deficit_exponential_bound
+#print axioms Dyadic354.FEMissingRuns.successor_after_hole
+#print axioms Dyadic354.FEMissingRuns.internal_holes_card
+#print axioms Dyadic354.FEMissingRuns.holes_split_bound
+#print axioms Dyadic354.FEMissingRuns.holes_boundary_bound
+#print axioms Dyadic354.FEMissingRuns.actual_holes_boundary_bound
+#print axioms Dyadic354.FER.term_lower
+#print axioms Dyadic354.FER.total_lower
+#print axioms Dyadic354.FER.exp_count_le_pow
+#print axioms Dyadic354.FER.seed_constant_positive
+#print axioms Dyadic354.FER.seed_exponential_bound
+#print axioms Dyadic354.FER.seed_interval_exists
+#print axioms Dyadic354.FERecurrence.eventCount_card
+#print axioms Dyadic354.FERecurrence.eventCount_step
+#print axioms Dyadic354.FERecurrence.eventCount_step_bounds
+#print axioms Dyadic354.FERecurrence.eventCount_mono
+#print axioms Dyadic354.FERecurrence.eventCount_le
+#print axioms Dyadic354.FERecurrence.eventCount_unbounded
+#print axioms Dyadic354.FERecurrence.initial_second_ge_two
+#print axioms Dyadic354.FERecurrence.two_step_scaled
+#print axioms Dyadic354.FERecurrence.normalized_nonneg
+#print axioms Dyadic354.FERecurrence.normalized_zero_step
+#print axioms Dyadic354.FERecurrence.rho_bounds
+#print axioms Dyadic354.FERecurrence.sigma_bounds
+#print axioms Dyadic354.FERecurrence.normalized_step
+#print axioms Dyadic354.FERecurrence.normalized_two_step
+#print axioms Dyadic354.FERecurrence.potential_nonneg
+#print axioms Dyadic354.FERecurrence.normalized_le_potential
+#print axioms Dyadic354.FERecurrence.potential_zero_step
+#print axioms Dyadic354.FERecurrence.potential_two_step
+#print axioms Dyadic354.FERecurrence.normalized_step_le_potential
+#print axioms Dyadic354.FEShift.exits_le_new_values
+#print axioms Dyadic354.FEShift.variation_le_new_values
+#print axioms Dyadic354.FEShift.length_cast
+#print axioms Dyadic354.FEShift.length_positive
+#print axioms Dyadic354.FEShift.boundary_eq_cyclic
+#print axioms Dyadic354.FEShift.boundary_a_le
+#print axioms Dyadic354.FEShift.boundary_b_eq_a
+#print axioms Dyadic354.FEShift.boundary_double_a_le
+#print axioms Dyadic354.IntervalSums.split
+#print axioms Dyadic354.IntervalSums.mono
+#print axioms Dyadic354.IntervalSums.sum_period_start
+#print axioms Dyadic354.IntervalSums.interval_le_period
+#print axioms Dyadic354.IntervalSums.two_arcs_cover
+#print axioms Dyadic354.IntervalSums.replace_variation
+#print axioms Dyadic354.PeriodChange.basic_word
+#print axioms Dyadic354.PeriodChange.missing_difference
+#print axioms Dyadic354.PeriodChange.sum_indicator_le_card
+#print axioms Dyadic354.PeriodChange.changing_period_bound
+#print axioms Dyadic354.PeriodChange.actual_changing_period_bound
+#print axioms Dyadic354.PeriodicWord.cast_injective
+#print axioms Dyadic354.PeriodicWord.cast_mem_iff
+#print axioms Dyadic354.PeriodicWord.word_on_period
+#print axioms Dyadic354.PeriodicWord.word_add_period
+#print axioms Dyadic354.PeriodicWord.word_sub_period
+#print axioms Dyadic354.PeriodicWord.word_bounds
+#print axioms Dyadic354.PeriodicWord.sum_period
+#print axioms Dyadic354.PeriodicWord.variation_eq_sum
+#print axioms Dyadic354.PeriodicWord.word_periodic
+#print axioms Dyadic354.RationalWindows.cast_mul_den
+#print axioms Dyadic354.RationalWindows.good_distance_lt_one
+#print axioms Dyadic354.RationalWindows.bounded_good_finite
+#print axioms Dyadic354.RationalWindows.good_den_unbounded
+#print axioms Dyadic354.RationalWindows.crossing_exists
+#print axioms Dyadic354.RationalWindows.crossing_spec
+#print axioms Dyadic354.RationalWindows.crossingRat_spec
+#print axioms Dyadic354.RationalWindows.crossing_minimal
+#print axioms Dyadic354.RationalWindows.before_crossing
+
+#print Dyadic354.FE.deficit_exponential_bound
+#print Dyadic354.FER.seed_exponential_bound
+#print Dyadic354.DB.digit_propagation
+#print Dyadic354.DBScale.advance_increment
+#print Dyadic354.BGWindows.arbitrarily_large_windows
+#print Dyadic354.BGReturns.return_cost_unbounded
+#print Dyadic354.BG.bounded_event_windows_complete
+#print Dyadic354.BG.normalized_complete
+
+#print axioms Dyadic354.BGCapacity.logarithmic_bound
+#print axioms Dyadic354.BGCapacity.seed_size_eventually
+#print axioms Dyadic354.BGCapacity.event_power_bound
+#print axioms Dyadic354.BGCapacity.eventual_capacity
+#print axioms Dyadic354.BGGeometric.exact_in_interval
+#print axioms Dyadic354.BGGeometric.cost_bound
+#print axioms Dyadic354.BGWindowBounds.height_bound
+#print axioms Dyadic354.BGWindowBounds.precision_to_delta
+#print axioms Dyadic354.BGWindowBounds.crossing_close
+#print axioms Dyadic354.BGWindows.inverse_scale_small
+#print axioms Dyadic354.BGWindows.arbitrarily_large_windows
+#print axioms Dyadic354.DBScale.block_sufficient
+#print axioms Dyadic354.DBScale.matching_bounds
+#print axioms Dyadic354.DBScale.block_matching_bound
+#print axioms Dyadic354.DBScale.threshold_bounds
+#print axioms Dyadic354.DBScale.threshold_ge_two
+#print axioms Dyadic354.DBScale.advance_increment
+#print axioms Dyadic354.DBScale.matching_exp_bound
+#print axioms Dyadic354.DBScale.arbitrarily_large_advance
+#print axioms Dyadic354.DBScale.large_advance_matching
+#print axioms Dyadic354.CubicGrowth.no_eventual_quartic
+#print axioms Dyadic354.CubicGrowth.exponential_eventually_dominates
+#print axioms Dyadic354.CubicGrowth.no_eventual_cubic_advance
+#print axioms Dyadic354.BG.support_nonempty_of_event
+#print axioms Dyadic354.BG.bounded_event_windows_complete
+#print axioms Dyadic354.BG.normalized_complete

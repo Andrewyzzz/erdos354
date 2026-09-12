@@ -1,0 +1,7 @@
+COMMAND: ["lake", "build", "Dyadic354.BGSparseCompact"]
+UTC: 2026-09-12T17:42:45.794965+00:00
+✔ [3066/3066] Built Dyadic354.BGSparseCompact (12s)
+Build completed successfully (3066 jobs).
+
+EXIT CODE: 0
+ELAPSED SECONDS: 16.352

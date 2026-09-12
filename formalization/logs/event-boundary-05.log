@@ -1,0 +1,63 @@
+COMMAND: ["lake", "build", "Dyadic354.EventBoundary"]
+UTC: 2026-09-12T17:19:10.529337+00:00
+ℹ [1802/1811] Replayed Dyadic354.CyclicBoundary
+info: Dyadic354/CyclicBoundary.lean:78:6: Try this:
+  [apply] abel_nf
+✖ [1811/1811] Building Dyadic354.EventBoundary (7.4s)
+trace: .> LEAN_PATH=/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/Cli/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/batteries/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/Qq/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/aesop/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/importGraph/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/plausible/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/mathlib/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean /Users/andrewyz/.elan/toolchains/leanprover--lean4---v4.27.0/bin/lean /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/Dyadic354/EventBoundary.lean -o /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean/Dyadic354/EventBoundary.olean -i /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean/Dyadic354/EventBoundary.ilean -c /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/ir/Dyadic354/EventBoundary.c --setup /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/ir/Dyadic354/EventBoundary.setup.json --json
+error: Dyadic354/EventBoundary.lean:134:72: unexpected token 'set_option'; expected 'lemma'
+error: Dyadic354/EventBoundary.lean:183:86: Application type mismatch: The argument
+  hdiff
+has type
+  ∑ x ∈ Finset.Ico 0 ↑(FEShift.length α β (n + 1)), |lift f x - lift g x| ≤
+    FECounting.growth α β n + (1 + FloorSequence.correction β n)
+but is expected to have type
+  ∑ x ∈ Finset.Ico 0 ↑(FEShift.length α β (n + 1)), |lift f x - lift g x| ≤
+    FECounting.growth α β n + 1 + FloorSequence.correction β n
+in the application
+  first_digit_one (FEShift.length α β n) (FEShift.length α β (n + 1)) f g (FloorSequence.term α n)
+    (FloorSequence.term β n) (FloorSequence.correction β n) (FECounting.growth α β n) (FECounting.growth α β (n + 1))
+    hnorm.right.left hnorm.right.right hL hl hv.left ha hbd ha' hdiff
+error: Dyadic354/EventBoundary.lean:194:4: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  j ≥ 0
+  2*j - k ≥ 0
+  e ≥ 0
+  e - p ≥ -1
+  e + l - m ≥ 0
+  2*e - i ≥ 0
+  2*e - o ≥ 0
+  6*e + 2*j - q ≥ -2
+  16*e + 4*j - r ≤ -5
+  c ≥ 1
+  c - d ≤ -1
+  c + d ≥ 0
+  2*c - d ≥ 1
+  a ≥ 1
+  a - b ≤ -1
+  2*a - b ≥ 1
+where
+ a := FloorSequence.term β 0
+ b := FloorSequence.term α 0
+ c := FloorSequence.term β n
+ d := FloorSequence.term α n
+ e := FECounting.growth α β n
+ i := variation (missing (PeriodicWord.residues (FECounting.values α β n) (FEShift.length α β n)))
+  ↑(FloorSequence.term β n)
+ j := FECounting.growth α β (n + 1)
+ k := variation (missing (PeriodicWord.residues (FECounting.values α β (n + 1)) (FEShift.length α β (n + 1))))
+  ↑(2 * FloorSequence.term α n)
+ l := FECounting.digitSum α β n
+ m := ∑ x ∈ Finset.Ico 0 (PrefixBounds.period α β (n + 1)),
+  |FEShift.missingWord α β (n + 1) x - FEShift.missingWord α β n x|
+ o := variation f ↑(FloorSequence.term β n)
+ p := ∑ x ∈ Finset.Ico 0 ↑(FEShift.length α β (n + 1)), |lift f x - lift g x|
+ q := variation f 1
+ r := variation (missing (PeriodicWord.residues (FECounting.values α β n) (FEShift.length α β n))) 1
+error: Lean exited with code 1
+Some required targets logged failures:
+- Dyadic354.EventBoundary
+error: build failed
+
+EXIT CODE: 1
+ELAPSED SECONDS: 10.282

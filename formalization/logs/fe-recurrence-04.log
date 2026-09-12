@@ -1,0 +1,64 @@
+COMMAND: ["lake", "build", "Dyadic354.FERecurrence"]
+UTC: 2026-09-12T17:23:36.582976+00:00
+ℹ [1802/1818] Replayed Dyadic354.CyclicBoundary
+info: Dyadic354/CyclicBoundary.lean:78:6: Try this:
+  [apply] abel_nf
+✖ [1818/1818] Building Dyadic354.FERecurrence (11s)
+trace: .> LEAN_PATH=/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/Cli/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/batteries/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/Qq/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/aesop/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/importGraph/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/plausible/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/mathlib/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean /Users/andrewyz/.elan/toolchains/leanprover--lean4---v4.27.0/bin/lean /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/Dyadic354/FERecurrence.lean -o /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean/Dyadic354/FERecurrence.olean -i /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean/Dyadic354/FERecurrence.ilean -c /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/ir/Dyadic354/FERecurrence.c --setup /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/ir/Dyadic354/FERecurrence.setup.json --json
+error: Dyadic354/FERecurrence.lean:174:4: Tactic `apply` failed: could not unify the conclusion of `(le_div_iff₀ ?m.228).mp`
+  ?m.213 * (32 * ↑(term β 0)) ≤ ?m.214
+with the goal
+  ↑(deficit α β (n + 2)) / 4 ≤ (1 - 1 / (32 * ↑(term β 0))) * ↑(deficit α β n) + 2 * (↑n + 1)
+
+Note: The full type of `(le_div_iff₀ ?m.228).mp` is
+  ?m.213 ≤ ?m.214 / (32 * ↑(term β 0)) → ?m.213 * (32 * ↑(term β 0)) ≤ ?m.214
+
+α β : ℝ
+hb0 : 0 < term β 0
+hba0 : term β 0 < term α 0
+hab0 : term α 0 < 2 * term β 0
+n : ℕ
+he : ExactBlock.IsEvent α β (n + 1)
+hN : 2 ≤ ↑(term β 0)
+hs :
+  8 * ↑(term β 0) * ↑(deficit α β (n + 2)) ≤
+    (32 * ↑(term β 0) - 1) * ↑(deficit α β n) + ↑(padding α β n) + 52 * ↑(term β 0)
+hb : ↑(padding α β n) < 3 * ↑(term β 0) + 2 * ↑n
+hn : 0 ≤ ↑n
+⊢ ↑(deficit α β (n + 2)) / 4 ≤ (1 - 1 / (32 * ↑(term β 0))) * ↑(deficit α β n) + 2 * (↑n + 1)
+error: Dyadic354/FERecurrence.lean:210:31: Invalid argument name `R` for function `Nat.cast_nonneg`
+
+Hint: Perhaps you meant one of the following parameter names:
+  • `α`: R̵α̲
+  • `n`: R̵n̲
+error: Dyadic354/FERecurrence.lean:228:4: Tactic `apply` failed: could not unify the conclusion of `(le_div_iff₀ ?m.182).mp`
+  ?m.169 * 2 ^ n ≤ ?m.170
+with the goal
+  2 * (↑n + 1) / 2 ^ n + 9 * (↑n + 2 + 1) / (2 ^ n * 4) ≤ rho β * (9 * (↑n + 1) / 2 ^ n)
+
+Note: The full type of `(le_div_iff₀ ?m.182).mp` is
+  ?m.169 ≤ ?m.170 / 2 ^ n → ?m.169 * 2 ^ n ≤ ?m.170
+
+α β : ℝ
+hb0 : 0 < term β 0
+hba0 : term β 0 < term α 0
+hab0 : term α 0 < 2 * term β 0
+n : ℕ
+he : ExactBlock.IsEvent α β (n + 1)
+hz : normalized α β (n + 2) ≤ rho β * normalized α β n + 2 * (↑n + 1) / 2 ^ n
+hr : 63 / 64 ≤ rho β ∧ rho β ≤ 1
+hs : 1 / 2 ≤ sigma β ∧ sigma β ≤ 1 ∧ rho β ≤ sigma β ^ 2
+hv : 0 ≤ potential α β n
+⊢ 2 * (↑n + 1) / 2 ^ n + 9 * (↑n + 2 + 1) / (2 ^ n * 4) ≤ rho β * (9 * (↑n + 1) / 2 ^ n)
+error: Dyadic354/FERecurrence.lean:243:31: Invalid argument name `R` for function `Nat.cast_nonneg`
+
+Hint: Perhaps you meant one of the following parameter names:
+  • `α`: R̵α̲
+  • `n`: R̵n̲
+error: Lean exited with code 1
+Some required targets logged failures:
+- Dyadic354.FERecurrence
+error: build failed
+
+EXIT CODE: 1
+ELAPSED SECONDS: 16.180

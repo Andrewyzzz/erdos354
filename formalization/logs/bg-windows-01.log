@@ -1,0 +1,59 @@
+COMMAND: ["lake", "build", "Dyadic354.BGWindows"]
+UTC: 2026-09-12T18:01:33.919400+00:00
+ℹ [3085/3111] Replayed Dyadic354.CyclicBoundary
+info: Dyadic354/CyclicBoundary.lean:78:6: Try this:
+  [apply] abel_nf
+✖ [3117/3117] Building Dyadic354.BGWindows (21s)
+trace: .> LEAN_PATH=/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/Cli/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/batteries/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/Qq/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/aesop/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/importGraph/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/plausible/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/mathlib/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean /Users/andrewyz/.elan/toolchains/leanprover--lean4---v4.27.0/bin/lean /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/Dyadic354/BGWindows.lean -o /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean/Dyadic354/BGWindows.olean -i /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean/Dyadic354/BGWindows.ilean -c /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/ir/Dyadic354/BGWindows.c --setup /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/ir/Dyadic354/BGWindows.setup.json --json
+error: Dyadic354/BGWindows.lean:15:2: linarith failed to find a contradiction
+case h
+β δ : ℝ
+hβ : 0 < β
+hδ : 0 < δ
+N : ℕ
+hN : 1 / (β * δ) < 2 ^ N
+n : ℕ
+hn : N ≤ n
+hp : 2 ^ N ≤ 2 ^ n
+hm : 1 < 2 ^ N * (β * δ)
+a✝ : δ * (2 ^ n * β) ≤ 1
+⊢ False
+failed
+error: Dyadic354/BGWindows.lean:44:42: linarith failed to find a contradiction
+case h
+α β : ℝ
+hb0 : 0 < term β 0
+hba0 : term β 0 < term α 0
+hab0 : term α 0 < 2 * term β 0
+hi : ¬IndexedComplete (interleave α β 2)
+hirr : Irrational (α / β)
+ε : ℝ
+hε : 0 < ε
+N : ℕ
+hnorm : 2 ≤ β ∧ 1 < α / β ∧ α / β < 2
+hβ : 0 < β
+δ : ℝ := min ε (min (α / β - 1) (2 - α / β))
+hδ : 0 < δ
+n0 : ℕ
+hn0 : ∀ (n : ℕ), n0 ≤ n → 1 / (2 ^ n * β) < δ
+n : ℕ
+hn : max N (max n0 (max (heightConstant β) (scaleConstant β + 4))) ≤ n
+hlarge : n ^ 3 < advance α β hirr n
+hnN : N ≤ n
+hnn0 : n0 ≤ n
+hnh : heightConstant β ≤ n
+hns : scaleConstant β + 4 ≤ n
+D : ℕ := crossingDen (α / β) hirr (threshold β n)
+m : ℕ := matching β D
+T : ℕ := m - 1
+hnT : n ^ 2 ≤ m - 1
+a✝ : m < 1
+⊢ False
+failed
+error: Lean exited with code 1
+Some required targets logged failures:
+- Dyadic354.BGWindows
+error: build failed
+
+EXIT CODE: 1
+ELAPSED SECONDS: 25.122

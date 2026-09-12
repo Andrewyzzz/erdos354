@@ -1,0 +1,91 @@
+COMMAND: ["lake", "build", "Dyadic354.DBScale"]
+UTC: 2026-09-12T17:54:49.847233+00:00
+ℹ [3086/3110] Replayed Dyadic354.CyclicBoundary
+info: Dyadic354/CyclicBoundary.lean:78:6: Try this:
+  [apply] abel_nf
+✖ [3110/3110] Building Dyadic354.DBScale (31s)
+trace: .> LEAN_PATH=/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/Cli/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/batteries/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/Qq/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/aesop/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/importGraph/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/plausible/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/mathlib/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean /Users/andrewyz/.elan/toolchains/leanprover--lean4---v4.27.0/bin/lean /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/Dyadic354/DBScale.lean -o /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean/Dyadic354/DBScale.olean -i /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean/Dyadic354/DBScale.ilean -c /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/ir/Dyadic354/DBScale.c --setup /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/ir/Dyadic354/DBScale.setup.json --json
+error: Dyadic354/DBScale.lean:87:60: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ↑r.num / ↑q
+in the target expression
+  |α / β - ↑r.num / ↑↑q| < 1 / ↑↑q ^ 2
+
+α β : ℝ
+hb0 : 0 < term β 0
+hba0 : term β 0 < term α 0
+hab0 : term α 0 < 2 * term β 0
+hi : ¬IndexedComplete (interleave α β 2)
+hirr : Irrational (α / β)
+n : ℕ
+hn : 1 ≤ n
+q : ℕ := crossingDen (α / β) hirr (threshold β n)
+r : ℚ := crossingRat (α / β) hirr (threshold β n)
+hr : r.den = q ∧ Good (α / β) r
+hq :
+  threshold β n ≤ crossingDen (α / β) hirr (threshold β n) ∧
+    ∃ r, r.den = crossingDen (α / β) hirr (threshold β n) ∧ Good (α / β) r
+h2 : 2 ≤ threshold β n
+hq2 : 2 ≤ q
+hscale : 2 ^ n * β ≤ ↑q
+hc : IsCoprime r.num ↑q
+hratio : ↑r.num / ↑q = ↑r
+⊢ |α / β - ↑r.num / ↑↑q| < 1 / ↑↑q ^ 2
+error: Dyadic354/DBScale.lean:98:55: Unknown constant `Rat.cast_def.symm`
+error: Dyadic354/DBScale.lean:100:93: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ↑r.num / ↑r.den
+in the target expression
+  |α / β - ↑r.num / ↑↑r.den| < 1 / ↑↑r.den ^ 2
+
+α β : ℝ
+hb0 : 0 < term β 0
+hba0 : term β 0 < term α 0
+hab0 : term α 0 < 2 * term β 0
+hi : ¬IndexedComplete (interleave α β 2)
+r : ℚ
+hr : Good (α / β) r
+hq : β ≤ ↑r.den
+hn : 1 ≤ matching β r.den
+hnorm : 2 ≤ β ∧ 1 < α / β ∧ α / β < 2
+hβ : 0 < β
+hq2 : 2 ≤ r.den
+hratio : ↑r.num / ↑r.den = ↑r
+⊢ |α / β - ↑r.num / ↑↑r.den| < 1 / ↑↑r.den ^ 2
+error: Dyadic354/DBScale.lean:110:2: linarith failed to find a contradiction
+case h
+α β : ℝ
+hb0 : 0 < term β 0
+hba0 : term β 0 < term α 0
+hab0 : term α 0 < 2 * term β 0
+hi : ¬IndexedComplete (interleave α β 2)
+r : ℚ
+hr : Good (α / β) r
+hq : β ≤ ↑r.den
+hn : 1 ≤ matching β r.den
+hnorm : 2 ≤ β ∧ 1 < α / β ∧ α / β < 2
+hβ : 0 < β
+hq2 : 2 ≤ r.den
+hratio : ↑r.num / ↑r.den = ↑r
+hs :
+  ↑(seedWidth α β (matching β r.den)) <
+    3 * (2 ^ matching β r.den * β) / ↑↑r.den + DBDigits.error α β (matching β r.den) (blockLength r.den)
+hscale : 2 ^ matching β r.den * β ≤ ↑r.den
+hqpos : 0 < ↑r.den
+hfrac : 3 * (2 ^ matching β r.den * β) / ↑r.den ≤ 3
+he : DBDigits.error α β (matching β r.den) (blockLength r.den) ≤ 2 * ↑(blockLength r.den)
+hk : blockLength r.den ≤ matching β r.den + scaleConstant β
+hkR : ↑(blockLength r.den) ≤ ↑(matching β r.den) + ↑(scaleConstant β)
+hf :
+  seedConstant α β * Real.exp (FE.decayRate β * ↑(eventCount α β (matching β r.den))) ≤
+    ↑(seedWidth α β (matching β r.den)) + 2
+a✝ :
+  2 * ↑(matching β r.den) + 2 * ↑(scaleConstant β) + 5 <
+    seedConstant α β * Real.exp (FE.decayRate β * ↑(eventCount α β (matching β r.den)))
+⊢ False
+failed
+error: Lean exited with code 1
+Some required targets logged failures:
+- Dyadic354.DBScale
+error: build failed
+
+EXIT CODE: 1
+ELAPSED SECONDS: 36.788

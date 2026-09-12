@@ -5,7 +5,8 @@
 `logs/third-batch-environment.log`，第四批实际复核见
 `logs/fourth-batch-environment.log`，第五批实际复核见
 `logs/fifth-batch-environment.log`，第六批实际复核见
-`logs/sixth-batch-environment.log`；命令日志使用 UTC 时间。
+`logs/sixth-batch-environment.log`，第七批实际复核见
+`logs/seventh-batch-environment.log`；命令日志使用 UTC 时间。
 
 - 执行位置：本机 macOS 26.5.1，Apple Silicon / arm64。
 - 原稿基准提交：`dcdc3c255189ab4e0f9bbf9abea2ca0a3758de06`。
@@ -14,6 +15,7 @@
 - 第四批起点：第三批提交 `d685bb3df0cb05190c31b7a92c2c7271f053580d`。
 - 第五批起点：第四批提交 `e3985208220a96030f454d3ab5e82ac42135a53c`。
 - 第六批起点：第五批提交 `ea7ad5fd1eb85db223878a6c92f37d77868532ee`。
+- 第七批起点：前六批发布记录提交 `f6c5d2ba8cbca95427ae6aea854d11116f06cd55`。
 - 开发分支：`lean-formalization`。起始工作树干净，所有新增内容位于 `formalization/`。
 - 实际 Lean：`4.27.0`，commit `db93fe1608548721853390a10cd40580fe7d22ae`。
 - 实际 Lake：`5.0.0-src+db93fe1`，使用 Lean 4.27.0。
@@ -45,9 +47,10 @@ Elan 输出中有一次查询默认 stable 最新版本失败的警告。项目�
 
 首个完整构建成功记录为 `logs/certificate-04.log`：`lake build` 退出码 0。
 它包含初始 18 个定理的审计。第一批最终为 20 个定理；第二批增加 31 个，
-第三批增加 32 个，第四批增加 44 个，第五批增加 21 个，第六批增加 35 个，累计 183 个。
+第三批增加 32 个，第四批增加 44 个，第五批增加 21 个，第六批增加 35 个，
+第七批增加 175 个，累计 358 个。
 当前验收以 `logs/build.log`、`logs/axioms.log`、
-`logs/verification.json` 为准。前五批最终日志仍保存在对应提交与交付包中。
+`logs/verification.json` 为准。前六批最终日志仍保存在对应提交与交付包中。
 
 独立目录重建见 `logs/fresh-build.log`、`logs/fresh-axioms.log`、
 `logs/fresh-verification.json`。该检查重新编译本项目的源码，复用同版本 Mathlib
@@ -97,3 +100,20 @@ Git HEAD 全部匹配锁定值，且没有已跟踪修改。已证明部分的�
 `logs/sixth-batch-input-integrity.log` 再次检查全部 36 个原发布文件哈希并通过；
 工具链、9 个依赖实际提交、冻结原题定义与公开主稿保持不变。
 本批完成的是统一缺口界及 FE 的精确有限计数基础，不宣称 FE 衰减估计已经通过验证。
+
+## 第七批：FE／DB／BG
+
+本批新增 29 个 Lean 模块、175 个定理，完成 FE 与 FE-R、DB 增量、实际长窗口、
+统一精确返回成本与 BG 累计矛盾，最终得到 `BG.normalized_complete`。
+该定理只要求归一化地板初值和比值无理；它并非任意正参数的原题，也未证明集合强完全性。
+本批没有修改工具链、依赖锁、冻结目标定义或原稿来取得这一结论。
+
+关键模块成功编译记录包括 `fe-main-01.log`、`fe-seed-03.log`、`db-main-05.log`、
+`bg-returns-03.log`、`bg-windows-02.log`、`bg-capacity-04.log` 和 `bg-final-02.log`。
+历史失败日志保留完整目标上下文，问题涉及类型转换、库接口、归纳/算术证明及严格风格检查；
+最终均已修复。`fe-db-bg-core-audit.log` 是中间检查点，不代替最终 358 项全量审计。
+
+`logs/seventh-batch-input-integrity.log` 再次核对全部 36 个原发布文件哈希，全部匹配。
+`logs/seventh-batch-environment.log` 确认 Lean 4.27.0 和全部 9 个依赖实际提交匹配锁定值，
+依赖源码没有已跟踪修改。最终验收仍以 `verification.json`、`fresh-verification.json`
+及相应实际日志为准；清洁重建复用依赖缓存，不宣称从零重建 Mathlib 或运行外部 checker。

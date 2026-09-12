@@ -1,0 +1,59 @@
+COMMAND: ["lake", "build", "Dyadic354.DB"]
+UTC: 2026-09-12T17:40:36.149580+00:00
+ℹ [3086/3105] Replayed Dyadic354.CyclicBoundary
+info: Dyadic354/CyclicBoundary.lean:78:6: Try this:
+  [apply] abel_nf
+✖ [3104/3105] Building Dyadic354.DBCover (21s)
+trace: .> LEAN_PATH=/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/Cli/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/batteries/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/Qq/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/aesop/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/importGraph/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/plausible/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/mathlib/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean /Users/andrewyz/.elan/toolchains/leanprover--lean4---v4.27.0/bin/lean /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/Dyadic354/DBCover.lean -o /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean/Dyadic354/DBCover.olean -i /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean/Dyadic354/DBCover.ilean -c /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/ir/Dyadic354/DBCover.c --setup /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/ir/Dyadic354/DBCover.setup.json --json
+error: Dyadic354/DBCover.lean:56:87: unsolved goals
+case h
+α β : ℝ
+hba : term β 0 < term α 0
+hab : term α 0 < 2 * term β 0
+n k : ℕ
+p q : ℤ
+hq : 2 ≤ q
+hK : 8 * q ≤ 2 ^ k
+hc : IsCoprime p q
+happrox : |α / β - ↑p / ↑q| < 1 / ↑q ^ 2
+a b : ℤ
+hseed : Finset.Icc a b ⊆ values α β n
+hwidth : 3 * (2 ^ n * β) / ↑q + DBDigits.error α β n k ≤ ↑(b - a)
+θ : ℝ := α / β
+K : ℤ := 2 ^ k
+scale : ℝ := 2 ^ n * β
+E : ℝ := DBDigits.error α β n k
+hnorm : 2 ≤ β ∧ 1 < α / β ∧ α / β < 2
+hβ : 0 < β
+hp : 1 ≤ 2 ^ n
+⊢ ?m.213
+
+α β : ℝ
+hba : term β 0 < term α 0
+hab : term α 0 < 2 * term β 0
+n k : ℕ
+p q : ℤ
+hq : 2 ≤ q
+hK : 8 * q ≤ 2 ^ k
+hc : IsCoprime p q
+happrox : |α / β - ↑p / ↑q| < 1 / ↑q ^ 2
+a b : ℤ
+hseed : Finset.Icc a b ⊆ values α β n
+hwidth : 3 * (2 ^ n * β) / ↑q + DBDigits.error α β n k ≤ ↑(b - a)
+θ : ℝ := α / β
+K : ℤ := 2 ^ k
+scale : ℝ := 2 ^ n * β
+E : ℝ := DBDigits.error α β n k
+hnorm : 2 ≤ β ∧ 1 < α / β ∧ α / β < 2
+hβ : 0 < β
+hp : 1 ≤ 2 ^ n
+h : ?m.213
+⊢ ∃ c d, c ≤ d ∧ Finset.Icc c d ⊆ values α β (n + k) ∧ term β (n + k) < d - c
+error: Dyadic354/DBCover.lean:64:8: unexpected token 'λ'; expected command
+error: Lean exited with code 1
+Some required targets logged failures:
+- Dyadic354.DBCover
+error: build failed
+
+EXIT CODE: 1
+ELAPSED SECONDS: 27.161

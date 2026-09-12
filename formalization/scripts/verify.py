@@ -80,7 +80,7 @@ if missing or bad:
     raise SystemExit(f'Axiom audit failed: missing={sorted(missing)}, disallowed={bad}')
 result = {
     'status': 'PASS',
-    'scope': 'Certificate, meshes, legal representations, actual normalized floor-sequence permanent descent and event factor-four consequence of incompleteness; irrationality gives unbounded events. Uniform prefix/internal/cyclic gap bounds and the exact FE counting recurrence (8.1) are proved, with deficits and growth identified as counts of actual values. The finite-event decay estimate, changing-period comparison, DB/BG, global normalization, strong completeness and Erdős 354(i) remain unproved.',
+    'scope': 'Certificate, meshes, legal representations, actual normalized floor-sequence permanent descent, uniform gap bounds, FE and FE-R with manuscript constants, DB at all good rational approximations and at the defined first good-denominator crossing, and BG including actual long windows, unbounded return costs and the cumulative contradiction. BG.normalized_complete proves indexed completeness assuming only 0 < floor(beta) < floor(alpha) < 2*floor(beta) and irrational alpha/beta. Global parameter normalization, strong set completeness and the unrestricted frozen Erdős 354(i) target remain unproved. The rational-window and compact-return arguments are proved alternatives to the manuscript continued-fraction enumeration and explicit minimum-popcount formulation.',
     'fresh_project_build': args.fresh,
     'dependency_cache_reused': True,
     'audited_theorems': len(records),

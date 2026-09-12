@@ -1,0 +1,40 @@
+COMMAND: ["lake", "build", "Dyadic354.BGReturns"]
+UTC: 2026-09-12T17:45:54.747383+00:00
+ℹ [3085/3101] Replayed Dyadic354.CyclicBoundary
+info: Dyadic354/CyclicBoundary.lean:78:6: Try this:
+  [apply] abel_nf
+✔ [3100/3101] Built Dyadic354.BGBinaryRatio (13s)
+✖ [3101/3101] Building Dyadic354.BGReturns (9.5s)
+trace: .> LEAN_PATH=/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/Cli/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/batteries/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/Qq/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/aesop/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/importGraph/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/plausible/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/mathlib/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean /Users/andrewyz/.elan/toolchains/leanprover--lean4---v4.27.0/bin/lean /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/Dyadic354/BGReturns.lean -o /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean/Dyadic354/BGReturns.olean -i /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean/Dyadic354/BGReturns.ilean -c /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/ir/Dyadic354/BGReturns.c --setup /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/ir/Dyadic354/BGReturns.setup.json --json
+error: Dyadic354/BGReturns.lean:46:6: unsolved goals
+case neg
+α β : ℝ
+n h : ℕ
+ih : eventCount α β (n + h) = eventCount α β n + (support α β n h).card
+hz : ¬digitSum α β (n + h) = 0
+⊢ eventCount α β n + {j ∈ Finset.range h | ¬digitSum α β (n + j) = 0}.card + 1 =
+    eventCount α β n + ({j ∈ Finset.range h | ¬digitSum α β (n + j) = 0}.card + 1)
+error: Dyadic354/BGReturns.lean:46:37: This simp argument is unused:
+  Finset.notMem_range_self
+
+Hint: Omit it from the simp argument list.
+  simp [hz, Finset.mem_filter,̵ ̵F̵i̵n̵s̵e̵t̵.̵n̵o̵t̵M̵e̵m̵_̵r̵a̵n̵g̵e̵_̵s̵e̵l̵f̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Dyadic354/BGReturns.lean:71:2: linarith failed to find a contradiction
+case h1.h
+α β : ℝ
+p q : ℤ
+n h : ℕ
+hn : q * term α n - p * term β n = 0
+hh : q * term α (n + h) - p * term β (n + h) = 0
+a✝ : q * (term α (n + h) - 2 ^ h * term α n) < p * (term β (n + h) - 2 ^ h * term β n)
+⊢ False
+failed
+error: Lean exited with code 1
+Some required targets logged failures:
+- Dyadic354.BGReturns
+error: build failed
+
+EXIT CODE: 1
+ELAPSED SECONDS: 26.666

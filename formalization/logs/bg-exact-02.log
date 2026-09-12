@@ -1,0 +1,10 @@
+COMMAND: ["lake", "build", "Dyadic354.BGExactLayers"]
+UTC: 2026-09-12T17:44:43.478963+00:00
+ℹ [1802/1820] Replayed Dyadic354.CyclicBoundary
+info: Dyadic354/CyclicBoundary.lean:78:6: Try this:
+  [apply] abel_nf
+✔ [1820/1820] Built Dyadic354.BGExactLayers (7.8s)
+Build completed successfully (1820 jobs).
+
+EXIT CODE: 0
+ELAPSED SECONDS: 9.688

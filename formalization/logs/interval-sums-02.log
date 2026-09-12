@@ -1,0 +1,28 @@
+COMMAND: ["lake", "build", "Dyadic354.IntervalSums"]
+UTC: 2026-09-12T17:15:00.548511+00:00
+ℹ [1802/1808] Replayed Dyadic354.CyclicBoundary
+info: Dyadic354/CyclicBoundary.lean:78:6: Try this:
+  [apply] abel_nf
+✖ [1808/1808] Building Dyadic354.IntervalSums (16s)
+trace: .> LEAN_PATH=/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/Cli/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/batteries/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/Qq/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/aesop/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/importGraph/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/plausible/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/mathlib/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean /Users/andrewyz/.elan/toolchains/leanprover--lean4---v4.27.0/bin/lean /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/Dyadic354/IntervalSums.lean -o /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean/Dyadic354/IntervalSums.olean -i /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean/Dyadic354/IntervalSums.ilean -c /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/ir/Dyadic354/IntervalSums.c --setup /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/ir/Dyadic354/IntervalSums.setup.json --json
+error: Dyadic354/IntervalSums.lean:27:6: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ∑ x ∈ Finset.Ico 0 ↑?L, ?f ↑x
+in the target expression
+  ∑ x ∈ Finset.Ico 0 ↑L, (fun y => f (y + ↑a)) ↑x = ∑ x, f x
+
+L : ℕ
+inst✝ : NeZero L
+f : ZMod L → ℤ
+a : ℤ
+h : ∑ x ∈ Finset.Ico 0 ↑L, f ↑(x + a) = ∑ x ∈ Finset.Ico a (↑L + a), f ↑x
+⊢ ∑ x ∈ Finset.Ico 0 ↑L, (fun y => f (y + ↑a)) ↑x = ∑ x, f x
+error: Dyadic354/IntervalSums.lean:38:13: unused variable `hb`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+error: Lean exited with code 1
+Some required targets logged failures:
+- Dyadic354.IntervalSums
+error: build failed
+
+EXIT CODE: 1
+ELAPSED SECONDS: 21.692

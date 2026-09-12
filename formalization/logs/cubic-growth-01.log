@@ -1,0 +1,57 @@
+COMMAND: ["lake", "build", "Dyadic354.CubicGrowth"]
+UTC: 2026-09-12T17:56:24.634152+00:00
+✖ [3066/3066] Building Dyadic354.CubicGrowth (28s)
+trace: .> LEAN_PATH=/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/Cli/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/batteries/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/Qq/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/aesop/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/importGraph/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/plausible/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/mathlib/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean /Users/andrewyz/.elan/toolchains/leanprover--lean4---v4.27.0/bin/lean /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/Dyadic354/CubicGrowth.lean -o /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean/Dyadic354/CubicGrowth.olean -i /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean/Dyadic354/CubicGrowth.ilean -c /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/ir/Dyadic354/CubicGrowth.c --setup /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/ir/Dyadic354/CubicGrowth.setup.json --json
+error: Dyadic354/CubicGrowth.lean:27:37: Type mismatch
+  Nat.pow_le_pow_left ih
+has type
+  ∀ (i : ℕ), (K n ^ 4 ^ r) ^ i ≤ K (n ^ 3 ^ r) ^ i
+but is expected to have type
+  (K n ^ 4 ^ r) ^ 4 ≤ K (n ^ 3 ^ r) ^ 4
+error: Dyadic354/CubicGrowth.lean:29:54: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ?a ^ (?m * ?n)
+in the target expression
+  K ((n ^ 3 ^ r) ^ 2 * n ^ 3 ^ r) = K (n ^ 3 ^ (r + 1))
+
+K : ℕ → ℕ
+hmono : Monotone K
+hupper : ∀ (n : ℕ), K n ≤ n
+hunbounded : ∀ (k : ℕ), ∃ n, k ≤ K n
+N : ℕ
+hN : ∀ (n : ℕ), N ≤ n → K n ^ 4 ≤ K (n ^ 3)
+i : ℕ
+hi : 2 ≤ K i
+n : ℕ := max N (max 2 i)
+hnN : N ≤ n
+hn2 : 2 ≤ n
+hni : i ≤ n
+hKn : 2 ≤ K n
+r : ℕ
+ih : K n ^ 4 ^ r ≤ K (n ^ 3 ^ r)
+hsmall : n ≤ n ^ 3 ^ r
+hstep : K (n ^ 3 ^ r) ^ 4 ≤ K ((n ^ 3 ^ r) ^ 3)
+⊢ K ((n ^ 3 ^ r) ^ 2 * n ^ 3 ^ r) = K (n ^ 3 ^ (r + 1))
+error: Dyadic354/CubicGrowth.lean:33:32: Invalid field `trans`: The environment does not contain `Function.trans`, so it is not possible to project the field `trans` from an expression
+  Nat.pow_le_pow_left hKn
+of type `∀ (i : ℕ), 2 ^ i ≤ K n ^ i`
+error: Dyadic354/CubicGrowth.lean:49:13: Unknown constant `Real.isLittleO_pow_exp_pos_mul_atTop`
+error: Dyadic354/CubicGrowth.lean:48:63: unsolved goals
+a c : ℝ
+ha : 0 < a
+hc : 0 < c
+⊢ ∀ᶠ (x : ℝ) in atTop, x ^ 4 ≤ x + c * Real.exp (a * x) - 3
+error: Dyadic354/CubicGrowth.lean:68:59: Application type mismatch: The argument
+  hh n hn
+has type
+  f n ≤ n ^ 3
+but is expected to have type
+  ¬n ^ 3 < f n
+in the application
+  le_of_not_gt (hh n hn)
+error: Lean exited with code 1
+Some required targets logged failures:
+- Dyadic354.CubicGrowth
+error: build failed
+
+EXIT CODE: 1
+ELAPSED SECONDS: 31.639

@@ -1,0 +1,33 @@
+COMMAND: ["lake", "build", "Dyadic354.BGSparseCompact"]
+UTC: 2026-09-12T17:42:02.654308+00:00
+✖ [3066/3066] Building Dyadic354.BGSparseCompact (24s)
+trace: .> LEAN_PATH=/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/Cli/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/batteries/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/Qq/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/aesop/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/importGraph/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/plausible/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/mathlib/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean /Users/andrewyz/.elan/toolchains/leanprover--lean4---v4.27.0/bin/lean /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/Dyadic354/BGSparseCompact.lean -o /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean/Dyadic354/BGSparseCompact.olean -i /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean/Dyadic354/BGSparseCompact.ilean -c /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/ir/Dyadic354/BGSparseCompact.c --setup /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/ir/Dyadic354/BGSparseCompact.setup.json --json
+error: Dyadic354/BGSparseCompact.lean:27:28: unsolved goals
+n : ℕ
+⊢ ↑((1 / 2) ^ n) = (fun n => (1 / 2) ^ n) n
+error: Dyadic354/BGSparseCompact.lean:64:7: Application type mismatch: The argument
+  ih fun j hj => hf j (Finset.mem_insert_of_mem hj)
+has type
+  s.card ≤ k → ∑ i ∈ s, f i ∈ sums s.card
+but is expected to have type
+  (∑ j ∈ s, f j, f i).1 ∈ sums s.card
+in the application
+  And.intro (ih fun j hj => hf j (Finset.mem_insert_of_mem hj))
+error: Dyadic354/BGSparseCompact.lean:80:2: linarith failed to find a contradiction
+case h
+k : ℕ
+hc : IsCompact (sums k ×ˢ sums k)
+hd : IsClosed {xy | 1 / 2 ≤ xy.2}
+xy : ℝ × ℝ
+hxy : xy ∈ sums k ×ˢ sums k ∩ {xy | 1 / 2 ≤ xy.2}
+h : xy ∈ {xy | 1 / 2 ≤ xy.2}
+a✝ : xy.2 = 0
+⊢ False
+failed
+error: Lean exited with code 1
+Some required targets logged failures:
+- Dyadic354.BGSparseCompact
+error: build failed
+
+EXIT CODE: 1
+ELAPSED SECONDS: 28.688

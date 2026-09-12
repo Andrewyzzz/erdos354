@@ -1,0 +1,7 @@
+COMMAND: ["lake", "build", "Dyadic354.RationalWindows"]
+UTC: 2026-09-12T17:47:57.538102+00:00
+✔ [3067/3067] Built Dyadic354.RationalWindows (29s)
+Build completed successfully (3067 jobs).
+
+EXIT CODE: 0
+ELAPSED SECONDS: 35.135

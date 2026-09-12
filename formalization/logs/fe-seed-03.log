@@ -1,0 +1,10 @@
+COMMAND: ["lake", "build", "Dyadic354.FER"]
+UTC: 2026-09-12T17:29:34.188471+00:00
+ℹ [1801/1871] Replayed Dyadic354.CyclicBoundary
+info: Dyadic354/CyclicBoundary.lean:78:6: Try this:
+  [apply] abel_nf
+✔ [3100/3100] Built Dyadic354.FER (19s)
+Build completed successfully (3100 jobs).
+
+EXIT CODE: 0
+ELAPSED SECONDS: 22.069

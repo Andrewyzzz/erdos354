@@ -1,0 +1,31 @@
+COMMAND: ["lake", "build", "Dyadic354.BGWindowBounds"]
+UTC: 2026-09-12T18:00:12.635891+00:00
+ℹ [3086/3116] Replayed Dyadic354.CyclicBoundary
+info: Dyadic354/CyclicBoundary.lean:78:6: Try this:
+  [apply] abel_nf
+✔ [3115/3116] Built Dyadic354.DBScale (13s)
+✖ [3116/3116] Building Dyadic354.BGWindowBounds (4.3s)
+trace: .> LEAN_PATH=/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/Cli/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/batteries/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/Qq/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/aesop/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/importGraph/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/plausible/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/mathlib/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean /Users/andrewyz/.elan/toolchains/leanprover--lean4---v4.27.0/bin/lean /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/Dyadic354/BGWindowBounds.lean -o /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean/Dyadic354/BGWindowBounds.olean -i /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean/Dyadic354/BGWindowBounds.ilean -c /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/ir/Dyadic354/BGWindowBounds.c --setup /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/ir/Dyadic354/BGWindowBounds.setup.json --json
+error: Dyadic354/BGWindowBounds.lean:21:44: Unknown constant `Int.natCast_natAbs_of_nonneg`
+error: Dyadic354/BGWindowBounds.lean:63:44: Unknown constant `Int.natCast_natAbs_of_nonneg`
+error: Dyadic354/BGWindowBounds.lean:77:67: No goals to be solved
+error: Dyadic354/BGWindowBounds.lean:77:35: unsolved goals
+α β : ℝ
+hβ : 2 ≤ β
+hirr : Irrational (α / β)
+n : ℕ
+r : ℚ
+hr : r.den < threshold β n
+left✝ : Good (α / β) r
+he : |α / β - ↑r| ≤ 1 / (↑(crossingDen (α / β) hirr (threshold β n)) * ↑r.den)
+D : ℕ := crossingDen (α / β) hirr (threshold β n)
+hD : 2 ^ n * β ≤ ↑D
+this : 0 < β
+⊢ 0 < 2 ^ n * β
+error: Lean exited with code 1
+Some required targets logged failures:
+- Dyadic354.BGWindowBounds
+error: build failed
+
+EXIT CODE: 1
+ELAPSED SECONDS: 21.758

@@ -1,0 +1,7 @@
+COMMAND: ["lake", "build", "Dyadic354.BGGeometric"]
+UTC: 2026-09-12T17:59:49.885360+00:00
+✔ [3066/3066] Built Dyadic354.BGGeometric (32s)
+Build completed successfully (3066 jobs).
+
+EXIT CODE: 0
+ELAPSED SECONDS: 35.363

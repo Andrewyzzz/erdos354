@@ -1,0 +1,7 @@
+COMMAND: ["lake", "build", "Dyadic354.DBPhases"]
+UTC: 2026-09-12T17:35:52.519155+00:00
+✔ [3068/3068] Built Dyadic354.DBPhases (25s)
+Build completed successfully (3068 jobs).
+
+EXIT CODE: 0
+ELAPSED SECONDS: 31.239

@@ -1,0 +1,41 @@
+COMMAND: ["lake", "build", "Dyadic354.DBPhases"]
+UTC: 2026-09-12T17:30:08.071214+00:00
+✖ [3068/3068] Building Dyadic354.DBPhases (28s)
+trace: .> LEAN_PATH=/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/Cli/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/batteries/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/Qq/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/aesop/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/importGraph/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/plausible/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/mathlib/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean /Users/andrewyz/.elan/toolchains/leanprover--lean4---v4.27.0/bin/lean /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/Dyadic354/DBPhases.lean -o /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean/Dyadic354/DBPhases.olean -i /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean/Dyadic354/DBPhases.ilean -c /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/ir/Dyadic354/DBPhases.c --setup /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/ir/Dyadic354/DBPhases.setup.json --json
+error: Dyadic354/DBPhases.lean:53:4: Tactic `apply` failed: could not unify the conclusion of `(lt_div_iff₀ hqR).mp`
+  ?m.501 * ↑q < ?m.502
+with the goal
+  θ * ↑j + ↑m < t + 3 / ↑q
+
+Note: The full type of `(lt_div_iff₀ hqR).mp` is
+  ?m.501 < ?m.502 / ↑q → ?m.501 * ↑q < ?m.502
+
+case refine_2
+θ : ℝ
+p q : ℤ
+hq : 0 < q
+hc : IsCoprime p q
+happrox : |θ - ↑p / ↑q| < 1 / ↑q ^ 2
+t : ℝ
+hqR : 0 < ↑q
+r : ℤ := ⌈↑q * t⌉ + 1
+j m : ℤ
+hj0 : 0 ≤ j
+hjq : j < q
+he : p * j + q * m = r
+hj0R : 0 ≤ ↑j
+hjqR : ↑j < ↑q
+heR : ↑p * ↑j + ↑q * ↑m = ↑r
+hr0 : ↑q * t + 1 ≤ ↑r
+hr1 : ↑r < ↑q * t + 2
+herror : |↑q * (θ * ↑j + ↑m) - ↑r| < 1
+hlo : -1 < ↑q * (θ * ↑j + ↑m) - ↑r
+hhi : ↑q * (θ * ↑j + ↑m) - ↑r < 1
+⊢ θ * ↑j + ↑m < t + 3 / ↑q
+error: Lean exited with code 1
+Some required targets logged failures:
+- Dyadic354.DBPhases
+error: build failed
+
+EXIT CODE: 1
+ELAPSED SECONDS: 31.994

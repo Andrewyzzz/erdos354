@@ -1,0 +1,10 @@
+COMMAND: ["lake", "build", "Dyadic354.FERecurrence"]
+UTC: 2026-09-12T17:22:25.531567+00:00
+ℹ [1802/1818] Replayed Dyadic354.CyclicBoundary
+info: Dyadic354/CyclicBoundary.lean:78:6: Try this:
+  [apply] abel_nf
+✔ [1818/1818] Built Dyadic354.FERecurrence (13s)
+Build completed successfully (1818 jobs).
+
+EXIT CODE: 0
+ELAPSED SECONDS: 18.401
