@@ -3,7 +3,7 @@
 **Two dyadic floor sequences are claimed to be strongly complete.**
 
 Version: **v0.1.0-candidate** · Package prepared: **12 September 2026**  
-Contributors: **Andrew Y and ChatGPT (AI system)** · Human maintainer: **[@Andrewyzzz](https://github.com/Andrewyzzz)**
+Contributors: **Andrewyzzz and Chatgpt-6 Astra (AI system)** · Human maintainer: **[@Andrewyzzz](https://github.com/Andrewyzzz)**
 
 > **Status:** complete candidate argument, released for independent scrutiny.
 > No journal acceptance, independent professional endorsement, or full Lean / proof-assistant
@@ -105,8 +105,8 @@ by the actual repository history once uploaded.
 
 ## Attribution and disclosure
 
-Andrew Y and ChatGPT are credited for the project; ChatGPT is explicitly an AI
-system, not a human researcher. Andrew Y is the responsible human maintainer.
+Andrewyzzz and Chatgpt-6 Astra are credited for the project; Chatgpt-6 Astra is explicitly an AI
+system, not a human researcher. Andrewyzzz is the responsible human maintainer.
 AI contributed substantially to proof development, code, exposition, and critical
 checking. Three review reports were supplied during development; this repository
 does not represent them as three verified independent professional endorsements.

@@ -1,11 +1,11 @@
 # Attribution and responsibility
 
-**Project contributors: Andrew Y and ChatGPT (AI system).**
+**Project contributors: Andrewyzzz and Chatgpt-6 Astra (AI system).**
 
-**Human maintainer and responsible contact:** Andrew Y, GitHub
+**Human maintainer and responsible contact:** Andrewyzzz, GitHub
 [@Andrewyzzz](https://github.com/Andrewyzzz).
 
-ChatGPT contributed to mathematical exploration, argument drafting, implementation
+Chatgpt-6 Astra contributed to mathematical exploration, argument drafting, implementation
 of finite checks, revision, and critical examination. It is not a human researcher,
 proof assistant, independent expert reviewer, or representative of a university.
 The human maintainer remains responsible for the submission and for responding to

@@ -34,7 +34,7 @@ The main points I would especially appreciate having challenged are Sections 3.2
 (window coverage and permanence) and Section 8.1 (the changing-period estimate),
 as well as the event-index and same-parameter interfaces.
 
-The work was developed by Andrew Y with substantial assistance from ChatGPT.
+The work was developed by Andrewyzzz with substantial assistance from Chatgpt-6 Astra.
 The finite symbolic certificate is machine-checked, but the **whole proof is not
 Lean-formalized, peer reviewed, or claimed to be independently professionally
 certified**. The included finite tests do not prove the infinite theorem. I would
