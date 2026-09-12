@@ -70,9 +70,9 @@ theorem permanent_projection (v : ℕ → ℤ) (N : ℕ) (W : Finset ℤ)
 /-- Algebraic local descent, including the actual certificate-to-prefix link.
 The future enumeration must satisfy the explicit doubling bound. This is
 not automatic for the frozen a,b,a,b interleave: the manuscript orders the
-future pairs b,a, so that reindexing still needs a floor-sequence adapter.
-Floor recurrence, event times, and existence of qualifying blocks remain
-separate obligations; this is not a theorem asserting completeness. -/
+future pairs b,a. The floor-sequence and arrival-event adapter is proved in
+FloorDescent.lean. Existence of qualifying blocks and completeness remain
+separate obligations; this generic theorem asserts neither. -/
 theorem certificate_permanent_descent (n ℓ d : ℕ) [NeZero d] (v : ℕ → ℤ)
     (first second third : Certificate.Digits) (p q : ℤ)
     (hfirst : first ≠ (false, false)) (hq : 0 < q) (hqp : q < p) (hpq : p < 2 * q)

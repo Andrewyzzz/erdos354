@@ -1,6 +1,6 @@
 COMMAND: ["lake", "env", "lean", "Dyadic354/Audit.lean"]
-CWD: /var/folders/jh/s0mgjxhd7qn3zb1wp19mgsp40000gn/T/erdos354-lean-clean-tvv0u9kt/formalization
-UTC: 2026-09-12T16:07:42.321804+00:00
+CWD: /var/folders/jh/s0mgjxhd7qn3zb1wp19mgsp40000gn/T/erdos354-lean-clean-yjeraqoa/formalization
+UTC: 2026-09-12T16:27:04.999366+00:00
 def Dyadic354.PartI : Prop :=
 ∀ (α β : ℝ), 0 < α → 0 < β → Irrational (α / β) → Dyadic354.IndexedComplete (Dyadic354.interleave α β 2)
 def Dyadic354.StrongCompleteness : Prop :=
@@ -208,6 +208,77 @@ Dyadic354.PermanentMesh.certificate_permanent_descent (n ℓ d : ℕ) [NeZero d]
       Dyadic354.CyclicGaps.gap (Dyadic354.Mesh.residues (Dyadic354.PermanentMesh.prefixSums v (2 * (n + ℓ + 3) + t)) m)
           ⋯ ≤
         Dyadic354.CyclicGaps.gap (Dyadic354.NodeRepresentations.oldResidues n d old) ⋯ - 1
+def Dyadic354.FloorSequence.correction : ℝ → ℕ → ℤ :=
+fun α n => Dyadic354.FloorSequence.term α (n + 1) - 2 * Dyadic354.FloorSequence.term α n
+def Dyadic354.FloorSequence.bit : ℝ → ℕ → Bool :=
+fun α n => decide (Dyadic354.FloorSequence.correction α n = 1)
+def Dyadic354.ExactBlock.IsEvent : ℝ → ℝ → ℕ → Prop :=
+fun α β t => 0 < t ∧ Dyadic354.ExactBlock.digits α β (t - 1) ≠ (false, false)
+def Dyadic354.PairReindex.swapAfter : ℕ → ℕ → ℕ :=
+fun r j => if j < 2 * r then j else if j % 2 = 0 then j + 1 else j - 1
+def Dyadic354.FloorDescent.modulus : ℝ → ℝ → ℕ → ℕ :=
+fun α β n => (Dyadic354.FloorSequence.term α n).gcd (Dyadic354.FloorSequence.term β n)
+def Dyadic354.FloorDescent.pCoord : ℝ → ℝ → ℕ → ℤ :=
+fun α β n => Dyadic354.FloorSequence.term α n / ↑(Dyadic354.FloorDescent.modulus α β n)
+def Dyadic354.FloorDescent.qCoord : ℝ → ℝ → ℕ → ℤ :=
+fun α β n => Dyadic354.FloorSequence.term β n / ↑(Dyadic354.FloorDescent.modulus α β n)
+def Dyadic354.FloorDescent.gapAt : ℝ → (β : ℝ) → (n : ℕ) → 0 < Dyadic354.FloorSequence.term β n → ℕ :=
+fun α β n hb =>
+  Dyadic354.CyclicGaps.gap
+    (Dyadic354.Mesh.residues (Dyadic354.PermanentMesh.prefixSums (Dyadic354.interleave α β 2) (2 * n))
+      (Dyadic354.FloorDescent.modulus α β n))
+    ⋯
+def Dyadic354.BlockLength.growthConstant : ℝ → ℕ :=
+fun α => (16 * (Dyadic354.FloorSequence.term α 0 + 1) ^ 2).toNat
+Dyadic354.FloorSequence.recurrence (α : ℝ) (n : ℕ) :
+  Dyadic354.FloorSequence.term α (n + 1) =
+    2 * Dyadic354.FloorSequence.term α n + Dyadic354.Certificate.digit (Dyadic354.FloorSequence.bit α n)
+Dyadic354.FloorSequence.normalized_bounds (α β : ℝ) (hb : 0 < Dyadic354.FloorSequence.term β 0)
+  (hba : Dyadic354.FloorSequence.term β 0 < Dyadic354.FloorSequence.term α 0)
+  (hab : Dyadic354.FloorSequence.term α 0 < 2 * Dyadic354.FloorSequence.term β 0) (n : ℕ) :
+  0 < Dyadic354.FloorSequence.term β n ∧
+    Dyadic354.FloorSequence.term β n < Dyadic354.FloorSequence.term α n ∧
+      Dyadic354.FloorSequence.term α n < 2 * Dyadic354.FloorSequence.term β n
+Dyadic354.FloorSequence.prefix_deficit (α : ℝ) (n : ℕ) :
+  Dyadic354.FloorSequence.term α n - ∑ i ∈ Finset.range n, Dyadic354.FloorSequence.term α i =
+    Dyadic354.FloorSequence.term α 0 + ∑ i ∈ Finset.range n, Dyadic354.FloorSequence.correction α i
+Dyadic354.PairReindex.prefixSums_reindex (v : ℕ → ℤ) (r t : ℕ) :
+  Dyadic354.PermanentMesh.prefixSums (fun j => v (Dyadic354.PairReindex.swapAfter r j)) (2 * t) =
+    Dyadic354.PermanentMesh.prefixSums v (2 * t)
+Dyadic354.ExactBlock.six_after_exact_block (α β : ℝ) (n ℓ : ℕ) (d p q : ℤ) (hℓ : 0 < ℓ)
+  (ha : Dyadic354.FloorSequence.term α n = d * p) (hb : Dyadic354.FloorSequence.term β n = d * q)
+  (hza : ∀ (i : ℕ), i + 1 < ℓ → Dyadic354.FloorSequence.bit α (n + i) = false)
+  (hzb : ∀ (i : ℕ), i + 1 < ℓ → Dyadic354.FloorSequence.bit β (n + i) = false) (i : Fin 6) :
+  Dyadic354.interleave α β 2 (2 * n + 2 * ℓ + ↑i) =
+    Dyadic354.Certificate.weights (Dyadic354.ExactBlock.digits α β (n + ℓ - 1))
+      (Dyadic354.ExactBlock.digits α β (n + ℓ)) (Dyadic354.ExactBlock.digits α β (n + ℓ + 1)) d (2 ^ ℓ) p q i
+Dyadic354.FloorDescent.long_block_descent (α β : ℝ) (n ℓ : ℕ) (hb0 : 0 < Dyadic354.FloorSequence.term β 0)
+  (hba0 : Dyadic354.FloorSequence.term β 0 < Dyadic354.FloorSequence.term α 0)
+  (hab0 : Dyadic354.FloorSequence.term α 0 < 2 * Dyadic354.FloorSequence.term β 0) (hℓ : 0 < ℓ)
+  (hzero : ∀ (i : ℕ), i + 1 < ℓ → Dyadic354.ExactBlock.digits α β (n + i) = (false, false))
+  (hevent : Dyadic354.ExactBlock.IsEvent α β (n + ℓ))
+  (hK :
+    Dyadic354.InitialMesh.threshold (Dyadic354.FloorDescent.pCoord α β n) (Dyadic354.FloorDescent.qCoord α β n) ≤ 2 ^ ℓ)
+  (t : ℕ) : n + ℓ + 3 ≤ t → Dyadic354.FloorDescent.gapAt α β t ⋯ ≤ Dyadic354.FloorDescent.gapAt α β n ⋯ - 1
+Dyadic354.FloorDescent.next_event_descent (α β : ℝ) (n m : ℕ) (hb0 : 0 < Dyadic354.FloorSequence.term β 0)
+  (hba0 : Dyadic354.FloorSequence.term β 0 < Dyadic354.FloorSequence.term α 0)
+  (hab0 : Dyadic354.FloorSequence.term α 0 < 2 * Dyadic354.FloorSequence.term β 0) (hnm : n < m)
+  (hno : ∀ (t : ℕ), n < t → t < m → ¬Dyadic354.ExactBlock.IsEvent α β t) (hm : Dyadic354.ExactBlock.IsEvent α β m)
+  (hK :
+    Dyadic354.InitialMesh.threshold (Dyadic354.FloorDescent.pCoord α β n) (Dyadic354.FloorDescent.qCoord α β n) ≤
+      2 ^ (m - n))
+  (t : ℕ) : m + 3 ≤ t → Dyadic354.FloorDescent.gapAt α β t ⋯ ≤ Dyadic354.FloorDescent.gapAt α β n ⋯ - 1
+Dyadic354.BlockLength.threshold_of_length (α β : ℝ) (n ℓ : ℕ) (hb0 : 0 < Dyadic354.FloorSequence.term β 0)
+  (hba0 : Dyadic354.FloorSequence.term β 0 < Dyadic354.FloorSequence.term α 0)
+  (hab0 : Dyadic354.FloorSequence.term α 0 < 2 * Dyadic354.FloorSequence.term β 0)
+  (hℓ : 2 * n + Dyadic354.BlockLength.growthConstant α ≤ ℓ) :
+  Dyadic354.InitialMesh.threshold (Dyadic354.FloorDescent.pCoord α β n) (Dyadic354.FloorDescent.qCoord α β n) ≤ 2 ^ ℓ
+Dyadic354.BlockLength.next_event_length_descent (α β : ℝ) (n m : ℕ) (hb0 : 0 < Dyadic354.FloorSequence.term β 0)
+  (hba0 : Dyadic354.FloorSequence.term β 0 < Dyadic354.FloorSequence.term α 0)
+  (hab0 : Dyadic354.FloorSequence.term α 0 < 2 * Dyadic354.FloorSequence.term β 0) (hnm : n < m)
+  (hno : ∀ (t : ℕ), n < t → t < m → ¬Dyadic354.ExactBlock.IsEvent α β t) (hm : Dyadic354.ExactBlock.IsEvent α β m)
+  (hlen : 2 * n + Dyadic354.BlockLength.growthConstant α ≤ m - n) (t : ℕ) :
+  m + 3 ≤ t → Dyadic354.FloorDescent.gapAt α β t ⋯ ≤ Dyadic354.FloorDescent.gapAt α β n ⋯ - 1
 'Dyadic354.mem_finiteSubsetSums' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Dyadic354.Linear.eval_add' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Dyadic354.Linear.eval_sub' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -291,6 +362,50 @@ Dyadic354.PermanentMesh.certificate_permanent_descent (n ℓ d : ℕ) [NeZero d]
 'Dyadic354.PermanentMesh.gap_of_subset' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Dyadic354.PermanentMesh.permanent_projection' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Dyadic354.PermanentMesh.certificate_permanent_descent' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.FloorSequence.correction_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.FloorSequence.digit_bit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.FloorSequence.recurrence' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.FloorSequence.next_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.FloorSequence.normalized_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.FloorSequence.prefix_deficit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.FloorSequence.prefix_sum_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.FloorSequence.interleave_even' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.FloorSequence.interleave_odd' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.FloorSequence.paired_prefix_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.FloorSequence.paired_prefix_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.PairReindex.swapAfter_before' depends on axioms: [propext]
+'Dyadic354.PairReindex.swapAfter_even' depends on axioms: [propext, Quot.sound]
+'Dyadic354.PairReindex.swapAfter_odd' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.PairReindex.index_cases' depends on axioms: [propext, Quot.sound]
+'Dyadic354.PairReindex.swapAfter_involutive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.PairReindex.swapAfter_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.PairReindex.swapAfter_lt_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.PairReindex.prefixSums_reindex_subset' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.PairReindex.prefixSums_reindex' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.PairReindex.sortedTail_even' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.PairReindex.sortedTail_odd' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.PairReindex.sortedTail_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.PairReindex.sortedTail_doubling' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.ExactBlock.no_events_zero_digits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.ExactBlock.exact_block' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.ExactBlock.after_exact_block' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.ExactBlock.interleave_block' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.ExactBlock.three_pairs' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.ExactBlock.six_after_exact_block' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.ExactBlock.next_small_weight_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.FloorDescent.fin_prefix_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.FloorDescent.oldResidues_prefix' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.FloorDescent.modulus_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.FloorDescent.gcd_coordinates' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.FloorDescent.interleave_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.FloorDescent.long_block_descent' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.FloorDescent.next_event_descent' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.BlockLength.threshold_le_square' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.BlockLength.floor_upper' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.BlockLength.coordinate_upper' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.BlockLength.growthConstant_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.BlockLength.threshold_of_length' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.BlockLength.next_event_length_descent' depends on axioms: [propext, Classical.choice, Quot.sound]
 
 EXIT CODE: 0
-ELAPSED SECONDS: 7.145
+ELAPSED SECONDS: 13.185

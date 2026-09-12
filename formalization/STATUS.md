@@ -1,11 +1,12 @@
-# 第三批状态
+# 第四批状态
 
-**已完成证书、网格基础、合法块表示、初始网格，以及显式局部假设下的代数永久下降；#354(i) 与集合强完全性尚未形式化完成。**
+**已把局部下降接到实际地板序列、实际 gcd 模数与到达层事件，并证明块长门槛；#354(i) 与集合强完全性尚未形式化完成。**
 
 实际证书由 Lean 内核计算核验，通过通用 soundness 定理得到全部合法整数参数上的
 系数覆盖与六项子集和语义。第二批证明主稿 Lemma 2.1、2.2、2.3，并补齐最长缺失段、
 实际相邻点距离与窗口表述之间的连接。第三批增加主稿 §3–4 的有限表示链及 §5 的局部
-代数投影链，共增加 32 个定理。有限数据使用 `decide +kernel`，累计 83 个本地定理的
+代数投影链，共增加 32 个定理。第四批增加 44 个定理，完成地板递推、成对重排、
+实际局部块、gcd 坐标、条件永久下降及长度估计。有限数据使用 `decide +kernel`，累计 127 个本地定理的
 传递公理依赖均为 `propext`、`Classical.choice`、`Quot.sound` 的子集。
 最终构建与审计见 `logs/verification.json`，独立目录重建见
 `logs/fresh-verification.json`；完整实际输出保存在同目录的日志。
@@ -124,7 +125,7 @@
 | `PermanentMesh.permanent_projection` | 给定合法初始网格及未来权重界，任意后续较小模数上的前缀缺口界 |
 | `PermanentMesh.certificate_permanent_descent` | 从实际模板出发，在显式局部块及未来权重条件下，所有后续合适模数的缺口不超过旧缺口减1 |
 
-### 这一批结论的准确边界
+### 第三批定理的局部接口
 
 `certificate_initial_mesh` 的条件为正整数模数 d，整数 `0<q<p<2q`，
 `IsCoprime p q`，非负旧权重且旧总和 `<d(p+q)`，`K=2^ℓ≥K_*`，非零首位型。
@@ -134,7 +135,7 @@
 `prefix_initial_mesh` 进一步把位置显式映射为旧前缀 `[0,2n)`、
 倍增块的 `2n+2i` / `2n+2i+1`、六项的 `2n+2ℓ+j`。
 该映射已证明是单射；与给定序列 v 的对应由两条块恒等式和六项恒等式明确表达。
-还没有从原题的实数地板函数、事件与 gcd 自动推导这些局部假设。
+第三批没有从实数地板函数、事件与 gcd 推导这些局部假设；第四批已经补上该接口，见下节。
 
 `certificate_permanent_descent` 没有假设网格存在或缺口下降；二者在定理内部证明。
 但仍显式要求未来权重为正、后一项不超过前一项两倍、第一未来项
@@ -142,9 +143,79 @@
 **这只是 §5 的局部代数版本，不能声称 §2–6 已全部形式化。**
 
 特别注意未来项的顺序：主稿传播使用 `b_r,a_r,b_{r+1},a_{r+1},…`；
-冻结的原题定义是 `a_r,b_r,a_{r+1},b_{r+1},…`。不能未经证明就把后者代入
-两倍界条件。后续需要显式的索引置换及完整成对前缀和值不变证明，再推导未来界。
-本批没有改动冻结的原题定义来消除这一接口义务。
+冻结的原题定义是 `a_r,b_r,a_{r+1},b_{r+1},…`。第四批通过显式的索引对换、
+完整成对前缀和值不变及地板递推证明解决这一接口，没有修改冻结的原题定义。
+
+## 第四批已编译定理与主稿对应（44个）
+
+以下名称均省略共同前缀 `Dyadic354.`；每个辅助定理都列入公理审计。
+
+| 声明名 | 对应内容 |
+|---|---|
+| `FloorSequence.correction_bounds` | §1：真实地板误差在整数区间 `[0,1]` |
+| `FloorSequence.digit_bit` | 布尔位求值等于真实误差 |
+| `FloorSequence.recurrence` | `a_(n+1)=2a_n+u_n`，不是额外假设 |
+| `FloorSequence.next_bounds` | 单列下一项介于两倍与两倍加1之间 |
+| `FloorSequence.normalized_bounds` | 归一化初值的 `0<b_n<a_n<2b_n` 对所有层保持 |
+| `FloorSequence.prefix_deficit` | 单列当前项减旧前缀和的精确恒等式 |
+| `FloorSequence.prefix_sum_lt` | 正初值下单列旧前缀和严格小于当前项 |
+| `FloorSequence.interleave_even` | 冻结交错定义在偶数位置取第一列 |
+| `FloorSequence.interleave_odd` | 冻结交错定义在奇数位置取第二列 |
+| `FloorSequence.paired_prefix_sum` | 完整成对前缀和等于两列前缀和 |
+| `FloorSequence.paired_prefix_lt` | §1、§3：实际 `S_n<a_n+b_n` |
+| `PairReindex.swapAfter_before` | 更新层之前的每个原索引保持不变 |
+| `PairReindex.swapAfter_even` | 更新层之后交换偶数位置 |
+| `PairReindex.swapAfter_odd` | 更新层之后交换奇数位置 |
+| `PairReindex.index_cases` | 自然数索引的二分解 |
+| `PairReindex.swapAfter_involutive` | 成对交换两次是恒等映射 |
+| `PairReindex.swapAfter_injective` | 不会碰撞或重复使用原索引 |
+| `PairReindex.swapAfter_lt_iff` | 每个完整成对前缀的索引范围保持不变 |
+| `PairReindex.prefixSums_reindex_subset` | 重排前后合法子集和值的一个包含方向 |
+| `PairReindex.prefixSums_reindex` | 重排前后每个完整成对前缀的全部子集和值相等 |
+| `PairReindex.sortedTail_even` | 新未来枚举的偶数位置实际为 b 项 |
+| `PairReindex.sortedTail_odd` | 新未来枚举的奇数位置实际为 a 项 |
+| `PairReindex.sortedTail_positive` | 从归一化地板初值得到未来每项严格为正 |
+| `PairReindex.sortedTail_doubling` | 从地板递推得到未来相邻项至多翻倍 |
+| `ExactBlock.no_events_zero_digits` | 到达层区间无事件蕴含对应离开位全为零 |
+| `ExactBlock.exact_block` | ℓ−1 次零转换给出 ℓ 个精确倍增权重 |
+| `ExactBlock.after_exact_block` | 第 ℓ 次转换位于到达层 n+ℓ，明确偏移一位 |
+| `ExactBlock.interleave_block` | 冻结交错列上的两条实际倍增块恒等式 |
+| `ExactBlock.three_pairs` | 实际连续三对权重等于证书六项向量 |
+| `ExactBlock.six_after_exact_block` | 从零转换块自动推出证书六项输入 |
+| `ExactBlock.next_small_weight_bound` | 从真实误差界推出 `b_(n+ℓ+3)≤8dKq+15` |
+| `FloorDescent.fin_prefix_iff` | `Fin(2n)` 与自然数前缀的合法表示等价 |
+| `FloorDescent.oldResidues_prefix` | 证书旧余数集等于实际交错列前缀的模像 |
+| `FloorDescent.modulus_positive` | 正 b 项保证当前实际 gcd 为正 |
+| `FloorDescent.gcd_coordinates` | 除实际 gcd 得到 `a=dp,b=dq,0<q<p<2q` 及 Bézout 互素性 |
+| `FloorDescent.interleave_positive` | 归一化后冻结交错列每个原始权重都为正 |
+| `FloorDescent.long_block_descent` | §5：实际地板列长零块与末端事件触发永久下降 |
+| `FloorDescent.next_event_descent` | 到达层版本：末端事件在 m，更新从 m+3 生效 |
+| `BlockLength.threshold_le_square` | §5：`K_*≤16p²` |
+| `BlockLength.floor_upper` | `a_n<(M+1)2^n` |
+| `BlockLength.coordinate_upper` | 实际约化坐标 `0<p≤a_n<(M+1)2^n` |
+| `BlockLength.growthConstant_bound` | 仅依赖初始 M 的显式常数控制 `16(M+1)²` |
+| `BlockLength.threshold_of_length` | 块长 `ℓ≥2n+C` 蕴含证书要求 `2^ℓ≥K_*` |
+| `BlockLength.next_event_length_descent` | 实际无事件区间的长度条件蕴含从 m+3 起永久下降 |
+
+### 当前最强结论及其前提
+
+`BlockLength.next_event_length_descent` 针对实际
+`a_i=⌊2^i α⌋, b_i=⌊2^i β⌋`，在以下条件下成立：
+
+1. 初值满足 `0<b_0<a_0<2b_0`（一般正实数参数如何合法归一化仍待证明）。
+2. `n<m`，到达层开区间 `(n,m)` 内无事件，m 是事件。
+3. `m−n≥2n+C`，其中本工程明确取 `C=(16(a_0+1)²).toNat`。
+
+结论是：**对每个 `t≥m+3`，实际 gcd 模数上的实际前缀缺口满足
+`h_t≤h_n−1`（自然数截断减法）**。
+这里 `D_t=gcd(a_t,b_t)`，不是任意输入的替代模数；前缀由冻结交错列的有限自然数
+索引集取和。旧总和界、互素性、六项输入、未来正性、两倍界和首项界均在证明中导出，
+不再作为该末端定理的独立前提。依赖链实际包含原始12条模板的内核核验证书。
+
+常数 C 故意取得宽松，未追求对数级最优值；它只依赖初始第一列的地板 M，
+不依赖未来位串、事件或模数。该条件性结论无需无理性，不能据此声称已证明原题。
+**长间隔的存在/累计矛盾、低缺口推出完全性与无限事件链仍未完成。**
+因此第3里程碑已进一步推进，但仍不能称 §2–6 已全部形式化，更不能称 FE/DB/BG 已完成。
 
 ## 固定但未证明的目标
 
@@ -157,14 +228,15 @@
 
 ## 后续数学义务
 
-1. §1 与 §3：实数地板递推、到达层事件、gcd/Bézout 对应；从原序列推导本批局部块、六项及旧总和条件。索引单射本身已经证明。
-2. §5：未来项 `b,a` 重排、成对前缀和值不变、未来两倍界及首项界；把本批局部代数下降定理实例化到实际 `D_t,h_t`。
-3. §5–6：长度条件蕴含 `K≥K_*`、低缺口蕴含完全性、不相交更新时刻、有限次严格下降和事件倍率有界。
+1. §1：无理比值蕴含事件集无限；固定前缀网格界及主稿的统一 `h_n≤N−1` 界尚未证明。
+2. §5–6：低缺口/单位网格推出完全性，不相交更新时刻、有限次严格下降及事件倍率有界。
+3. §1、§7：一般正实数参数的合法向上归一化、截尾、去重、有限删除；本批仍以已归一化初值为条件。
 4. §8–11：完整 FE、DB、BG，变周期边界、连分数匹配层和返回成本极限。
-5. §1、§7：合法向上截尾、去重、有限删除、两种完全性及上游原题的最终连接。
+5. 两种完全性及上游 Formal Conjectures 原题的最终连接与陈述核对。
 
-本批没有剩余编译阻断，所完成的有限表示、余量预算与局部代数下降未发现数学缺口。
-编译修复涉及索引类型的定义展开、保留标识符、库参数顺序及严格风格检查，未改弱数学命题。
+本批没有剩余编译阻断。已检查部分没有发现数学缺口；上一批标出的未来枚举顺序与
+局部权重接口已通过显式证明补齐。编译修复涉及地板表达式一致性、缩写展开、
+依赖非空证明的等式改写和严格风格检查，未改弱数学命题。
 上述尚未完成的无限论证没有因此得到验证。后续若出现阻断，应单独保存最小失败文件、
 完整目标上下文和缺失引理。
 

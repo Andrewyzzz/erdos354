@@ -172,7 +172,7 @@ theorem certificate_initial_mesh (n ℓ d : ℕ) [NeZero d] (old : Fin (2 * n) �
   exact ⟨hW, hgap, hspan, lt_of_lt_of_le hb.2 hspan⟩
 
 /-- Original-prefix version. The exact doubling identities and six following
-weights are explicit hypotheses to be obtained from the floor recurrence.
+weights are explicit hypotheses, derived from floor recurrence in FloorDescent.
 Every resulting mesh point uses a finite set of original indices once each. -/
 theorem prefix_initial_mesh (n ℓ d : ℕ) [NeZero d] (v : ℕ → ℤ)
     (first second third : Certificate.Digits) (p q : ℤ)

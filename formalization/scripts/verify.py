@@ -80,7 +80,7 @@ if missing or bad:
     raise SystemExit(f'Axiom audit failed: missing={sorted(missing)}, disallowed={bad}')
 result = {
     'status': 'PASS',
-    'scope': 'Finite certificate, mesh foundations, legal block representations, initial mesh and local algebraic permanent descent. Floor/event adapters and Erdős 354(i) remain unproved.',
+    'scope': 'Certificate, mesh and representation foundations; actual normalized dyadic floor-sequence permanent descent conditional on a sufficiently long event gap, with a proved length criterion. Existence/event accumulation, FE/DB/BG, normalization and Erdős 354(i) remain unproved.',
     'fresh_project_build': args.fresh,
     'dependency_cache_reused': True,
     'audited_theorems': len(records),

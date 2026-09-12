@@ -1,0 +1,7 @@
+COMMAND: ["lake", "build", "Dyadic354.FloorDescent"]
+UTC: 2026-09-12T16:19:01.251567+00:00
+✔ [1798/1798] Built Dyadic354.FloorDescent (14s)
+Build completed successfully (1798 jobs).
+
+EXIT CODE: 0
+ELAPSED SECONDS: 18.857

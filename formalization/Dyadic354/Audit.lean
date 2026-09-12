@@ -2,6 +2,7 @@ import Dyadic354.Statements
 import Dyadic354.CertificateData
 import Dyadic354.Mesh
 import Dyadic354.PermanentMesh
+import Dyadic354.BlockLength
 
 #print Dyadic354.PartI
 #print Dyadic354.StrongCompleteness
@@ -42,6 +43,25 @@ import Dyadic354.PermanentMesh
 #check Dyadic354.InitialMesh.prefix_initial_mesh
 #check Dyadic354.PermanentMesh.permanent_projection
 #check Dyadic354.PermanentMesh.certificate_permanent_descent
+
+#print Dyadic354.FloorSequence.correction
+#print Dyadic354.FloorSequence.bit
+#print Dyadic354.ExactBlock.IsEvent
+#print Dyadic354.PairReindex.swapAfter
+#print Dyadic354.FloorDescent.modulus
+#print Dyadic354.FloorDescent.pCoord
+#print Dyadic354.FloorDescent.qCoord
+#print Dyadic354.FloorDescent.gapAt
+#print Dyadic354.BlockLength.growthConstant
+#check Dyadic354.FloorSequence.recurrence
+#check Dyadic354.FloorSequence.normalized_bounds
+#check Dyadic354.FloorSequence.prefix_deficit
+#check Dyadic354.PairReindex.prefixSums_reindex
+#check Dyadic354.ExactBlock.six_after_exact_block
+#check Dyadic354.FloorDescent.long_block_descent
+#check Dyadic354.FloorDescent.next_event_descent
+#check Dyadic354.BlockLength.threshold_of_length
+#check Dyadic354.BlockLength.next_event_length_descent
 
 #print axioms Dyadic354.mem_finiteSubsetSums
 #print axioms Dyadic354.Linear.eval_add
@@ -128,3 +148,48 @@ import Dyadic354.PermanentMesh
 #print axioms Dyadic354.PermanentMesh.gap_of_subset
 #print axioms Dyadic354.PermanentMesh.permanent_projection
 #print axioms Dyadic354.PermanentMesh.certificate_permanent_descent
+
+#print axioms Dyadic354.FloorSequence.correction_bounds
+#print axioms Dyadic354.FloorSequence.digit_bit
+#print axioms Dyadic354.FloorSequence.recurrence
+#print axioms Dyadic354.FloorSequence.next_bounds
+#print axioms Dyadic354.FloorSequence.normalized_bounds
+#print axioms Dyadic354.FloorSequence.prefix_deficit
+#print axioms Dyadic354.FloorSequence.prefix_sum_lt
+#print axioms Dyadic354.FloorSequence.interleave_even
+#print axioms Dyadic354.FloorSequence.interleave_odd
+#print axioms Dyadic354.FloorSequence.paired_prefix_sum
+#print axioms Dyadic354.FloorSequence.paired_prefix_lt
+#print axioms Dyadic354.PairReindex.swapAfter_before
+#print axioms Dyadic354.PairReindex.swapAfter_even
+#print axioms Dyadic354.PairReindex.swapAfter_odd
+#print axioms Dyadic354.PairReindex.index_cases
+#print axioms Dyadic354.PairReindex.swapAfter_involutive
+#print axioms Dyadic354.PairReindex.swapAfter_injective
+#print axioms Dyadic354.PairReindex.swapAfter_lt_iff
+#print axioms Dyadic354.PairReindex.prefixSums_reindex_subset
+#print axioms Dyadic354.PairReindex.prefixSums_reindex
+#print axioms Dyadic354.PairReindex.sortedTail_even
+#print axioms Dyadic354.PairReindex.sortedTail_odd
+#print axioms Dyadic354.PairReindex.sortedTail_positive
+#print axioms Dyadic354.PairReindex.sortedTail_doubling
+#print axioms Dyadic354.ExactBlock.no_events_zero_digits
+#print axioms Dyadic354.ExactBlock.exact_block
+#print axioms Dyadic354.ExactBlock.after_exact_block
+#print axioms Dyadic354.ExactBlock.interleave_block
+#print axioms Dyadic354.ExactBlock.three_pairs
+#print axioms Dyadic354.ExactBlock.six_after_exact_block
+#print axioms Dyadic354.ExactBlock.next_small_weight_bound
+#print axioms Dyadic354.FloorDescent.fin_prefix_iff
+#print axioms Dyadic354.FloorDescent.oldResidues_prefix
+#print axioms Dyadic354.FloorDescent.modulus_positive
+#print axioms Dyadic354.FloorDescent.gcd_coordinates
+#print axioms Dyadic354.FloorDescent.interleave_positive
+#print axioms Dyadic354.FloorDescent.long_block_descent
+#print axioms Dyadic354.FloorDescent.next_event_descent
+#print axioms Dyadic354.BlockLength.threshold_le_square
+#print axioms Dyadic354.BlockLength.floor_upper
+#print axioms Dyadic354.BlockLength.coordinate_upper
+#print axioms Dyadic354.BlockLength.growthConstant_bound
+#print axioms Dyadic354.BlockLength.threshold_of_length
+#print axioms Dyadic354.BlockLength.next_event_length_descent

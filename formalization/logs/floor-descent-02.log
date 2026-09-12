@@ -1,0 +1,81 @@
+COMMAND: ["lake", "build", "Dyadic354.FloorDescent"]
+UTC: 2026-09-12T16:19:32.614941+00:00
+✖ [1798/1798] Building Dyadic354.FloorDescent (10s)
+trace: .> LEAN_PATH=/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/Cli/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/batteries/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/Qq/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/aesop/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/importGraph/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/plausible/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/mathlib/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean /Users/andrewyz/.elan/toolchains/leanprover--lean4---v4.27.0/bin/lean /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/Dyadic354/FloorDescent.lean -o /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean/Dyadic354/FloorDescent.olean -i /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean/Dyadic354/FloorDescent.ilean -c /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/ir/Dyadic354/FloorDescent.c --setup /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/ir/Dyadic354/FloorDescent.setup.json --json
+error: Dyadic354/FloorDescent.lean:149:6: Tactic `rewrite` failed: motive is not type correct:
+  fun _a =>
+    CyclicGaps.gap (Mesh.residues _a (modulus α β t)) ⋯ ≤
+      max 1 (CyclicGaps.gap (NodeRepresentations.oldResidues n d fun i => interleave α β 2 ↑i) ⋯) - 1
+Error: Application type mismatch: The argument
+  Mesh.residues_nonempty (PermanentMesh.prefixSums (PairReindex.sortedTail α β r) (2 * t))
+    (PermanentMesh.prefix_nonempty (PairReindex.sortedTail α β r) (2 * t)) (modulus α β t)
+has type
+  (Mesh.residues (PermanentMesh.prefixSums (PairReindex.sortedTail α β r) (2 * t)) (modulus α β t)).Nonempty
+but is expected to have type
+  (Mesh.residues _a (modulus α β t)).Nonempty
+in the application
+  CyclicGaps.gap (Mesh.residues _a (modulus α β t)) ⋯
+
+Explanation: The rewrite tactic rewrites an expression 'e' using an equality 'a = b' by the following process. First, it looks for all 'a' in 'e'. Second, it tries to abstract these occurrences of 'a' to create a function 'm := fun _a => ...', called the *motive*, with the property that 'm a' is definitionally equal to 'e'. Third, we observe that 'congrArg' implies that 'm a = m b', which can be used with lemmas such as 'Eq.mpr' to change the goal. However, if 'e' depends on specific properties of 'a', then the motive 'm' might not typecheck.
+
+Possible solutions: use rewrite's 'occs' configuration option to limit which occurrences are rewritten, or use 'simp' or 'conv' mode, which have strategies for certain kinds of dependencies (these tactics can handle proofs and 'Decidable' instances whose types depend on the rewritten term, and 'simp' can apply user-defined '@[congr]' theorems as well).
+
+α β : ℝ
+n ℓ : ℕ
+hb0 : 0 < term β 0
+hba0 : term β 0 < term α 0
+hab0 : term α 0 < 2 * term β 0
+hℓ : 0 < ℓ
+hzero : ∀ (i : ℕ), i + 1 < ℓ → ExactBlock.digits α β (n + i) = (false, false)
+hevent : ExactBlock.IsEvent α β (n + ℓ)
+hK : InitialMesh.threshold (pCoord α β n) (qCoord α β n) ≤ 2 ^ ℓ
+d : ℕ := modulus α β n
+p : ℤ := pCoord α β n
+q : ℤ := qCoord α β n
+r : ℕ := n + ℓ + 3
+hn : 0 < term β n ∧ term β n < term α n ∧ term α n < 2 * term β n
+this✝ : NeZero d := { out := ne_of_gt (modulus_positive α β n hn.left) }
+hq : 0 < qCoord α β n
+hqp : qCoord α β n < pCoord α β n
+hpq : pCoord α β n < 2 * qCoord α β n
+hcop : IsCoprime (pCoord α β n) (qCoord α β n)
+ha : term α n = ↑(modulus α β n) * pCoord α β n
+hb : term β n = ↑(modulus α β n) * qCoord α β n
+hza : ∀ (i : ℕ), i + 1 < ℓ → bit α (n + i) = false
+hzb : ∀ (i : ℕ), i + 1 < ℓ → bit β (n + i) = false
+hsum : ∑ i, interleave α β 2 ↑i < ↑d * (p + q)
+hblock :
+  (∀ (i : Fin ℓ), interleave α β 2 (2 * n + 2 * ↑i) = ↑d * p * 2 ^ ↑i) ∧
+    ∀ (i : Fin ℓ), interleave α β 2 (2 * n + 2 * ↑i + 1) = ↑d * q * 2 ^ ↑i
+hsix :
+  ∀ (i : Fin 6),
+    interleave α β 2 (2 * n + 2 * ℓ + ↑i) =
+      Certificate.weights (ExactBlock.digits α β (n + ℓ - 1)) (ExactBlock.digits α β (n + ℓ))
+        (ExactBlock.digits α β (n + ℓ + 1)) (↑d) (2 ^ ℓ) p q i
+W : Finset ℤ
+hW : W.Nonempty
+hsub : W ⊆ finiteSubsetSums (interleave α β 2) (Finset.range (2 * (n + ℓ + 3)))
+hgap : Mesh.gap W ≤ max 1 (CyclicGaps.gap (NodeRepresentations.oldResidues n d fun i => interleave α β 2 ↑i) ⋯)
+hspan : 8 * ↑d * 2 ^ ℓ * q + 15 < Mesh.span W hW
+hsub' : W ⊆ PermanentMesh.prefixSums (PairReindex.sortedTail α β r) (2 * r)
+hnext : PairReindex.sortedTail α β r (2 * r) ≤ Mesh.span W hW
+t : ℕ
+hrt : n + ℓ + 3 ≤ t
+ht : 0 < term β t ∧ term β t < term α t ∧ term α t < 2 * term β t
+this : NeZero (modulus α β t) := { out := ne_of_gt (modulus_positive α β t ht.left) }
+hmt : ↑(modulus α β t) ≤ PairReindex.sortedTail α β r (2 * r + 2 * (t - r))
+hidx : 2 * r + 2 * (t - r) = 2 * t
+hp' :
+  CyclicGaps.gap
+      (Mesh.residues (PermanentMesh.prefixSums (fun j => interleave α β 2 (PairReindex.swapAfter r j)) (2 * t))
+        (modulus α β t))
+      ⋯ ≤
+    max 1 (CyclicGaps.gap (NodeRepresentations.oldResidues n d fun i => interleave α β 2 ↑i) ⋯) - 1
+⊢ gapAt α β t ⋯ ≤ gapAt α β n ⋯ - 1
+error: Lean exited with code 1
+Some required targets logged failures:
+- Dyadic354.FloorDescent
+error: build failed
+
+EXIT CODE: 1
+ELAPSED SECONDS: 13.240

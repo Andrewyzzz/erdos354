@@ -1,13 +1,15 @@
 # 实际形式化环境
 
 记录日期：2026-09-13（Asia/Shanghai）。第一批命令见 `logs/environment.log`，
-第二批复核见 `logs/mesh-environment.log`，第三批实际复核见
-`logs/third-batch-environment.log`；命令日志使用 UTC 时间。
+第二批复核见 `logs/mesh-environment.log`，第三批复核见
+`logs/third-batch-environment.log`，第四批实际复核见
+`logs/fourth-batch-environment.log`；命令日志使用 UTC 时间。
 
 - 执行位置：本机 macOS 26.5.1，Apple Silicon / arm64。
 - 原稿基准提交：`dcdc3c255189ab4e0f9bbf9abea2ca0a3758de06`。
 - 第二批起点：第一批提交 `0f638801c6220866661581e5848eae7db87798a1`。
 - 第三批起点：第二批提交 `16e0de8ba8dd9f81d2e04d7834ed29ddaca1e7eb`。
+- 第四批起点：第三批提交 `d685bb3df0cb05190c31b7a92c2c7271f053580d`。
 - 开发分支：`lean-formalization`。起始工作树干净，所有新增内容位于 `formalization/`。
 - 实际 Lean：`4.27.0`，commit `db93fe1608548721853390a10cd40580fe7d22ae`。
 - 实际 Lake：`5.0.0-src+db93fe1`，使用 Lean 4.27.0。
@@ -39,8 +41,8 @@ Elan 输出中有一次查询默认 stable 最新版本失败的警告。项目�
 
 首个完整构建成功记录为 `logs/certificate-04.log`：`lake build` 退出码 0。
 它包含初始 18 个定理的审计。第一批最终为 20 个定理；第二批增加 31 个，
-第三批增加 32 个，累计 83 个。当前验收以 `logs/build.log`、`logs/axioms.log`、
-`logs/verification.json` 为准。前两批最终日志仍保存在对应提交与交付包中。
+第三批增加 32 个，第四批增加 44 个，累计 127 个。当前验收以 `logs/build.log`、`logs/axioms.log`、
+`logs/verification.json` 为准。前三批最终日志仍保存在对应提交与交付包中。
 
 独立目录重建见 `logs/fresh-build.log`、`logs/fresh-axioms.log`、
 `logs/fresh-verification.json`。该检查重新编译本项目的源码，复用同版本 Mathlib
@@ -62,3 +64,13 @@ Elan 输出中有一次查询默认 stable 最新版本失败的警告。项目�
 
 `logs/third-batch-input-integrity.log` 实际检查了原发布稿的 36 个文件哈希，全部匹配。
 第三批没有变更公开主稿、原始 JSON、已有目标定义或工具链与依赖锁。
+
+第四批实际迭代保存在 `floor-sequence-*`、`pair-reindex-*`、`exact-block-*`、
+`floor-descent-*`、`block-length-*` 日志中。`floor-descent-04.log` 记录实际地板序列的
+到达层永久下降模块通过；`block-length-02.log` 记录长度条件模块通过。
+全量构建导入全部新模块及全部公理审计，验收不是只构建旧证书目标。
+
+`logs/fourth-batch-input-integrity.log` 再次核对全部 36 个原发布文件哈希并通过。
+第四批没有变更公开主稿、原始证书、冻结原题定义、工具链或依赖锁；9 个依赖的实际
+Git HEAD 全部匹配锁定值，且没有已跟踪修改。已证明部分的公理依赖仍仅为允许的三个
+标准公理的子集。

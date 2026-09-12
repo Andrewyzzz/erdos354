@@ -1,0 +1,138 @@
+COMMAND: ["lake", "build", "Dyadic354.ExactBlock", "Dyadic354.PairReindex"]
+UTC: 2026-09-12T16:17:09.911667+00:00
+✔ [1796/1797] Built Dyadic354.PairReindex (11s)
+✖ [1797/1797] Building Dyadic354.ExactBlock (12s)
+trace: .> LEAN_PATH=/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/Cli/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/batteries/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/Qq/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/aesop/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/importGraph/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/plausible/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/mathlib/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean /Users/andrewyz/.elan/toolchains/leanprover--lean4---v4.27.0/bin/lean /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/Dyadic354/ExactBlock.lean -o /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean/Dyadic354/ExactBlock.olean -i /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean/Dyadic354/ExactBlock.ilean -c /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/ir/Dyadic354/ExactBlock.c --setup /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/ir/Dyadic354/ExactBlock.setup.json --json
+error: Dyadic354/ExactBlock.lean:49:6: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  term α (n + ↑i)
+in the target expression
+  floorMultiples α 2 (n + ↑i) = d * p * 2 ^ ↑i
+
+case left
+α β : ℝ
+n ℓ : ℕ
+d p q : ℤ
+ha : term α n = d * p
+hb : term β n = d * q
+hza : ∀ (i : ℕ), i + 1 < ℓ → bit α (n + i) = false
+hzb : ∀ (i : ℕ), i + 1 < ℓ → bit β (n + i) = false
+i : Fin ℓ
+⊢ floorMultiples α 2 (n + ↑i) = d * p * 2 ^ ↑i
+error: Dyadic354/ExactBlock.lean:53:6: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  term β (n + ↑i)
+in the target expression
+  floorMultiples β 2 (n + ↑i) = d * q * 2 ^ ↑i
+
+case right
+α β : ℝ
+n ℓ : ℕ
+d p q : ℤ
+ha : term α n = d * p
+hb : term β n = d * q
+hza : ∀ (i : ℕ), i + 1 < ℓ → bit α (n + i) = false
+hzb : ∀ (i : ℕ), i + 1 < ℓ → bit β (n + i) = false
+i : Fin ℓ
+⊢ floorMultiples β 2 (n + ↑i) = d * q * 2 ^ ↑i
+error: Dyadic354/ExactBlock.lean:70:4: Type mismatch: After simplification, term
+  ha
+ has type
+  term α r = d * K * p + Certificate.digit first.1
+but is expected to have type
+  interleave α β 2 (2 * r) = d * K * p + Certificate.digit first.1
+error: Dyadic354/ExactBlock.lean:71:4: Type mismatch: After simplification, term
+  hb
+ has type
+  term β r = d * K * q + Certificate.digit first.2
+but is expected to have type
+  interleave α β 2 (2 * r + 1) = d * K * q + Certificate.digit first.2
+error: Dyadic354/ExactBlock.lean:72:15: This simp argument is unused:
+  Fin.val_mk
+
+Hint: Omit it from the simp argument list.
+  simp only [F̵i̵n̵.̵v̵a̵l̵_̵m̵k̵,̵ ̵Matrix.cons_val_succ, Matrix.cons_val_zero]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Dyadic354/ExactBlock.lean:72:27: This simp argument is unused:
+  Matrix.cons_val_succ
+
+Hint: Omit it from the simp argument list.
+  simp only [Fin.val_mk, Matrix.cons_val_s̵u̵c̵c̵,̵ ̵M̵a̵t̵r̵i̵x̵.̵c̵o̵n̵s̵_̵v̵a̵l̵_̵zero]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Dyadic354/ExactBlock.lean:72:49: This simp argument is unused:
+  Matrix.cons_val_zero
+
+Hint: Omit it from the simp argument list.
+  simp only [Fin.val_mk, Matrix.cons_val_succ,̵ ̵M̵a̵t̵r̵i̵x̵.̵c̵o̵n̵s̵_̵v̵a̵l̵_̵z̵e̵r̵o̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Dyadic354/ExactBlock.lean:77:15: This simp argument is unused:
+  Fin.val_mk
+
+Hint: Omit it from the simp argument list.
+  simp only [F̵i̵n̵.̵v̵a̵l̵_̵m̵k̵,̵ ̵Matrix.cons_val_succ, Matrix.cons_val_zero]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Dyadic354/ExactBlock.lean:77:27: This simp argument is unused:
+  Matrix.cons_val_succ
+
+Hint: Omit it from the simp argument list.
+  simp only [Fin.val_mk, Matrix.cons_val_s̵u̵c̵c̵,̵ ̵M̵a̵t̵r̵i̵x̵.̵c̵o̵n̵s̵_̵v̵a̵l̵_̵zero]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Dyadic354/ExactBlock.lean:77:49: This simp argument is unused:
+  Matrix.cons_val_zero
+
+Hint: Omit it from the simp argument list.
+  simp only [Fin.val_mk, Matrix.cons_val_succ,̵ ̵M̵a̵t̵r̵i̵x̵.̵c̵o̵n̵s̵_̵v̵a̵l̵_̵z̵e̵r̵o̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Dyadic354/ExactBlock.lean:82:15: This simp argument is unused:
+  Fin.val_mk
+
+Hint: Omit it from the simp argument list.
+  simp only [F̵i̵n̵.̵v̵a̵l̵_̵m̵k̵,̵ ̵Matrix.cons_val_succ, Matrix.cons_val_zero]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Dyadic354/ExactBlock.lean:82:27: This simp argument is unused:
+  Matrix.cons_val_succ
+
+Hint: Omit it from the simp argument list.
+  simp only [Fin.val_mk, Matrix.cons_val_s̵u̵c̵c̵,̵ ̵M̵a̵t̵r̵i̵x̵.̵c̵o̵n̵s̵_̵v̵a̵l̵_̵zero]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Dyadic354/ExactBlock.lean:82:49: This simp argument is unused:
+  Matrix.cons_val_zero
+
+Hint: Omit it from the simp argument list.
+  simp only [Fin.val_mk, Matrix.cons_val_succ,̵ ̵M̵a̵t̵r̵i̵x̵.̵c̵o̵n̵s̵_̵v̵a̵l̵_̵z̵e̵r̵o̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Dyadic354/ExactBlock.lean:87:15: This simp argument is unused:
+  Fin.val_mk
+
+Hint: Omit it from the simp argument list.
+  simp only [F̵i̵n̵.̵v̵a̵l̵_̵m̵k̵,̵ ̵Matrix.cons_val_succ, Matrix.cons_val_zero]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Dyadic354/ExactBlock.lean:87:27: This simp argument is unused:
+  Matrix.cons_val_succ
+
+Hint: Omit it from the simp argument list.
+  simp only [Fin.val_mk, Matrix.cons_val_s̵u̵c̵c̵,̵ ̵M̵a̵t̵r̵i̵x̵.̵c̵o̵n̵s̵_̵v̵a̵l̵_̵zero]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Dyadic354/ExactBlock.lean:87:49: This simp argument is unused:
+  Matrix.cons_val_zero
+
+Hint: Omit it from the simp argument list.
+  simp only [Fin.val_mk, Matrix.cons_val_succ,̵ ̵M̵a̵t̵r̵i̵x̵.̵c̵o̵n̵s̵_̵v̵a̵l̵_̵z̵e̵r̵o̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Lean exited with code 1
+Some required targets logged failures:
+- Dyadic354.ExactBlock
+error: build failed
+
+EXIT CODE: 1
+ELAPSED SECONDS: 17.057
