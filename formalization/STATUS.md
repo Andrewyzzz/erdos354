@@ -360,5 +360,10 @@ FE/DB/BG 仍未完成。
 
 ## 发布状态
 
-本批在本地 `lean-formalization` 分支开发。原公开稿件与证书保持不变；未推送本批
-到 GitHub，未创建 Release，未发论坛帖子。发布前还需要按相应里程碑明确成果范围。
+第1–6批在本地 `lean-formalization` 分支开发，期间没有自动推送。
+2026-09-13 按维护者明确要求，六批已验证成果已推送到 GitHub 的
+[`lean-formalization` 分支](https://github.com/Andrewyzzz/erdos354/tree/lean-formalization)，
+已验证源码提交为 `04c0593bba303281787f2bccc5450a3e879dcfd6`。
+本次推送包括源代码、锁定依赖、状态文件和实际编译/公理审计日志。
+原公开稿件与证书保持不变，未合并到 `main`，未创建 Release，未发论坛帖子。
+公开的是分阶段形式化进展，不是整个 #354(i) 的完成证明。
