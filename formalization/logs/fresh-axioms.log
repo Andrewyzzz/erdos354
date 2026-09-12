@@ -1,6 +1,6 @@
 COMMAND: ["lake", "env", "lean", "Dyadic354/Audit.lean"]
-CWD: /var/folders/jh/s0mgjxhd7qn3zb1wp19mgsp40000gn/T/erdos354-lean-clean-yjeraqoa/formalization
-UTC: 2026-09-12T16:27:04.999366+00:00
+CWD: /var/folders/jh/s0mgjxhd7qn3zb1wp19mgsp40000gn/T/erdos354-lean-clean-xzxtdryy/formalization
+UTC: 2026-09-12T16:43:42.276436+00:00
 def Dyadic354.PartI : Prop :=
 ∀ (α β : ℝ), 0 < α → 0 < β → Irrational (α / β) → Dyadic354.IndexedComplete (Dyadic354.interleave α β 2)
 def Dyadic354.StrongCompleteness : Prop :=
@@ -279,6 +279,66 @@ Dyadic354.BlockLength.next_event_length_descent (α β : ℝ) (n m : ℕ) (hb0 :
   (hno : ∀ (t : ℕ), n < t → t < m → ¬Dyadic354.ExactBlock.IsEvent α β t) (hm : Dyadic354.ExactBlock.IsEvent α β m)
   (hlen : 2 * n + Dyadic354.BlockLength.growthConstant α ≤ m - n) (t : ℕ) :
   m + 3 ≤ t → Dyadic354.FloorDescent.gapAt α β t ⋯ ≤ Dyadic354.FloorDescent.gapAt α β n ⋯ - 1
+def Dyadic354.EventGaps.QualifyingGap : ℝ → ℝ → ℕ → ℕ → Prop :=
+fun α β n m =>
+  n < m ∧
+    (∀ (t : ℕ), n < t → t < m → ¬Dyadic354.ExactBlock.IsEvent α β t) ∧
+      Dyadic354.ExactBlock.IsEvent α β m ∧ 2 * n + Dyadic354.BlockLength.growthConstant α ≤ m - n
+def Dyadic354.EventInfinitude.nextEvent : (α β : ℝ) → Irrational (α / β) → ℕ → ℕ :=
+fun α β hirr n => Nat.find ⋯
+Dyadic354.UnitMesh.unit_mesh_half_line (v : ℕ → ℤ) (N : ℕ) (W : Finset ℤ) (hW : W.Nonempty)
+  (hsub : W ⊆ Dyadic354.PermanentMesh.prefixSums v N) (hg : Dyadic354.Mesh.gap W ≤ 1)
+  (hs : v N ≤ Dyadic354.Mesh.span W hW) (hpos : ∀ (t : ℕ), 0 < v (N + t))
+  (hdbl : ∀ (t : ℕ), v (N + (t + 1)) ≤ 2 * v (N + t)) (z : ℤ) : W.min' hW ≤ z → Dyadic354.IsSubsetSum v z
+Dyadic354.UnitMesh.unit_mesh_complete (v : ℕ → ℤ) (N : ℕ) (W : Finset ℤ) (hW : W.Nonempty)
+  (hsub : W ⊆ Dyadic354.PermanentMesh.prefixSums v N) (hg : Dyadic354.Mesh.gap W ≤ 1)
+  (hs : v N ≤ Dyadic354.Mesh.span W hW) (hpos : ∀ (t : ℕ), 0 < v (N + t))
+  (hdbl : ∀ (t : ℕ), v (N + (t + 1)) ≤ 2 * v (N + t)) : Dyadic354.IndexedComplete v
+Dyadic354.LowGap.next_event_length_complete (α β : ℝ) (n m : ℕ) (hb0 : 0 < Dyadic354.FloorSequence.term β 0)
+  (hba0 : Dyadic354.FloorSequence.term β 0 < Dyadic354.FloorSequence.term α 0)
+  (hab0 : Dyadic354.FloorSequence.term α 0 < 2 * Dyadic354.FloorSequence.term β 0) (hnm : n < m)
+  (hno : ∀ (t : ℕ), n < t → t < m → ¬Dyadic354.ExactBlock.IsEvent α β t) (hm : Dyadic354.ExactBlock.IsEvent α β m)
+  (hlen : 2 * n + Dyadic354.BlockLength.growthConstant α ≤ m - n) (hlow : Dyadic354.FloorDescent.gapAt α β n ⋯ ≤ 1) :
+  Dyadic354.IndexedComplete (Dyadic354.interleave α β 2)
+Dyadic354.EventGaps.eventually_not_of_eventual_descent (g : ℕ → ℕ) (Q : ℕ → Prop)
+  (hd : ∀ (n : ℕ), Q n → ∃ B, ∀ (t : ℕ), B ≤ t → Q t → g t < g n) : ∃ N, ∀ (n : ℕ), N ≤ n → ¬Q n
+Dyadic354.EventGaps.unbounded_qualifying_complete (α β : ℝ) (hb0 : 0 < Dyadic354.FloorSequence.term β 0)
+  (hba0 : Dyadic354.FloorSequence.term β 0 < Dyadic354.FloorSequence.term α 0)
+  (hab0 : Dyadic354.FloorSequence.term α 0 < 2 * Dyadic354.FloorSequence.term β 0)
+  (hQ : ∀ (N : ℕ), ∃ n m, N ≤ n ∧ Dyadic354.EventGaps.QualifyingGap α β n m) :
+  Dyadic354.IndexedComplete (Dyadic354.interleave α β 2)
+Dyadic354.EventGaps.incomplete_event_step_bound (α β : ℝ) (hb0 : 0 < Dyadic354.FloorSequence.term β 0)
+  (hba0 : Dyadic354.FloorSequence.term β 0 < Dyadic354.FloorSequence.term α 0)
+  (hab0 : Dyadic354.FloorSequence.term α 0 < 2 * Dyadic354.FloorSequence.term β 0)
+  (hinc : ¬Dyadic354.IndexedComplete (Dyadic354.interleave α β 2)) :
+  ∃ N,
+    ∀ (n : ℕ),
+      N ≤ n →
+        ∀ (m : ℕ),
+          n < m →
+            (∀ (t : ℕ), n < t → t < m → ¬Dyadic354.ExactBlock.IsEvent α β t) →
+              Dyadic354.ExactBlock.IsEvent α β m → m < 3 * n + Dyadic354.BlockLength.growthConstant α
+Dyadic354.EventGaps.incomplete_event_factor_four (α β : ℝ) (hb0 : 0 < Dyadic354.FloorSequence.term β 0)
+  (hba0 : Dyadic354.FloorSequence.term β 0 < Dyadic354.FloorSequence.term α 0)
+  (hab0 : Dyadic354.FloorSequence.term α 0 < 2 * Dyadic354.FloorSequence.term β 0)
+  (hinc : ¬Dyadic354.IndexedComplete (Dyadic354.interleave α β 2)) :
+  ∃ N,
+    ∀ (n : ℕ),
+      N ≤ n →
+        ∀ (m : ℕ),
+          n < m →
+            (∀ (t : ℕ), n < t → t < m → ¬Dyadic354.ExactBlock.IsEvent α β t) →
+              Dyadic354.ExactBlock.IsEvent α β m → m ≤ 4 * n
+Dyadic354.EventInfinitude.zero_tail_dyadic (α : ℝ) (N : ℕ)
+  (hz : ∀ (i : ℕ), Dyadic354.FloorSequence.bit α (N + i) = false) : α = ↑(Dyadic354.FloorSequence.term α N) / 2 ^ N
+Dyadic354.EventInfinitude.events_unbounded (α β : ℝ) (hirr : Irrational (α / β)) (N : ℕ) :
+  ∃ t, N < t ∧ Dyadic354.ExactBlock.IsEvent α β t
+Dyadic354.EventInfinitude.incomplete_nextEvent_factor_four (α β : ℝ) (hirr : Irrational (α / β))
+  (hb0 : 0 < Dyadic354.FloorSequence.term β 0)
+  (hba0 : Dyadic354.FloorSequence.term β 0 < Dyadic354.FloorSequence.term α 0)
+  (hab0 : Dyadic354.FloorSequence.term α 0 < 2 * Dyadic354.FloorSequence.term β 0)
+  (hinc : ¬Dyadic354.IndexedComplete (Dyadic354.interleave α β 2)) :
+  ∃ N, ∀ (n : ℕ), N ≤ n → Dyadic354.EventInfinitude.nextEvent α β hirr n ≤ 4 * n
 'Dyadic354.mem_finiteSubsetSums' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Dyadic354.Linear.eval_add' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Dyadic354.Linear.eval_sub' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -406,6 +466,27 @@ Dyadic354.BlockLength.next_event_length_descent (α β : ℝ) (n m : ℕ) (hb0 :
 'Dyadic354.BlockLength.growthConstant_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Dyadic354.BlockLength.threshold_of_length' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Dyadic354.BlockLength.next_event_length_descent' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.PairReindex.isSubsetSum_reindex_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.PairReindex.indexedComplete_reindex_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.FloorDescent.long_block_mesh' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.UnitMesh.mem_extend' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.UnitMesh.add_sum_mem_extend' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.UnitMesh.positive_sum_ge_length' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.UnitMesh.unit_mesh_half_line' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.UnitMesh.unit_mesh_complete' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.LowGap.long_block_complete' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.LowGap.next_event_length_complete' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.EventGaps.eventually_not_of_eventual_descent' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.EventGaps.incomplete_eventually_no_qualifying' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.EventGaps.unbounded_qualifying_complete' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.EventGaps.incomplete_event_step_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.EventGaps.incomplete_event_factor_four' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.EventInfinitude.zero_tail_dyadic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.EventInfinitude.no_events_tail_digits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.EventInfinitude.events_unbounded' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.EventInfinitude.nextEvent_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.EventInfinitude.no_event_before_next' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.EventInfinitude.incomplete_nextEvent_factor_four' depends on axioms: [propext, Classical.choice, Quot.sound]
 
 EXIT CODE: 0
-ELAPSED SECONDS: 13.185
+ELAPSED SECONDS: 14.634

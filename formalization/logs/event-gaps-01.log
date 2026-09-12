@@ -1,0 +1,7 @@
+COMMAND: ["lake", "build", "Dyadic354.EventGaps"]
+UTC: 2026-09-12T16:38:44.212012+00:00
+✔ [1802/1802] Built Dyadic354.EventGaps (15s)
+Build completed successfully (1802 jobs).
+
+EXIT CODE: 0
+ELAPSED SECONDS: 20.425

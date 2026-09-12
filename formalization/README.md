@@ -1,7 +1,8 @@
-# Erdős 354(i): conditional permanent descent for dyadic floor sequences
+# Erdős 354(i): permanent descent and eventual event bounds
 
 已完成有限模板证书、网格基础、合法块表示、初始网格，并将条件永久下降接到
-实际地板序列、gcd 模数与到达层事件；块长门槛也已证明，累计审计 127 个定理。
+实际地板序列、gcd 模数与到达层事件；进一步证明低缺口完全性、良基下降及
+不完全时的最终事件倍率4界，无理比值保证事件无界，累计审计 148 个定理。
 **整篇 #354(i) 与集合强完全性尚未证明。**
 实际完成的声明和后续义务见 [STATUS.md](STATUS.md)，环境见
 [ENVIRONMENT.md](ENVIRONMENT.md)。
@@ -20,7 +21,8 @@ python3 scripts/verify.py --fresh
 已有依赖缓存时可略去 `lake exe cache get`。工具链和全部依赖锁定在
 `lean-toolchain`、`lakefile.toml`、`lake-manifest.json` 中，不需要更新版本。
 `verify.py` 默认构建根模块 `Dyadic354`，它导入目标定义、证书、循环缺口、网格、
-合法表示、初始网格、局部永久下降、实际地板/重排/事件接口、长度估计及公理审计。
+合法表示、初始网格、局部永久下降、实际地板/重排/事件接口、长度估计、
+单位网格完全性、有限下降、事件无限性及公理审计。
 脚本再次执行 `Audit.lean`，核对全部本地定理的审计清单，检查实际公理闭包；
 缺少输出或出现允许列表以外的公理都会以非零退出码结束。运行开始时会清除旧的
 PASS 状态，成功记录附带实际 Lean 源码和依赖锁文件的 SHA-256。
@@ -69,15 +71,29 @@ gap 直接定义为所有实际相邻点距离的最大值，`meshOn_iff_gap_le`
 `b,a` 枚举与冻结的 `a,b` 枚举在每个完整成对前缀上有完全相同的合法子集和值。
 `FloorDescent.long_block_descent` 将局部下降实例化为实际 `D_t=gcd(a_t,b_t)` 上的缺口界。
 
-当前末端定理 `BlockLength.next_event_length_descent` 的含义是：若
+`BlockLength.next_event_length_descent` 的含义是：若
 `0<b_0<a_0<2b_0`，`n<m`，到达层区间 `(n,m)` 无事件、m 是事件，且
 `m−n≥2n+C`，则对每个 `t≥m+3` 有 `h_t≤max(0,h_n−1)`。
 这里明确取仅依赖 M=a_0 的宽松常数 `C=(16(M+1)²).toNat`；没有要求 C 是最优常数。
 节点、实际表示、未来重排、gcd 约化和长度估计均在证明链内。
 
-仍未证明一般参数的合法归一化、事件无限性、低缺口蕴含完全性、有限次严格下降与
-事件倍率界，也未完成 FE/DB/BG、强完全性或上游目标对接。
-尤其**没有证明足够长的事件间隔必然存在，不能把条件下降当作原题证明**。
+第五批 `UnitMesh.unit_mesh_half_line` 从实际单位网格构造全部充分大整数的合法
+有限索引表示，`LowGap.next_event_length_complete` 因此证明合格长块及旧缺口≤1
+推出冻结交错列的完全性。没有把网格无界或索引表示合法性当作新假设。
+
+`EventGaps.unbounded_qualifying_complete` 用自然数良基下降证明，无界合格起点
+推出完全性；每次选点都在前次永久更新生效之后，不需要普通转换的缺口单调性。
+它不借用未证明的统一前缀缺口界，也不声称已证明原稿 N−1 次更新预算。
+反过来，不完全的归一化序列最终没有合格间隔，故相邻事件满足 `m<3n+C` 和 `m≤4n`。
+
+`EventInfinitude.events_unbounded` 从无理比值证明真实事件无界；`nextEvent` 定义
+最小后继，相关定理保证它实际存在且中间没有其他事件。
+当前组合结论 `incomplete_nextEvent_factor_four` 的明确前提是无理比值、
+归一化地板初值和不完全性，结论是实际后继事件最终满足倍率4界。
+
+仍未证明一般参数的合法归一化、供 FE 使用的统一前缀缺口界、FE/DB/BG、
+强完全性或上游目标对接。**没有证明无界合格长间隔必然存在，也尚未证明
+“倍率有界却不完全”会导致矛盾，不能把上述条件性结果当作原题证明。**
 
 ## Source map
 
@@ -99,6 +115,10 @@ gap 直接定义为所有实际相邻点距离的最大值，`meshOn_iff_gap_le`
 | `Dyadic354/ExactBlock.lean` | 到达层事件、零位与倍增块、实际六项及下一小权重界 |
 | `Dyadic354/FloorDescent.lean` | 实际 gcd 坐标、实际前缀模集以及地板序列条件永久下降 |
 | `Dyadic354/BlockLength.lean` | 多项式门槛、地板增长界和仅依赖初值的块长充分条件 |
+| `Dyadic354/UnitMesh.lean` | 实际单位网格的合法扩展、右端点无界和半直线覆盖 |
+| `Dyadic354/LowGap.lean` | 合格长块与低缺口推出冻结交错列完全性 |
+| `Dyadic354/EventGaps.lean` | 延迟永久下降的良基论证、不完全时的相邻事件界 |
+| `Dyadic354/EventInfinitude.lean` | 无理性保证事件无界、真实最小后继及最终倍率4界 |
 | `Dyadic354/Audit.lean` | 目标类型输出与全部已完成定理的公理审计 |
 | `scripts/generate_data.py` | 数据翻译及与 JSON 的一致性检查 |
 | `scripts/verify.py` | 构建、公理允许列表、独立目录重建 |

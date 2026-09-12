@@ -82,22 +82,21 @@ theorem interleave_positive (α β : ℝ)
   · rw [h, interleave_odd]
     exact hn.1
 
-/-- The local permanent descent theorem for actual dyadic floor sequences.
-All old-sum, gcd, six-mask and sorted-future hypotheses are now derived.
-The existence of a sufficiently long block is NOT assumed to have been proved. -/
-theorem long_block_descent (α β : ℝ) (n ℓ : ℕ)
+/-- A sufficiently long actual block constructs the mesh needed both for
+permanent gap descent and for the low-gap completeness argument. -/
+theorem long_block_mesh (α β : ℝ) (n ℓ : ℕ)
     (hb0 : 0 < term β 0) (hba0 : term β 0 < term α 0) (hab0 : term α 0 < 2 * term β 0)
     (hℓ : 0 < ℓ)
     (hzero : ∀ i, i + 1 < ℓ → ExactBlock.digits α β (n + i) = (false, false))
     (hevent : ExactBlock.IsEvent α β (n + ℓ))
     (hK : InitialMesh.threshold (pCoord α β n) (qCoord α β n) ≤ (2 : ℤ) ^ ℓ) :
-    ∀ t, n + ℓ + 3 ≤ t →
-      gapAt α β t (normalized_bounds α β hb0 hba0 hab0 t).1 ≤
-        gapAt α β n (normalized_bounds α β hb0 hba0 hab0 n).1 - 1 := by
+    ∃ W : Finset ℤ, ∃ hW : W.Nonempty,
+      W ⊆ PermanentMesh.prefixSums (interleave α β 2) (2 * (n + ℓ + 3)) ∧
+      Mesh.gap W ≤ max 1 (gapAt α β n (normalized_bounds α β hb0 hba0 hab0 n).1) ∧
+      term β (n + ℓ + 3) ≤ Mesh.span W hW := by
   let d := modulus α β n
   let p := pCoord α β n
   let q := qCoord α β n
-  let r := n + ℓ + 3
   have hn := normalized_bounds α β hb0 hba0 hab0 n
   letI : NeZero d := ⟨ne_of_gt (modulus_positive α β n hn.1)⟩
   obtain ⟨hq, hqp, hpq, hcop, ha, hb⟩ := gcd_coordinates α β n hn.1 hn.2.1 hn.2.2
@@ -121,16 +120,36 @@ theorem long_block_descent (α β : ℝ) (n ℓ : ℕ)
     hevent.2 hq hqp hpq hcop
     (fun i => le_of_lt (interleave_positive α β hb0 hba0 hab0 i.val))
     hsum hK hblock.1 hblock.2 hsix
+  simp only [oldResidues_prefix] at hgap
+  change Mesh.gap W ≤ max 1 (gapAt α β n hn.1) at hgap
+  have hs := ExactBlock.next_small_weight_bound β n ℓ d q hℓ hb hzb
+  exact ⟨W, hW, hsub, hgap, le_trans hs (le_of_lt hspan)⟩
+
+/-- The local permanent descent theorem for actual dyadic floor sequences.
+All old-sum, gcd, six-mask and sorted-future hypotheses are derived.
+The existence of a sufficiently long block is NOT asserted here. -/
+theorem long_block_descent (α β : ℝ) (n ℓ : ℕ)
+    (hb0 : 0 < term β 0) (hba0 : term β 0 < term α 0) (hab0 : term α 0 < 2 * term β 0)
+    (hℓ : 0 < ℓ)
+    (hzero : ∀ i, i + 1 < ℓ → ExactBlock.digits α β (n + i) = (false, false))
+    (hevent : ExactBlock.IsEvent α β (n + ℓ))
+    (hK : InitialMesh.threshold (pCoord α β n) (qCoord α β n) ≤ (2 : ℤ) ^ ℓ) :
+    ∀ t, n + ℓ + 3 ≤ t →
+      gapAt α β t (normalized_bounds α β hb0 hba0 hab0 t).1 ≤
+        gapAt α β n (normalized_bounds α β hb0 hba0 hab0 n).1 - 1 := by
+  let r := n + ℓ + 3
+  have hn := normalized_bounds α β hb0 hba0 hab0 n
+  obtain ⟨W, hW, hsub, hgap, hspan⟩ := long_block_mesh α β n ℓ hb0 hba0 hab0
+    hℓ hzero hevent hK
   have hsub' : W ⊆ PermanentMesh.prefixSums (PairReindex.sortedTail α β r) (2 * r) := by
     change W ⊆ PermanentMesh.prefixSums (fun j => interleave α β 2 (PairReindex.swapAfter r j)) (2 * r)
     rw [PairReindex.prefixSums_reindex]
     exact hsub
   have hnext : PairReindex.sortedTail α β r (2 * r) ≤ Mesh.span W hW := by
-    have hs := ExactBlock.next_small_weight_bound β n ℓ d q hℓ hb hzb
     have he := PairReindex.sortedTail_even α β r 0
     simp only [Nat.mul_zero, Nat.add_zero] at he
     rw [he]
-    exact le_trans hs (le_of_lt hspan)
+    exact hspan
   intro t hrt
   have ht := normalized_bounds α β hb0 hba0 hab0 t
   letI : NeZero (modulus α β t) := ⟨ne_of_gt (modulus_positive α β t ht.1)⟩
@@ -146,7 +165,7 @@ theorem long_block_descent (α β : ℝ) (n ℓ : ℕ)
   change CyclicGaps.gap (Mesh.residues
     (PermanentMesh.prefixSums (fun j => interleave α β 2 (PairReindex.swapAfter r j)) (2 * t))
     (modulus α β t)) _ ≤ _ at hp'
-  simp only [PairReindex.prefixSums_reindex, oldResidues_prefix] at hp'
+  simp only [PairReindex.prefixSums_reindex] at hp'
   change gapAt α β t ht.1 ≤ max 1 (gapAt α β n hn.1) - 1 at hp'
   have heq : max 1 (gapAt α β n hn.1) - 1 = gapAt α β n hn.1 - 1 := by omega
   rwa [heq] at hp'

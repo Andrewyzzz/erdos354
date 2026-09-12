@@ -73,6 +73,23 @@ theorem prefixSums_reindex (v : ℕ → ℤ) (r t : ℕ) :
 
 noncomputable def sortedTail (α β : ℝ) (r j : ℕ) : ℤ := interleave α β 2 (swapAfter r j)
 
+theorem isSubsetSum_reindex_iff (v : ℕ → ℤ) (r : ℕ) (z : ℤ) :
+    IsSubsetSum (fun j => v (swapAfter r j)) z ↔ IsSubsetSum v z := by
+  constructor
+  · rintro ⟨s, hs⟩
+    refine ⟨s.image (swapAfter r), ?_⟩
+    rw [Finset.sum_image (fun i _ j _ hij => swapAfter_injective r hij)]
+    exact hs
+  · rintro ⟨s, hs⟩
+    refine ⟨s.image (swapAfter r), ?_⟩
+    rw [Finset.sum_image (fun i _ j _ hij => swapAfter_injective r hij)]
+    have he (i : ℕ) : swapAfter r (swapAfter r i) = i := swapAfter_involutive r i
+    simpa only [he] using hs
+
+theorem indexedComplete_reindex_iff (v : ℕ → ℤ) (r : ℕ) :
+    IndexedComplete (fun j => v (swapAfter r j)) ↔ IndexedComplete v := by
+  simp only [IndexedComplete, isSubsetSum_reindex_iff]
+
 theorem sortedTail_even (α β : ℝ) (r t : ℕ) :
     sortedTail α β r (2 * r + 2 * t) = FloorSequence.term β (r + t) := by
   unfold sortedTail

@@ -3,6 +3,7 @@ import Dyadic354.CertificateData
 import Dyadic354.Mesh
 import Dyadic354.PermanentMesh
 import Dyadic354.BlockLength
+import Dyadic354.EventInfinitude
 
 #print Dyadic354.PartI
 #print Dyadic354.StrongCompleteness
@@ -62,6 +63,19 @@ import Dyadic354.BlockLength
 #check Dyadic354.FloorDescent.next_event_descent
 #check Dyadic354.BlockLength.threshold_of_length
 #check Dyadic354.BlockLength.next_event_length_descent
+
+#print Dyadic354.EventGaps.QualifyingGap
+#print Dyadic354.EventInfinitude.nextEvent
+#check Dyadic354.UnitMesh.unit_mesh_half_line
+#check Dyadic354.UnitMesh.unit_mesh_complete
+#check Dyadic354.LowGap.next_event_length_complete
+#check Dyadic354.EventGaps.eventually_not_of_eventual_descent
+#check Dyadic354.EventGaps.unbounded_qualifying_complete
+#check Dyadic354.EventGaps.incomplete_event_step_bound
+#check Dyadic354.EventGaps.incomplete_event_factor_four
+#check Dyadic354.EventInfinitude.zero_tail_dyadic
+#check Dyadic354.EventInfinitude.events_unbounded
+#check Dyadic354.EventInfinitude.incomplete_nextEvent_factor_four
 
 #print axioms Dyadic354.mem_finiteSubsetSums
 #print axioms Dyadic354.Linear.eval_add
@@ -193,3 +207,25 @@ import Dyadic354.BlockLength
 #print axioms Dyadic354.BlockLength.growthConstant_bound
 #print axioms Dyadic354.BlockLength.threshold_of_length
 #print axioms Dyadic354.BlockLength.next_event_length_descent
+
+#print axioms Dyadic354.PairReindex.isSubsetSum_reindex_iff
+#print axioms Dyadic354.PairReindex.indexedComplete_reindex_iff
+#print axioms Dyadic354.FloorDescent.long_block_mesh
+#print axioms Dyadic354.UnitMesh.mem_extend
+#print axioms Dyadic354.UnitMesh.add_sum_mem_extend
+#print axioms Dyadic354.UnitMesh.positive_sum_ge_length
+#print axioms Dyadic354.UnitMesh.unit_mesh_half_line
+#print axioms Dyadic354.UnitMesh.unit_mesh_complete
+#print axioms Dyadic354.LowGap.long_block_complete
+#print axioms Dyadic354.LowGap.next_event_length_complete
+#print axioms Dyadic354.EventGaps.eventually_not_of_eventual_descent
+#print axioms Dyadic354.EventGaps.incomplete_eventually_no_qualifying
+#print axioms Dyadic354.EventGaps.unbounded_qualifying_complete
+#print axioms Dyadic354.EventGaps.incomplete_event_step_bound
+#print axioms Dyadic354.EventGaps.incomplete_event_factor_four
+#print axioms Dyadic354.EventInfinitude.zero_tail_dyadic
+#print axioms Dyadic354.EventInfinitude.no_events_tail_digits
+#print axioms Dyadic354.EventInfinitude.events_unbounded
+#print axioms Dyadic354.EventInfinitude.nextEvent_spec
+#print axioms Dyadic354.EventInfinitude.no_event_before_next
+#print axioms Dyadic354.EventInfinitude.incomplete_nextEvent_factor_four

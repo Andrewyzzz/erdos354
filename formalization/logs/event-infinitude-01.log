@@ -1,0 +1,13 @@
+COMMAND: ["lake", "build", "Dyadic354.EventInfinitude"]
+UTC: 2026-09-12T16:41:20.804237+00:00
+✖ [1803/1803] Building Dyadic354.EventInfinitude (12s)
+trace: .> LEAN_PATH=/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/Cli/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/batteries/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/Qq/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/aesop/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/importGraph/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/plausible/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/mathlib/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean /Users/andrewyz/.elan/toolchains/leanprover--lean4---v4.27.0/bin/lean /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/Dyadic354/EventInfinitude.lean -o /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean/Dyadic354/EventInfinitude.olean -i /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean/Dyadic354/EventInfinitude.ilean -c /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/ir/Dyadic354/EventInfinitude.c --setup /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/ir/Dyadic354/EventInfinitude.setup.json --json
+error: Dyadic354/EventInfinitude.lean:19:57: omega could not prove the goal:
+No usable constraints found. You may need to unfold definitions so `omega` can see linear arithmetic facts about `Nat` and `Int`, which may also involve multiplication, division, and modular remainder by constants.
+error: Lean exited with code 1
+Some required targets logged failures:
+- Dyadic354.EventInfinitude
+error: build failed
+
+EXIT CODE: 1
+ELAPSED SECONDS: 17.897

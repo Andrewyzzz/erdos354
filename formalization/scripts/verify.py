@@ -80,7 +80,7 @@ if missing or bad:
     raise SystemExit(f'Axiom audit failed: missing={sorted(missing)}, disallowed={bad}')
 result = {
     'status': 'PASS',
-    'scope': 'Certificate, mesh and representation foundations; actual normalized dyadic floor-sequence permanent descent conditional on a sufficiently long event gap, with a proved length criterion. Existence/event accumulation, FE/DB/BG, normalization and Erdős 354(i) remain unproved.',
+    'scope': 'Certificate, mesh and representation foundations; actual normalized floor-sequence permanent descent and low-gap completeness under a qualifying block; unbounded qualifying gaps imply indexed completeness; incompleteness implies eventual successor-event factor four. Irrationality gives unbounded actual events. FE/DB/BG, global normalization, strong completeness and Erdős 354(i) remain unproved.',
     'fresh_project_build': args.fresh,
     'dependency_cache_reused': True,
     'audited_theorems': len(records),

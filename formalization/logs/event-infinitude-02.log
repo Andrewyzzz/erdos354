@@ -1,0 +1,7 @@
+COMMAND: ["lake", "build", "Dyadic354.EventInfinitude"]
+UTC: 2026-09-12T16:41:56.398563+00:00
+✔ [1803/1803] Built Dyadic354.EventInfinitude (13s)
+Build completed successfully (1803 jobs).
+
+EXIT CODE: 0
+ELAPSED SECONDS: 18.541

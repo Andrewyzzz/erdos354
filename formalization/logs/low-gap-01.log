@@ -1,0 +1,9 @@
+COMMAND: ["lake", "build", "Dyadic354.LowGap"]
+UTC: 2026-09-12T16:37:37.041426+00:00
+✔ [1799/1801] Built Dyadic354.FloorDescent (12s)
+✔ [1800/1801] Built Dyadic354.BlockLength (8.0s)
+✔ [1801/1801] Built Dyadic354.LowGap (8.5s)
+Build completed successfully (1801 jobs).
+
+EXIT CODE: 0
+ELAPSED SECONDS: 33.864
