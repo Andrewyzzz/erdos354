@@ -1,9 +1,9 @@
 {
   "status": "PASS",
-  "scope": "First-batch finite certificate and definitions; not Erd\u0151s 354(i).",
+  "scope": "Finite certificate and three mesh lemmas with iterated propagation; not Erd\u0151s 354(i).",
   "fresh_project_build": true,
   "dependency_cache_reused": true,
-  "audited_theorems": 20,
+  "audited_theorems": 51,
   "allowed_axioms": [
     "Classical.choice",
     "Quot.sound",
@@ -72,6 +72,67 @@
       "Quot.sound",
       "propext"
     ],
+    "Dyadic354.CyclicGaps.erode_nonempty": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.CyclicGaps.erosion_exact": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.CyclicGaps.gapBound_erode_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.CyclicGaps.gapBound_mono": [],
+    "Dyadic354.CyclicGaps.gap_eq_zero_iff_full": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.CyclicGaps.gap_le_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.CyclicGaps.gap_lt_modulus": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.CyclicGaps.gap_modulus_one": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.CyclicGaps.gap_spec": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.CyclicGaps.lift_erode": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.CyclicGaps.missingRun_iff_le_gap": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.CyclicGaps.modulus_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.CyclicGaps.not_missingRun_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
     "Dyadic354.Linear.cone_identity": [
       "Classical.choice",
       "Quot.sound",
@@ -97,6 +158,96 @@
       "Quot.sound",
       "propext"
     ],
+    "Dyadic354.Mesh.encloses_min_max": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.Mesh.extend_nonempty": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.Mesh.gap_empty": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.Mesh.gap_le_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.Mesh.gap_positive_of_encloses": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.Mesh.gap_singleton": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.Mesh.meshOn_gap_le": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.Mesh.meshOn_iff_gap_le": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.Mesh.meshOn_of_gap_le": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.Mesh.meshOn_translate_union": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.Mesh.projection_gap": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.Mesh.projection_window_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.Mesh.propagate_iterate": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.Mesh.residues_nonempty": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.Mesh.span_of_encloses": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.Mesh.span_singleton": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.Mesh.translate_union_gap_span": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.Mesh.translate_union_nonempty": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
     "Dyadic354.indexedComplete_iff": [
       "Classical.choice",
       "Quot.sound",
@@ -107,5 +258,18 @@
       "Quot.sound",
       "propext"
     ]
+  },
+  "source_sha256": {
+    "Dyadic354/Audit.lean": "59d95340d798689be216fcb5a24d1610a268386c4b81e410a59a98e1d7f85984",
+    "Dyadic354/Basic.lean": "46a1bab425aaaa1afaaf782cd7d0b40dd6e7df24998621c7f10b635f672fd444",
+    "Dyadic354/Certificate.lean": "e31d86900d1cb397d7a158f5ba8eb3aa74688d93b1d4951fad0f8ed989ff5d3a",
+    "Dyadic354/CertificateData.lean": "16fbd45515c8cfd1665f0e2a3184de42bdaa0859e134fcaa3e4894ef512b3a1c",
+    "Dyadic354/CyclicGaps.lean": "4e965aeebefffd97893e582eb7cba380f8770456e29e795b09326707f4b5c5d2",
+    "Dyadic354/Mesh.lean": "333c65dfc0cce04089a803fe53d7cdb48911124cf1ad7344876ae8a576c16795",
+    "Dyadic354/Statements.lean": "623b20bab06c99013dcbefed752aa80ce29a879930eefc1d069e4944bc5ceb0e",
+    "Dyadic354.lean": "74042517586cadcbb0f604935164bdccb30e4c5686573e0b18ed720ca789295f",
+    "lake-manifest.json": "5db7b78bdcaea358d67359ddcf24565fb8fefaf4cd3d8ee26a13002768da0716",
+    "lakefile.toml": "a985dd11164e788e9993c56120a3b5fce1787fef89cdc2b8ec0b1231bbd72b77",
+    "lean-toolchain": "d55ca0039a5479db5b38919d005b2c427b89b3be4f0184a20f2f4eae931f5bdb"
   }
 }

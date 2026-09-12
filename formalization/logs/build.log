@@ -1,33 +1,33 @@
 COMMAND: ["lake", "build"]
 CWD: /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization
-UTC: 2026-09-12T15:18:27.836961+00:00
-ℹ [1762/1764] Replayed Dyadic354.Audit
-info: Dyadic354/Audit.lean:4:0: def Dyadic354.PartI : Prop :=
+UTC: 2026-09-12T15:27:45.728043+00:00
+ℹ [1790/1792] Replayed Dyadic354.Audit
+info: Dyadic354/Audit.lean:5:0: def Dyadic354.PartI : Prop :=
 ∀ (α β : ℝ), 0 < α → 0 < β → Irrational (α / β) → Dyadic354.IndexedComplete (Dyadic354.interleave α β 2)
-info: Dyadic354/Audit.lean:5:0: def Dyadic354.StrongCompleteness : Prop :=
+info: Dyadic354/Audit.lean:6:0: def Dyadic354.StrongCompleteness : Prop :=
 ∀ (α β : ℝ), 0 < α → 0 < β → Irrational (α / β) → Dyadic354.SetStronglyComplete (Dyadic354.dyadicValueSet α β)
-info: Dyadic354/Audit.lean:6:0: def Dyadic354.IndexedComplete : (ℕ → ℤ) → Prop :=
+info: Dyadic354/Audit.lean:7:0: def Dyadic354.IndexedComplete : (ℕ → ℤ) → Prop :=
 fun w => ∀ᶠ (k : ℤ) in Filter.atTop, Dyadic354.IsSubsetSum w k
-info: Dyadic354/Audit.lean:7:0: def Dyadic354.SetStronglyComplete : Set ℤ → Prop :=
+info: Dyadic354/Audit.lean:8:0: def Dyadic354.SetStronglyComplete : Set ℤ → Prop :=
 fun A => ∀ (B : Set ℤ), B.Finite → Dyadic354.SetComplete (A \ B)
-info: Dyadic354/Audit.lean:8:0: def Dyadic354.interleave : ℝ → ℝ → ℝ → ℕ → ℤ :=
+info: Dyadic354/Audit.lean:9:0: def Dyadic354.interleave : ℝ → ℝ → ℝ → ℕ → ℤ :=
 fun a b γ n => if n % 2 = 0 then Dyadic354.floorMultiples a γ (n / 2) else Dyadic354.floorMultiples b γ (n / 2)
-info: Dyadic354/Audit.lean:9:0: def Dyadic354.floorMultiples : ℝ → ℝ → ℕ → ℤ :=
+info: Dyadic354/Audit.lean:10:0: def Dyadic354.floorMultiples : ℝ → ℝ → ℕ → ℤ :=
 fun a γ n => ⌊γ ^ n * a⌋
-info: Dyadic354/Audit.lean:10:0: def Dyadic354.dyadicValueSet : ℝ → ℝ → Set ℤ :=
+info: Dyadic354/Audit.lean:11:0: def Dyadic354.dyadicValueSet : ℝ → ℝ → Set ℤ :=
 fun α β => Set.range (Dyadic354.interleave α β 2) \ {0}
-info: Dyadic354/Audit.lean:11:0: def Dyadic354.SetComplete : Set ℤ → Prop :=
+info: Dyadic354/Audit.lean:12:0: def Dyadic354.SetComplete : Set ℤ → Prop :=
 fun A => ∀ᶠ (k : ℤ) in Filter.atTop, ∃ s, ↑s ⊆ A ∧ k = ∑ x ∈ s, x
-info: Dyadic354/Audit.lean:12:0: def Dyadic354.IsSubsetSum.{u_1} : {ι : Type u_1} → (ι → ℤ) → ℤ → Prop :=
+info: Dyadic354/Audit.lean:13:0: def Dyadic354.IsSubsetSum.{u_1} : {ι : Type u_1} → (ι → ℤ) → ℤ → Prop :=
 fun {ι} w z => ∃ s, z = ∑ i ∈ s, w i
-info: Dyadic354/Audit.lean:13:0: def Dyadic354.Certificate.MathematicallyCorrect : List Dyadic354.Certificate.Template → Prop :=
+info: Dyadic354/Audit.lean:14:0: def Dyadic354.Certificate.MathematicallyCorrect : List Dyadic354.Certificate.Template → Prop :=
 fun data =>
   ∀ (first second : Dyadic354.Certificate.Digits),
     first ≠ (false, false) →
       ∀ (p q : ℤ),
         0 < q →
           q < p → p < 2 * q → ∃ t ∈ data, t.first = first ∧ t.second = second ∧ Dyadic354.Certificate.ChainMeaning t p q
-info: Dyadic354/Audit.lean:14:0: def Dyadic354.Certificate.ChainMeaning : Dyadic354.Certificate.Template → ℤ → ℤ → Prop :=
+info: Dyadic354/Audit.lean:15:0: def Dyadic354.Certificate.ChainMeaning : Dyadic354.Certificate.Template → ℤ → ℤ → Prop :=
 fun t p q =>
   0 < t.chain.length ∧
     (∀ (i : Fin t.chain.length),
@@ -43,7 +43,7 @@ fun t p q =>
                   ∃ i,
                     (Dyadic354.Certificate.nodeAt t ↑i).lo.eval p q ≤ z ∧
                       z ≤ (Dyadic354.Certificate.nodeAt t ↑i).hi.eval p q
-info: Dyadic354/Audit.lean:15:0: def Dyadic354.Certificate.NodeMeaning : Dyadic354.Certificate.Digits →
+info: Dyadic354/Audit.lean:16:0: def Dyadic354.Certificate.NodeMeaning : Dyadic354.Certificate.Digits →
   Dyadic354.Certificate.Digits → Dyadic354.Certificate.Node → ℤ → ℤ → Prop :=
 fun first second n p q =>
   n.mask0 < 16 ∧
@@ -69,11 +69,11 @@ fun first second n p q =>
                                 (d * K * (Dyadic354.Certificate.coefficient n.mask0 n.thirdMask).eval p q + c) ∧
                               Dyadic354.IsSubsetSum (Dyadic354.Certificate.weights first second third d K p q)
                                 (d * K * (Dyadic354.Certificate.coefficient n.mask1 n.thirdMask).eval p q + c + 1)
-info: Dyadic354/Audit.lean:16:0: Dyadic354.Certificate.certificate_correct : Dyadic354.Certificate.MathematicallyCorrect Dyadic354.Certificate.templates
-info: Dyadic354/Audit.lean:17:0: Dyadic354.Certificate.all_templates_correct (t : Dyadic354.Certificate.Template)
+info: Dyadic354/Audit.lean:17:0: Dyadic354.Certificate.certificate_correct : Dyadic354.Certificate.MathematicallyCorrect Dyadic354.Certificate.templates
+info: Dyadic354/Audit.lean:18:0: Dyadic354.Certificate.all_templates_correct (t : Dyadic354.Certificate.Template)
   (ht : t ∈ Dyadic354.Certificate.templates) (p q : ℤ) (hqp : q < p) (hpq : p < 2 * q) :
   Dyadic354.Certificate.ChainMeaning t p q
-info: Dyadic354/Audit.lean:18:0: theorem Dyadic354.Certificate.weights_explicit : ∀ (first second third : Dyadic354.Certificate.Digits) (d K p q : ℤ),
+info: Dyadic354/Audit.lean:19:0: Dyadic354.Certificate.weights_explicit (first second third : Dyadic354.Certificate.Digits) (d K p q : ℤ) :
   Dyadic354.Certificate.weights first second third d K p q =
     ![d * K * p + Dyadic354.Certificate.digit first.1, d * K * q + Dyadic354.Certificate.digit first.2,
       2 * d * K * p + 2 * Dyadic354.Certificate.digit first.1 + Dyadic354.Certificate.digit second.1,
@@ -81,1038 +81,84 @@ info: Dyadic354/Audit.lean:18:0: theorem Dyadic354.Certificate.weights_explicit 
       4 * d * K * p + 4 * Dyadic354.Certificate.digit first.1 + 2 * Dyadic354.Certificate.digit second.1 +
         Dyadic354.Certificate.digit third.1,
       4 * d * K * q + 4 * Dyadic354.Certificate.digit first.2 + 2 * Dyadic354.Certificate.digit second.2 +
-        Dyadic354.Certificate.digit third.2] :=
-fun first second third d K p q =>
-  funext fun i =>
-    List.Mem.casesOn (motive := fun a x =>
-      List.finRange 6 = a →
-        Fintype.complete i ≍ x →
-          Dyadic354.Certificate.weights first second third d K p q i =
-            ![d * K * p + Dyadic354.Certificate.digit first.1, d * K * q + Dyadic354.Certificate.digit first.2,
-                2 * d * K * p + 2 * Dyadic354.Certificate.digit first.1 + Dyadic354.Certificate.digit second.1,
-                2 * d * K * q + 2 * Dyadic354.Certificate.digit first.2 + Dyadic354.Certificate.digit second.2,
-                4 * d * K * p + 4 * Dyadic354.Certificate.digit first.1 + 2 * Dyadic354.Certificate.digit second.1 +
-                  Dyadic354.Certificate.digit third.1,
-                4 * d * K * q + 4 * Dyadic354.Certificate.digit first.2 + 2 * Dyadic354.Certificate.digit second.2 +
-                  Dyadic354.Certificate.digit third.2]
-              i)
-      (Fintype.complete i)
-      (fun as h =>
-        List.cons.noConfusion h fun head_eq =>
-          Eq.ndrec (motive := fun i =>
-            ∀ (this : i ∈ Fintype.elems),
-              (fun x1 x2 => (fun i => i) x1 :: x2)
-                    ⟨1, Nat.le_of_lt (Nat.le_of_lt (Nat.le_of_lt (Nat.le_of_lt (Nat.le_refl 6))))⟩
-                    ((fun x1 x2 => (fun i => i) x1 :: x2)
-                      ⟨2, Nat.le_of_lt (Nat.le_of_lt (Nat.le_of_lt (Nat.le_refl 6)))⟩
-                      ((fun x1 x2 => (fun i => i) x1 :: x2) ⟨3, Nat.le_of_lt (Nat.le_of_lt (Nat.le_refl 6))⟩
-                        ((fun x1 x2 => (fun i => i) x1 :: x2) ⟨4, Nat.le_of_lt (Nat.le_refl 6)⟩
-                          ((fun x1 x2 => (fun i => i) x1 :: x2) ⟨5, Nat.le_refl 6⟩ [])))) ≍
-                  as →
-                this ≍ List.Mem.head as →
-                  Dyadic354.Certificate.weights first second third d K p q i =
-                    ![d * K * p + Dyadic354.Certificate.digit first.1, d * K * q + Dyadic354.Certificate.digit first.2,
-                        2 * d * K * p + 2 * Dyadic354.Certificate.digit first.1 + Dyadic354.Certificate.digit second.1,
-                        2 * d * K * q + 2 * Dyadic354.Certificate.digit first.2 + Dyadic354.Certificate.digit second.2,
-                        4 * d * K * p + 4 * Dyadic354.Certificate.digit first.1 +
-                            2 * Dyadic354.Certificate.digit second.1 +
-                          Dyadic354.Certificate.digit third.1,
-                        4 * d * K * q + 4 * Dyadic354.Certificate.digit first.2 +
-                            2 * Dyadic354.Certificate.digit second.2 +
-                          Dyadic354.Certificate.digit third.2]
-                      i)
-            (fun this tail_eq =>
-              Eq.ndrec (motive := fun as =>
-                this ≍ List.Mem.head as →
-                  Dyadic354.Certificate.weights first second third d K p q
-                      ((fun i => i)
-                        ⟨0, Nat.le_of_lt (Nat.le_of_lt (Nat.le_of_lt (Nat.le_of_lt (Nat.le_of_lt (Nat.le_refl 6)))))⟩) =
-                    ![d * K * p + Dyadic354.Certificate.digit first.1, d * K * q + Dyadic354.Certificate.digit first.2,
-                        2 * d * K * p + 2 * Dyadic354.Certificate.digit first.1 + Dyadic354.Certificate.digit second.1,
-                        2 * d * K * q + 2 * Dyadic354.Certificate.digit first.2 + Dyadic354.Certificate.digit second.2,
-                        4 * d * K * p + 4 * Dyadic354.Certificate.digit first.1 +
-                            2 * Dyadic354.Certificate.digit second.1 +
-                          Dyadic354.Certificate.digit third.1,
-                        4 * d * K * q + 4 * Dyadic354.Certificate.digit first.2 +
-                            2 * Dyadic354.Certificate.digit second.2 +
-                          Dyadic354.Certificate.digit third.2]
-                      ((fun i => i)
-                        ⟨0, Nat.le_of_lt (Nat.le_of_lt (Nat.le_of_lt (Nat.le_of_lt (Nat.le_of_lt (Nat.le_refl 6)))))⟩))
-                (fun h =>
-                  of_eq_true
-                    (Eq.trans
-                      (congrArg
-                        (fun x =>
-                          d * K * x + Dyadic354.Certificate.digit first.1 =
-                            d * K * p + Dyadic354.Certificate.digit first.1)
-                        (Eq.trans (congr (congrArg HAdd.hAdd (one_mul p)) (zero_mul q)) (add_zero p)))
-                      (eq_self (d * K * p + Dyadic354.Certificate.digit first.1))))
-                (eq_of_heq tail_eq))
-            (eq_of_heq head_eq) (Fintype.complete i))
-      (fun b {as} a h =>
-        List.cons.noConfusion h fun head_eq =>
-          Eq.ndrec (motive := fun b =>
-            (fun x1 x2 => (fun i => i) x1 :: x2)
-                  ⟨1, Nat.le_of_lt (Nat.le_of_lt (Nat.le_of_lt (Nat.le_of_lt (Nat.le_refl 6))))⟩
-                  ((fun x1 x2 => (fun i => i) x1 :: x2) ⟨2, Nat.le_of_lt (Nat.le_of_lt (Nat.le_of_lt (Nat.le_refl 6)))⟩
-                    ((fun x1 x2 => (fun i => i) x1 :: x2) ⟨3, Nat.le_of_lt (Nat.le_of_lt (Nat.le_refl 6))⟩
-                      ((fun x1 x2 => (fun i => i) x1 :: x2) ⟨4, Nat.le_of_lt (Nat.le_refl 6)⟩
-                        ((fun x1 x2 => (fun i => i) x1 :: x2) ⟨5, Nat.le_refl 6⟩ [])))) ≍
-                as →
-              Fintype.complete i ≍ List.Mem.tail b a →
-                Dyadic354.Certificate.weights first second third d K p q i =
-                  ![d * K * p + Dyadic354.Certificate.digit first.1, d * K * q + Dyadic354.Certificate.digit first.2,
-                      2 * d * K * p + 2 * Dyadic354.Certificate.digit first.1 + Dyadic354.Certificate.digit second.1,
-                      2 * d * K * q + 2 * Dyadic354.Certificate.digit first.2 + Dyadic354.Certificate.digit second.2,
-                      4 * d * K * p + 4 * Dyadic354.Certificate.digit first.1 +
-                          2 * Dyadic354.Certificate.digit second.1 +
-                        Dyadic354.Certificate.digit third.1,
-                      4 * d * K * q + 4 * Dyadic354.Certificate.digit first.2 +
-                          2 * Dyadic354.Certificate.digit second.2 +
-                        Dyadic354.Certificate.digit third.2]
-                    i)
-            (fun tail_eq =>
-              Eq.ndrec (motive := fun {as} =>
-                ∀ (a : List.Mem i as),
-                  Fintype.complete i ≍
-                      List.Mem.tail
-                        ((fun i => i)
-                          ⟨0, Nat.le_of_lt (Nat.le_of_lt (Nat.le_of_lt (Nat.le_of_lt (Nat.le_of_lt (Nat.le_refl 6)))))⟩)
-                        a →
-                    Dyadic354.Certificate.weights first second third d K p q i =
-                      ![d * K * p + Dyadic354.Certificate.digit first.1,
-                          d * K * q + Dyadic354.Certificate.digit first.2,
-                          2 * d * K * p + 2 * Dyadic354.Certificate.digit first.1 +
-                            Dyadic354.Certificate.digit second.1,
-                          2 * d * K * q + 2 * Dyadic354.Certificate.digit first.2 +
-                            Dyadic354.Certificate.digit second.2,
-                          4 * d * K * p + 4 * Dyadic354.Certificate.digit first.1 +
-                              2 * Dyadic354.Certificate.digit second.1 +
-                            Dyadic354.Certificate.digit third.1,
-                          4 * d * K * q + 4 * Dyadic354.Certificate.digit first.2 +
-                              2 * Dyadic354.Certificate.digit second.2 +
-                            Dyadic354.Certificate.digit third.2]
-                        i)
-                (fun a h =>
-                  List.Mem.casesOn (motive := fun a_1 x =>
-                    (fun x1 x2 => (fun i => i) x1 :: x2)
-                          ⟨1, Nat.le_of_lt (Nat.le_of_lt (Nat.le_of_lt (Nat.le_of_lt (Nat.le_refl 6))))⟩
-                          ((fun x1 x2 => (fun i => i) x1 :: x2)
-                            ⟨2, Nat.le_of_lt (Nat.le_of_lt (Nat.le_of_lt (Nat.le_refl 6)))⟩
-                            ((fun x1 x2 => (fun i => i) x1 :: x2) ⟨3, Nat.le_of_lt (Nat.le_of_lt (Nat.le_refl 6))⟩
-                              ((fun x1 x2 => (fun i => i) x1 :: x2) ⟨4, Nat.le_of_lt (Nat.le_refl 6)⟩
-                                ((fun x1 x2 => (fun i => i) x1 :: x2) ⟨5, Nat.le_refl 6⟩ [])))) =
-                        a_1 →
-                      a ≍ x →
-                        Dyadic354.Certificate.weights first second third d K p q i =
-                          ![d * K * p + Dyadic354.Certificate.digit first.1,
-                              d * K * q + Dyadic354.Certificate.digit first.2,
-                              2 * d * K * p + 2 * Dyadic354.Certificate.digit first.1 +
-                                Dyadic354.Certificate.digit second.1,
-                              2 * d * K * q + 2 * Dyadic354.Certificate.digit first.2 +
-                                Dyadic354.Certificate.digit second.2,
-                              4 * d * K * p + 4 * Dyadic354.Certificate.digit first.1 +
-                                  2 * Dyadic354.Certificate.digit second.1 +
-                                Dyadic354.Certificate.digit third.1,
-                              4 * d * K * q + 4 * Dyadic354.Certificate.digit first.2 +
-                                  2 * Dyadic354.Certificate.digit second.2 +
-                                Dyadic354.Certificate.digit third.2]
-                            i)
-                    a
-                    (fun as h =>
-                      List.cons.noConfusion h fun head_eq =>
-                        Eq.ndrec (motive := fun i =>
-                          ∀
-                            (a :
-                              List.Mem i
-                                ((fun x1 x2 => (fun i => i) x1 :: x2)
-                                  ⟨1, Nat.le_of_lt (Nat.le_of_lt (Nat.le_of_lt (Nat.le_of_lt (Nat.le_refl 6))))⟩
-                                  ((fun x1 x2 => (fun i => i) x1 :: x2)
-                                    ⟨2, Nat.le_of_lt (Nat.le_of_lt (Nat.le_of_lt (Nat.le_refl 6)))⟩
-                                    ((fun x1 x2 => (fun i => i) x1 :: x2)
-                                      ⟨3, Nat.le_of_lt (Nat.le_of_lt (Nat.le_refl 6))⟩
-                                      ((fun x1 x2 => (fun i => i) x1 :: x2) ⟨4, Nat.le_of_lt (Nat.le_refl 6)⟩
-                                        ((fun x1 x2 => (fun i => i) x1 :: x2) ⟨5, Nat.le_refl 6⟩ [])))))),
-                            (fun x1 x2 => (fun i => i) x1 :: x2)
-                                  ⟨2, Nat.le_of_lt (Nat.le_of_lt (Nat.le_of_lt (Nat.le_refl 6)))⟩
-                                  ((fun x1 x2 => (fun i => i) x1 :: x2) ⟨3, Nat.le_of_lt (Nat.le_of_lt (Nat.le_refl 6))⟩
-                                    ((fun x1 x2 => (fun i => i) x1 :: x2) ⟨4, Nat.le_of_lt (Nat.le_refl 6)⟩
-                                      ((fun x1 x2 => (fun i => i) x1 :: x2) ⟨5, Nat.le_refl 6⟩ []))) ≍
-                                as →
-                              a ≍ List.Mem.head as →
-                                Dyadic354.Certificate.weights first second third d K p q i =
-                                  ![d * K * p + Dyadic354.Certificate.digit first.1,
-                                      d * K * q + Dyadic354.Certificate.digit first.2,
-                                      2 * d * K * p + 2 * Dyadic354.Certificate.digit first.1 +
-                                        Dyadic354.Certificate.digit second.1,
-                                      2 * d * K * q + 2 * Dyadic354.Certificate.digit first.2 +
-                                        Dyadic354.Certificate.digit second.2,
-                                      4 * d * K * p + 4 * Dyadic354.Certificate.digit first.1 +
-                                          2 * Dyadic354.Certificate.digit second.1 +
-                                        Dyadic354.Certificate.digit third.1,
-                                      4 * d * K * q + 4 * Dyadic354.Certificate.digit first.2 +
-                                          2 * Dyadic354.Certificate.digit second.2 +
-                                        Dyadic354.Certificate.digit third.2]
-                                    i)
-                          (fun a tail_eq =>
-                            Eq.ndrec (motive := fun as =>
-                              a ≍ List.Mem.head as →
-                                Dyadic354.Certificate.weights first second third d K p q
-                                    ((fun i => i)
-                                      ⟨1, Nat.le_of_lt (Nat.le_of_lt (Nat.le_of_lt (Nat.le_of_lt (Nat.le_refl 6))))⟩) =
-                                  ![d * K * p + Dyadic354.Certificate.digit first.1,
-                                      d * K * q + Dyadic354.Certificate.digit first.2,
-                                      2 * d * K * p + 2 * Dyadic354.Certificate.digit first.1 +
-                                        Dyadic354.Certificate.digit second.1,
-                                      2 * d * K * q + 2 * Dyadic354.Certificate.digit first.2 +
-                                        Dyadic354.Certificate.digit second.2,
-                                      4 * d * K * p + 4 * Dyadic354.Certificate.digit first.1 +
-                                          2 * Dyadic354.Certificate.digit second.1 +
-                                        Dyadic354.Certificate.digit third.1,
-                                      4 * d * K * q + 4 * Dyadic354.Certificate.digit first.2 +
-                                          2 * Dyadic354.Certificate.digit second.2 +
-                                        Dyadic354.Certificate.digit third.2]
-                                    ((fun i => i)
-                                      ⟨1, Nat.le_of_lt (Nat.le_of_lt (Nat.le_of_lt (Nat.le_of_lt (Nat.le_refl 6))))⟩))
-                              (fun h =>
-                                of_eq_true
-                                  (Eq.trans
-                                    (congrArg
-                                      (fun x =>
-                                        d * K * x + Dyadic354.Certificate.digit first.2 =
-                                          d * K * q + Dyadic354.Certificate.digit first.2)
-                                      (Eq.trans (congr (congrArg HAdd.hAdd (zero_mul p)) (one_mul q)) (zero_add q)))
-                                    (eq_self (d * K * q + Dyadic354.Certificate.digit first.2))))
-                              (eq_of_heq tail_eq))
-                          (eq_of_heq head_eq) a)
-                    (fun b {as} a_1 h =>
-                      List.cons.noConfusion h fun head_eq =>
-                        Eq.ndrec (motive := fun b =>
-                          (fun x1 x2 => (fun i => i) x1 :: x2)
-                                ⟨2, Nat.le_of_lt (Nat.le_of_lt (Nat.le_of_lt (Nat.le_refl 6)))⟩
-                                ((fun x1 x2 => (fun i => i) x1 :: x2) ⟨3, Nat.le_of_lt (Nat.le_of_lt (Nat.le_refl 6))⟩
-                                  ((fun x1 x2 => (fun i => i) x1 :: x2) ⟨4, Nat.le_of_lt (Nat.le_refl 6)⟩
-                                    ((fun x1 x2 => (fun i => i) x1 :: x2) ⟨5, Nat.le_refl 6⟩ []))) ≍
-                              as →
-                            a ≍ List.Mem.tail b a_1 →
-                              Dyadic354.Certificate.weights first second third d K p q i =
-                                ![d * K * p + Dyadic354.Certificate.digit first.1,
-                                    d * K * q + Dyadic354.Certificate.digit first.2,
-                                    2 * d * K * p + 2 * Dyadic354.Certificate.digit first.1 +
-                                      Dyadic354.Certificate.digit second.1,
-                                    2 * d * K * q + 2 * Dyadic354.Certificate.digit first.2 +
-                                      Dyadic354.Certificate.digit second.2,
-                                    4 * d * K * p + 4 * Dyadic354.Certificate.digit first.1 +
-                                        2 * Dyadic354.Certificate.digit second.1 +
-                                      Dyadic354.Certificate.digit third.1,
-                                    4 * d * K * q + 4 * Dyadic354.Certificate.digit first.2 +
-                                        2 * Dyadic354.Certificate.digit second.2 +
-                                      Dyadic354.Certificate.digit third.2]
-                                  i)
-                          (fun tail_eq =>
-                            Eq.ndrec (motive := fun {as} =>
-                              ∀ (a_2 : List.Mem i as),
-                                a ≍
-                                    List.Mem.tail
-                                      ((fun i => i)
-                                        ⟨1, Nat.le_of_lt (Nat.le_of_lt (Nat.le_of_lt (Nat.le_of_lt (Nat.le_refl 6))))⟩)
-                                      a_2 →
-                                  Dyadic354.Certificate.weights first second third d K p q i =
-                                    ![d * K * p + Dyadic354.Certificate.digit first.1,
-                                        d * K * q + Dyadic354.Certificate.digit first.2,
-                                        2 * d * K * p + 2 * Dyadic354.Certificate.digit first.1 +
-                                          Dyadic354.Certificate.digit second.1,
-                                        2 * d * K * q + 2 * Dyadic354.Certificate.digit first.2 +
-                                          Dyadic354.Certificate.digit second.2,
-                                        4 * d * K * p + 4 * Dyadic354.Certificate.digit first.1 +
-                                            2 * Dyadic354.Certificate.digit second.1 +
-                                          Dyadic354.Certificate.digit third.1,
-                                        4 * d * K * q + 4 * Dyadic354.Certificate.digit first.2 +
-                                            2 * Dyadic354.Certificate.digit second.2 +
-                                          Dyadic354.Certificate.digit third.2]
-                                      i)
-                              (fun a_2 h =>
-                                List.Mem.casesOn (motive := fun a x =>
-                                  (fun x1 x2 => (fun i => i) x1 :: x2)
-                                        ⟨2, Nat.le_of_lt (Nat.le_of_lt (Nat.le_of_lt (Nat.le_refl 6)))⟩
-                                        ((fun x1 x2 => (fun i => i) x1 :: x2)
-                                          ⟨3, Nat.le_of_lt (Nat.le_of_lt (Nat.le_refl 6))⟩
-                                          ((fun x1 x2 => (fun i => i) x1 :: x2) ⟨4, Nat.le_of_lt (Nat.le_refl 6)⟩
-                                            ((fun x1 x2 => (fun i => i) x1 :: x2) ⟨5, Nat.le_refl 6⟩ []))) =
-                                      a →
-                                    a_2 ≍ x →
-                                      Dyadic354.Certificate.weights first second third d K p q i =
-                                        ![d * K * p + Dyadic354.Certificate.digit first.1,
-                                            d * K * q + Dyadic354.Certificate.digit first.2,
-                                            2 * d * K * p + 2 * Dyadic354.Certificate.digit first.1 +
-                                              Dyadic354.Certificate.digit second.1,
-                                            2 * d * K * q + 2 * Dyadic354.Certificate.digit first.2 +
-                                              Dyadic354.Certificate.digit second.2,
-                                            4 * d * K * p + 4 * Dyadic354.Certificate.digit first.1 +
-                                                2 * Dyadic354.Certificate.digit second.1 +
-                                              Dyadic354.Certificate.digit third.1,
-                                            4 * d * K * q + 4 * Dyadic354.Certificate.digit first.2 +
-                                                2 * Dyadic354.Certificate.digit second.2 +
-                                              Dyadic354.Certificate.digit third.2]
-                                          i)
-                                  a_2
-                                  (fun as h =>
-                                    List.cons.noConfusion h fun head_eq =>
-                                      Eq.ndrec (motive := fun i =>
-                                        ∀
-                                          (a :
-                                            List.Mem i
-                                              ((fun x1 x2 => (fun i => i) x1 :: x2)
-                                                ⟨2, Nat.le_of_lt (Nat.le_of_lt (Nat.le_of_lt (Nat.le_refl 6)))⟩
-                                                ((fun x1 x2 => (fun i => i) x1 :: x2)
-                                                  ⟨3, Nat.le_of_lt (Nat.le_of_lt (Nat.le_refl 6))⟩
-                                                  ((fun x1 x2 => (fun i => i) x1 :: x2)
-                                                    ⟨4, Nat.le_of_lt (Nat.le_refl 6)⟩
-                                                    ((fun x1 x2 => (fun i => i) x1 :: x2) ⟨5, Nat.le_refl 6⟩ []))))),
-                                          (fun x1 x2 => (fun i => i) x1 :: x2)
-                                                ⟨3, Nat.le_of_lt (Nat.le_of_lt (Nat.le_refl 6))⟩
-                                                ((fun x1 x2 => (fun i => i) x1 :: x2) ⟨4, Nat.le_of_lt (Nat.le_refl 6)⟩
-                                                  ((fun x1 x2 => (fun i => i) x1 :: x2) ⟨5, Nat.le_refl 6⟩ [])) ≍
-                                              as →
-                                            a ≍ List.Mem.head as →
-                                              Dyadic354.Certificate.weights first second third d K p q i =
-                                                ![d * K * p + Dyadic354.Certificate.digit first.1,
-                                                    d * K * q + Dyadic354.Certificate.digit first.2,
-                                                    2 * d * K * p + 2 * Dyadic354.Certificate.digit first.1 +
-                                                      Dyadic354.Certificate.digit second.1,
-                                                    2 * d * K * q + 2 * Dyadic354.Certificate.digit first.2 +
-                                                      Dyadic354.Certificate.digit second.2,
-                                                    4 * d * K * p + 4 * Dyadic354.Certificate.digit first.1 +
-                                                        2 * Dyadic354.Certificate.digit second.1 +
-                                                      Dyadic354.Certificate.digit third.1,
-                                                    4 * d * K * q + 4 * Dyadic354.Certificate.digit first.2 +
-                                                        2 * Dyadic354.Certificate.digit second.2 +
-                                                      Dyadic354.Certificate.digit third.2]
-                                                  i)
-                                        (fun a tail_eq =>
-                                          Eq.ndrec (motive := fun as =>
-                                            a ≍ List.Mem.head as →
-                                              Dyadic354.Certificate.weights first second third d K p q
-                                                  ((fun i => i)
-                                                    ⟨2, Nat.le_of_lt (Nat.le_of_lt (Nat.le_of_lt (Nat.le_refl 6)))⟩) =
-                                                ![d * K * p + Dyadic354.Certificate.digit first.1,
-                                                    d * K * q + Dyadic354.Certificate.digit first.2,
-                                                    2 * d * K * p + 2 * Dyadic354.Certificate.digit first.1 +
-                                                      Dyadic354.Certificate.digit second.1,
-                                                    2 * d * K * q + 2 * Dyadic354.Certificate.digit first.2 +
-                                                      Dyadic354.Certificate.digit second.2,
-                                                    4 * d * K * p + 4 * Dyadic354.Certificate.digit first.1 +
-                                                        2 * Dyadic354.Certificate.digit second.1 +
-                                                      Dyadic354.Certificate.digit third.1,
-                                                    4 * d * K * q + 4 * Dyadic354.Certificate.digit first.2 +
-                                                        2 * Dyadic354.Certificate.digit second.2 +
-                                                      Dyadic354.Certificate.digit third.2]
-                                                  ((fun i => i)
-                                                    ⟨2, Nat.le_of_lt (Nat.le_of_lt (Nat.le_of_lt (Nat.le_refl 6)))⟩))
-                                            (fun h =>
-                                              Eq.mpr
-                                                (id
-                                                  (congrArg
-                                                    (fun x =>
-                                                      d * K * x +
-                                                          (2 * Dyadic354.Certificate.digit first.1 +
-                                                            Dyadic354.Certificate.digit second.1) =
-                                                        2 * d * K * p + 2 * Dyadic354.Certificate.digit first.1 +
-                                                          Dyadic354.Certificate.digit second.1)
-                                                    (Eq.trans (congrArg (HAdd.hAdd (2 * p)) (zero_mul q))
-                                                      (add_zero (2 * p)))))
-                                                (Mathlib.Tactic.Ring.of_eq
-                                                  (Mathlib.Tactic.Ring.add_congr
-                                                    (Mathlib.Tactic.Ring.mul_congr
-                                                      (Mathlib.Tactic.Ring.mul_congr (Mathlib.Tactic.Ring.atom_pf d)
-                                                        (Mathlib.Tactic.Ring.atom_pf K)
-                                                        (Mathlib.Tactic.Ring.add_mul
-                                                          (Mathlib.Tactic.Ring.mul_add
-                                                            (Mathlib.Tactic.Ring.mul_pf_left d (Nat.rawCast 1)
-                                                              (Mathlib.Tactic.Ring.mul_pf_right K (Nat.rawCast 1)
-                                                                (Mathlib.Tactic.Ring.one_mul (Nat.rawCast 1))))
-                                                            (Mathlib.Tactic.Ring.mul_zero
-                                                              (d ^ Nat.rawCast 1 * Nat.rawCast 1))
-                                                            (Mathlib.Tactic.Ring.add_pf_add_zero
-                                                              (d ^ Nat.rawCast 1 * (K ^ Nat.rawCast 1 * Nat.rawCast 1) +
-                                                                0)))
-                                                          (Mathlib.Tactic.Ring.zero_mul
-                                                            (K ^ Nat.rawCast 1 * Nat.rawCast 1 + 0))
-                                                          (Mathlib.Tactic.Ring.add_pf_add_zero
-                                                            (d ^ Nat.rawCast 1 * (K ^ Nat.rawCast 1 * Nat.rawCast 1) +
-                                                              0))))
-                                                      (Mathlib.Tactic.Ring.mul_congr
-                                                        (Mathlib.Tactic.Ring.cast_pos
-                                                          (Mathlib.Meta.NormNum.isNat_ofNat ℤ (Eq.refl 2)))
-                                                        (Mathlib.Tactic.Ring.atom_pf p)
-                                                        (Mathlib.Tactic.Ring.add_mul
-                                                          (Mathlib.Tactic.Ring.mul_add
-                                                            (Mathlib.Tactic.Ring.mul_pf_right p (Nat.rawCast 1)
-                                                              (Mathlib.Tactic.Ring.mul_one (Nat.rawCast 2)))
-                                                            (Mathlib.Tactic.Ring.mul_zero (Nat.rawCast 2))
-                                                            (Mathlib.Tactic.Ring.add_pf_add_zero
-                                                              (p ^ Nat.rawCast 1 * Nat.rawCast 2 + 0)))
-                                                          (Mathlib.Tactic.Ring.zero_mul
-                                                            (p ^ Nat.rawCast 1 * Nat.rawCast 1 + 0))
-                                                          (Mathlib.Tactic.Ring.add_pf_add_zero
-                                                            (p ^ Nat.rawCast 1 * Nat.rawCast 2 + 0))))
-                                                      (Mathlib.Tactic.Ring.add_mul
-                                                        (Mathlib.Tactic.Ring.mul_add
-                                                          (Mathlib.Tactic.Ring.mul_pf_left d (Nat.rawCast 1)
-                                                            (Mathlib.Tactic.Ring.mul_pf_left K (Nat.rawCast 1)
-                                                              (Mathlib.Tactic.Ring.mul_pf_right p (Nat.rawCast 1)
-                                                                (Mathlib.Tactic.Ring.one_mul (Nat.rawCast 2)))))
-                                                          (Mathlib.Tactic.Ring.mul_zero
-                                                            (d ^ Nat.rawCast 1 * (K ^ Nat.rawCast 1 * Nat.rawCast 1)))
-                                                          (Mathlib.Tactic.Ring.add_pf_add_zero
-                                                            (d ^ Nat.rawCast 1 *
-                                                                (K ^ Nat.rawCast 1 *
-                                                                  (p ^ Nat.rawCast 1 * Nat.rawCast 2)) +
-                                                              0)))
-                                                        (Mathlib.Tactic.Ring.zero_mul
-                                                          (p ^ Nat.rawCast 1 * Nat.rawCast 2 + 0))
-                                                        (Mathlib.Tactic.Ring.add_pf_add_zero
-                                                          (d ^ Nat.rawCast 1 *
-                                                              (K ^ Nat.rawCast 1 *
-                                                                (p ^ Nat.rawCast 1 * Nat.rawCast 2)) +
-                                                            0))))
-                                                    (Mathlib.Tactic.Ring.add_congr
-                                                      (Mathlib.Tactic.Ring.mul_congr
-                                                        (Mathlib.Tactic.Ring.cast_pos
-                                                          (Mathlib.Meta.NormNum.isNat_ofNat ℤ (Eq.refl 2)))
-                                                        (Mathlib.Tactic.Ring.atom_pf
-                                                          (Dyadic354.Certificate.digit first.1))
-                                                        (Mathlib.Tactic.Ring.add_mul
-                                                          (Mathlib.Tactic.Ring.mul_add
-                                                            (Mathlib.Tactic.Ring.mul_pf_right
-                                                              (Dyadic354.Certificate.digit first.1) (Nat.rawCast 1)
-                                                              (Mathlib.Tactic.Ring.mul_one (Nat.rawCast 2)))
-                                                            (Mathlib.Tactic.Ring.mul_zero (Nat.rawCast 2))
-                                                            (Mathlib.Tactic.Ring.add_pf_add_zero
-                                                              (Dyadic354.Certificate.digit first.1 ^ Nat.rawCast 1 *
-                                                                  Nat.rawCast 2 +
-                                                                0)))
-                                                          (Mathlib.Tactic.Ring.zero_mul
-                                                            (Dyadic354.Certificate.digit first.1 ^ Nat.rawCast 1 *
-                                                                Nat.rawCast 1 +
-                                                              0))
-                                                          (Mathlib.Tactic.Ring.add_pf_add_zero
-                                                            (Dyadic354.Certificate.digit first.1 ^ Nat.rawCast 1 *
-                                                                Nat.rawCast 2 +
-                                                              0))))
-                                                      (Mathlib.Tactic.Ring.atom_pf
-                                                        (Dyadic354.Certificate.digit second.1))
-                                                      (Mathlib.Tactic.Ring.add_pf_add_lt
-                                                        (Dyadic354.Certificate.digit first.1 ^ Nat.rawCast 1 *
-                                                          Nat.rawCast 2)
-                                                        (Mathlib.Tactic.Ring.add_pf_zero_add
-                                                          (Dyadic354.Certificate.digit second.1 ^ Nat.rawCast 1 *
-                                                              Nat.rawCast 1 +
-                                                            0))))
-                                                    (Mathlib.Tactic.Ring.add_pf_add_lt
-                                                      (d ^ Nat.rawCast 1 *
-                                                        (K ^ Nat.rawCast 1 * (p ^ Nat.rawCast 1 * Nat.rawCast 2)))
-                                                      (Mathlib.Tactic.Ring.add_pf_zero_add
-                                                        (Dyadic354.Certificate.digit first.1 ^ Nat.rawCast 1 *
-                                                            Nat.rawCast 2 +
-                                                          (Dyadic354.Certificate.digit second.1 ^ Nat.rawCast 1 *
-                                                              Nat.rawCast 1 +
-                                                            0)))))
-                                                  (Mathlib.Tactic.Ring.add_congr
-                                                    (Mathlib.Tactic.Ring.add_congr
-                                                      (Mathlib.Tactic.Ring.mul_congr
-                                                        (Mathlib.Tactic.Ring.mul_congr
-                                                          (Mathlib.Tactic.Ring.mul_congr
-                                                            (Mathlib.Tactic.Ring.cast_pos
-                                                              (Mathlib.Meta.NormNum.isNat_ofNat ℤ (Eq.refl 2)))
-                                                            (Mathlib.Tactic.Ring.atom_pf d)
-                                                            (Mathlib.Tactic.Ring.add_mul
-                                                              (Mathlib.Tactic.Ring.mul_add
-                                                                (Mathlib.Tactic.Ring.mul_pf_right d (Nat.rawCast 1)
-                                                                  (Mathlib.Tactic.Ring.mul_one (Nat.rawCast 2)))
-                                                                (Mathlib.Tactic.Ring.mul_zero (Nat.rawCast 2))
-                                                                (Mathlib.Tactic.Ring.add_pf_add_zero
-                                                                  (d ^ Nat.rawCast 1 * Nat.rawCast 2 + 0)))
-                                                              (Mathlib.Tactic.Ring.zero_mul
-                                                                (d ^ Nat.rawCast 1 * Nat.rawCast 1 + 0))
-                                                              (Mathlib.Tactic.Ring.add_pf_add_zero
-                                                                (d ^ Nat.rawCast 1 * Nat.rawCast 2 + 0))))
-                                                          (Mathlib.Tactic.Ring.atom_pf K)
-                                                          (Mathlib.Tactic.Ring.add_mul
-                                                            (Mathlib.Tactic.Ring.mul_add
-                                                              (Mathlib.Tactic.Ring.mul_pf_left d (Nat.rawCast 1)
-                                                                (Mathlib.Tactic.Ring.mul_pf_right K (Nat.rawCast 1)
-                                                                  (Mathlib.Tactic.Ring.mul_one (Nat.rawCast 2))))
-                                                              (Mathlib.Tactic.Ring.mul_zero
-                                                                (d ^ Nat.rawCast 1 * Nat.rawCast 2))
-                                                              (Mathlib.Tactic.Ring.add_pf_add_zero
-                                                                (d ^ Nat.rawCast 1 *
-                                                                    (K ^ Nat.rawCast 1 * Nat.rawCast 2) +
-                                                                  0)))
-                                                            (Mathlib.Tactic.Ring.zero_mul
-                                                              (K ^ Nat.rawCast 1 * Nat.rawCast 1 + 0))
-                                                            (Mathlib.Tactic.Ring.add_pf_add_zero
-                                                              (d ^ Nat.rawCast 1 * (K ^ Nat.rawCast 1 * Nat.rawCast 2) +
-                                                                0))))
-                                                        (Mathlib.Tactic.Ring.atom_pf p)
-                                                        (Mathlib.Tactic.Ring.add_mul
-                                                          (Mathlib.Tactic.Ring.mul_add
-                                                            (Mathlib.Tactic.Ring.mul_pf_left d (Nat.rawCast 1)
-                                                              (Mathlib.Tactic.Ring.mul_pf_left K (Nat.rawCast 1)
-                                                                (Mathlib.Tactic.Ring.mul_pf_right p (Nat.rawCast 1)
-                                                                  (Mathlib.Tactic.Ring.mul_one (Nat.rawCast 2)))))
-                                                            (Mathlib.Tactic.Ring.mul_zero
-                                                              (d ^ Nat.rawCast 1 * (K ^ Nat.rawCast 1 * Nat.rawCast 2)))
-                                                            (Mathlib.Tactic.Ring.add_pf_add_zero
-                                                              (d ^ Nat.rawCast 1 *
-                                                                  (K ^ Nat.rawCast 1 *
-                                                                    (p ^ Nat.rawCast 1 * Nat.rawCast 2)) +
-                                                                0)))
-                                                          (Mathlib.Tactic.Ring.zero_mul
-                                                            (p ^ Nat.rawCast 1 * Nat.rawCast 1 + 0))
-                                                          (Mathlib.Tactic.Ring.add_pf_add_zero
-                                                            (d ^ Nat.rawCast 1 *
-                                                                (K ^ Nat.rawCast 1 *
-                                                                  (p ^ Nat.rawCast 1 * Nat.rawCast 2)) +
-                                                              0))))
-                                                      (Mathlib.Tactic.Ring.mul_congr
-                                                        (Mathlib.Tactic.Ring.cast_pos
-                                                          (Mathlib.Meta.NormNum.isNat_ofNat ℤ (Eq.refl 2)))
-                                                        (Mathlib.Tactic.Ring.atom_pf
-                                                          (Dyadic354.Certificate.digit first.1))
-                                                        (Mathlib.Tactic.Ring.add_mul
-                                                          (Mathlib.Tactic.Ring.mul_add
-                                                            (Mathlib.Tactic.Ring.mul_pf_right
-                                                              (Dyadic354.Certificate.digit first.1) (Nat.rawCast 1)
-                                                              (Mathlib.Tactic.Ring.mul_one (Nat.rawCast 2)))
-                                                            (Mathlib.Tactic.Ring.mul_zero (Nat.rawCast 2))
-                                                            (Mathlib.Tactic.Ring.add_pf_add_zero
-                                                              (Dyadic354.Certificate.digit first.1 ^ Nat.rawCast 1 *
-                                                                  Nat.rawCast 2 +
-                                                                0)))
-                                                          (Mathlib.Tactic.Ring.zero_mul
-                                                            (Dyadic354.Certificate.digit first.1 ^ Nat.rawCast 1 *
-                                                                Nat.rawCast 1 +
-                                                              0))
-                                                          (Mathlib.Tactic.Ring.add_pf_add_zero
-                                                            (Dyadic354.Certificate.digit first.1 ^ Nat.rawCast 1 *
-                                                                Nat.rawCast 2 +
-                                                              0))))
-                                                      (Mathlib.Tactic.Ring.add_pf_add_lt
-                                                        (d ^ Nat.rawCast 1 *
-                                                          (K ^ Nat.rawCast 1 * (p ^ Nat.rawCast 1 * Nat.rawCast 2)))
-                                                        (Mathlib.Tactic.Ring.add_pf_zero_add
-                                                          (Dyadic354.Certificate.digit first.1 ^ Nat.rawCast 1 *
-                                                              Nat.rawCast 2 +
-                                                            0))))
-                                                    (Mathlib.Tactic.Ring.atom_pf (Dyadic354.Certificate.digit second.1))
-                                                    (Mathlib.Tactic.Ring.add_pf_add_lt
-                                                      (d ^ Nat.rawCast 1 *
-                                                        (K ^ Nat.rawCast 1 * (p ^ Nat.rawCast 1 * Nat.rawCast 2)))
-                                                      (Mathlib.Tactic.Ring.add_pf_add_lt
-                                                        (Dyadic354.Certificate.digit first.1 ^ Nat.rawCast 1 *
-                                                          Nat.rawCast 2)
-                                                        (Mathlib.Tactic.Ring.add_pf_zero_add
-                                                          (Dyadic354.Certificate.digit second.1 ^ Nat.rawCast 1 *
-                                                              Nat.rawCast 1 +
-                                                            0)))))))
-                                            (eq_of_heq tail_eq))
-                                        (eq_of_heq head_eq) a_2)
-                                  (fun b {as} a h =>
-                                    List.cons.noConfusion h fun head_eq =>
-                                      Eq.ndrec (motive := fun b =>
-                                        (fun x1 x2 => (fun i => i) x1 :: x2)
-                                              ⟨3, Nat.le_of_lt (Nat.le_of_lt (Nat.le_refl 6))⟩
-                                              ((fun x1 x2 => (fun i => i) x1 :: x2) ⟨4, Nat.le_of_lt (Nat.le_refl 6)⟩
-                                                ((fun x1 x2 => (fun i => i) x1 :: x2) ⟨5, Nat.le_refl 6⟩ [])) ≍
-                                            as →
-                                          a_2 ≍ List.Mem.tail b a →
-                                            Dyadic354.Certificate.weights first second third d K p q i =
-                                              ![d * K * p + Dyadic354.Certificate.digit first.1,
-                                                  d * K * q + Dyadic354.Certificate.digit first.2,
-                                                  2 * d * K * p + 2 * Dyadic354.Certificate.digit first.1 +
-                                                    Dyadic354.Certificate.digit second.1,
-                                                  2 * d * K * q + 2 * Dyadic354.Certificate.digit first.2 +
-                                                    Dyadic354.Certificate.digit second.2,
-                                                  4 * d * K * p + 4 * Dyadic354.Certificate.digit first.1 +
-                                                      2 * Dyadic354.Certificate.digit second.1 +
-                                                    Dyadic354.Certificate.digit third.1,
-                                                  4 * d * K * q + 4 * Dyadic354.Certificate.digit first.2 +
-                                                      2 * Dyadic354.Certificate.digit second.2 +
-                                                    Dyadic354.Certificate.digit third.2]
-                                                i)
-                                        (fun tail_eq =>
-                                          Eq.ndrec (motive := fun {as} =>
-                                            ∀ (a : List.Mem i as),
-                                              a_2 ≍
-                                                  List.Mem.tail
-                                                    ((fun i => i)
-                                                      ⟨2, Nat.le_of_lt (Nat.le_of_lt (Nat.le_of_lt (Nat.le_refl 6)))⟩)
-                                                    a →
-                                                Dyadic354.Certificate.weights first second third d K p q i =
-                                                  ![d * K * p + Dyadic354.Certificate.digit first.1,
-                                                      d * K * q + Dyadic354.Certificate.digit first.2,
-                                                      2 * d * K * p + 2 * Dyadic354.Certificate.digit first.1 +
-                                                        Dyadic354.Certificate.digit second.1,
-                                                      2 * d * K * q + 2 * Dyadic354.Certificate.digit first.2 +
-                                                        Dyadic354.Certificate.digit second.2,
-                                                      4 * d * K * p + 4 * Dyadic354.Certificate.digit first.1 +
-                                                          2 * Dyadic354.Certificate.digit second.1 +
-                                                        Dyadic354.Certificate.digit third.1,
-                                                      4 * d * K * q + 4 * Dyadic354.Certificate.digit first.2 +
-                                                          2 * Dyadic354.Certificate.digit second.2 +
-                                                        Dyadic354.Certificate.digit third.2]
-                                                    i)
-                                            (fun a h =>
-                                              List.Mem.casesOn (motive := fun a_3 x =>
-                                                (fun x1 x2 => (fun i => i) x1 :: x2)
-                                                      ⟨3, Nat.le_of_lt (Nat.le_of_lt (Nat.le_refl 6))⟩
-                                                      ((fun x1 x2 => (fun i => i) x1 :: x2)
-                                                        ⟨4, Nat.le_of_lt (Nat.le_refl 6)⟩
-                                                        ((fun x1 x2 => (fun i => i) x1 :: x2) ⟨5, Nat.le_refl 6⟩ [])) =
-                                                    a_3 →
-                                                  a ≍ x →
-                                                    Dyadic354.Certificate.weights first second third d K p q i =
-                                                      ![d * K * p + Dyadic354.Certificate.digit first.1,
-                                                          d * K * q + Dyadic354.Certificate.digit first.2,
-                                                          2 * d * K * p + 2 * Dyadic354.Certificate.digit first.1 +
-                                                            Dyadic354.Certificate.digit second.1,
-                                                          2 * d * K * q + 2 * Dyadic354.Certificate.digit first.2 +
-                                                            Dyadic354.Certificate.digit second.2,
-                                                          4 * d * K * p + 4 * Dyadic354.Certificate.digit first.1 +
-                                                              2 * Dyadic354.Certificate.digit second.1 +
-                                                            Dyadic354.Certificate.digit third.1,
-                                                          4 * d * K * q + 4 * Dyadic354.Certificate.digit first.2 +
-                                                              2 * Dyadic354.Certificate.digit second.2 +
-                                                            Dyadic354.Certificate.digit third.2]
-                                                        i)
-                                                a
-                                                (fun as h =>
-                                                  List.cons.noConfusion h fun head_eq =>
-                                                    Eq.ndrec (motive := fun i =>
-                                                      ∀
-                                                        (a :
-                                                          List.Mem i
-                                                            ((fun x1 x2 => (fun i => i) x1 :: x2)
-                                                              ⟨3, Nat.le_of_lt (Nat.le_of_lt (Nat.le_refl 6))⟩
-                                                              ((fun x1 x2 => (fun i => i) x1 :: x2)
-                                                                ⟨4, Nat.le_of_lt (Nat.le_refl 6)⟩
-                                                                ((fun x1 x2 => (fun i => i) x1 :: x2) ⟨5, Nat.le_refl 6⟩
-                                                                  [])))),
-                                                        (fun x1 x2 => (fun i => i) x1 :: x2)
-                                                              ⟨4, Nat.le_of_lt (Nat.le_refl 6)⟩
-                                                              ((fun x1 x2 => (fun i => i) x1 :: x2) ⟨5, Nat.le_refl 6⟩
-                                                                []) ≍
-                                                            as →
-                                                          a ≍ List.Mem.head as →
-                                                            Dyadic354.Certificate.weights first second third d K p q i =
-                                                              ![d * K * p + Dyadic354.Certificate.digit first.1,
-                                                                  d * K * q + Dyadic354.Certificate.digit first.2,
-                                                                  2 * d * K * p +
-                                                                      2 * Dyadic354.Certificate.digit first.1 +
-                                                                    Dyadic354.Certificate.digit second.1,
-                                                                  2 * d * K * q +
-                                                                      2 * Dyadic354.Certificate.digit first.2 +
-                                                                    Dyadic354.Certificate.digit second.2,
-                                                                  4 * d * K * p +
-                                                                        4 * Dyadic354.Certificate.digit first.1 +
-                                                                      2 * Dyadic354.Certificate.digit second.1 +
-                                                                    Dyadic354.Certificate.digit third.1,
-                                                                  4 * d * K * q +
-                                                                        4 * Dyadic354.Certificate.digit first.2 +
-                                                                      2 * Dyadic354.Certificate.digit second.2 +
-                                                                    Dyadic354.Certificate.digit third.2]
-                                                                i)
-                                                      (fun a tail_eq =>
-                                                        Eq.ndrec (motive := fun as =>
-                                                          a ≍ List.Mem.head as →
-                                                            Dyadic354.Certificate.weights first second third d K p q
-                                                                ((fun i => i)
-                                                                  ⟨3, Nat.le_of_lt (Nat.le_of_lt (Nat.le_refl 6))⟩) =
-                                                              ![d * K * p + Dyadic354.Certificate.digit first.1,
-                                                                  d * K * q + Dyadic354.Certificate.digit first.2,
-                                                                  2 * d * K * p +
-                                                                      2 * Dyadic354.Certificate.digit first.1 +
-                                                                    Dyadic354.Certificate.digit second.1,
-                                                                  2 * d * K * q +
-                                                                      2 * Dyadic354.Certificate.digit first.2 +
-                                                                    Dyadic354.Certificate.digit second.2,
-                                                                  4 * d * K * p +
-                                                                        4 * Dyadic354.Certificate.digit first.1 +
-                                                                      2 * Dyadic354.Certificate.digit second.1 +
-                                                                    Dyadic354.Certificate.digit third.1,
-                                                                  4 * d * K * q +
-                                                                        4 * Dyadic354.Certificate.digit first.2 +
-                                                                      2 * Dyadic354.Certificate.digit second.2 +
-                                                                    Dyadic354.Certificate.digit third.2]
-                                                                ((fun i => i)
-                                                                  ⟨3, Nat.le_of_lt (Nat.le_of_lt (Nat.le_refl 6))⟩))
-                                                          (fun h =>
-                                                            Eq.mpr
-                                                              (id
-                                                                (congrArg
-                                                                  (fun x =>
-                                                                    d * K * x +
-                                                                        (2 * Dyadic354.Certificate.digit first.2 +
-                                                                          Dyadic354.Certificate.digit second.2) =
-                                                                      2 * d * K * q +
-                                                                          2 * Dyadic354.Certificate.digit first.2 +
-                                                                        Dyadic354.Certificate.digit second.2)
-                                                                  (Eq.trans (congrArg (fun x => x + 2 * q) (zero_mul p))
-                                                                    (zero_add (2 * q)))))
-                                                              (Mathlib.Tactic.Ring.of_eq
-                                                                (Mathlib.Tactic.Ring.add_congr
-                                                                  (Mathlib.Tactic.Ring.mul_congr
-                                                                    (Mathlib.Tactic.Ring.mul_congr
-                                                                      (Mathlib.Tactic.Ring.atom_pf d)
-                                                                      (Mathlib.Tactic.Ring.atom_pf K)
-                                                                      (Mathlib.Tactic.Ring.add_mul
-                                                                        (Mathlib.Tactic.Ring.mul_add
-                                                                          (Mathlib.Tactic.Ring.mul_pf_left d
-                                                                            (Nat.rawCast 1)
-                                                                            (Mathlib.Tactic.Ring.mul_pf_right K
-                                                                              (Nat.rawCast 1)
-                                                                              (Mathlib.Tactic.Ring.one_mul
-                                                                                (Nat.rawCast 1))))
-                                                                          (Mathlib.Tactic.Ring.mul_zero
-                                                                            (d ^ Nat.rawCast 1 * Nat.rawCast 1))
-                                                                          (Mathlib.Tactic.Ring.add_pf_add_zero
-                                                                            (d ^ Nat.rawCast 1 *
-                                                                                (K ^ Nat.rawCast 1 * Nat.rawCast 1) +
-                                                                              0)))
-                                                                        (Mathlib.Tactic.Ring.zero_mul
-                                                                          (K ^ Nat.rawCast 1 * Nat.rawCast 1 + 0))
-                                                                        (Mathlib.Tactic.Ring.add_pf_add_zero
-                                                                          (d ^ Nat.rawCast 1 *
-                                                                              (K ^ Nat.rawCast 1 * Nat.rawCast 1) +
-                                                                            0))))
-                                                                    (Mathlib.Tactic.Ring.mul_congr
-                                                                      (Mathlib.Tactic.Ring.cast_pos
-                                                                        (Mathlib.Meta.NormNum.isNat_ofNat ℤ
-                                                                          (Eq.refl 2)))
-                                                                      (Mathlib.Tactic.Ring.atom_pf q)
-                                                                      (Mathlib.Tactic.Ring.add_mul
-                                                                        (Mathlib.Tactic.Ring.mul_add
-                                                                          (Mathlib.Tactic.Ring.mul_pf_right q
-                                                                            (Nat.rawCast 1)
-                                                                            (Mathlib.Tactic.Ring.mul_one
-                                                                              (Nat.rawCast 2)))
-                                                                          (Mathlib.Tactic.Ring.mul_zero (Nat.rawCast 2))
-                                                                          (Mathlib.Tactic.Ring.add_pf_add_zero
-                                                                            (q ^ Nat.rawCast 1 * Nat.rawCast 2 + 0)))
-                                                                        (Mathlib.Tactic.Ring.zero_mul
-                                                                          (q ^ Nat.rawCast 1 * Nat.rawCast 1 + 0))
-                                                                        (Mathlib.Tactic.Ring.add_pf_add_zero
-                                                                          (q ^ Nat.rawCast 1 * Nat.rawCast 2 + 0))))
-                                                                    (Mathlib.Tactic.Ring.add_mul
-                                                                      (Mathlib.Tactic.Ring.mul_add
-                                                                        (Mathlib.Tactic.Ring.mul_pf_left d
-                                                                          (Nat.rawCast 1)
-                                                                          (Mathlib.Tactic.Ring.mul_pf_left K
-                                                                            (Nat.rawCast 1)
-                                                                            (Mathlib.Tactic.Ring.mul_pf_right q
-                                                                              (Nat.rawCast 1)
-                                                                              (Mathlib.Tactic.Ring.one_mul
-                                                                                (Nat.rawCast 2)))))
-                                                                        (Mathlib.Tactic.Ring.mul_zero
-                                                                          (d ^ Nat.rawCast 1 *
-                                                                            (K ^ Nat.rawCast 1 * Nat.rawCast 1)))
-                                                                        (Mathlib.Tactic.Ring.add_pf_add_zero
-                                                                          (d ^ Nat.rawCast 1 *
-                                                                              (K ^ Nat.rawCast 1 *
-                                                                                (q ^ Nat.rawCast 1 * Nat.rawCast 2)) +
-                                                                            0)))
-                                                                      (Mathlib.Tactic.Ring.zero_mul
-                                                                        (q ^ Nat.rawCast 1 * Nat.rawCast 2 + 0))
-                                                                      (Mathlib.Tactic.Ring.add_pf_add_zero
-                                                                        (d ^ Nat.rawCast 1 *
-                                                                            (K ^ Nat.rawCast 1 *
-                                                                              (q ^ Nat.rawCast 1 * Nat.rawCast 2)) +
-                                                                          0))))
-                                                                  (Mathlib.Tactic.Ring.add_congr
-                                                                    (Mathlib.Tactic.Ring.mul_congr
-                                                                      (Mathlib.Tactic.Ring.cast_pos
-                                                                        (Mathlib.Meta.NormNum.isNat_ofNat ℤ
-                                                                          (Eq.refl 2)))
-                                                                      (Mathlib.Tactic.Ring.atom_pf
-                                                                        (Dyadic354.Certificate.digit first.2))
-                                                                      (Mathlib.Tactic.Ring.add_mul
-                                                                        (Mathlib.Tactic.Ring.mul_add
-                                                                          (Mathlib.Tactic.Ring.mul_pf_right
-                                                                            (Dyadic354.Certificate.digit first.2)
-                                                                            (Nat.rawCast 1)
-                                                                            (Mathlib.Tactic.Ring.mul_one
-                                                                              (Nat.rawCast 2)))
-                                                                          (Mathlib.Tactic.Ring.mul_zero (Nat.rawCast 2))
-                                                                          (Mathlib.Tactic.Ring.add_pf_add_zero
-                                                                            (Dyadic354.Certificate.digit first.2 ^
-                                                                                  Nat.rawCast 1 *
-                                                                                Nat.rawCast 2 +
-                                                                              0)))
-                                                                        (Mathlib.Tactic.Ring.zero_mul
-                                                                          (Dyadic354.Certificate.digit first.2 ^
-                                                                                Nat.rawCast 1 *
-                                                                              Nat.rawCast 1 +
-                                                                            0))
-                                                                        (Mathlib.Tactic.Ring.add_pf_add_zero
-                                                                          (Dyadic354.Certificate.digit first.2 ^
-                                                                                Nat.rawCast 1 *
-                                                                              Nat.rawCast 2 +
-                                                                            0))))
-                                                                    (Mathlib.Tactic.Ring.atom_pf
-                                                                      (Dyadic354.Certificate.digit second.2))
-                                                                    (Mathlib.Tactic.Ring.add_pf_add_lt
-                                                                      (Dyadic354.Certificate.digit first.2 ^
-                                                                          Nat.rawCast 1 *
-                                                                        Nat.rawCast 2)
-                                                                      (Mathlib.Tactic.Ring.add_pf_zero_add
-                                                                        (Dyadic354.Certificate.digit second.2 ^
-                                                                              Nat.rawCast 1 *
-                                                                            Nat.rawCast 1 +
-                                                                          0))))
-                                                                  (Mathlib.Tactic.Ring.add_pf_add_lt
-                                                                    (d ^ Nat.rawCast 1 *
-                                                                      (K ^ Nat.rawCast 1 *
-                                                                        (q ^ Nat.rawCast 1 * Nat.rawCast 2)))
-                                                                    (Mathlib.Tactic.Ring.add_pf_zero_add
-                                                                      (Dyadic354.Certificate.digit first.2 ^
-                                                                            Nat.rawCast 1 *
-                                                                          Nat.rawCast 2 +
-                                                                        (Dyadic354.Certificate.digit second.2 ^
-                                                                              Nat.rawCast 1 *
-                                                                            Nat.rawCast 1 +
-                                                                          0)))))
-                                                                (Mathlib.Tactic.Ring.add_congr
-                                                                  (Mathlib.Tactic.Ring.add_congr
-                                                                    (Mathlib.Tactic.Ring.mul_congr
-                                                                      (Mathlib.Tactic.Ring.mul_congr
-                                                                        (Mathlib.Tactic.Ring.mul_congr
-                                                                          (Mathlib.Tactic.Ring.cast_pos
-                                                                            (Mathlib.Meta.NormNum.isNat_ofNat ℤ
-                                                                              (Eq.refl 2)))
-                                                                          (Mathlib.Tactic.Ring.atom_pf d)
-                                                                          (Mathlib.Tactic.Ring.add_mul
-                                                                            (Mathlib.Tactic.Ring.mul_add
-                                                                              (Mathlib.Tactic.Ring.mul_pf_right d
-                                                                                (Nat.rawCast 1)
-                                                                                (Mathlib.Tactic.Ring.mul_one
-                                                                                  (Nat.rawCast 2)))
-                                                                              (Mathlib.Tactic.Ring.mul_zero
-                                                                                (Nat.rawCast 2))
-                                                                              (Mathlib.Tactic.Ring.add_pf_add_zero
-                                                                                (d ^ Nat.rawCast 1 * Nat.rawCast 2 +
-                                                                                  0)))
-                                                                            (Mathlib.Tactic.Ring.zero_mul
-                                                                              (d ^ Nat.rawCast 1 * Nat.rawCast 1 + 0))
-                                                                            (Mathlib.Tactic.Ring.add_pf_add_zero
-                                                                              (d ^ Nat.rawCast 1 * Nat.rawCast 2 + 0))))
-                                                                        (Mathlib.Tactic.Ring.atom_pf K)
-                                                                        (Mathlib.Tactic.Ring.add_mul
-                                                                          (Mathlib.Tactic.Ring.mul_add
-                                                                            (Mathlib.Tactic.Ring.mul_pf_left d
-                                                                              (Nat.rawCast 1)
-                                                                              (Mathlib.Tactic.Ring.mul_pf_right K
-                                                                                (Nat.rawCast 1)
-                                                                                (Mathlib.Tactic.Ring.mul_one
-                                                                                  (Nat.rawCast 2))))
-                                                                            (Mathlib.Tactic.Ring.mul_zero
-                                                                              (d ^ Nat.rawCast 1 * Nat.rawCast 2))
-                                                                            (Mathlib.Tactic.Ring.add_pf_add_zero
-                                                                              (d ^ Nat.rawCast 1 *
-                                                                                  (K ^ Nat.rawCast 1 * Nat.rawCast 2) +
-                                                                                0)))
-                                                                          (Mathlib.Tactic.Ring.zero_mul
-                                                                            (K ^ Nat.rawCast 1 * Nat.rawCast 1 + 0))
-                                                                          (Mathlib.Tactic.Ring.add_pf_add_zero
-                                                                            (d ^ Nat.rawCast 1 *
-                                                                                (K ^ Nat.rawCast 1 * Nat.rawCast 2) +
-                                                                              0))))
-                                                                      (Mathlib.Tactic.Ring.atom_pf q)
-                                                                      (Mathlib.Tactic.Ring.add_mul
-                                                                        (Mathlib.Tactic.Ring.mul_add
-                                                                          (Mathlib.Tactic.Ring.mul_pf_left d
-                                                                            (Nat.rawCast 1)
-                                                                            (Mathlib.Tactic.Ring.mul_pf_left K
-                                                                              (Nat.rawCast 1)
-                                                                              (Mathlib.Tactic.Ring.mul_pf_right q
-                                                                                (Nat.rawCast 1)
-                                                                                (Mathlib.Tactic.Ring.mul_one
-                                                                                  (Nat.rawCast 2)))))
-                                                                          (Mathlib.Tactic.Ring.mul_zero
-                                                                            (d ^ Nat.rawCast 1 *
-                                                                              (K ^ Nat.rawCast 1 * Nat.rawCast 2)))
-                                                                          (Mathlib.Tactic.Ring.add_pf_add_zero
-                                                                            (d ^ Nat.rawCast 1 *
-                                                                                (K ^ Nat.rawCast 1 *
-                                                                                  (q ^ Nat.rawCast 1 * Nat.rawCast 2)) +
-                                                                              0)))
-                                                                        (Mathlib.Tactic.Ring.zero_mul
-                                                                          (q ^ Nat.rawCast 1 * Nat.rawCast 1 + 0))
-                                                                        (Mathlib.Tactic.Ring.add_pf_add_zero
-                                                                          (d ^ Nat.rawCast 1 *
-                                                                              (K ^ Nat.rawCast 1 *
-                                                                                (q ^ Nat.rawCast 1 * Nat.rawCast 2)) +
-                                                                            0))))
-                                                                    (Mathlib.Tactic.Ring.mul_congr
-                                                                      (Mathlib.Tactic.Ring.cast_pos
-                                                                        (Mathlib.Meta.NormNum.isNat_ofNat ℤ
-                                                                          (Eq.refl 2)))
-                                                                      (Mathlib.Tactic.Ring.atom_pf
-                                                                        (Dyadic354.Certificate.digit first.2))
-                                                                      (Mathlib.Tactic.Ring.add_mul
-                                                                        (Mathlib.Tactic.Ring.mul_add
-                                                                          (Mathlib.Tactic.Ring.mul_pf_right
-                                                                            (Dyadic354.Certificate.digit first.2)
-                                                                            (Nat.rawCast 1)
-                                                                            (Mathlib.Tactic.Ring.mul_one
-                                                                              (Nat.rawCast 2)))
-                                                                          (Mathlib.Tactic.Ring.mul_zero (Nat.rawCast 2))
-                                                                          (Mathlib.Tactic.Ring.add_pf_add_zero
-                                                                            (Dyadic354.Certificate.digit first.2 ^
-                                                                                  Nat.rawCast 1 *
-                                                                                Nat.rawCast 2 +
-                                                                              0)))
-                                                                        (Mathlib.Tactic.Ring.zero_mul
-                                                                          (Dyadic354.Certificate.digit first.2 ^
-                                                                                Nat.rawCast 1 *
-                                                                              Nat.rawCast 1 +
-                                                                            0))
-                                                                        (Mathlib.Tactic.Ring.add_pf_add_zero
-                                                                          (Dyadic354.Certificate.digit first.2 ^
-                                                                                Nat.rawCast 1 *
-                                                                              Nat.rawCast 2 +
-                                                                            0))))
-                                                                    (Mathlib.Tactic.Ring.add_pf_add_lt
-                                                                      (d ^ Nat.rawCast 1 *
-                                                                        (K ^ Nat.rawCast 1 *
-                                                                          (q ^ Nat.rawCast 1 * Nat.rawCast 2)))
-                                                                      (Mathlib.Tactic.Ring.add_pf_zero_add
-                                                                        (Dyadic354.Certificate.digit first.2 ^
-                                                                              Nat.rawCast 1 *
-                                                                            Nat.rawCast 2 +
-                                                                          0))))
-                                                                  (Mathlib.Tactic.Ring.atom_pf
-                                                                    (Dyadic354.Certificate.digit second.2))
-                                                                  (Mathlib.Tactic.Ring.add_pf_add_lt
-                                                                    (d ^ Nat.rawCast 1 *
-                                                                      (K ^ Nat.rawCast 1 *
-                                                                        (q ^ Nat.rawCast 1 * Nat.rawCast 2)))
-                                                                    (Mathlib.Tactic.Ring.add_pf_add_lt
-                                                                      (Dyadic354.Certificate.digit first.2 ^
-                                                                          Nat.rawCast 1 *
-                                                                        Nat.rawCast 2)
-                                                                      (Mathlib.Tactic.Ring.add_pf_zero_add
-                                                                        (Dyadic354.Certificate.digit second.2 ^
-                                                                              Nat.rawCast 1 *
-                                                                            Nat.rawCast 1 +
-                                                                          0)))))))
-                                                          (eq_of_heq tail_eq))
-                                                      (eq_of_heq head_eq) a)
-                                                (fun b {as} a_3 h =>
-                                                  List.cons.noConfusion h fun head_eq =>
-                                                    Eq.ndrec (motive := fun b =>
-                                                      (fun x1 x2 => (fun i => i) x1 :: x2)
-                                                            ⟨4, Nat.le_of_lt (Nat.le_refl 6)⟩
-                                                            ((fun x1 x2 => (fun i => i) x1 :: x2) ⟨5, Nat.le_refl 6⟩
-                                                              []) ≍
-                                                          as →
-                                                        a ≍ List.Mem.tail b a_3 →
-                                                          Dyadic354.Certificate.weights first second third d K p q i =
-                                                            ![d * K * p + Dyadic354.Certificate.digit first.1,
-                                                                d * K * q + Dyadic354.Certificate.digit first.2,
-                                                                2 * d * K * p +
-                                                                    2 * Dyadic354.Certificate.digit first.1 +
-                                                                  Dyadic354.Certificate.digit second.1,
-                                                                2 * d * K * q +
-                                                                    2 * Dyadic354.Certificate.digit first.2 +
-                                                                  Dyadic354.Certificate.digit second.2,
-                                                                4 * d * K * p +
-                                                                      4 * Dyadic354.Certificate.digit first.1 +
-                                                                    2 * Dyadic354.Certificate.digit second.1 +
-                                                                  Dyadic354.Certificate.digit third.1,
-                                                                4 * d * K * q +
-                                                                      4 * Dyadic354.Certificate.digit first.2 +
-                                                                    2 * Dyadic354.Certificate.digit second.2 +
-                                                                  Dyadic354.Certificate.digit third.2]
-                                                              i)
-                                                      (fun tail_eq =>
-                                                        Eq.ndrec (motive := fun {as} =>
-                                                          ∀ (a_4 : List.Mem i as),
-                                                            a ≍
-                                                                List.Mem.tail
-                                                                  ((fun i => i)
-                                                                    ⟨3, Nat.le_of_lt (Nat.le_of_lt (Nat.le_refl 6))⟩)
-                                                                  a_4 →
-                                                              Dyadic354.Certificate.weights first second third d K p q
-                                                                  i =
-                                                                ![d * K * p + Dyadic354.Certificate.digit first.1,
-                                                                    d * K * q + Dyadic354.Certificate.digit first.2,
-                                                                    2 * d * K * p +
-                                                                        2 * Dyadic354.Certificate.digit first.1 +
-                                                                      Dyadic354.Certificate.digit second.1,
-                                                                    2 * d * K * q +
-                                                                        2 * Dyadic354.Certificate.digit first.2 +
-                                                                      Dyadic354.Certificate.digit second.2,
-                                                                    4 * d * K * p +
-                                                                          4 * Dyadic354.Certificate.digit first.1 +
-                                                                        2 * Dyadic354.Certificate.digit second.1 +
-                                                                      Dyadic354.Certificate.digit third.1,
-                                                                    4 * d * K * q +
-                                                                          4 * Dyadic354.Certificate.digit first.2 +
-                                                                        2 * Dyadic354.Certificate.digit second.2 +
-                                                                      Dyadic354.Certificate.digit third.2]
-                                                                  i)
-                                                          (fun a_4 h =>
-                                                            List.Mem.casesOn (motive := fun a x =>
-                                                              ⋯ →
-                                                                ⋯ →
-                                                                  Dyadic354.Certificate.weights first second third d K p
-                                                                      q i =
-                                                                    Matrix.vecCons
-                                                                      (d * K * p + Dyadic354.Certificate.digit first.1)
-                                                                      (Matrix.vecCons
-                                                                        (d * K * q +
-                                                                          Dyadic354.Certificate.digit first.2)
-                                                                        (Matrix.vecCons
-                                                                          (2 * d * K * p +
-                                                                              2 * Dyadic354.Certificate.digit first.1 +
-                                                                            Dyadic354.Certificate.digit second.1)
-                                                                          (Matrix.vecCons (⋯ + ⋯ + ⋯) ⋯)))
-                                                                      ⋯)
-                                                              ⋯ ⋯ ⋯ ⋯ ⋯)
-                                                          ⋯ ⋯)
-                                                      ⋯)
-                                                ⋯ ⋯)
-                                            ⋯ ⋯)
-                                        ⋯)
-                                  ⋯ ⋯)
-                              ⋯ ⋯)
-                          ⋯)
-                    ⋯ ⋯)
-                ⋯ ⋯)
-            ⋯)
-      ⋯ ⋯
-info: Dyadic354/Audit.lean:20:0: 'Dyadic354.mem_finiteSubsetSums' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:21:0: 'Dyadic354.Linear.eval_add' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:22:0: 'Dyadic354.Linear.eval_sub' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:23:0: 'Dyadic354.Linear.cone_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:24:0: 'Dyadic354.Linear.nonneg_on_cone' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:25:0: 'Dyadic354.Linear.positive_on_cone' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:26:0: 'Dyadic354.indexedComplete_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:27:0: 'Dyadic354.Certificate.offset_eq_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:28:0: 'Dyadic354.Certificate.offset_isSubsetSum' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:29:0: 'Dyadic354.Certificate.weights_explicit' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:30:0: 'Dyadic354.Certificate.endpoints_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:31:0: 'Dyadic354.Certificate.node_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:32:0: 'Dyadic354.Certificate.interval_chain_covers' depends on axioms: [propext, Quot.sound]
-info: Dyadic354/Audit.lean:33:0: 'Dyadic354.Certificate.chain_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:34:0: 'Dyadic354.Certificate.checkCertificate_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:35:0: 'Dyadic354.Certificate.certificate_checked' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:36:0: 'Dyadic354.Certificate.certificate_correct' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:37:0: 'Dyadic354.Certificate.all_templates_checked' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:38:0: 'Dyadic354.Certificate.all_templates_correct' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:39:0: 'Dyadic354.Certificate.certificate_counts' depends on axioms: [propext]
-Build completed successfully (1764 jobs).
+        Dyadic354.Certificate.digit third.2]
+info: Dyadic354/Audit.lean:21:0: def Dyadic354.CyclicGaps.MissingRun : Set ℤ → ℕ → Prop :=
+fun S r => ∃ a, ∀ i < r, a + ↑i ∉ S
+info: Dyadic354/Audit.lean:22:0: def Dyadic354.CyclicGaps.gap : {d : ℕ} → [NeZero d] → (X : Finset (ZMod d)) → X.Nonempty → ℕ :=
+fun {d} [NeZero d] X hX => Nat.find ⋯
+info: Dyadic354/Audit.lean:23:0: def Dyadic354.Mesh.Consecutive : Finset ℤ → ℤ → ℤ → Prop :=
+fun W a b => a ∈ W ∧ b ∈ W ∧ a < b ∧ ∀ w ∈ W, a < w → b ≤ w
+info: Dyadic354/Audit.lean:24:0: def Dyadic354.Mesh.gap : Finset ℤ → ℕ :=
+fun W => (W.product W).sup fun ab => if Dyadic354.Mesh.Consecutive W ab.1 ab.2 then (ab.2 - ab.1).toNat else 0
+info: Dyadic354/Audit.lean:25:0: def Dyadic354.Mesh.span : (W : Finset ℤ) → W.Nonempty → ℤ :=
+fun W hW => W.max' hW - W.min' hW
+info: Dyadic354/Audit.lean:26:0: def Dyadic354.Mesh.MeshOn : Finset ℤ → ℤ → ℤ → ℕ → Prop :=
+fun W lo hi k => Dyadic354.Mesh.Encloses W lo hi ∧ ∀ (z : ℤ), lo ≤ z → z ≤ hi → ∃ w ∈ W, z ≤ w ∧ w < z + ↑k
+info: Dyadic354/Audit.lean:27:0: Dyadic354.CyclicGaps.erosion_exact {d : ℕ} [NeZero d] (X : Finset (ZMod d)) (hX : X.Nonempty) :
+  Dyadic354.CyclicGaps.gap (Dyadic354.CyclicGaps.erode X) ⋯ = Dyadic354.CyclicGaps.gap X hX - 1
+info: Dyadic354/Audit.lean:28:0: Dyadic354.Mesh.translate_union_gap_span (W : Finset ℤ) (hW : W.Nonempty) (c : ℤ) (k : ℕ) (hc : 0 < c)
+  (hs : c ≤ Dyadic354.Mesh.span W hW) (hg : Dyadic354.Mesh.gap W ≤ k) :
+  Dyadic354.Mesh.gap (W ∪ Dyadic354.Mesh.translate W c) ≤ k ∧
+    Dyadic354.Mesh.span (W ∪ Dyadic354.Mesh.translate W c) ⋯ = Dyadic354.Mesh.span W hW + c
+info: Dyadic354/Audit.lean:29:0: Dyadic354.Mesh.projection_gap (W : Finset ℤ) (hW : W.Nonempty) (k m : ℕ) [NeZero m] (hs : ↑m ≤ Dyadic354.Mesh.span W hW)
+  (hg : Dyadic354.Mesh.gap W ≤ k) : Dyadic354.CyclicGaps.gap (Dyadic354.Mesh.residues W m) ⋯ ≤ k - 1
+info: Dyadic354/Audit.lean:30:0: Dyadic354.Mesh.propagate_iterate (W : Finset ℤ) (hW : W.Nonempty) (c : ℕ → ℤ) (k : ℕ) (hc : ∀ (n : ℕ), 0 < c n)
+  (hd : ∀ (n : ℕ), c (n + 1) ≤ 2 * c n) (hs : c 0 ≤ Dyadic354.Mesh.span W hW) (hg : Dyadic354.Mesh.gap W ≤ k) (n : ℕ) :
+  Dyadic354.Mesh.gap (Dyadic354.Mesh.extend W c n) ≤ k ∧
+    c n ≤ Dyadic354.Mesh.span (Dyadic354.Mesh.extend W c n) ⋯ ∧
+      Dyadic354.Mesh.span (Dyadic354.Mesh.extend W c n) ⋯ = Dyadic354.Mesh.span W hW + ∑ i ∈ Finset.range n, c i
+info: Dyadic354/Audit.lean:32:0: 'Dyadic354.mem_finiteSubsetSums' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:33:0: 'Dyadic354.Linear.eval_add' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:34:0: 'Dyadic354.Linear.eval_sub' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:35:0: 'Dyadic354.Linear.cone_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:36:0: 'Dyadic354.Linear.nonneg_on_cone' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:37:0: 'Dyadic354.Linear.positive_on_cone' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:38:0: 'Dyadic354.indexedComplete_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:39:0: 'Dyadic354.Certificate.offset_eq_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:40:0: 'Dyadic354.Certificate.offset_isSubsetSum' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:41:0: 'Dyadic354.Certificate.weights_explicit' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:42:0: 'Dyadic354.Certificate.endpoints_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:43:0: 'Dyadic354.Certificate.node_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:44:0: 'Dyadic354.Certificate.interval_chain_covers' depends on axioms: [propext, Quot.sound]
+info: Dyadic354/Audit.lean:45:0: 'Dyadic354.Certificate.chain_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:46:0: 'Dyadic354.Certificate.checkCertificate_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:47:0: 'Dyadic354.Certificate.certificate_checked' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:48:0: 'Dyadic354.Certificate.certificate_correct' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:49:0: 'Dyadic354.Certificate.all_templates_checked' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:50:0: 'Dyadic354.Certificate.all_templates_correct' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:51:0: 'Dyadic354.Certificate.certificate_counts' depends on axioms: [propext]
+info: Dyadic354/Audit.lean:53:0: 'Dyadic354.CyclicGaps.gapBound_mono' does not depend on any axioms
+info: Dyadic354/Audit.lean:54:0: 'Dyadic354.CyclicGaps.not_missingRun_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:55:0: 'Dyadic354.CyclicGaps.gapBound_erode_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:56:0: 'Dyadic354.CyclicGaps.modulus_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:57:0: 'Dyadic354.CyclicGaps.gap_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:58:0: 'Dyadic354.CyclicGaps.gap_le_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:59:0: 'Dyadic354.CyclicGaps.gap_lt_modulus' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:60:0: 'Dyadic354.CyclicGaps.missingRun_iff_le_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:61:0: 'Dyadic354.CyclicGaps.erode_nonempty' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:62:0: 'Dyadic354.CyclicGaps.lift_erode' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:63:0: 'Dyadic354.CyclicGaps.erosion_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:64:0: 'Dyadic354.CyclicGaps.gap_eq_zero_iff_full' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:65:0: 'Dyadic354.CyclicGaps.gap_modulus_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:66:0: 'Dyadic354.Mesh.gap_le_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:67:0: 'Dyadic354.Mesh.gap_empty' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:68:0: 'Dyadic354.Mesh.gap_singleton' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:69:0: 'Dyadic354.Mesh.encloses_min_max' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:70:0: 'Dyadic354.Mesh.span_of_encloses' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:71:0: 'Dyadic354.Mesh.span_singleton' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:72:0: 'Dyadic354.Mesh.meshOn_gap_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:73:0: 'Dyadic354.Mesh.meshOn_of_gap_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:74:0: 'Dyadic354.Mesh.meshOn_iff_gap_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:75:0: 'Dyadic354.Mesh.gap_positive_of_encloses' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:76:0: 'Dyadic354.Mesh.meshOn_translate_union' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:77:0: 'Dyadic354.Mesh.translate_union_nonempty' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:78:0: 'Dyadic354.Mesh.translate_union_gap_span' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:79:0: 'Dyadic354.Mesh.residues_nonempty' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:80:0: 'Dyadic354.Mesh.projection_window_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:81:0: 'Dyadic354.Mesh.projection_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:82:0: 'Dyadic354.Mesh.extend_nonempty' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:83:0: 'Dyadic354.Mesh.propagate_iterate' depends on axioms: [propext, Classical.choice, Quot.sound]
+Build completed successfully (1792 jobs).
 
 EXIT CODE: 0
-ELAPSED SECONDS: 4.630
+ELAPSED SECONDS: 4.778

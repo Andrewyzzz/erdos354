@@ -5,6 +5,7 @@ pinned Mathlib dependency cache. It is not a from-source Mathlib rebuild.
 """
 import argparse
 import datetime
+import hashlib
 import json
 from pathlib import Path
 import re
@@ -38,6 +39,9 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--fresh', action='store_true')
 args = parser.parse_args()
 (ROOT / 'logs').mkdir(exist_ok=True)
+result_path = ROOT / 'logs' / ('fresh-verification.json' if args.fresh else 'verification.json')
+result_path.write_text(json.dumps({'status': 'INCOMPLETE',
+    'started_utc': datetime.datetime.now(datetime.timezone.utc).isoformat()}) + '\n')
 run(['python3', 'scripts/generate_data.py', '--check'], ROOT, 'data-consistency')
 project = ROOT
 prefix = ''
@@ -76,12 +80,17 @@ if missing or bad:
     raise SystemExit(f'Axiom audit failed: missing={sorted(missing)}, disallowed={bad}')
 result = {
     'status': 'PASS',
-    'scope': 'First-batch finite certificate and definitions; not Erdős 354(i).',
+    'scope': 'Finite certificate and three mesh lemmas with iterated propagation; not Erdős 354(i).',
     'fresh_project_build': args.fresh,
     'dependency_cache_reused': True,
     'audited_theorems': len(records),
     'allowed_axioms': sorted(ALLOWED),
     'axioms': {k: sorted(v) for k, v in sorted(records.items())},
+    'source_sha256': {
+        str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest()
+        for p in sorted([*ROOT.glob('*.lean'), *(ROOT / 'Dyadic354').glob('*.lean'),
+                         ROOT / 'lean-toolchain', ROOT / 'lakefile.toml', ROOT / 'lake-manifest.json'])
+    },
 }
-(ROOT / 'logs' / (prefix + 'verification.json')).write_text(json.dumps(result, indent=2) + '\n')
+result_path.write_text(json.dumps(result, indent=2) + '\n')
 print(f'PASS: {len(records)} audited theorems; only allowlisted transitive axioms.', flush=True)

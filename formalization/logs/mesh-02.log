@@ -1,0 +1,66 @@
+COMMAND: ["lake", "build", "Dyadic354.Mesh"]
+UTC: 2026-09-12T15:23:44.783597+00:00
+✔ [1176/1177] Built Dyadic354.CyclicGaps (8.5s)
+✖ [1177/1177] Building Dyadic354.Mesh (2.1s)
+trace: .> LEAN_PATH=/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/Cli/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/batteries/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/Qq/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/aesop/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/importGraph/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/plausible/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/mathlib/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean /Users/andrewyz/.elan/toolchains/leanprover--lean4---v4.27.0/bin/lean /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/Dyadic354/Mesh.lean -o /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean/Dyadic354/Mesh.olean -i /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean/Dyadic354/Mesh.ilean -c /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/ir/Dyadic354/Mesh.c --setup /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/ir/Dyadic354/Mesh.setup.json --json
+error: Dyadic354/Mesh.lean:177:57: Application type mismatch: The argument
+  W
+has type
+  Finset ℤ
+but is expected to have type
+  Finset (ZMod m)
+in the application
+  Finset.image (fun w => w) W
+error: Dyadic354/Mesh.lean:180:31: Type mismatch
+  Finset.Nonempty.image hW ?m.7
+has type
+  (Finset.image ?m.7 W).Nonempty
+but is expected to have type
+  (residues W m).Nonempty
+error: Dyadic354/Mesh.lean:204:40: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ↑z
+in the target expression
+  ↑lo + ↑↑r.val + ↑↑i = ↑(a + ↑i)
+
+W : Finset ℤ
+lo hi : ℤ
+k m : ℕ
+inst✝ : NeZero m
+hm : MeshOn W lo hi k
+hs : ↑m ≤ hi - lo
+a : ℤ
+r : ZMod m := ↑(a - lo)
+z : ℤ := lo + ↑r.val
+hr : r.val < m
+hzl : lo ≤ z
+hzh : z ≤ hi
+hcast : ↑z = ↑a
+w : ℤ
+hw : w ∈ W
+hzw : z ≤ w
+hwk : w < z + ↑k
+i : ℕ := (w - z).toNat
+he : ↑i = w - z
+hwEq : w = z + ↑i
+⊢ ↑lo + ↑↑r.val + ↑↑i = ↑(a + ↑i)
+error: Dyadic354/Mesh.lean:195:41: This simp argument is unused:
+  Int.cast_natCast
+
+Hint: Omit it from the simp argument list.
+  simp [r, Int.cast_add, Int.cast_sub, I̵n̵t̵.̵c̵a̵s̵t̵_̵n̵a̵t̵C̵a̵s̵t̵,̵ ̵ZMod.natCast_zmod_val]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Dyadic354/Mesh.lean:195:59: This simp argument is unused:
+  ZMod.natCast_zmod_val
+
+Hint: Omit it from the simp argument list.
+  simp [r, Int.cast_add, Int.cast_sub, Int.cast_natCast,̵ ̵Z̵M̵o̵d̵.̵n̵a̵t̵C̵a̵s̵t̵_̵z̵m̵o̵d̵_̵v̵a̵l̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Lean exited with code 1
+Some required targets logged failures:
+- Dyadic354.Mesh
+error: build failed
+
+EXIT CODE: 1
+ELAPSED SECONDS: 15.251
