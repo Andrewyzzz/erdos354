@@ -1,0 +1,46 @@
+{
+  "scope": "Finite checks only; NOT a proof-assistant or peer-review certificate.",
+  "mode": "full",
+  "python": "3.13.5",
+  "checks": [
+    {
+      "name": "symbolic",
+      "returncode": 0,
+      "passed": true,
+      "seconds": 0.739,
+      "script_sha256": "862b5ddbb55d134336029977961c4cf0391ff67024f2946b039ca584cab1b98d"
+    },
+    {
+      "name": "gap_descent",
+      "returncode": 0,
+      "passed": true,
+      "seconds": 0.902,
+      "script_sha256": "49a8c88b8abdfc3404c967be907a50250f9f57c10836f6d6de97a6d96c5ea377"
+    },
+    {
+      "name": "FE",
+      "returncode": 0,
+      "passed": true,
+      "seconds": 1.824,
+      "script_sha256": "b3b9407cb39fe5f6e7ed272a4bc7bcf5049ffab5da0aa4682757e171c2883dac"
+    },
+    {
+      "name": "DB",
+      "returncode": 0,
+      "passed": true,
+      "seconds": 3.069,
+      "script_sha256": "2f3026e69b50174cecd2bdcf710cbbf193254e2518c9e2751192074f1ff11e78"
+    },
+    {
+      "name": "BG",
+      "returncode": 0,
+      "passed": true,
+      "seconds": 2.743,
+      "script_sha256": "95ba86a6b88f8b8d58b1ae8a8f87165bdf49dfb84e3fec0b6bd190e9a18f7632"
+    }
+  ],
+  "all_passed": true,
+  "proof_sha256": "c89979272e7bcb23fd9b5c062c615a0def25e8ef5f5baa40d6568b8a005103ef",
+  "english_proof_sha256": "f17d67b6bab68ce8da4e6ac714bf020e4e9df5badc4541730ab56fb3a71a4e5c",
+  "certificate_sha256": "3293a4fb061ba625ba1f11788dca751920a182d26d60d6298b31a058c065c048"
+}

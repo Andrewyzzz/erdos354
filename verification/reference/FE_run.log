@@ -1,0 +1,48 @@
+{
+  "status": "Finite checks only; infinite statements require the companion proof.",
+  "arithmetic": "integer and fractions.Fraction; no floating-point pass/fail checks",
+  "exhaustive_prefixes": {
+    "prefix_configurations": 87360,
+    "nonzero_event_configurations": 65520,
+    "exact_global_bound_checks": 262080
+  },
+  "arbitrary_sets": {
+    "arbitrary_periodic_set_event_checks": 12000
+  },
+  "scalar_iteration": {
+    "worst_case_scalar_event_schedules": 16382
+  },
+  "longer_prefixes": {
+    "longer_exact_prefix_checks": 90
+  },
+  "finite_algebraic_examples": [
+    {
+      "alpha": "3*sqrt(2)",
+      "beta": 3,
+      "prefix_pairs": 3,
+      "interval_start": 6,
+      "interval_end": 31,
+      "width": 25,
+      "next_element": 24
+    },
+    {
+      "alpha": "10*sqrt(2)",
+      "beta": 10,
+      "prefix_pairs": 5,
+      "interval_start": 160,
+      "interval_end": 481,
+      "width": 321,
+      "next_element": 320
+    },
+    {
+      "alpha": "100*sqrt(2)",
+      "beta": 100,
+      "prefix_pairs": 9,
+      "interval_start": 34262,
+      "interval_end": 85463,
+      "width": 51201,
+      "next_element": 51200
+    }
+  ],
+  "elapsed_seconds_diagnostic_only": 1.475
+}

@@ -1,0 +1,14 @@
+{
+  "status": "PASS: finite symbolic certificate only",
+  "templates": 12,
+  "nodes": 125,
+  "strict_overlaps": 113,
+  "third_digit_instances": 500,
+  "appendices_checked": [
+    "proof/PROOF.zh-CN.md",
+    "archive/FROZEN_20260912.zh-CN.md",
+    "proof/PROOF.md"
+  ],
+  "certificate_sha256": "3293a4fb061ba625ba1f11788dca751920a182d26d60d6298b31a058c065c048",
+  "scope": "This is not formal verification of the infinite theorem or FE/DB arguments."
+}

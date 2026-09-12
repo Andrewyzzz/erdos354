@@ -1,0 +1,139 @@
+{
+  "status": "PASS; finite checks only; infinite conclusions conditional on supplied FE and DB proofs",
+  "defect_counts": {
+    "configurations": 406,
+    "layers": 27826,
+    "verified_exact_starts_after_h_zero_transitions": 16914,
+    "configurations_where_bad_count_bound_is_below_T": 208
+  },
+  "abstract_packing": {
+    "configurations": 1000,
+    "chosen_bands": 4007,
+    "disjoint_event_containing_transitions": 3007,
+    "scope": "abstract integer positions; not floor-sequence samples"
+  },
+  "actual_floor_return_packing": {
+    "configurations": 24,
+    "chosen_exact_levels": 37,
+    "exact_return_identities": 13,
+    "examples": [
+      {
+        "p": 3,
+        "q": 2,
+        "T": 32768,
+        "K_T": 44,
+        "h": 3,
+        "bad_layers": 22,
+        "chosen_levels": [
+          271,
+          2439
+        ],
+        "return_event_cost": 10
+      },
+      {
+        "p": 5,
+        "q": 4,
+        "T": 32768,
+        "K_T": 44,
+        "h": 4,
+        "bad_layers": 44,
+        "chosen_levels": [
+          361,
+          3249
+        ],
+        "return_event_cost": 12
+      },
+      {
+        "p": 7,
+        "q": 4,
+        "T": 32768,
+        "K_T": 66,
+        "h": 4,
+        "bad_layers": 44,
+        "chosen_levels": [
+          537,
+          4833
+        ],
+        "return_event_cost": 18
+      },
+      {
+        "p": 9,
+        "q": 8,
+        "T": 32768,
+        "K_T": 44,
+        "h": 5,
+        "bad_layers": 66,
+        "chosen_levels": [
+          451,
+          4059
+        ],
+        "return_event_cost": 10
+      }
+    ],
+    "scope": "actual rational floor prefixes; no claim of irrationality"
+  },
+  "product_separation": {
+    "strict_nonzero_rational_product_separations": 2907,
+    "scope": "finite rational-value lattice separation, not Liouville theorem tests"
+  },
+  "approximate_affine_rounding": {
+    "configurations": 6281,
+    "strict_rounding_certificates": 659
+  },
+  "rank3_finite_interval_examples": [
+    {
+      "name": "product_1000",
+      "parameters": "alpha=33+delta, beta=1000/alpha",
+      "n": 8,
+      "A_next": 8452,
+      "B_next": 7753,
+      "initial_pair": [
+        33,
+        30
+      ],
+      "interval": [
+        3207,
+        12931
+      ],
+      "width": 9724,
+      "integers_checked": 9725,
+      "finite_sum": 16138,
+      "weight_count": 16,
+      "scope": "exact rational enclosures, full integer bitset interval check"
+    },
+    {
+      "name": "sum_sqrt5000",
+      "parameters": "alpha=sqrt(5000)-(33+delta), beta=33+delta",
+      "n": 9,
+      "A_next": 19299,
+      "B_next": 16904,
+      "initial_pair": [
+        37,
+        33
+      ],
+      "interval": [
+        6494,
+        29633
+      ],
+      "width": 23139,
+      "integers_checked": 23140,
+      "finite_sum": 36127,
+      "weight_count": 18,
+      "scope": "exact rational enclosures, full integer bitset interval check"
+    }
+  ],
+  "limitations": [
+    "No finite sample proves nu(p_j,q_j) tends to infinity; the compactness proof is required.",
+    "No finite sample proves the bounded-ratio-gap hypothesis for an arbitrary infinite parameter.",
+    "No limited search over multipliers is presented as an exact minimum for nu(p,q).",
+    "The general Erdos #354 conjecture is not proved here.",
+    "The new infinite results depend on earlier FE/DB arguments, not just their regression tests."
+  ],
+  "elapsed_seconds": 1.982,
+  "source_sha256": {
+    "erdos354_digit_budget_bootstrap.py": "2f3026e69b50174cecd2bdcf710cbbf193254e2518c9e2751192074f1ff11e78",
+    "erdos354_digit_budget_bootstrap_note.md": "289950fb81bdb8305f3092c1e81df7ce2980817d6be4b3906a779143a3a89d26",
+    "erdos354_finite_event_decay.py": "b3b9407cb39fe5f6e7ed272a4bc7bcf5049ffab5da0aa4682757e171c2883dac",
+    "erdos354_finite_event_decay_note.md": "07c8c290bafb2ab78bb8a7bcacf183528ba697acbfd94a69e5df116371e9b094"
+  }
+}

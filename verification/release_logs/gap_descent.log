@@ -1,0 +1,139 @@
+symbolic templates independently checked
+cyclic erosion checked
+mesh propagation/projection checked
+arbitrary old sets checked
+genuine prefixes and future moduli checked
+{
+  "status": "Finite verification accompanying an unreviewed complete-proof draft. The infinite conclusion is proved in proof.md, NOT inferred from these finite samples.",
+  "symbolic": {
+    "templates": 12,
+    "nodes": 125,
+    "strict_links": 113,
+    "third_digit_checks": 500
+  },
+  "erosion": {
+    "all_nonempty_cyclic_sets": 4083
+  },
+  "propagation": {
+    "finite_mesh_union_cases": 20481,
+    "mesh_to_modulus_cases": 20481
+  },
+  "abstract": {
+    "arbitrary_old_sets_and_digits": 480,
+    "nonisolated_cases": 426,
+    "raw_window_positions_checked": 55664184
+  },
+  "genuine": {
+    "genuine_prefix_digit_templates": 336,
+    "genuine_window_positions_checked": 62441520,
+    "later_actual_modulus_states": 2352,
+    "starts": [
+      {
+        "n": 0,
+        "A": 12,
+        "B": 8,
+        "d": 4,
+        "old_missing_run": 3,
+        "old_size": 1,
+        "old_window": 20,
+        "templates": 48
+      },
+      {
+        "n": 0,
+        "A": 21,
+        "B": 14,
+        "d": 7,
+        "old_missing_run": 6,
+        "old_size": 1,
+        "old_window": 35,
+        "templates": 48
+      },
+      {
+        "n": 4,
+        "A": 195,
+        "B": 156,
+        "d": 39,
+        "old_missing_run": 2,
+        "old_size": 180,
+        "old_window": 351,
+        "templates": 48
+      },
+      {
+        "n": 4,
+        "A": 159,
+        "B": 106,
+        "d": 53,
+        "old_missing_run": 2,
+        "old_size": 140,
+        "old_window": 265,
+        "templates": 48
+      },
+      {
+        "n": 5,
+        "A": 471,
+        "B": 314,
+        "d": 157,
+        "old_missing_run": 3,
+        "old_size": 404,
+        "old_window": 785,
+        "templates": 48
+      },
+      {
+        "n": 3,
+        "A": 35,
+        "B": 28,
+        "d": 7,
+        "old_missing_run": 1,
+        "old_size": 38,
+        "old_window": 63,
+        "templates": 48
+      },
+      {
+        "n": 3,
+        "A": 30,
+        "B": 20,
+        "d": 10,
+        "old_missing_run": 1,
+        "old_size": 32,
+        "old_window": 50,
+        "templates": 48
+      }
+    ]
+  },
+  "sharpness_control": {
+    "old_endpoint": [
+      12,
+      8
+    ],
+    "old_modulus": 4,
+    "old_holes": 3,
+    "old_longest_missing_run": 3,
+    "ell": 7,
+    "first_three_digits": [
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "new_endpoint_after_next_00": [
+      12300,
+      8200
+    ],
+    "new_modulus": 4100,
+    "new_holes": 1052,
+    "new_longest_missing_run": 2,
+    "scope": "Hole count grows, longest run strictly drops. This is a rational finite control, not an irrationality claim."
+  },
+  "sha256": {
+    "verify_gap_descent.py": "49a8c88b8abdfc3404c967be907a50250f9f57c10836f6d6de97a6d96c5ea377",
+    "template_certificate.json": "3293a4fb061ba625ba1f11788dca751920a182d26d60d6298b31a058c065c048"
+  }
+}

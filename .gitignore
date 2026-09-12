@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+.venv/
+.DS_Store
+*.swp
+verification/local_run.json
+verification/local_logs/

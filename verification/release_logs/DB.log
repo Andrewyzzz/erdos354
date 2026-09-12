@@ -1,0 +1,111 @@
+{
+  "status": "Finite exact checks; all infinite quantifiers are proved in the note.",
+  "telescoping": {
+    "fractional_error_identity_checks": 7980,
+    "individual_legal_subset_error_checks": 87040
+  },
+  "grids_and_propagation": {
+    "ideal_grid_checks_with_endpoints": 51,
+    "full_integer_propagation_certificates": 51,
+    "represented_integer_positions_checked": 105185,
+    "sample_certificates": [
+      {
+        "alpha": "345/112",
+        "beta": "15/7",
+        "n": 3,
+        "k": 4,
+        "actual_error_budget": "39/14",
+        "old_budget": 8,
+        "digit_events_in_block": 2,
+        "interval": [
+          36,
+          633
+        ]
+      },
+      {
+        "alpha": "45/14",
+        "beta": "15/7",
+        "n": 3,
+        "k": 4,
+        "actual_error_budget": "27/7",
+        "old_budget": 8,
+        "digit_events_in_block": 3,
+        "interval": [
+          36,
+          647
+        ]
+      },
+      {
+        "alpha": "375/112",
+        "beta": "15/7",
+        "n": 3,
+        "k": 4,
+        "actual_error_budget": "41/14",
+        "old_budget": 8,
+        "digit_events_in_block": 3,
+        "interval": [
+          36,
+          664
+        ]
+      }
+    ]
+  },
+  "prefix_runs": {
+    "prefix_longest_run_lower_bound_checks": 4092
+  },
+  "arbitrary_scale_sqrt2_samples": [
+    {
+      "beta": "3+delta (transcendental)",
+      "alpha": "sqrt(2)*beta",
+      "prefix_pairs": 4,
+      "interval": [
+        15,
+        68
+      ],
+      "width": 53,
+      "actual_next_b": 52,
+      "floor_certification": "rational enclosure plus integer square root"
+    },
+    {
+      "beta": "10+delta (transcendental)",
+      "alpha": "sqrt(2)*beta",
+      "prefix_pairs": 6,
+      "interval": [
+        396,
+        1053
+      ],
+      "width": 657,
+      "actual_next_b": 657,
+      "floor_certification": "rational enclosure plus integer square root"
+    },
+    {
+      "beta": "100+delta (transcendental)",
+      "alpha": "sqrt(2)*beta",
+      "prefix_pairs": 11,
+      "interval": [
+        90372,
+        295717
+      ],
+      "width": 205345,
+      "actual_next_b": 205344,
+      "floor_certification": "rational enclosure plus integer square root"
+    },
+    {
+      "beta": "1000+delta (transcendental)",
+      "alpha": "sqrt(2)*beta",
+      "prefix_pairs": 14,
+      "interval": [
+        10806941,
+        27195294
+      ],
+      "width": 16388353,
+      "actual_next_b": 16388352,
+      "floor_certification": "rational enclosure plus integer square root"
+    }
+  ],
+  "factorial_ratio": {
+    "factorial_ratio_denominator_bound_checks": 19999
+  },
+  "prior_verifier_sha256": "b3b9407cb39fe5f6e7ed272a4bc7bcf5049ffab5da0aa4682757e171c2883dac",
+  "elapsed_seconds_diagnostic_only": 2.302
+}
