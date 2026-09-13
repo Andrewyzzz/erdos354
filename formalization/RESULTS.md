@@ -38,7 +38,9 @@
   对应结论。没有导入上游占位定理；没有在其完整 Lean 4.33.1 工程中构建。
 - 部分中间证明采用已证明的替代实现，而非逐行照搬原稿，见 [STATUS.md](STATUS.md)。
 - 第 (ii) 问、上游 PR、社区接受与期刊发表不属于本次完成结论。
-- 原公开稿及归档保持原字节；第七、八批新增成果目前只在本地保存，未自动推送。
+- 原公开稿及归档保持原字节；2026-09-13 按维护者明确要求，第七、八批成果已推送，
+  并将 `lean-formalization` 快进合并到 `main`。已验证源码提交为
+  [`59e5957`](https://github.com/Andrewyzzz/erdos354/commit/59e5957ac8bf28623318cebec6c67b1a672ad49e)。
 
 复现命令、完整模块说明见 [README.md](README.md)，环境与依赖记录见
 [ENVIRONMENT.md](ENVIRONMENT.md)，上游适配细节见 [UPSTREAM.md](UPSTREAM.md)。
