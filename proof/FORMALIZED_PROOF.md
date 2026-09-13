@@ -1,4 +1,4 @@
-# Strong completeness of two dyadic floor sequences
+# Erdős Problem 354(i): Strong Completeness of Two Dyadic Floor Sequences
 
 Andrewyzzz and Chatgpt-6 Astra (AI system)
 

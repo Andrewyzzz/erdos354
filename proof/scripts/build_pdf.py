@@ -99,7 +99,9 @@ def convert(source: str) -> tuple[str, dict]:
     lines = source.splitlines()
     assert lines[0].startswith('# ')
     title, authors, date = lines[0][2:], lines[2], lines[4]
-    parts = [r'\title{' + escape(title) + '}', r'\author{' + escape(authors) + '}',
+    # Keep the problem identifier and mathematical title on separate lines.
+    title_tex = escape(title).replace(': ', r':\\' + '\n', 1)
+    parts = [r'\title{' + title_tex + '}', r'\author{' + escape(authors) + '}',
              r'\date{' + escape(date) + '}', r'\maketitle']
     i, display_count, paragraph_count, table_count = 6, 0, 0, 0
     while i < len(lines):

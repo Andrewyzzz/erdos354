@@ -1,4 +1,4 @@
-# Strong completeness of two dyadic floor sequences
+# Erdős Problem 354(i): Strong Completeness of Two Dyadic Floor Sequences
 
 [![Lean verification](https://github.com/Andrewyzzz/erdos354/actions/workflows/lean.yml/badge.svg)](https://github.com/Andrewyzzz/erdos354/actions/workflows/lean.yml)
 

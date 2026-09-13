@@ -2,6 +2,8 @@
 
 ## Formalization and review package — 2026-09-13
 
+- Identify Erdős Problem 354(i) explicitly in the manuscript title, repository
+  heading, and PDF metadata.
 - Standardize GitHub math delimiters and provide a typeset PDF generated
   from the same English manuscript, preserving all formulas and certificate data.
 - Simplify contributor metadata without changing mathematical text or Lean sources.

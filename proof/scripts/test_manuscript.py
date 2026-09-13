@@ -59,6 +59,13 @@ class MathTests(unittest.TestCase):
     def test_inline_math_not_reescaped(self):
         self.assertEqual(inline('$`x_{n+1}`$'), r'\(x_{n+1}\)')
 
+    def test_print_title_line_break(self):
+        tex, _ = convert(SOURCE.read_text())
+        title = tex.split('\n\n', 1)[0]
+        self.assertEqual(title,
+                         r'\title{Erdős Problem 354(i):\\' + '\n'
+                         + 'Strong Completeness of Two Dyadic Floor Sequences}')
+
 
 if __name__ == '__main__':
     unittest.main()
