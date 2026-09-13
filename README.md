@@ -1,18 +1,61 @@
-# Erdős Problem 354(i) — candidate proof
+# Erdős Problem 354(i) — Lean formalization and candidate manuscript
 
-**Two dyadic floor sequences are claimed to be strongly complete.**
+Lean formalization of indexed completeness and strong set completeness for two
+dyadic floor sequences, together with the original candidate manuscript.
 
-Version: **v0.1.0-candidate** · Package prepared: **12 September 2026**  
+Original manuscript package: **v0.1.0-candidate** · Prepared: **12 September 2026**
+
 Contributors: **Andrewyzzz and Chatgpt-6 Astra (AI system)** · Human maintainer: **[@Andrewyzzz](https://github.com/Andrewyzzz)**
 
-> **Status:** complete candidate argument, released for independent scrutiny.
-> No journal acceptance, independent professional endorsement, or full Lean / proof-assistant
-> verification is claimed. A public repository, a forum post, and passing finite checks do not
-> by themselves establish that an open problem has been solved.
+> **Current status:** the frozen part-(i) and strong-completeness targets have
+> passed local Lean verification, including a fresh-directory rebuild and
+> transitive axiom audits of all 381 local theorems. This is not a claim of
+> external independent checking, community acceptance, or journal publication.
+> The original manuscript remains a candidate released for independent scrutiny.
+
+English is the primary language for repository navigation and maintained
+documentation. Chinese manuscripts and historical inputs are explicitly marked
+with the `.zh-CN.md` suffix and retained for provenance.
+
+## Lean verification
+
+Start with the [formalization README](formalization/README.md),
+[verification results](formalization/RESULTS.md), and
+[detailed theorem status](formalization/STATUS.md).
+
+```lean
+Dyadic354.erdos354_part_i : Dyadic354.PartI
+Dyadic354.erdos354_strong_completeness : Dyadic354.StrongCompleteness
+```
+
+Both targets cover arbitrary positive real parameters with irrational ratio,
+with base fixed at 2. The final theorems have no extra normalization, FE/DB/BG,
+permanent-descent, or long-window hypotheses. Their audited dependencies use
+only subsets of `propext`, `Classical.choice`, and `Quot.sound`, without `sorry`,
+custom axioms, or `native_decide`.
+
+The project pins Lean 4.27.0 and all dependencies. Reproduce it from the repository root:
+
+```sh
+cd formalization
+lake exe cache get
+python3 scripts/verify.py
+python3 scripts/verify.py --fresh
+```
+
+The fresh build reuses the pinned dependency cache, not this project's compiled
+artifacts. No external checker or comparator was run. The adapter to exact
+upstream definitions is verified locally, not in a full upstream 4.33.1 checkout;
+see [definition provenance and toolchain boundaries](formalization/UPSTREAM.md).
+Part (ii) is outside the formalization's scope.
 
 ## Read the proof
 
-**[Full English proof](proof/PROOF.md)** · **[审后完整中文证明](proof/PROOF.zh-CN.md)**
+**[Full English proof](proof/PROOF.md)** · **[Chinese proof](proof/PROOF.zh-CN.md)**
+
+The manuscript files retain their original bytes and candidate-status notices.
+Those preparation-time notices predate the Lean work; current formalization
+results are recorded separately in [`formalization/`](formalization/README.md).
 
 The claimed theorem is that, for all real $\alpha,\beta>0$ with
 $\alpha/\beta\notin\mathbb Q$, the ordinary set
@@ -44,7 +87,7 @@ ratios. Both arguments use the same normalized parameters and arrival-indexed ev
 set. They are given in full; FE and DB are not being treated as previously accepted
 external theorems.
 
-## Reproduce the checks
+## Reproduce the finite checks
 
 Python **3.10 or newer**, standard library only. No package installation or network
 access is needed. Do **not** use `python -O` or `PYTHONOPTIMIZE`: historical scripts
@@ -68,10 +111,11 @@ temporary directories and writes fresh records to
 
 [The preparation-time full run](verification/release_run.json) records all five checks passing. Its logs are preserved in [`verification/release_logs/`](verification/release_logs/); reruns write separate local files.
 
-**These are not a formal proof of the infinite theorem.** Only the explicitly
-finite coefficient lemma is certified by the finite symbolic table. The other
-infinite claims depend on the written mathematical arguments. See
-[verification scope](verification/README.md).
+**These Python checks are not a formal proof of the infinite theorem.** Only the
+explicitly finite coefficient lemma is certified by the finite symbolic table.
+They do not establish the infinite claims by sampling. See the
+[finite-check scope](verification/README.md); the separate Lean proof and its
+recorded audits are described under [Lean verification](#lean-verification).
 
 ## Where independent scrutiny is most useful
 
@@ -88,6 +132,7 @@ with the version, section, and reasoning.
 
 | Path | Purpose |
 |---|---|
+| `formalization/` | Lean proofs, locked dependencies, English documentation, and actual build/axiom-audit logs |
 | `proof/PROOF.md` | Complete English rendering with explicit definitions and expanded interfaces |
 | `proof/PROOF.zh-CN.md` | Chinese proof with accepted post-review clarifications incorporated |
 | `certificate/` | Finite mask table and separately implemented checker |
@@ -95,13 +140,19 @@ with the version, section, and reasoning.
 | `review/CHANGES.md` | Review decisions and exact revision scope |
 | `archive/FROZEN_20260912.zh-CN.md` | Unmodified frozen candidate proof |
 | `release/FORUM_POST.md` | Suggested announcement text; this file is not evidence of an actual forum post |
-| `MANIFEST.sha256.json` | File integrity record, not a correctness or priority certificate |
+| `MANIFEST.sha256.json` | Integrity record for the listed package files, including updated documentation hashes; not a correctness or priority certificate |
 
 The frozen source SHA-256 is
 `582ac11509316f060bfce6ff7afabf11572ea1342bc2c0ebdb0e93d3698edfa8`.
 The appendix masks and proof constants are unchanged. The package date is a
 preparation date, not a claimed public timestamp. Public availability is recorded
 by the actual repository history once uploaded.
+
+The original package manifest remains available in the Git history at
+[`dcdc3c2`](https://github.com/Andrewyzzz/erdos354/blob/dcdc3c255189ab4e0f9bbf9abea2ca0a3758de06/MANIFEST.sha256.json).
+The current manifest updates documentation hashes only; mathematical inputs and
+historical logs are unchanged. Lean-source and dependency hashes are recorded
+separately in [`formalization/logs/verification.json`](formalization/logs/verification.json).
 
 ## Attribution and disclosure
 

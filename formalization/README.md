@@ -1,27 +1,39 @@
 # Erdős 354(i): formalized indexed and strong set completeness
 
-已完成有限模板证书、网格、合法表示、永久下降、FE、FE-R、DB、BG、一般参数
-向上归一化与有限删除/去重连接。两个冻结目标现在均由实际定理实现：
+The finite template certificate, mesh lemmas, legal representations, permanent
+descent, FE, FE-R, DB, BG, upward normalization, and finite-deletion/distinct-value
+bridges are complete. Both frozen targets are implemented by proved theorems:
 
 ```lean
 Dyadic354.erdos354_part_i : Dyadic354.PartI
 Dyadic354.erdos354_strong_completeness : Dyadic354.StrongCompleteness
 ```
 
-对任意 `α,β>0` 且 `Irrational (α/β)`，第一个结论允许选取不同自然数索引，
-第二个结论允许删除任意有限数值集后使用不同剩余数值。没有额外归一化、FE/DB/BG
-或长窗口前提。累计审计 381 个定理，公理闭包只允许 `propext`、`Classical.choice`、
-`Quot.sound`；不用占位证明、自定义公理或本地原生判定。
+For every `α, β > 0` with `Irrational (α / β)`, the first theorem uses distinct
+natural-number indices; the second allows deletion of any finite set of values
+and uses distinct remaining values. Neither has additional normalization,
+FE/DB/BG, or long-window hypotheses. All 381 local theorems have been audited:
+their transitive axiom dependencies are subsets of `propext`, `Classical.choice`,
+and `Quot.sound`. No placeholders, custom axioms, or native decision procedures
+are used.
 
-上游精确定义和第 (i) 问正面命题的适配也已编译并审计，来源检查见 `UPSTREAM.md`。
-**这是本地 Lean 验证，不代表外部独立复核或社区接受；第 (ii) 问不在范围内。**
-原发布稿与归档保留原字节，其候选稿说明不自动改写；最新形式化状态以本目录为准。
-实际完成的声明和后续义务见 [STATUS.md](STATUS.md)，环境见
-[ENVIRONMENT.md](ENVIRONMENT.md)。
+The adapter to the exact upstream definitions and the positive statement of
+part (i) has also compiled and passed the axiom audit; see [UPSTREAM.md](UPSTREAM.md).
+This is local Lean verification, not external independent checking or community
+acceptance. Part (ii) is outside the scope of this project.
+
+The original manuscripts and archive retain their original bytes and
+candidate-status notices. This directory records the current formalization
+status. Start with [RESULTS.md](RESULTS.md) for the verification summary,
+[STATUS.md](STATUS.md) for exact declarations and implementation boundaries,
+and [ENVIRONMENT.md](ENVIRONMENT.md) for the recorded build environment.
+English is the primary documentation language; files marked `.zh-CN.md`
+elsewhere in the repository are Chinese-language manuscripts or historical inputs.
 
 ## Reproduce
 
-从包含原始 `certificate/templates.json` 的仓库根目录执行：
+From the repository root, which contains the original
+`certificate/templates.json`, run:
 
 ```sh
 cd formalization
@@ -30,159 +42,229 @@ python3 scripts/verify.py
 python3 scripts/verify.py --fresh
 ```
 
-已有依赖缓存时可略去 `lake exe cache get`。工具链和全部依赖锁定在
-`lean-toolchain`、`lakefile.toml`、`lake-manifest.json` 中，不需要更新版本。
-`verify.py` 默认构建根模块 `Dyadic354`，它导入目标定义、证书、循环缺口、网格、
-合法表示、初始网格、局部永久下降、实际地板/重排/事件接口、长度估计、
-单位网格完全性、有限下降、事件无限性、统一前缀界、FE／DB／BG 全链、一般参数
-归一化、最终两个主定理、上游适配及公理审计。
-脚本再次执行 `Audit.lean`，核对全部本地定理的审计清单，检查实际公理闭包；
-缺少输出或出现允许列表以外的公理都会以非零退出码结束。运行开始时会清除旧的
-PASS 状态，成功记录附带实际 Lean 源码和依赖锁文件的 SHA-256。
-此外自动检查编译源码中的禁止机制、上游快照哈希、逐字提取的定义及精确目标 RHS；
-记录也包含校验脚本与上游来源数据的哈希。
+Skip `lake exe cache get` if the dependency cache is already available. The
+toolchain and all dependencies are pinned in `lean-toolchain`, `lakefile.toml`,
+and `lake-manifest.json`; no version update is needed.
 
-`--fresh` 会创建新的临时源码目录，不复制本项目的编译产物，再执行构建和审计。
-它复用锁定的 Mathlib 依赖缓存；不是从零重建 Mathlib，也不是独立编译器验证。
-临时目录保留，路径记录在日志中，便于出现问题时检查。
+By default, `verify.py` builds the root module `Dyadic354`. It imports the frozen
+statements, certificate, cyclic gaps, meshes, legal representations, initial mesh,
+local permanent descent, actual floor/reindexing/event interfaces, length bounds,
+unit-mesh completeness, finite descent, event infinitude, uniform prefix bounds,
+the full FE/DB/BG chain, general-parameter normalization, both final theorems,
+the upstream adapter, and the axiom audit.
+
+The script reruns `Audit.lean`, checks that every local theorem is listed, and
+verifies its actual transitive axiom dependencies. Missing output or an axiom
+outside the allowlist causes a nonzero exit. Previous PASS records are cleared
+at the start; successful records include SHA-256 hashes of the actual Lean
+sources and dependency lockfiles. The verifier also checks prohibited mechanisms
+in compiled sources, upstream snapshot hashes, verbatim definition blocks, and
+the exact target RHS. Verification scripts and upstream provenance data are
+included in the recorded hashes.
+
+`--fresh` creates a new temporary source directory without copying this project's
+compiled artifacts, then rebuilds and repeats the audit. It reuses the pinned
+Mathlib dependency cache; it is neither a from-scratch Mathlib rebuild nor an
+independent compiler check. The temporary directory is retained and its path is
+logged for inspection.
 
 ## Mathematical scope
 
-`Certificate.certificate_correct` 对所有布尔首、次位型（首位型非零）及所有
-整数 `p,q` 满足 `0 < q < p < 2*q` 给出一条正确链。它包括：
+### Certificate and mesh foundations
 
-- 六个位置的有限掩码支持，每个位置至多使用一次；掩码求值等于实际六项的子集和。
-- 两个备选偏移的常数为 `c` 和 `c+1`，对任意第三位型均有 `0 ≤ c`、`c+1 ≤ 22`。
-- 由掩码重算系数，并核对节点端点确实为 `max` 与 `min + p + q`。
-- 严格节点宽度、双向严格相邻交叠、首尾覆盖，以及 `[p+2*q, 7*p+6*q]` 的整数区间覆盖。
-- 全部 12 个模板均正确，共 125 个节点、113 个相邻连接；每个节点量化全部 4 个第三位型。
+`Certificate.certificate_correct` provides a correct chain for every Boolean
+first/second digit type with nonzero first type, and all integers `p, q`
+satisfying `0 < q < p < 2*q`. It includes:
 
-锥域结论通过通用代数引理证明，不枚举 `p,q`。实际数据用 `decide +kernel`
-核验；生成脚本只转换数据，不被当作数学正确性的信任来源。JSON 中的 `lo/hi`
-作为待检验的候选端点读入，其正确性必须通过 Lean 对掩码重算的检查。
+- Finite mask support on six positions, each used at most once; mask evaluation
+  equals a subset sum of the actual six weights.
+- Constants `c` and `c+1` for the two alternative offsets, with `0 ≤ c` and
+  `c+1 ≤ 22` for every third digit type.
+- Coefficients recomputed from masks, with node endpoints checked to be
+  `max` and `min + p + q`.
+- Strict node width, strict adjacent overlap in both directions, endpoint
+  coverage, and coverage of the integer interval `[p+2*q, 7*p+6*q]`.
+- All 12 templates, 125 nodes, and 113 adjacent links, with all four third
+  digit types quantified at each node.
 
-这里的六项是主稿 §3 给出的代数表达式。第三批已经证明它们与旧前缀、精确倍增块
-的合法不交拼接，并从实际12条模板构造初始有限子集和网格。
-原索引映射及其单射性已证明；第四批已从实数地板递推导出实际块及六项恒等式。
+The cone result follows from general algebraic lemmas, not enumeration of
+`p, q`. The data are checked using `decide +kernel`; the generator only
+translates data and is not a trusted source of mathematical correctness.
+The JSON `lo/hi` fields are candidate endpoints whose correctness must be
+verified by Lean's recomputation from the masks.
 
-第二批新增的 `CyclicGaps.erosion_exact`、`Mesh.translate_union_gap_span` 和
-`Mesh.projection_gap` 分别对应主稿 Lemma 2.1、2.2、2.3。
-`Mesh.propagate_iterate` 对满足 `0 < c_n`、`c_{n+1} ≤ 2*c_n` 的任意后续权重，
-证明每一步仍保持同一网格缺口界，并给出精确跨度增量。
+The six weights are the algebraic expressions in manuscript §3. Batch 3 proves
+their legal, disjoint combination with the old prefix and exact doubling blocks,
+constructs an initial finite-subset-sum mesh from the 12 templates, and proves
+the original-index map injective. Batch 4 derives the actual blocks and six-weight
+identities from the real floor recurrence.
 
-循环缺口是每个长度 `h+1` 窗口均被命中的最小 h；
-`missingRun_iff_le_gap` 证明这恰好是实际连续缺失段的最大长度。有限整数网格的
-gap 直接定义为所有实际相邻点距离的最大值，`meshOn_iff_gap_le` 再证明与窗口
-命中表述的等价。所有模缺口定理都要求正模数，覆盖模数 1；空集和单点整数网格
-的 gap 约定为 0，单点 span 为 0。循环缺口仅对非空剩余集定义，满集缺口为 0。
+`CyclicGaps.erosion_exact`, `Mesh.translate_union_gap_span`, and
+`Mesh.projection_gap` correspond to Lemmas 2.1, 2.2, and 2.3.
+For subsequent weights satisfying `0 < c_n` and `c_(n+1) ≤ 2*c_n`,
+`Mesh.propagate_iterate` preserves the mesh gap bound at every step and gives
+the exact span increment.
 
-第三批 `InitialMesh.prefix_initial_mesh` 在明确的块恒等式、非负旧权重及总和界下，
-构造原前缀内的网格，证明 gap ≤ max(1,旧缺口)，span > `8dKq+15`。
-`PermanentMesh.certificate_permanent_descent` 再从该构造推出全部后续合适模数上的
-前缀缺口 ≤ 旧缺口−1（自然数截断减法），没有把网格存在或下降本身作为前提。
+The cyclic gap is the least `h` such that every window of length `h+1` is hit.
+`missingRun_iff_le_gap` identifies it with the maximum actual missing-run length.
+For a finite integer mesh, `gap` is defined directly as the maximum distance
+between consecutive points; `meshOn_iff_gap_le` proves equivalence with window
+hitting. Modular-gap theorems require positive moduli and include modulus 1.
+Empty and singleton integer meshes have gap 0; a singleton has span 0.
+Cyclic gaps are defined only for nonempty residue sets; a full set has gap 0.
 
-第三批通用局部定理要求未来项为正、相邻项至多翻倍、首项上界和模数上界。
-第四批从实际地板递推推导这些条件；`PairReindex.prefixSums_reindex` 证明未来
-`b,a` 枚举与冻结的 `a,b` 枚举在每个完整成对前缀上有完全相同的合法子集和值。
-`FloorDescent.long_block_descent` 将局部下降实例化为实际 `D_t=gcd(a_t,b_t)` 上的缺口界。
+### Legal representations and permanent descent
 
-`BlockLength.next_event_length_descent` 的含义是：若
-`0<b_0<a_0<2b_0`，`n<m`，到达层区间 `(n,m)` 无事件、m 是事件，且
-`m−n≥2n+C`，则对每个 `t≥m+3` 有 `h_t≤max(0,h_n−1)`。
-这里明确取仅依赖 M=a_0 的宽松常数 `C=(16(M+1)²).toNat`；没有要求 C 是最优常数。
-节点、实际表示、未来重排、gcd 约化和长度估计均在证明链内。
+Under explicit block identities, nonnegative old weights, and a sum bound,
+`InitialMesh.prefix_initial_mesh` constructs a mesh in the original prefix with
+gap at most `max(1, old gap)` and span greater than `8dKq+15`.
+`PermanentMesh.certificate_permanent_descent` then bounds the prefix gap at every
+suitable future modulus by the old gap minus 1, using truncated natural subtraction.
+Neither mesh existence nor descent is assumed.
 
-第五批 `UnitMesh.unit_mesh_half_line` 从实际单位网格构造全部充分大整数的合法
-有限索引表示，`LowGap.next_event_length_complete` 因此证明合格长块及旧缺口≤1
-推出冻结交错列的完全性。没有把网格无界或索引表示合法性当作新假设。
+The generic local theorem in batch 3 requires positive future weights,
+an adjacent doubling bound, a first-weight bound, and modulus bounds.
+Batch 4 derives these conditions from the actual floor recurrence.
+`PairReindex.prefixSums_reindex` proves that the future `b,a` order and the
+frozen `a,b` order have exactly the same legal subset sums on every complete
+paired prefix. `FloorDescent.long_block_descent` instantiates local descent at
+the actual moduli `D_t = gcd(a_t,b_t)`.
 
-`EventGaps.unbounded_qualifying_complete` 用自然数良基下降证明，无界合格起点
-推出完全性；每次选点都在前次永久更新生效之后，不需要普通转换的缺口单调性。
-它不借用未证明的统一前缀缺口界，也不声称已证明原稿 N−1 次更新预算。
-反过来，不完全的归一化序列最终没有合格间隔，故相邻事件满足 `m<3n+C` 和 `m≤4n`。
+`BlockLength.next_event_length_descent` says that if
+`0 < b_0 < a_0 < 2b_0`, `n < m`, there is no arrival event in `(n,m)`,
+`m` is an event, and `m-n ≥ 2n+C`, then
+`h_t ≤ max(0,h_n-1)` for every `t ≥ m+3`.
+Here `C = (16(M+1)²).toNat`, with `M = a_0`, is deliberately generous, not
+claimed optimal. Nodes, actual representations, future reindexing, gcd reduction,
+and length estimates are all part of the proof chain.
 
-`EventInfinitude.events_unbounded` 从无理比值证明真实事件无界；`nextEvent` 定义
-最小后继，相关定理保证它实际存在且中间没有其他事件。
-第五批组合结论 `incomplete_nextEvent_factor_four` 的明确前提是无理比值、
-归一化地板初值和不完全性，结论是实际后继事件最终满足倍率4界。
+### Completeness, events, and prefix bounds
 
-第六批 `PrefixMesh.prefix_gap_bound` 证明首项控制全部前缀 gap，包含平移凸包
-分离时的新桥接缺口。`PrefixBounds.uniform_cyclic_gap` 实例化到实际地板列，
-给出 `n≥2` 时 `h_n≤N−1`；内部缺失段≤N−1 的界对每个 n 成立。
-跨度条件 `S_n≥a_n` 由第2层起的直接归纳证明，不借用未形式化的指数下界。
+`UnitMesh.unit_mesh_half_line` constructs legal finite-index representations of
+all sufficiently large integers from an actual unit mesh.
+`LowGap.next_event_length_complete` therefore obtains completeness of the frozen
+interleaving from a qualifying long block and an old gap at most 1.
+Unbounded mesh growth and index legality are proved, not assumed.
 
-`FECounting.values_step` 与 `deficit_step` 证明主稿 (8.1)。Q、G 使用整数差定义，
-非负性由不交基本复制及真实窗口范围证明；`deficit_eq_holes` 和 `growth_eq_newValues`
-进一步识别实际缺失/新增整数值的个数，所有 Finset 都按不同和值计数，不计掩码重数。
-同时已证明 `B_n=M+N+Σw_i`、`0<B_n<3N+2n` 及数字和与到达事件的等价。
+`EventGaps.unbounded_qualifying_complete` uses well-founded descent on natural
+numbers. Each new starting point is chosen after the previous permanent update
+takes effect, so ordinary stepwise gap monotonicity is unnecessary.
+It does not borrow an unproved uniform prefix-gap bound or claim to implement the
+manuscript's numerical budget of at most `N-1` updates.
+Conversely, an incomplete normalized sequence eventually has no qualifying gap,
+so consecutive events satisfy `m < 3n+C` and `m ≤ 4n`.
 
-第七批完成 FE 的周期边界、变周期比较、非重叠衰减与误差预算，得到原稿常数的
-`FE.deficit_exponential_bound` 和真实连续种子界 `FER.seed_exponential_bound`。
-`DB.digit_propagation` 从有限系数的合法表示给出数字预算增量；
-`DBScale.advance_increment` 把它接到已定义并证明存在的首个好分母 crossing。
+`EventInfinitude.events_unbounded` derives unbounded actual events from the
+irrational ratio. `nextEvent` is the least successor; existence and the absence
+of intervening events are proved. The explicit hypotheses of
+`incomplete_nextEvent_factor_four` are irrationality, normalized floor initial
+values, and incompleteness; its conclusion is the eventual factor-four bound.
 
-长窗口、层高及精度由 Dirichlet 逼近和 crossing 最小性实际构造。
-返回成本用稀疏二进制比值的全有理紧集证明，对任意共同乘数有效。
-`BG.bounded_event_windows_complete` 完成累计矛盾，
-`BG.normalized_complete` 进一步用已证明的倍率4后继事件界消去事件窗口前提。
-归一化主定理的全部数学前提仅为
-`0 < ⌊β⌋ < ⌊α⌋ < 2⌊β⌋` 和 `Irrational (α/β)`；没有假设 FE、DB、BG 或长平台存在。
+`PrefixMesh.prefix_gap_bound` bounds all prefix gaps by the first weight,
+including the new bridging gap when translated convex hulls are separated.
+`PrefixBounds.uniform_cyclic_gap` specializes this to the actual floor sequences:
+`h_n ≤ N-1` for `n ≥ 2`. The internal missing-run bound holds for every `n`.
+The span condition `S_n ≥ a_n` follows by direct induction from layer 2, without
+an unformalized exponential lower bound.
 
-第八批 `Normalization.above_bound` 对任意正实数参数与任意整数界，只用两列独立的
-非负整数移位和进一步共同移位，构造高于该界的归一化尾部；无理比值保持不变。
-`SetBridge.normalized_injective` 证明严格交错的尾部数值无重复。
-`erdos354_strong_completeness` 对有限删除集取上界，用这些尾部给出真正的集合表示；
-`erdos354_part_i` 再将集合表示转换为原索引表示。两种目标均已闭合。
+### FE, DB, and BG
 
-本实现采用经过证明的替代接口，不逐字复现连分数枚举、显式最小 popcount 或原稿
-每个渐近中间常数，具体对应见 `STATUS.md` 第七、八批部分。
-上游适配使用从锁定源码逐字提取的定义，不是完整上游 Lean 4.33.1 工程构建。
-本工程继续锁定 Lean 4.27.0；没有为集成而自动迁移工具链。
+`FECounting.values_step` and `deficit_step` prove (8.1).
+`Q` and `G` are integer differences; their nonnegativity follows from disjoint
+basic copies and actual window bounds. `deficit_eq_holes` and
+`growth_eq_newValues` identify the counts of actual missing and new integer values.
+All Finsets count distinct sums, not mask multiplicities.
+The proof also establishes `B_n = M+N+Σw_i`, `0 < B_n < 3N+2n`, and the
+equivalence between a nonzero digit sum and an arrival event.
+
+Batch 7 completes periodic boundaries, changing-period comparison, nonoverlapping
+decay, and error accounting. `FE.deficit_exponential_bound` and the actual
+contiguous-seed estimate `FER.seed_exponential_bound` use the manuscript's
+constants. `DB.digit_propagation` derives the digit-budget increment from legal
+finite-coefficient representations. `DBScale.advance_increment` connects it
+to the defined and proved first good-denominator crossing.
+
+Long windows, layer heights, and precision are constructed using Dirichlet
+approximation and minimality of the crossing. Return cost is proved using a
+compact set consisting entirely of rational sparse binary ratios, uniformly
+over all common multipliers. `BG.bounded_event_windows_complete` proves the
+cumulative contradiction. `BG.normalized_complete` removes the event-window
+hypothesis using the proved factor-four successor-event bound.
+Its only mathematical hypotheses are
+`0 < ⌊β⌋ < ⌊α⌋ < 2⌊β⌋` and `Irrational (α/β)`; FE, DB, BG, and long
+plateaux are not additional assumptions.
+
+### General parameters and the final targets
+
+For arbitrary positive real parameters and any integer bound,
+`Normalization.above_bound` uses independent nonnegative integer shifts of
+the two sequences followed by a common upward shift to construct a normalized
+tail above the bound, preserving the irrational ratio.
+`SetBridge.normalized_injective` proves that the strictly interlacing tails have
+no repeated values. `erdos354_strong_completeness` chooses a bound for the finite
+deletion set and obtains genuine set representations from these tails.
+`erdos354_part_i` then converts set representations to original-index
+representations. Both targets are closed.
+
+This implementation uses proved alternative interfaces; it does not reproduce
+every continued-fraction enumeration, explicit minimum popcount, or intermediate
+asymptotic constant verbatim. See batches 7 and 8 in [STATUS.md](STATUS.md).
+The upstream adapter uses verbatim definitions from pinned sources, not a build
+of the entire upstream Lean 4.33.1 project. This project remains pinned to Lean
+4.27.0 without an automatic toolchain migration.
 
 ## Source map
 
+All Lean paths below are relative to `Dyadic354/`.
+
 | File | Purpose |
 |---|---|
-| `Dyadic354/Statements.lean` | 原题与强完全性的固定定义；显式阈值等价式 |
-| `Dyadic354/Basic.lean` | 有限子集和值与整数锥引理 |
-| `Dyadic354/Certificate.lean` | 通用检查器、掩码语义、区间链及正确性证明 |
-| `Dyadic354/CertificateData.lean` | 原始 JSON 的可重生成数据与实际证书定理 |
-| `Dyadic354/CyclicGaps.lean` | 最长循环缺失段、精确侵蚀、满集及模数1边界 |
-| `Dyadic354/Mesh.lean` | 实际相邻点距离、窗口等价、平移传播、模投影与逐步归纳 |
-| `Dyadic354/CoefficientInterval.lean` | Bézout 有界系数区间、反射与二进制有限支持 |
-| `Dyadic354/Representations.lean` | 不交表示、倍增块与原索引单射 |
-| `Dyadic354/NodeRepresentations.lean` | 实际旧代表、余量界、节点表示及窗口命中 |
-| `Dyadic354/InitialMesh.lean` | 缩短窗口链、常数预算、实际有限子集和初始网格 |
-| `Dyadic354/PermanentMesh.lean` | 原前缀追加合法性、任意后续模数投影与局部下降 |
-| `Dyadic354/FloorSequence.lean` | 真实地板误差、二进制递推、初值分离保持与前缀总和界 |
-| `Dyadic354/PairReindex.lean` | 未来成对交换、单射、完整成对前缀子集和不变与实际未来权重界 |
-| `Dyadic354/ExactBlock.lean` | 到达层事件、零位与倍增块、实际六项及下一小权重界 |
-| `Dyadic354/FloorDescent.lean` | 实际 gcd 坐标、实际前缀模集以及地板序列条件永久下降 |
-| `Dyadic354/BlockLength.lean` | 多项式门槛、地板增长界和仅依赖初值的块长充分条件 |
-| `Dyadic354/UnitMesh.lean` | 实际单位网格的合法扩展、右端点无界和半直线覆盖 |
-| `Dyadic354/LowGap.lean` | 合格长块与低缺口推出冻结交错列完全性 |
-| `Dyadic354/EventGaps.lean` | 延迟永久下降的良基论证、不完全时的相邻事件界 |
-| `Dyadic354/EventInfinitude.lean` | 无理性保证事件无界、真实最小后继及最终倍率4界 |
-| `Dyadic354/PrefixMesh.lean` | 凸包分离时的桥接界、原前缀递推、统一 gap 与内部缺失段界 |
-| `Dyadic354/PrefixBounds.lean` | 实际前缀总和、跨度及 (1.1) 的统一 gcd 模缺口界 |
-| `Dyadic354/FECounting.lean` | 真实不同和值的四平移递推、B/Q/G、非负性及实际缺失/新增计数 |
-| `Dyadic354/CyclicBoundary.lean`、`PeriodicWord.lean`、`FEShift.lean` | 周期缺失函数、变差与移位新增和值 |
-| `Dyadic354/FEMissingRuns.lean`、`IntervalSums.lean`、`PeriodChange.lean`、`EventBoundary.lean` | 缺失段边界计数、区间求和、变周期比较与非零事件边界 |
-| `Dyadic354/FERecurrence.lean`、`EventDecay.lean`、`FE.lean` | 非重叠事件块、势函数误差控制及 FE |
-| `Dyadic354/ContiguousSeed.lean`、`FER.lean` | 实际最长连续区间与 FE-R |
-| `Dyadic354/DBDigits.lean`、`DBPhases.lean`、`DBWindows.lean` | 实际数字预算、Bézout 相位与合法有限系数窗口 |
-| `Dyadic354/DBCover.lean`、`DB.lean` | 连续覆盖、索引合法拼接与 DB 增量 |
-| `Dyadic354/RationalWindows.lean`、`CubicGrowth.lean`、`DBScale.lean` | 好有理数 crossing、立方深度矛盾与实际 DB 尺度 |
-| `Dyadic354/BGSparseCompact.lean`、`BGBinaryRatio.lean`、`BGReturns.lean` | 有理紧集、二进制支持、统一返回成本发散 |
-| `Dyadic354/BGExactLayers.lean`、`BGWindowBounds.lean`、`BGWindows.lean` | 非精确层计数、逼近精度和实际任意长稀疏窗口 |
-| `Dyadic354/BGGeometric.lean`、`BGCapacity.lean`、`BG.lean` | 不重叠返回累计、窗口容量、BG 及归一化完全性 |
-| `Dyadic354/Normalization.lean` | 只向上移位、比例平衡、克服地板误差并避开任意有限删除界 |
-| `Dyadic354/SetBridge.lean` | 尾部单射与下界、合法值集包含、索引与集合表示转换 |
-| `Dyadic354/Main.lean` | 冻结 #354(i) 与集合强完全性两个最终定理 |
-| `Dyadic354/UpstreamDefinitions.lean`、`UpstreamBridge.lean` | 上游逐字定义、内核检查的类型等价与最终命题适配 |
-| `Dyadic354/Audit.lean` | 目标类型输出与全部已完成定理的公理审计 |
-| `scripts/generate_data.py` | 数据翻译及与 JSON 的一致性检查 |
-| `scripts/verify.py` | 构建、公理允许列表、独立目录重建 |
-| `scripts/check_upstream.py`、`upstream/` | 来源字节哈希、定义块与正面命题一致性检查；快照不作为 Lean 导入 |
+| `Statements.lean` | Frozen part-(i) and strong-completeness definitions; explicit-threshold equivalence |
+| `Basic.lean` | Finite subset sums and integer-cone lemmas |
+| `Certificate.lean` | Generic checker, mask semantics, interval chains, and soundness |
+| `CertificateData.lean` | Regenerable original JSON data and concrete certificate theorems |
+| `CyclicGaps.lean` | Longest cyclic missing runs, exact erosion, full sets, and modulus 1 |
+| `Mesh.lean` | Actual consecutive distances, window equivalence, translation, projection, and iteration |
+| `CoefficientInterval.lean` | Bounded Bézout coefficient intervals, reflection, and finite binary support |
+| `Representations.lean` | Disjoint representations, doubling blocks, and original-index injectivity |
+| `NodeRepresentations.lean` | Actual old representatives, residual bounds, node representations, and window hits |
+| `InitialMesh.lean` | Trimmed window chains, constant budgets, and actual initial subset-sum meshes |
+| `PermanentMesh.lean` | Legal prefix extension, projection to future moduli, and local descent |
+| `FloorSequence.lean` | Floor errors, binary recurrence, preservation of initial separation, and prefix sums |
+| `PairReindex.lean` | Future pair swaps, injectivity, paired-prefix invariance, and future-weight bounds |
+| `ExactBlock.lean` | Arrival events, zero digits, doubling blocks, the six actual weights, and the next small weight |
+| `FloorDescent.lean` | Actual gcd coordinates, prefix residues, and conditional permanent floor-sequence descent |
+| `BlockLength.lean` | Polynomial thresholds, floor growth, and sufficient block lengths from initial values |
+| `UnitMesh.lean` | Legal unit-mesh extension, unbounded right endpoints, and half-line coverage |
+| `LowGap.lean` | Completeness from qualifying long blocks and low gaps |
+| `EventGaps.lean` | Well-founded delayed descent and event bounds under incompleteness |
+| `EventInfinitude.lean` | Unbounded events from irrationality, least successors, and the eventual factor-four bound |
+| `PrefixMesh.lean` | Separated-hull bridge bounds, prefix recurrence, and uniform/internal gap bounds |
+| `PrefixBounds.lean` | Actual prefix sums, spans, and the uniform gcd-residue gap bound (1.1) |
+| `FECounting.lean` | Four-translate recurrence for distinct sums, B/Q/G, nonnegativity, and actual counts |
+| `CyclicBoundary.lean`, `PeriodicWord.lean`, `FEShift.lean` | Periodic missing-value functions, variation, and new sums under shifts |
+| `FEMissingRuns.lean`, `IntervalSums.lean`, `PeriodChange.lean`, `EventBoundary.lean` | Missing-run boundary counts, interval sums, changing periods, and nonzero-event boundaries |
+| `FERecurrence.lean`, `EventDecay.lean`, `FE.lean` | Nonoverlapping event blocks, potential-function error control, and FE |
+| `ContiguousSeed.lean`, `FER.lean` | Actual longest contiguous intervals and FE-R |
+| `DBDigits.lean`, `DBPhases.lean`, `DBWindows.lean` | Actual digit budgets, Bézout phases, and legal finite-coefficient windows |
+| `DBCover.lean`, `DB.lean` | Contiguous coverage, legal index concatenation, and the DB increment |
+| `RationalWindows.lean`, `CubicGrowth.lean`, `DBScale.lean` | Good-rational crossings, cubic-depth contradiction, and actual DB scales |
+| `BGSparseCompact.lean`, `BGBinaryRatio.lean`, `BGReturns.lean` | Rational compact sets, binary support, and uniform return-cost divergence |
+| `BGExactLayers.lean`, `BGWindowBounds.lean`, `BGWindows.lean` | Nonexact-layer counts, approximation precision, and arbitrarily long sparse windows |
+| `BGGeometric.lean`, `BGCapacity.lean`, `BG.lean` | Nonoverlapping return accumulation, window capacity, BG, and normalized completeness |
+| `Normalization.lean` | Upward-only shifts, ratio balancing, floor-error control, and avoidance of finite deletion bounds |
+| `SetBridge.lean` | Tail injectivity, lower bounds, legal value-set inclusion, and index/set representation bridges |
+| `Main.lean` | Final theorems for frozen part (i) and strong set completeness |
+| `UpstreamDefinitions.lean`, `UpstreamBridge.lean` | Verbatim upstream definitions, kernel-checked type equivalence, and final target adapters |
+| `Audit.lean` | Target-type output and the axiom audit of every completed theorem |
 
-上游定义来源与许可见 [UPSTREAM.md](UPSTREAM.md)。公开稿件及原始证书保持原样。
+Supporting tools:
+
+| Path | Purpose |
+|---|---|
+| `scripts/generate_data.py` | Data translation and consistency checks against the JSON |
+| `scripts/verify.py` | Build, axiom allowlist, and fresh-directory rebuild |
+| `scripts/check_upstream.py`, `upstream/` | Source hashes, definition blocks, and positive-target consistency; snapshots are not Lean imports |
+
+See [UPSTREAM.md](UPSTREAM.md) for definition provenance and licensing.
+The published manuscripts and original certificate are unchanged.

@@ -1,32 +1,33 @@
-# 实际形式化环境
+# Recorded formalization environment
 
-记录日期：2026-09-13（Asia/Shanghai）。第一批命令见 `logs/environment.log`，
-第二批复核见 `logs/mesh-environment.log`，第三批复核见
-`logs/third-batch-environment.log`，第四批实际复核见
-`logs/fourth-batch-environment.log`，第五批实际复核见
-`logs/fifth-batch-environment.log`，第六批实际复核见
-`logs/sixth-batch-environment.log`，第七批实际复核见
-`logs/seventh-batch-environment.log`，第八批实际复核见
-`logs/eighth-batch-environment.log`；命令日志使用 UTC 时间。
+Recorded on 2026-09-13 (Asia/Shanghai). Command logs use UTC.
+Environment checks are preserved in `logs/environment.log` (batch 1),
+`logs/mesh-environment.log` (batch 2), and
+`logs/third-batch-environment.log` through `logs/eighth-batch-environment.log`
+for the later batches.
 
-- 执行位置：本机 macOS 26.5.1，Apple Silicon / arm64。
-- 原稿基准提交：`dcdc3c255189ab4e0f9bbf9abea2ca0a3758de06`。
-- 第二批起点：第一批提交 `0f638801c6220866661581e5848eae7db87798a1`。
-- 第三批起点：第二批提交 `16e0de8ba8dd9f81d2e04d7834ed29ddaca1e7eb`。
-- 第四批起点：第三批提交 `d685bb3df0cb05190c31b7a92c2c7271f053580d`。
-- 第五批起点：第四批提交 `e3985208220a96030f454d3ab5e82ac42135a53c`。
-- 第六批起点：第五批提交 `ea7ad5fd1eb85db223878a6c92f37d77868532ee`。
-- 第七批起点：前六批发布记录提交 `f6c5d2ba8cbca95427ae6aea854d11116f06cd55`。
-- 第八批起点：FE／DB／BG 提交 `1e6e6d93661dbaa67700ee77097901ea66f276cd`。
-- 开发分支：`lean-formalization`。起始工作树干净，所有新增内容位于 `formalization/`。
-- 实际 Lean：`4.27.0`，commit `db93fe1608548721853390a10cd40580fe7d22ae`。
-- 实际 Lake：`5.0.0-src+db93fe1`，使用 Lean 4.27.0。
-- Mathlib：`a3a10db0e9d66acbebf76c5e6a135066525ac900`，对应 `v4.27.0`。
-- `lake-manifest.json` 锁定全部 9 个依赖；实际 Git HEAD 均与锁定值一致，依赖源码没有已跟踪修改。
-- 本机还安装 Lean 4.32.0，但本项目通过 `lean-toolchain` 固定使用 4.27.0。
+- Host: local macOS 26.5.1, Apple Silicon / arm64.
+- Manuscript baseline commit: `dcdc3c255189ab4e0f9bbf9abea2ca0a3758de06`.
+- Batch 2 starting point, batch 1 commit: `0f638801c6220866661581e5848eae7db87798a1`.
+- Batch 3 starting point, batch 2 commit: `16e0de8ba8dd9f81d2e04d7834ed29ddaca1e7eb`.
+- Batch 4 starting point, batch 3 commit: `d685bb3df0cb05190c31b7a92c2c7271f053580d`.
+- Batch 5 starting point, batch 4 commit: `e3985208220a96030f454d3ab5e82ac42135a53c`.
+- Batch 6 starting point, batch 5 commit: `ea7ad5fd1eb85db223878a6c92f37d77868532ee`.
+- Batch 7 starting point, publication record for batches 1–6: `f6c5d2ba8cbca95427ae6aea854d11116f06cd55`.
+- Batch 8 starting point, FE/DB/BG commit: `1e6e6d93661dbaa67700ee77097901ea66f276cd`.
+- Development branch: `lean-formalization`. The initial worktree was clean;
+  all formalization additions were under `formalization/`.
+- Actual Lean: `4.27.0`, commit `db93fe1608548721853390a10cd40580fe7d22ae`.
+- Actual Lake: `5.0.0-src+db93fe1`, using Lean 4.27.0.
+- Mathlib: `a3a10db0e9d66acbebf76c5e6a135066525ac900`, corresponding to `v4.27.0`.
+- `lake-manifest.json` pins all nine dependencies. Every actual dependency Git
+  HEAD matched its lock, and dependency sources had no tracked modifications.
+- Lean 4.32.0 was also installed locally, but this project selects 4.27.0
+  through `lean-toolchain`.
 
-Elan 输出中有一次查询默认 stable 最新版本失败的警告。项目覆盖版本仍明确为
-4.27.0，已成功执行构建，没有升级工具链。
+Elan once warned that it could not query the latest default stable release.
+The project override still explicitly selected 4.27.0, and the build succeeded.
+The toolchain was not upgraded.
 
 ## Frozen inputs
 
@@ -37,108 +38,165 @@ Elan 输出中有一次查询默认 stable 最新版本失败的警告。项目�
 | `certificate/templates.json` | `3293a4fb061ba625ba1f11788dca751920a182d26d60d6298b31a058c065c048` |
 | `certificate/check_templates.py` | `862b5ddbb55d134336029977961c4cf0391ff67024f2946b039ca584cab1b98d` |
 
-交接任务书的英文主稿哈希 `f17d67…` 对应修改贡献者署名前的提交；与本基准的主稿
-差异仅为署名。这里记录真实输入，未把两份不同字节的文件视作同一冻结版本。
+The handoff's English-manuscript hash `f17d67…` refers to the revision before
+the contributor-name change. Only attribution differs from this baseline.
+The hashes above record the actual inputs; files with different bytes are not
+treated as the same frozen version.
 
 ## Cache and build
 
-本机复用已有 `erdos1-reproduction/lean/.lake/packages` 的 Mathlib 4.27.0 缓存。
-本项目 `.lake/packages` 是本地符号链接，受 `formalization/.gitignore` 排除；
-该绝对路径不进入 Lake 配置或依赖锁文件。下载后的工程可以用 `lake exe cache get`
-恢复锁定依赖，源代码不依赖上述本地路径。
+The local build reuses an existing Mathlib 4.27.0 cache at
+`erdos1-reproduction/lean/.lake/packages`. This project's `.lake/packages`
+is a local symbolic link excluded by `formalization/.gitignore`.
+The absolute path is not stored in the Lake configuration or dependency lock.
+A downloaded checkout can restore pinned dependencies with `lake exe cache get`;
+the source does not depend on that local path.
 
-首个完整构建成功记录为 `logs/certificate-04.log`：`lake build` 退出码 0。
-它包含初始 18 个定理的审计。第一批最终为 20 个定理；第二批增加 31 个，
-第三批增加 32 个，第四批增加 44 个，第五批增加 21 个，第六批增加 35 个，
-第七批增加 175 个，第八批增加 23 个，累计 381 个。
-当前验收以 `logs/build.log`、`logs/axioms.log`、
-`logs/verification.json` 为准。前七批最终日志仍保存在对应提交与交付包中。
+The first successful full build is recorded in `logs/certificate-04.log`:
+`lake build` exited with code 0 and audited the initial 18 theorems.
+Batch 1 ultimately contained 20 theorems. Batches 2–8 added 31, 32, 44, 21, 35,
+175, and 23 respectively, bringing the total to 381.
 
-独立目录重建见 `logs/fresh-build.log`、`logs/fresh-axioms.log`、
-`logs/fresh-verification.json`。该检查重新编译本项目的源码，复用同版本 Mathlib
-编译缓存，不宣称重建了整个 Lean/Mathlib，也未运行外部 checker 或 comparator。
+Current acceptance records are `logs/build.log`, `logs/axioms.log`, and
+`logs/verification.json`. Final records for earlier batches remain in their
+corresponding commits and delivery bundles.
 
-早期 `basic*.log` 和 `certificate*.log` 保留了实际编译修复过程。最初的问题涉及
-未展开的锥条件、缺少库导入、保留标识符及化简顺序，均已解决；这些历史日志不表示
-最终构建状态。
+The fresh-directory rebuild is recorded in `logs/fresh-build.log`,
+`logs/fresh-axioms.log`, and `logs/fresh-verification.json`.
+It recompiles this project's sources while reusing the same-version Mathlib
+compiled cache. It is not a rebuild of all Lean/Mathlib, and no external checker
+or comparator was run.
 
-`mesh-cyclic-01.log`、`mesh-02.log`、`mesh-03.log` 记录第二批的实际编译修复。
-问题为策略风格检查、数值转换的类型推断及归纳基步类型推断，均已修复；
-没有修改数学前提或原始主稿来绕过失败。
+## Historical compilation and integrity records
 
-第三批实际迭代保存在 `coefficient-interval-*`、`representations-*`、
-`node-representations-*`、`node-window-*`、`initial-mesh-*`、`permanent-mesh-*`
-日志中。初始网格最终模块构建见 `initial-mesh-06.log`，永久网格最终模块构建见
-`permanent-mesh-04.log`；上述历史失败均已修复。过程中 Lean 对失败目标显示的
-内部占位项不是源代码证明，验收只接受最终全量构建及公理闭包。
+The following records describe the verification revisions, before the later
+English-first documentation update. The 36-file checks refer to the original
+release package at those revisions. Subsequent navigation/documentation edits
+and their manifest updates do not rewrite these historical logs. The frozen
+manuscripts, certificate, Lean sources, and dependency locks remain unchanged.
 
-`logs/third-batch-input-integrity.log` 实际检查了原发布稿的 36 个文件哈希，全部匹配。
-第三批没有变更公开主稿、原始 JSON、已有目标定义或工具链与依赖锁。
+### Batches 1 and 2
 
-第四批实际迭代保存在 `floor-sequence-*`、`pair-reindex-*`、`exact-block-*`、
-`floor-descent-*`、`block-length-*` 日志中。`floor-descent-04.log` 记录实际地板序列的
-到达层永久下降模块通过；`block-length-02.log` 记录长度条件模块通过。
-全量构建导入全部新模块及全部公理审计，验收不是只构建旧证书目标。
+Early `basic*.log` and `certificate*.log` files preserve actual compilation and
+repair iterations. Initial issues involved unexpanded cone conditions, missing
+imports, reserved identifiers, and simplification order; all were resolved.
+Historical failures are not the final build status.
 
-`logs/fourth-batch-input-integrity.log` 再次核对全部 36 个原发布文件哈希并通过。
-第四批没有变更公开主稿、原始证书、冻结原题定义、工具链或依赖锁；9 个依赖的实际
-Git HEAD 全部匹配锁定值，且没有已跟踪修改。已证明部分的公理依赖仍仅为允许的三个
-标准公理的子集。
+`mesh-cyclic-01.log`, `mesh-02.log`, and `mesh-03.log` record batch 2 repairs
+for tactic-style checks, numeric-coercion inference, and induction-base type
+inference. The mathematical premises and original manuscript were not changed
+to bypass failures.
 
-第五批模块编译见 `unit-mesh-01.log`、`low-gap-01.log`、`event-gaps-01.log` 和
-`event-infinitude-02.log`。`event-infinitude-01.log` 中实数不等式的策略选用问题
-已经修复；最终构建导入所有第五批模块，全部辅助定理也纳入公理审计。
-`logs/fifth-batch-input-integrity.log` 检查全部 36 个原发布文件哈希并通过。
-第五批工具链和全部 9 个依赖版本未改变，依赖源码无已跟踪修改；公开稿、证书和
-冻结的原题定义保持原样。新成果仍为条件完全性与反证路线中的事件倍率界，
-不是整个 #354(i) 的验证结果。
+### Batch 3
 
-第六批实际编译迭代见 `prefix-mesh-01.log`、`prefix-bounds-01.log` 和
-`fe-counting-*`。初轮下标/重排展开、有限集接口与严格风格检查问题已修复。
-`fe-counting-03.log` 同时记录更新后的前缀网格、实际前缀界及初版 FE 计数模块通过；
-计数含义补充的最终模块构建见 `fe-counting-04.log`。
-全量及独立目录验收包含全部新模块和全部 183 个定理，不仅是旧证书构建。
+Iterations are preserved in `coefficient-interval-*`, `representations-*`,
+`node-representations-*`, `node-window-*`, `initial-mesh-*`, and
+`permanent-mesh-*` logs. Final module builds are `initial-mesh-06.log`
+and `permanent-mesh-04.log`; the earlier failures were repaired.
+Internal placeholders displayed by Lean for failed goals are not source proofs.
+Acceptance uses only the final full build and transitive axiom audit.
 
-`logs/sixth-batch-input-integrity.log` 再次检查全部 36 个原发布文件哈希并通过；
-工具链、9 个依赖实际提交、冻结原题定义与公开主稿保持不变。
-本批完成的是统一缺口界及 FE 的精确有限计数基础，不宣称 FE 衰减估计已经通过验证。
+`logs/third-batch-input-integrity.log` checked all 36 original package hashes;
+all matched. The manuscripts, original JSON, existing target definitions,
+toolchain, and dependency locks were unchanged.
 
-## 第七批：FE／DB／BG
+### Batch 4
 
-本批新增 29 个 Lean 模块、175 个定理，完成 FE 与 FE-R、DB 增量、实际长窗口、
-统一精确返回成本与 BG 累计矛盾，最终得到 `BG.normalized_complete`。
-该定理只要求归一化地板初值和比值无理；它并非任意正参数的原题，也未证明集合强完全性。
-本批没有修改工具链、依赖锁、冻结目标定义或原稿来取得这一结论。
+Iterations are in `floor-sequence-*`, `pair-reindex-*`, `exact-block-*`,
+`floor-descent-*`, and `block-length-*` logs.
+`floor-descent-04.log` records successful actual-floor arrival-indexed permanent
+descent; `block-length-02.log` records successful length conditions.
+The full build imported every new module and all axiom audits, not just the
+old certificate target.
 
-关键模块成功编译记录包括 `fe-main-01.log`、`fe-seed-03.log`、`db-main-05.log`、
-`bg-returns-03.log`、`bg-windows-02.log`、`bg-capacity-04.log` 和 `bg-final-02.log`。
-历史失败日志保留完整目标上下文，问题涉及类型转换、库接口、归纳/算术证明及严格风格检查；
-最终均已修复。`fe-db-bg-core-audit.log` 是中间检查点，不代替最终 358 项全量审计。
+`logs/fourth-batch-input-integrity.log` again passed all 36 original hashes.
+The manuscripts, certificate, frozen target definitions, toolchain, and locks
+were unchanged. All nine actual dependency HEADs matched their locks, with no
+tracked changes. Proved declarations still depended only on subsets of the
+three allowed standard axioms.
 
-`logs/seventh-batch-input-integrity.log` 再次核对全部 36 个原发布文件哈希，全部匹配。
-`logs/seventh-batch-environment.log` 确认 Lean 4.27.0 和全部 9 个依赖实际提交匹配锁定值，
-依赖源码没有已跟踪修改。最终验收仍以 `verification.json`、`fresh-verification.json`
-及相应实际日志为准；清洁重建复用依赖缓存，不宣称从零重建 Mathlib 或运行外部 checker。
+### Batch 5
 
-## 第八批：一般参数、强完全性与上游目标
+Successful module builds are `unit-mesh-01.log`, `low-gap-01.log`,
+`event-gaps-01.log`, and `event-infinitude-02.log`.
+The real-inequality tactic-selection issue in `event-infinitude-01.log`
+was repaired. The final build imported all batch 5 modules and audited every
+auxiliary theorem.
 
-本批增加 23 个定理，完成只向上取尾的归一化、无重复数值证明、有限删除集上界
-规避及集合/索引表示连接。`Main.lean` 实现未改动的 `PartI` 与 `StrongCompleteness`。
-`UpstreamBridge.lean` 实现精确上游定义中的正面命题与集合强完全性。
-所有新模块都由默认根目标实际导入；最终验收不是只构建旧模块。
+`logs/fifth-batch-input-integrity.log` passed all 36 original hashes.
+The toolchain, nine dependencies, dependency source state, manuscripts,
+certificate, and frozen targets were unchanged.
+At this historical stage the results were conditional completeness and
+event-ratio bounds under incompleteness, not verification of all of #354(i).
 
-实际编译迭代保存在 `normalization-01.log`、`main-*.log`；初轮问题涉及严格风格检查、
-函数参数个数、重写顺序及局部缩写的算术识别，不是通过添加数学前提修复。
-来源检查见 `upstream-provenance-offline.log`、`upstream-provenance-online.log`；
-首次沙箱 DNS 失败日志保留，后续只读网络复核成功。
+### Batch 6
 
-上游锁定提交的真实工具链为 Lean 4.33.1。没有安装或升级本工程工具链；
-七段上游定义逐字提取，在现有 Lean 4.27.0 中编译，并核对精确 RHS 和内核类型等价。
-这不是完整上游 checkout 的构建，不声称已完成上游 PR 集成。完整来源说明见 `UPSTREAM.md`。
+Iterations are in `prefix-mesh-01.log`, `prefix-bounds-01.log`, and
+`fe-counting-*`. Initial indexing/reindexing expansion, Finset API, and strict
+style-check issues were repaired. `fe-counting-03.log` records the updated
+prefix mesh, actual prefix bounds, and first FE-counting module;
+`fe-counting-04.log` adds the final counting-interpretation results.
+Full and fresh-directory checks included every new module and all 183 theorems.
 
-`eighth-batch-input-integrity.log` 再次确认 36 个原发布文件哈希全部匹配。
-`eighth-batch-environment.log` 确认现有工具链、全部 9 个依赖实际提交和依赖源码未变。
-最终全量与独立源码目录重建的 381 项验收见 `verification.json`、`fresh-verification.json`；
-对应日志包含最终目标的实际 `#print` 与全部传递公理输出。
-`logs/final-clean-source-match.log` 另外逐项比较了清洁目录与交付工作树的源码、
-脚本和上游来源数据，退出码 0；只排除了编译缓存、日志、Markdown 说明和 Python 缓存。
+`logs/sixth-batch-input-integrity.log` again passed all 36 original hashes.
+The toolchain, nine actual dependency commits, frozen targets, and manuscripts
+were unchanged. This stage proved uniform gaps and exact finite FE counting,
+not yet the FE decay estimate.
+
+## Batch 7: FE/DB/BG
+
+This batch added 29 modules and 175 theorems: FE and FE-R, the DB increment,
+actual long windows, uniform exact-return costs, the BG cumulative contradiction,
+and finally `BG.normalized_complete`. Its only hypotheses are normalized initial
+floor values and an irrational ratio. At this stage it was not yet the original
+arbitrary-positive-parameter target or strong set completeness.
+No toolchain, dependency lock, frozen target, or manuscript was changed to obtain it.
+
+Successful core-module records include `fe-main-01.log`, `fe-seed-03.log`,
+`db-main-05.log`, `bg-returns-03.log`, `bg-windows-02.log`,
+`bg-capacity-04.log`, and `bg-final-02.log`.
+Historical failure logs retain complete goal contexts. Issues involved coercions,
+library interfaces, induction/arithmetic proofs, and strict style checks; all
+were repaired. `fe-db-bg-core-audit.log` is an intermediate checkpoint, not
+a substitute for the batch's final 358-theorem audit.
+
+`logs/seventh-batch-input-integrity.log` again matched all 36 original hashes.
+`logs/seventh-batch-environment.log` confirms Lean 4.27.0, all nine actual
+dependency commits, and no tracked dependency-source changes.
+Final acceptance uses `verification.json`, `fresh-verification.json`, and their
+actual logs. Fresh rebuilding reuses dependencies and is not a from-scratch
+Mathlib build or an external-checker run.
+
+## Batch 8: general parameters, strong completeness, and upstream targets
+
+This batch adds 23 theorems: upward-only tail normalization, distinct values,
+avoidance of any finite-deletion bound, and set/index representation bridges.
+`Main.lean` implements the unchanged `PartI` and `StrongCompleteness`.
+`UpstreamBridge.lean` proves the positive target and strong set completeness
+in the exact upstream definitions. Every new module is imported by the default
+root target; acceptance is not limited to old modules.
+
+Compilation iterations are in `normalization-01.log` and `main-*.log`.
+Initial issues involved strict style checks, function arity, rewrite order,
+and arithmetic recognition of local abbreviations. They were not repaired by
+adding mathematical premises. Provenance checks are in
+`upstream-provenance-offline.log` and `upstream-provenance-online.log`.
+The first sandbox DNS failure is preserved; the subsequent read-only online
+comparison succeeded.
+
+The actual pinned upstream toolchain is Lean 4.33.1. No new toolchain was
+installed or selected for this project. Seven definition blocks were extracted
+verbatim and compiled in Lean 4.27.0, with exact RHS checks and kernel-proved
+type equivalences. This is not a full upstream-checkout build or completed
+upstream PR integration. See [UPSTREAM.md](UPSTREAM.md).
+
+`eighth-batch-input-integrity.log` again matched all 36 original package hashes.
+`eighth-batch-environment.log` confirms unchanged toolchain, nine actual
+dependency commits, and dependency sources.
+Full and fresh-source-directory acceptance records for all 381 theorems are
+`verification.json` and `fresh-verification.json`; their logs include actual
+`#print` output for the final targets and all transitive axiom dependencies.
+
+`logs/final-clean-source-match.log` additionally compares the fresh directory
+and delivery worktree's sources, scripts, and upstream data, with exit code 0.
+Only build caches, logs, Markdown documentation, and Python caches were excluded.

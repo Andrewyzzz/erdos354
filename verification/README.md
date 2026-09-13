@@ -1,4 +1,9 @@
-# Verification: what the code establishes
+# Finite verification: what the Python checks establish
+
+This directory contains finite symbolic and regression checks. The separate Lean
+formalization, including the final targets and transitive axiom audits, is in
+[`formalization/`](../formalization/README.md); see its
+[verification summary](../formalization/RESULTS.md) for the current result.
 
 Use Python 3.10+, standard library only. Do not enable optimized mode, because the
 historical verifiers use assertions. The wrapper rejects `-O` and removes
@@ -20,9 +25,9 @@ sample ratios. This establishes the finite combinatorial table used in Section 3
 It also checks the frozen, revised Chinese, and English appendices against the same
 mask triples.
 
-It does **not** verify that the problem was formalized correctly, the FE and DB
-proofs, or the universal theorem. Those remain mathematical arguments for readers
-to examine.
+This Python checker does **not** verify that the problem was formalized correctly,
+the FE and DB proofs, or the universal theorem. Those are outside this checker's
+scope; the written arguments and the separate Lean proofs remain available for review.
 
 ## Regression suites
 
@@ -44,7 +49,8 @@ The runner treats a timeout or nonzero exit as failure, never as a pass.
 `reference/` contains selected **historical** outputs. `inputs/` contains historical
 working notes, whose own exploratory qualifications and scope statements remain
 unchanged. They are provenance documents, not external published authorities.
-The current full claim and full argument are in `proof/`.
+The candidate manuscript is in `proof/`; the current Lean proof and its precise
+verification boundaries are documented in `formalization/`.
 
 A manifest certifies file identity only. No runtime or number of finite examples
 certifies an infinite theorem. Review reports are not votes establishing correctness.
