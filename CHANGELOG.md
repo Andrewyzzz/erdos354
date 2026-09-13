@@ -2,6 +2,8 @@
 
 ## Formalization and review package — 2026-09-13
 
+- Standardize GitHub math delimiters and provide a typeset PDF generated
+  from the same English manuscript, preserving all formulas and certificate data.
 - Simplify contributor metadata without changing mathematical text or Lean sources.
 - License our code and scripts under Apache-2.0, and our manuscripts and
   explanatory documentation under CC BY 4.0, preserving third-party notices.

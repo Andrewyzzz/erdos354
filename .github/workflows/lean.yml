@@ -38,6 +38,8 @@ jobs:
           python3 certificate/check_templates.py
           python3 formalization/scripts/check_publication.py
           python3 formalization/scripts/sanitize_logs.py --check
+          python3 proof/scripts/check_math.py --check-pdf
+          python3 -m unittest discover -s proof/scripts -p 'test_*.py' -v
 
       - name: Install the pinned Lean toolchain
         uses: leanprover/lean-action@50fcf42d2e460296f1a34b402e990d1b24f8b596 # v1

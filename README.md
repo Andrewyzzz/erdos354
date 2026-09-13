@@ -5,6 +5,7 @@
 Andrewyzzz and Chatgpt-6 Astra (AI system)
 
 **[English manuscript](proof/FORMALIZED_PROOF.md)** ·
+**[PDF](proof/FORMALIZED_PROOF.pdf)** ·
 **[Lean formalization](formalization/README.md)** ·
 **[Verification records](formalization/RESULTS.md)**
 

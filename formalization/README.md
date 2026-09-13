@@ -8,7 +8,8 @@ Dyadic354.erdos354_part_i : Dyadic354.PartI
 Dyadic354.erdos354_strong_completeness : Dyadic354.StrongCompleteness
 ```
 
-The [English manuscript](../proof/FORMALIZED_PROOF.md) gives the mathematical
+The [English manuscript](../proof/FORMALIZED_PROOF.md), also available as a
+[PDF](../proof/FORMALIZED_PROOF.pdf), gives the mathematical
 argument. The [theorem map](STATUS.md) identifies the main formal declarations,
 and [RESULTS.md](RESULTS.md) records the builds and axiom audits.
 

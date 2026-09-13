@@ -1,0 +1,18 @@
+{
+  "source": "proof/FORMALIZED_PROOF.md",
+  "source_sha256": "f54ff20cd0aca07c3fe131ba915d6fd2349c5828b087864e3da88a5791224d7c",
+  "pdf": "proof/FORMALIZED_PROOF.pdf",
+  "pdf_sha256": "6584885964bda94847590f6f3bd06060fe6f1545422c9ca2038fd2e14df73010",
+  "tectonic": "Tectonic 0.16.9",
+  "display_formulas": 90,
+  "inline_formulas": 405,
+  "equation_labels": 23,
+  "pages": 16,
+  "certificate_nodes_in_exact_order": 125,
+  "tex_errors": 0,
+  "overfull_boxes": 0,
+  "missing_glyphs": 0,
+  "github_formula_round_trip": "495 expressions preserved after HTML entity decoding",
+  "mathematical_content": "Unchanged from dd19b20, modulo notation-preserving typesetting changes",
+  "scope": "Manuscript typesetting and content-preservation checks; Lean verification is recorded separately in formalization/RESULTS.md"
+}
