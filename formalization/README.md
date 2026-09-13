@@ -59,7 +59,7 @@ sources without reusing our compiled artifacts. Local output under
 all nine dependency revisions are fixed; [ENVIRONMENT.md](ENVIRONMENT.md)
 records their provenance.
 
-## Public build
+## GitHub-hosted build
 
 Our [GitHub Actions workflow](../.github/workflows/lean.yml) runs on a
 GitHub-hosted Ubuntu 24.04 runner. It checks the package manifest and finite

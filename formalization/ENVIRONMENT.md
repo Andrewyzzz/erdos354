@@ -13,7 +13,7 @@ to verify the formalization. Local verification was performed on
 | Lake | `5.0.0-src+db93fe1` |
 | Mathlib | `a3a10db0e9d66acbebf76c5e6a135066525ac900` |
 | Local host | macOS 26.5.1, Apple Silicon / arm64 |
-| Public CI runner | GitHub-hosted Ubuntu 24.04 |
+| Hosted CI runner | GitHub-hosted Ubuntu 24.04 |
 
 [lean-toolchain](lean-toolchain), [lakefile.toml](lakefile.toml), and
 [lake-manifest.json](lake-manifest.json) fix the project environment.
@@ -59,7 +59,7 @@ dependency cache. It compiles our sources without reusing our project
 artifacts. Both local reports record identical source hashes and
 individual theorem axiom dependencies.
 
-The [public workflow](../.github/workflows/lean.yml) installs the pinned
+The [GitHub-hosted workflow](../.github/workflows/lean.yml) installs the pinned
 toolchain, retrieves the dependency cache, builds the project, and runs
 the complete audit. Its artifact includes the actual source commit,
 platform, source hashes, dependency revisions, and CI run URL.

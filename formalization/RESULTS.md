@@ -45,9 +45,9 @@ The actual final types and axiom dependencies appear in
 [axioms.log](logs/axioms.log) and
 [fresh-axioms.log](logs/fresh-axioms.log).
 
-## Public reproducibility
+## GitHub-hosted verification
 
-The [public run at 038ec88](https://github.com/Andrewyzzz/erdos354/actions/runs/34732546472)
+The [GitHub-hosted run at 038ec88](https://github.com/Andrewyzzz/erdos354/actions/runs/34732546472)
 completed successfully on 13 September 2026. Its artifact reports PASS for
 all 381 theorems on the clean commit
 `038ec88d64a4fa815f73c4c7784862ba6ddabb87`. We checked the downloaded report

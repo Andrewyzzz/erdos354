@@ -1,6 +1,6 @@
 # Review package and reproducibility
 
-The public repository is
+The repository is
 [Andrewyzzz/erdos354](https://github.com/Andrewyzzz/erdos354).
 Our primary review materials are:
 
@@ -31,7 +31,7 @@ lake exe cache get
 python3 scripts/verify.py --log-directory logs/local
 ```
 
-The [public workflow](../.github/workflows/lean.yml) runs the release checks
+The [GitHub-hosted workflow](../.github/workflows/lean.yml) runs the release checks
 and Lean verification. Each successful run provides a commit-labelled
 artifact containing the build log, final statement output, all-theorem
 axiom audit, and source hashes.
