@@ -27,8 +27,10 @@ been checked for delimiter and grouping integrity. The rendered pages have
 been inspected for clipping, missing glyphs, and table overflow. The PDF
 appendix reproduces all 125 mask triples in their original order.
 
-GitHub uses fenced `math` blocks and protected inline delimiters. Explicit
-row breaks prevent Markdown from altering alignment syntax. The CI guard
+GitHub uses fenced `math` blocks, protected inline delimiters, and explicit
+relation and brace commands. Row breaks prevent Markdown from altering
+alignment syntax. Equation labels remain inside the GitHub expression;
+the PDF places them in the conventional right margin. The CI guard
 checks these conventions and rejects a PDF whose recorded source hash no
 longer matches the manuscript. Typesetting checks are distinct from the
 [Lean build and axiom audit](../../formalization/RESULTS.md).

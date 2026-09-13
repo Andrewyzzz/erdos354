@@ -23,7 +23,7 @@ def check(source: str) -> dict:
     for index, formula in enumerate(blocks + inlines, 1):
         if re.search(r'\\\\\s*\n', formula):
             raise ValueError(f'Formula {index}: use an explicit [0pt] row break to avoid Markdown escaping')
-        if '$' in formula or r'\operatorname' in formula:
+        if any(token in formula for token in ('$', r'\operatorname', r'\tag', '<', '>', r'\{', r'\}', '_*', '^*')):
             raise ValueError(f'Formula {index}: unsupported macro or nested dollar delimiter')
         depth = 0
         for match in re.finditer(r'\\.|[{}]', formula):
@@ -44,7 +44,7 @@ def check(source: str) -> dict:
                 raise ValueError(f'Formula {index}: mismatched math environment')
         if environments:
             raise ValueError(f'Formula {index}: unclosed math environment')
-    tags = re.findall(r'\\tag\{([^}]+)\}', source)
+    tags = re.findall(r'\\qquad\\text\{\(([^)]+)\)\}', source)
     if len(tags) != len(set(tags)):
         raise ValueError('Repeated equation labels')
     if not blocks or not inlines:

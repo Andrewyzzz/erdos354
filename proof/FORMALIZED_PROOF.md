@@ -27,12 +27,12 @@ and the stated finite-deletion strengthening.
 
 ## Theorem and scope
 
-For $`\alpha,\beta>0`$, set
+For $`\alpha,\beta\gt 0`$, set
 
 ```math
 A_{\alpha,\beta}
-=\{\lfloor2^n\alpha\rfloor,\lfloor2^n\beta\rfloor:n\in\mathbb N\}
- \setminus\{0\}.
+=\lbrace \lfloor2^n\alpha\rfloor,\lfloor2^n\beta\rfloor:n\in\mathbb N\rbrace
+ \setminus\lbrace 0\rbrace .
 ```
 
 **Theorem.** If $`\alpha/\beta`$ is irrational, then for every finite set
@@ -66,15 +66,15 @@ and the Lean formalization.
 
 ## 1. Normalization, indices, and two different notions of gap
 
-Start with the original parameters $`\alpha_0,\beta_0>0`$. Choose an integer $`k`$
-such that $`1<2^k\alpha_0/\beta_0<2`$. Equality at an endpoint would make the
+Start with the original parameters $`\alpha_0,\beta_0\gt 0`$. Choose an integer $`k`$
+such that $`1\lt 2^k\alpha_0/\beta_0\lt 2`$. Equality at an endpoint would make the
 original ratio a rational power of two, so cannot occur. Choose nonnegative
 integers $`u,v`$ with $`u-v=k`$. Replacing the two parameters by
 $`\alpha_1=2^u\alpha_0`$ and $`\beta_1=2^v\beta_0`$ deletes only finite prefixes.
 A further common multiplication by a sufficiently large power $`2^T`$ gives
 
 ```math
-N=\lfloor\beta\rfloor<M=\lfloor\alpha\rfloor<2N,\qquad N\ge2.
+N=\lfloor\beta\rfloor\lt M=\lfloor\alpha\rfloor\lt 2N,\qquad N\ge2.
 ```
 
 Indeed, both $`\alpha_1-\beta_1`$ and $`2\beta_1-\alpha_1`$ are positive; after
@@ -89,10 +89,10 @@ a_i=\lfloor2^i\alpha\rfloor,\quad b_i=\lfloor2^i\beta\rfloor,
 \quad a_{i+1}=2a_i+u_i,\quad b_{i+1}=2b_i+v_i,
 ```
 
-where $`u_i,v_i\in\{0,1\}`$. The inequalities
+where $`u_i,v_i\in\lbrace 0,1\rbrace `$. The inequalities
 
 ```math
-b_i<a_i<2b_i\le b_{i+1}
+b_i\lt a_i\lt 2b_i\le b_{i+1}
 ```
 
 persist. Thus the actual sorted order is $`b_i,a_i,b_{i+1},a_{i+1},\ldots`$,
@@ -102,7 +102,7 @@ sequences have no repeated values between them.
 **Events are indexed by the arrival layer:**
 
 ```math
-\mathcal T=\{t\ge1:(u_{t-1},v_{t-1})\ne(0,0)\},\qquad
+\mathcal T=\lbrace t\ge1:(u_{t-1},v_{t-1})\ne(0,0)\rbrace ,\qquad
 K_n=|\mathcal T\cap[1,n]|.
 ```
 
@@ -111,7 +111,7 @@ event has position $`i+1`$. Define
 
 ```math
 \begin{gathered}
-P_n=P(a_i,b_i:0\le i<n),\qquad S_n=\sum_{i<n}(a_i+b_i),\\[0pt]
+P_n=P(a_i,b_i:0\le i\lt n),\qquad S_n=\sum_{i\lt n}(a_i+b_i),\\[0pt]
 L_n=a_n+b_n,\qquad D_n=\gcd(a_n,b_n),\qquad X_n=P_n\bmod D_n.
 \end{gathered}
 ```
@@ -132,7 +132,7 @@ at least two elements define
 
 ```math
 \mathrm{span}(W)=\max W-\min W,\qquad
-\mathrm{gap}(W)=\max\{w_{j+1}-w_j\},
+\mathrm{gap}(W)=\max\lbrace w_{j+1}-w_j\rbrace ,
 ```
 
 where the $`w_j`$ are its distinct elements in increasing order. A gap of $`k`$
@@ -143,7 +143,7 @@ corresponds to at most $`k-1`$ consecutive missing integers.
 For sorted positive weights $`c_j`$ with $`c_{j+1}\le2c_j`$,
 
 ```math
-c_{j+1}-\sum_{i\le j}c_i\le c_j-\sum_{i<j}c_i\le c_0.
+c_{j+1}-\sum_{i\le j}c_i\le c_j-\sum_{i\lt j}c_i\le c_0.
 ```
 
 When adding a weight, the new subset sums are the old set and a translate. If
@@ -160,12 +160,12 @@ Using Lemma 2.3 and $`D_n\le b_n\le a_n`$ gives
 
 ```math
 0\le h_n\le N-1\qquad(n\ge2).
-\tag{1.1}
+\qquad\text{(1.1)}
 ```
 
 The single-column identity
-$`a_j-\sum_{i<j}a_i=M+\sum_{i<j}u_i>0`$ and its $`b`$ analogue also imply
-$`S_n<L_n`$.
+$`a_j-\sum_{i\lt j}a_i=M+\sum_{i\lt j}u_i\gt 0`$ and its $`b`$ analogue also imply
+$`S_n\lt L_n`$.
 
 ## 2. Three finite lemmas
 
@@ -175,7 +175,7 @@ For a nonempty $`X\subseteq\mathbb Z/d\mathbb Z`$,
 
 ```math
 h(X\cup(X+1))=\max(0,h(X)-1).
-\tag{2.1}
+\qquad\text{(2.1)}
 ```
 
 The complement is the intersection of the old complement with its one-step
@@ -184,12 +184,12 @@ Nonemptiness excludes the all-missing circle.
 
 ### Lemma 2.2: propagation of a finite integer mesh
 
-If $`\mathrm{span}(W)\ge c>0`$ and $`\mathrm{gap}(W)\le k`$, then
+If $`\mathrm{span}(W)\ge c\gt 0`$ and $`\mathrm{gap}(W)\le k`$, then
 
 ```math
 \mathrm{gap}(W\cup(W+c))\le k,\qquad
 \mathrm{span}(W\cup(W+c))=\mathrm{span}(W)+c.
-\tag{2.2}
+\qquad\text{(2.2)}
 ```
 
 The two convex hulls intersect or touch, and their endpoints belong to the union.
@@ -207,7 +207,7 @@ If $`\mathrm{span}(W)\ge m\ge1`$ and $`\mathrm{gap}(W)\le k`$, then
 
 ```math
 h(W\bmod m)\le k-1.
-\tag{2.3}
+\qquad\text{(2.3)}
 ```
 
 Translate $`W`$ analytically so that $`\min W=0`$; this merely rotates its residues,
@@ -225,10 +225,10 @@ We will preserve an actual integer mesh, not just a density in a changing group.
 At a fixed layer $`n`$, write
 
 ```math
-A=a_n=dp,\quad B=b_n=dq,\quad (p,q)=1,\quad q<p<2q,
+A=a_n=dp,\quad B=b_n=dq,\quad (p,q)=1,\quad q\lt p\lt 2q,
 ```
 
-and put $`E=P_n`$, $`S=S_n<d(p+q)`$, $`X=E\bmod d`$, $`H=h(X)`$,
+and put $`E=P_n`$, $`S=S_n\lt d(p+q)`$, $`X=E\bmod d`$, $`H=h(X)`$,
 $`k=\max(1,H)`$. Thus $`1\le k\le d`$.
 
 Use $`\ell`$ exact doubling pairs at indices $`n,\ldots,n+\ell-1`$, with
@@ -247,26 +247,26 @@ They use indices $`n+\ell,\ldots,n+\ell+2`$ and belong to $`P_r`$ for
 $`r=n+\ell+3`$. Define
 
 ```math
-F=q(p-1),\qquad B_*=S+d(F+p+q)+22,\qquad
-K_*=2q(p-1)+4(p+q)+64,
+F=q(p-1),\qquad B_{\ast}=S+d(F+p+q)+22,\qquad
+K_{\ast}=2q(p-1)+4(p+q)+64,
 ```
 
-and assume $`K\ge K_*`$.
+and assume $`K\ge K_{\ast}`$.
 
 ### 3.1 The old coefficient interval
 
-The exact block provides $`d\{px+qy:0\le x,y<K\}`$. When $`K\ge p`$ this includes
+The exact block provides $`d\lbrace px+qy:0\le x,y\lt K\rbrace `$. When $`K\ge p`$ this includes
 $`d`$ times the interval
 
 ```math
 [F,(p+q)(K-1)-F].
-\tag{3.1}
+\qquad\text{(3.1)}
 ```
 
-For $`F\le z\le p(K-1)`$ choose $`0\le y<p`$ with $`qy\equiv z\pmod p`$, then
+For $`F\le z\le p(K-1)`$ choose $`0\le y\lt p`$ with $`qy\equiv z\pmod p`$, then
 $`x=(z-qy)/p`$ belongs to $`[0,K-1]`$. Reflecting the coefficients in the center of
 the square gives the other interval, whose left endpoint is $`q(K-1)`$. They
-intersect because $`q<p`$.
+intersect because $`q\lt p`$.
 
 ### 3.2 Two alternative offsets whose constants differ by one
 
@@ -274,14 +274,14 @@ Suppose two subset sums of the six new weights have the form
 
 ```math
 \sigma_0=dK l_0(p,q)+c,\qquad
-\sigma_1=dK l_1(p,q)+c+1,\qquad0\le c<c+1\le22.
+\sigma_1=dK l_1(p,q)+c+1,\qquad0\le c\lt c+1\le22.
 ```
 
 They are alternatives, not sums to be used together. Set
 
 ```math
 L=\max(l_0,l_1),\quad U=\min(l_0,l_1)+p+q,\quad
-J=[dKL+B_*,dKU-B_*].
+J=[dKL+B_{\ast},dKU-B_{\ast}].
 ```
 
 Every $`z\in J`$ whose residue lies in $`(X+c)\cup(X+c+1)`$ has a legal
@@ -293,13 +293,13 @@ F\le(z-\sigma_j-f)/d\le(p+q)(K-1)-F.
 ```
 
 Equation (3.1) supplies the remaining old-block sum. The three groups of indices
-are disjoint. The bound $`B_*`$ pays for actual representatives, not merely residues.
+are disjoint. The bound $`B_{\ast}`$ pays for actual representatives, not merely residues.
 By (2.1), this proves
 
 ```math
 \text{Every } k \text{ consecutive integers in } J
 \text{ include a point of } P_r.
-\tag{3.2}
+\qquad\text{(3.2)}
 ```
 
 ### 3.3 The finite cone certificate
@@ -311,11 +311,11 @@ L_{\rm first}\le p+2q,\quad U_{\rm last}\ge7p+6q,
 ```
 
 ```math
-U_i-L_i>0,\qquad U_i-L_{i+1}>0,\qquad U_{i+1}-L_i>0.
+U_i-L_i\gt 0,\qquad U_i-L_{i+1}\gt 0,\qquad U_{i+1}-L_i\gt 0.
 ```
 
 Every quantity is an integer, so each strict margin is at least one. To check a
-homogeneous form $`ap+bq`$ on $`q<p<2q`$, write $`p=2x+y`$, $`q=x+y`$ with $`x,y>0`$.
+homogeneous form $`ap+bq`$ on $`q\lt p\lt 2q`$, write $`p=2x+y`$, $`q=x+y`$ with $`x,y\gt 0`$.
 The form is nonnegative on the closed cone exactly when $`2a+b\ge0`$ and $`a+b\ge0`$;
 if its coefficients are not both zero, it is positive in the open cone.
 
@@ -339,11 +339,11 @@ Since $`S`$ is an integer, $`S\le d(p+q)-1`$. Thus
 
 ```math
 \begin{aligned}
-dK-2B_*&\ge d[2F+4(p+q)+64]
+dK-2B_{\ast}&\ge d[2F+4(p+q)+64]
 -2[d(p+q)-1+d(F+p+q)+22]\\[0pt]
 &=64d-42\ge22d.
 \end{aligned}
-\tag{4.1}
+\qquad\text{(4.1)}
 ```
 
 This includes $`d=1`$, where the last margin is exactly 22. Each actual node and
@@ -352,40 +352,40 @@ each adjacent overlap has width at least $`22d`$.
 Put
 
 ```math
-L_*=dK(p+2q)+B_*,\qquad U_*=dK(7p+6q)-B_*,\qquad I=[L_*,U_*].
+L_{\ast}=dK(p+2q)+B_{\ast},\qquad U_{\ast}=dK(7p+6q)-B_{\ast},\qquad I=[L_{\ast},U_{\ast}].
 ```
 
 The constants $`c`$ can differ between nodes, so short internal gaps alone are not
 enough to connect them. For a node $`J_i=[l_i,r_i]`$, the starting points of its
 length-$`k`$ integer windows form $`J_i^-=[l_i,r_i-k+1]`$. As $`k\le d`$, (4.1)
 ensures that these shortened intervals remain nonempty and adjacent ones still
-intersect. Their union is connected and covers $`[L_*,U_*-k+1]`$. No monotonicity
+intersect. Their union is connected and covers $`[L_{\ast},U_{\ast}-k+1]`$. No monotonicity
 of the node endpoints is required.
 
 Every length-$`k`$ integer window in $`I`$ is therefore contained in a single node,
 where (3.2) applies. Consequently, the actual subset-sum set $`W=P_r\cap I`$ satisfies
 
 ```math
-\min W\le L_*+k-1,\quad \max W\ge U_*-k+1,\quad
+\min W\le L_{\ast}+k-1,\quad \max W\ge U_{\ast}-k+1,\quad
 \mathrm{gap}(W)\le k,
 ```
 
 ```math
-\mathrm{span}(W)\ge U_*-L_*-2(k-1).
-\tag{4.2}
+\mathrm{span}(W)\ge U_{\ast}-L_{\ast}-2(k-1).
+\qquad\text{(4.2)}
 ```
 
 The next unused smallest weight has $`b_r\le8dKq+15`$. Since $`6p-4q\ge1`$,
 
 ```math
-U_*-L_*-(8dKq+15)\ge dK-2B_*-15\ge22d-15.
+U_{\ast}-L_{\ast}-(8dKq+15)\ge dK-2B_{\ast}-15\ge22d-15.
 ```
 
 Hence
 
 ```math
-\mathrm{span}(W)-b_r\ge22d-15-2(k-1)\ge20d-13>0.
-\tag{4.3}
+\mathrm{span}(W)-b_r\ge22d-15-2(k-1)\ge20d-13\gt 0.
+\qquad\text{(4.3)}
 ```
 
 This is a mesh of actual integers with sufficient span to propagate.
@@ -398,7 +398,7 @@ Under Section 3's hypotheses, for every legal continuation and every $`t\ge r`$,
 
 ```math
 h_t\le\max(0,h_n-1).
-\tag{5.1}
+\qquad\text{(5.1)}
 ```
 
 If $`h_n\le1`$, the whole continuation is complete.
@@ -406,7 +406,7 @@ If $`h_n\le1`$, the whole continuation is complete.
 **Proof.** For each $`t\ge r`$ define the actual set
 
 ```math
-W_t=W+P(a_i,b_i:r\le i<t)\subseteq P_t.
+W_t=W+P(a_i,b_i:r\le i\lt t)\subseteq P_t.
 ```
 
 Apply Lemma 2.2 in the sorted order of unused weights. Its hypotheses hold by
@@ -425,20 +425,20 @@ This does not assert that $`h_t`$ is monotone at each individual conversion. It
 asserts a permanently lower bound for all future moduli after a qualifying
 update. Neither a majority hypothesis nor a changed endpoint ratio is required.
 
-Since $`K_*\le16p^2`$ and $`p\le a_n<(M+1)2^n`$, the sufficient length condition
+Since $`K_{\ast}\le16p^2`$ and $`p\le a_n\lt (M+1)2^n`$, the sufficient length condition
 
 ```math
 \ell\ge2n+C_M,\qquad C_M=16(M+1)^2
-\tag{5.2}
+\qquad\text{(5.2)}
 ```
 
-implies $`K\ge K_*`$, since $`2^{C_M}\ge16(M+1)^2`$. We use this
+implies $`K\ge K_{\ast}`$, since $`2^{C_M}\ge16(M+1)^2`$. We use this
 explicit, non-optimal constant in the formalization. It is independent of
 every future word and modulus.
 
 ## 6. Event spacing by well-founded descent
 
-Suppose the arrival-event set is infinite. For consecutive events $`n<m`$,
+Suppose the arrival-event set is infinite. For consecutive events $`n\lt m`$,
 call the gap qualifying if $`m-n\ge2n+C_M`$.
 
 There is no nonzero conversion between arrival layers $`n`$ and $`m`$.
@@ -461,7 +461,7 @@ the permanent bound after each update, not monotonicity at every layer.
 Thus, under incompleteness, consecutive sufficiently late events satisfy
 
 ```math
-m<3n+C_M,
+m\lt 3n+C_M,
 ```
 
 and hence $`m\le4n`$ once $`n\ge C_M`$. Equivalently, after increasing a fixed
@@ -478,7 +478,7 @@ would give a fixed bound on event spacing. Sections 8–11 contradict this
 combination of irrationality, incompleteness, and bounded spacing.
 
 To recover the theorem for the original parameters, let $`F`$ be a finite
-set of deleted values and choose an upper bound for $`F\cup\{0\}`$.
+set of deleted values and choose an upper bound for $`F\cup\lbrace 0\rbrace `$.
 We may carry out the upward dyadic shifts in Section 1 so that both
 retained tails lie above this bound. Their ratio is still irrational.
 Their values strictly interlace, so a finite-index representation from
@@ -493,16 +493,16 @@ This section re-proves the internal estimate used below. To avoid confusing a
 window deficit with a gcd, write
 
 ```math
-B_n=L_n-S_n=M+N+\sum_{i<n}(u_i+v_i)>0,\quad
+B_n=L_n-S_n=M+N+\sum_{i\lt n}(u_i+v_i)\gt 0,\quad
 Q_n=L_n-|P_n|,\quad G_n=|P_{n+1}|-2|P_n|\ge0.
 ```
 
 The two sets $`P_n`$ and $`P_n+L_n`$ are disjoint. With $`w_n=u_n+v_n`$,
 
 ```math
-P_{n+1}=P_n+\{0,a_n,b_n,L_n\},\qquad
+P_{n+1}=P_n+\lbrace 0,a_n,b_n,L_n\rbrace ,\qquad
 Q_{n+1}=2Q_n+w_n-G_n.
-\tag{8.1}
+\qquad\text{(8.1)}
 ```
 
 Periodically extend the indicator of missing positions in $`[0,L_n-1]`$ to $`f_n`$.
@@ -518,7 +518,7 @@ run has length at most $`B_n-1`$. Thus
 
 ```math
 Q_n\le(N/2)J_1(f_n)+B_n.
-\tag{8.2}
+\qquad\text{(8.2)}
 ```
 
 Regard $`P_n`$ as a subset of $`\mathbb Z/L_n\mathbb Z`$. Every residue in
@@ -528,7 +528,7 @@ copies. Distinct residues give distinct integers. Therefore
 ```math
 J_{a_n}(f_n)\le2G_n,\quad J_{b_n}(f_n)=J_{a_n}(f_n),\quad
 J_{2a_n}(f_n)\le4G_n.
-\tag{8.3}
+\qquad\text{(8.3)}
 ```
 
 Set $`a=a_n,b=b_n,L=a+b,u=u_n,v=v_n,w=u+v`$. The new period is $`L'=2L+w`$.
@@ -537,8 +537,8 @@ these translates fill exactly $`G_n`$ holes. Comparing with the old periodic
 extension yields
 
 ```math
-\sum_{0\le x<L'}|f_{n+1}(x)-f_n(x)|\le G_n+w.
-\tag{8.4}
+\sum_{0\le x\lt L'}|f_{n+1}(x)-f_n(x)|\le G_n+w.
+\qquad\text{(8.4)}
 ```
 
 The old function is extended using its old period. The two periods have not been
@@ -547,7 +547,7 @@ identified; the final $`w`$ positions are explicitly paid for.
 ### 8.1 Nonzero events control the unit boundary
 
 Suppose $`u=1`$. The new shift is $`a'=2a+1`$, whose nonwrapping segment is
-$`0\le x<2b+v`$. By (8.3) at the next layer and two applications of (8.4),
+$`0\le x\lt 2b+v`$. By (8.3) at the next layer and two applications of (8.4),
 
 ```math
 \sum_{x=0}^{2b+v-1}|f_n(x+2a+1)-f_n(x)|
@@ -555,7 +555,7 @@ $`0\le x<2b+v`$. By (8.3) at the next layer and two applications of (8.4),
 ```
 
 Use its first $`2b`$ terms, $`x=0,\ldots,2b-1`$. They are legitimate because
-$`x+a'\le2L<L'=2L+1+v`$. Requiring $`x+a'<2L`$ would impose an unnecessary old-period
+$`x+a'\le2L\lt L'=2L+1+v`$. Requiring $`x+a'\lt 2L`$ would impose an unnecessary old-period
 cutoff. Cancelling the $`2a`$ shift costs at most $`4G_n`$. For
 $`\tau(x)=|f_n(x+1)-f_n(x)|`$ this gives, on the old circular arc
 $`I=[L-2b,L-1]`$,
@@ -564,7 +564,7 @@ $`I=[L-2b,L-1]`$,
 \sum_I\tau\le2G_{n+1}+6G_n+2w.
 ```
 
-The arcs $`I`$ and $`I+b`$ cover the old circle since $`b<a<2b`$. Moreover,
+The arcs $`I`$ and $`I+b`$ cover the old circle since $`b\lt a\lt 2b`$. Moreover,
 
 ```math
 \sum_{x\bmod L}|\tau(x+b)-\tau(x)|\le2J_b(f_n)\le4G_n.
@@ -574,11 +574,11 @@ It follows that
 
 ```math
 J_1(f_n)\le16G_n+4G_{n+1}+4w.
-\tag{8.5}
+\qquad\text{(8.5)}
 ```
 
 If $`u=0,v=1`$, use the new period $`2L+1`$ and shift $`2a`$. Take the $`L`$ wrapping
-positions $`x=2b+1,\ldots,2b+L`$, which are valid because $`b<a`$. The wrapped
+positions $`x=2b+1,\ldots,2b+L`$, which are valid because $`b\lt a`$. The wrapped
 coordinate is $`x-2b-1`$, equivalent modulo the old period to $`x+2a-1`$.
 Equations (8.3)–(8.4) give
 
@@ -611,13 +611,13 @@ z_n=\frac{Q_n}{2^n},\qquad
 \rho=1-\frac1{32N},\qquad \sigma=1-\frac1{64N}.
 ```
 
-Since $`B_n<3N+2n`$, we obtain
+Since $`B_n\lt 3N+2n`$, we obtain
 
 ```math
 \begin{aligned}
 z_{n+1}&\le z_n &&(w_n=0),\\[0pt]
 z_{n+1}&\le z_n+2^{-n} &&\text{always},\\[0pt]
-z_{n+2}&\le\rho z_n+2(n+1)2^{-n} &&(w_n>0).
+z_{n+2}&\le\rho z_n+2(n+1)2^{-n} &&(w_n\gt 0).
 \end{aligned}
 ```
 
@@ -641,7 +641,7 @@ $`z_{n+1}\le V_n`$.
 
 Partition a finite interval of conversions into one-step zero blocks and
 two-step blocks beginning with a nonzero event. A two-step block contains
-at most two events. Since $`0<\sigma<1`$, its factor $`\sigma^2`$ pays for both;
+at most two events. Since $`0\lt \sigma\lt 1`$, its factor $`\sigma^2`$ pays for both;
 a zero block needs no decay factor. There can be at most one final unpaired
 conversion. Its estimate $`z_{n+1}\le V_n`$ is absorbed by a factor $`2`$,
 because $`\sigma\ge1/2`$. Induction on the interval length therefore gives,
@@ -656,7 +656,7 @@ At $`m=0`$, $`V_0=M+N+8`$. Using $`1-x\le e^{-x}`$, we conclude
 ```math
 Q_n\le C_0\,2^n e^{-aK_n},\qquad
 C_0=2(M+N+10),\qquad a=\frac1{64N}.
-\tag{FE}
+\qquad\text{(FE)}
 ```
 
 All cardinalities here count distinct subset-sum values. This potential
@@ -672,36 +672,36 @@ R_n+2\ge\frac{S_n+2}{e_n+1}.
 ```
 
 For $`n\ge1`$, $`S_n\ge(M+N)2^{n-1}`$, and
-$`2^ne^{-aK_n}\ge1`$ because $`K_n\le n`$ and $`a<\log2`$. Therefore
+$`2^ne^{-aK_n}\ge1`$ because $`K_n\le n`$ and $`a\lt \log2`$. Therefore
 
 ```math
 R_n+2\ge c_0 e^{aK_n},\qquad
-c_0=\frac{M+N}{2(C_0+1)}>0.
-\tag{FE-R}
+c_0=\frac{M+N}{2(C_0+1)}\gt 0.
+\qquad\text{(FE-R)}
 ```
 
 ## 9. Digit-budget propagation (DB)
 
 Let $`\theta=\alpha/\beta\in(1,2)`$ and choose relatively prime $`p,q`$, $`q\ge2`$,
-with $`|\theta-p/q|<1/q^2`$. At prefix depth $`n`$ put
+with $`|\theta-p/q|\lt 1/q^2`$. At prefix depth $`n`$ put
 
 ```math
 \lambda=2^n\beta,\quad k=\lceil\log_2(8q)\rceil,\quad K=2^k,\quad
-E_{n,k}=\sum_{i=n}^{n+k-1}(\{2^i\alpha\}+\{2^i\beta\}).
+E_{n,k}=\sum_{i=n}^{n+k-1}(\lbrace 2^i\alpha\rbrace +\lbrace 2^i\beta\rbrace ).
 ```
 
 For either column, $`r_{i+1}=2r_i-\epsilon_i`$ implies
 $`\sum_{i=n}^{n+k-1}r_i=\sum_{i=n}^{n+k-1}\epsilon_i-r_n+r_{n+k}`$. Thus
 
 ```math
-0\le E_{n,k}<2(K_{n+k}-K_n)+2.
-\tag{9.1}
+0\le E_{n,k}\lt 2(K_{n+k}-K_n)+2.
+\qquad\text{(9.1)}
 ```
 
-The ideal suffix sums are $`\lambda(\theta x+y)`$ for $`0\le x,y<K`$. Each
+The ideal suffix sums are $`\lambda(\theta x+y)`$ for $`0\le x,y\lt K`$. Each
 corresponding actual sum is shifted down by an amount in $`[0,E_{n,k}]`$.
 
-The $`q`$ phases $`j\theta\bmod1`$, $`0\le j<q`$, lie within $`1/q`$ of a uniformly
+The $`q`$ phases $`j\theta\bmod1`$, $`0\le j\lt q`$, lie within $`1/q`$ of a uniformly
 spaced $`q`$-grid, so their maximum circular gap is less than $`3/q`$. Set
 $`t_0=\lceil(q-1)\theta\rceil`$. For each $`0\le\ell\le K-q`$, the values with
 $`x=\ell,\ldots,\ell+q-1`$ give mesh at most $`3/q`$ in
@@ -721,11 +721,11 @@ These windows overlap. Their union is
 [s,t]=[t_0,\theta(K-q)+K-1],
 ```
 
-and $`t-s>K+1`$, since $`K\ge8q`$. In particular, for each $`\xi\in[s,t]`$
-there are integers $`0\le x,y<K`$ with
+and $`t-s\gt K+1`$, since $`K\ge8q`$. In particular, for each $`\xi\in[s,t]`$
+there are integers $`0\le x,y\lt K`$ with
 
 ```math
-\xi\le\theta x+y<\xi+3/q.
+\xi\le\theta x+y\lt \xi+3/q.
 ```
 
 We now give a direct construction of legal integer representations.
@@ -741,7 +741,7 @@ coefficient estimate to $`\xi=(z-b+E_{n,k})/\lambda`$.
 The corresponding actual suffix sum $`v`$ satisfies
 
 ```math
-z-b\le v<z-b+E_{n,k}+3\lambda/q\le z-a.
+z-b\le v\lt z-b+E_{n,k}+3\lambda/q\le z-a.
 ```
 
 Thus $`z-v\in[a,b]`$ and $`z=(z-v)+v`$ is a legal representation.
@@ -752,14 +752,14 @@ The represented integer interval has width
 
 ```math
 \lfloor B\rfloor-\lceil A\rceil
-   >\lambda(t-s)-2>\lambda K,
+   \gt \lambda(t-s)-2\gt \lambda K,
 ```
 
-where $`\lambda\ge2`$ and $`t-s>K+1`$. Its width exceeds the next unused
+where $`\lambda\ge2`$ and $`t-s\gt K+1`$. Its width exceeds the next unused
 weight $`b_{n+k}=\lfloor\lambda K\rfloor`$. Lemma 2.2 with unit gap
 then proves completeness.
 
-Consequently, incompleteness forces $`R_n<3\lambda/q+E_{n,k}`$.
+Consequently, incompleteness forces $`R_n\lt 3\lambda/q+E_{n,k}`$.
 If $`q\ge\lambda`$, (9.1) and integrality give
 
 ```math
@@ -770,18 +770,18 @@ Combining this with FE-R yields
 
 ```math
 K_{n+k}\ge K_n+\frac{c_0}{2}e^{aK_n}-3.
-\tag{DB}
+\qquad\text{(DB)}
 ```
 
 This holds for every $`n\ge1`$ and every reduced rational approximant
-with $`q\ge2^n\beta`$ and $`|\theta-p/q|<1/q^2`$.
+with $`q\ge2^n\beta`$ and $`|\theta-p/q|\lt 1/q^2`$.
 
 ## 10. Good rational approximants and long sparse windows
 
-We call a reduced rational $`r=p/q`$, with $`q>0`$, good if
+We call a reduced rational $`r=p/q`$, with $`q\gt 0`$, good if
 
 ```math
-|\theta-r|<q^{-2}.
+|\theta-r|\lt q^{-2}.
 ```
 
 Dirichlet approximation gives good rationals with arbitrarily large
@@ -795,11 +795,11 @@ of a good rational. Dirichlet's theorem with bound $`D(b)-1`$ supplies a
 reduced rational $`p/q`$ such that
 
 ```math
-q<D(b),\qquad |\theta-p/q|\le\frac1{D(b)q}.
+q\lt D(b),\qquad |\theta-p/q|\le\frac1{D(b)q}.
 ```
 
-This rational is itself good, because $`q<D(b)`$. Minimality of $`D(b)`$
-therefore gives $`q<b`$. We shall use both the good rational at the crossing
+This rational is itself good, because $`q\lt D(b)`$. Minimality of $`D(b)`$
+therefore gives $`q\lt b`$. We shall use both the good rational at the crossing
 denominator $`D(b)`$ and this pre-crossing rational; they serve different
 purposes.
 
@@ -808,8 +808,8 @@ purposes.
 Put
 
 ```math
-b(n)=\lceil2^n\beta\rceil,\qquad D_n^*=D(b(n)),\qquad
-k(D)=\lceil\log_2(8D)\rceil,\qquad f(n)=n+k(D_n^*).
+b(n)=\lceil2^n\beta\rceil,\qquad D_n^{\ast}=D(b(n)),\qquad
+k(D)=\lceil\log_2(8D)\rceil,\qquad f(n)=n+k(D_n^{\ast}).
 ```
 
 Let $`m(D)=\lfloor\log_2(D/\beta)\rfloor`$ for $`D\ge\beta`$, and set
@@ -821,18 +821,18 @@ C_\beta=\lceil\log_2\lceil16\beta\rceil\rceil.
 Then
 
 ```math
-2^{m(D)}\beta\le D<2^{m(D)+1}\beta,\qquad
+2^{m(D)}\beta\le D\lt 2^{m(D)+1}\beta,\qquad
 k(D)\le m(D)+C_\beta.
 ```
 
-Apply DB to a good rational with denominator $`D_n^*`$. Under incompleteness,
+Apply DB to a good rational with denominator $`D_n^{\ast}`$. Under incompleteness,
 
 ```math
 K_{f(n)}\ge K_n+\frac{c_0}{2}e^{aK_n}-3
 \qquad(n\ge1).
 ```
 
-We claim that $`f(n)>n^3`$ for arbitrarily large $`n`$. Otherwise,
+We claim that $`f(n)\gt n^3`$ for arbitrarily large $`n`$. Otherwise,
 monotonicity of $`K_n`$, its divergence to infinity, and exponential
 growth would give
 
@@ -840,7 +840,7 @@ growth would give
 K_{n^3}\ge K_n^4
 ```
 
-for all sufficiently large $`n`$. Choose such an $`n_0>1`$ with $`K_{n_0}\ge2`$.
+for all sufficiently large $`n`$. Choose such an $`n_0\gt 1`$ with $`K_{n_0}\ge2`$.
 Iteration yields
 
 ```math
@@ -856,34 +856,34 @@ $`E_{m,k(D)}\le2k(D)`$ in Section 9, together with FE-R, gives
 
 ```math
 c_0 e^{aK_m}\le2m+2C_\beta+5.
-\tag{10.1}
+\qquad\text{(10.1)}
 ```
 
-Indeed, $`R_m<3+2k(D)`$, so $`R_m+2<2k(D)+5`$.
+Indeed, $`R_m\lt 3+2k(D)`$, so $`R_m+2\lt 2k(D)+5`$.
 We apply this estimate only to matching layers.
 
 ### 10.2 Simultaneous window estimates
 
-Choose an arbitrarily large $`n`$ for which $`f(n)>n^3`$, put
-$`D=D_n^*`$ and $`m=m(D)`$, and set $`T=m-1`$.
+Choose an arbitrarily large $`n`$ for which $`f(n)\gt n^3`$, put
+$`D=D_n^{\ast}`$ and $`m=m(D)`$, and set $`T=m-1`$.
 For $`n\ge C_\beta+4`$, the bound $`k(D)\le m+C_\beta`$ implies
 $`T\ge n^2`$.
 
 Take the pre-crossing rational $`r=p/q`$ constructed above, so that
 
 ```math
-q<b(n),\qquad |\theta-r|\le\frac1{Dq}.
+q\lt b(n),\qquad |\theta-r|\le\frac1{Dq}.
 ```
 
 Since $`D\ge2^n\beta`$, these rationals approach $`\theta`$ as $`n\to\infty`$;
-in particular, $`1<r<2`$ for all sufficiently large choices.
+in particular, $`1\lt r\lt 2`$ for all sufficiently large choices.
 Define its binary height by
 
 ```math
 H=\lceil\log_2(p+q+1)\rceil.
 ```
 
-As $`p<2q`$ and $`q<\lceil2^n\beta\rceil\le2^n\lceil\beta\rceil`$,
+As $`p\lt 2q`$ and $`q\lt \lceil2^n\beta\rceil\le2^n\lceil\beta\rceil`$,
 we have $`H\le n+C'_\beta`$, where
 $`C'_\beta=\lceil\log_2(3\lceil\beta\rceil)\rceil`$.
 Taking $`n\ge C'_\beta`$ gives
@@ -901,7 +901,7 @@ For $`0\le i\le T`$, put $`\delta_i=qa_i-pb_i`$. The approximation implies
 The floor errors lie in $`[0,1)`$, so
 
 ```math
-|\delta_i|<p+q+1\le2^H\qquad(0\le i\le T).
+|\delta_i|\lt p+q+1\le2^H\qquad(0\le i\le T).
 ```
 
 Finally, (10.1) at the crossing denominator $`D`$ and monotonicity of $`K`$
@@ -911,13 +911,13 @@ give
 c_0e^{aK_T}\le2T+2C_\beta+7.
 ```
 
-Thus there is a fixed constant $`L>0`$ such that, on arbitrarily large
+Thus there is a fixed constant $`L\gt 0`$ such that, on arbitrarily large
 windows, all the following hold simultaneously:
 
 ```math
 H^2\le4T,\qquad K_T\le L\log T,\qquad
-|\delta_i|<2^H\ (0\le i\le T),\qquad p/q\longrightarrow\theta.
-\tag{10.2}
+|\delta_i|\lt 2^H\ (0\le i\le T),\qquad p/q\longrightarrow\theta.
+\qquad\text{(10.2)}
 ```
 
 Here and below $`\log`$ denotes the natural logarithm. More precisely,
@@ -943,15 +943,15 @@ If the next $`H`$ conversions after layer $`i`$ are zero, then
 \delta_{i+H}=2^H\delta_i.
 ```
 
-For $`i+H\le T`$, the bound $`|\delta_{i+H}|<2^H`$ and integrality force
+For $`i+H\le T`$, the bound $`|\delta_{i+H}|\lt 2^H`$ and integrality force
 $`\delta_i=0`$. Hence every nonexact layer $`i\le T-H`$ sees an event among
 the next $`H`$ arrivals. Each event can be counted by at most $`H`$ such
 layers. Including the last $`H`$ layers separately, we obtain
 
 ```math
-\#\{0\le i\le T:\delta_i\ne0\}
+\#\lbrace 0\le i\le T:\delta_i\ne0\rbrace
       \le H K_T+H=:E.
-\tag{11.1}
+\qquad\text{(11.1)}
 ```
 
 By (10.2), $`E=O(\sqrt T\log T)`$.
@@ -961,7 +961,7 @@ By (10.2), $`E=O(\sqrt T\log T)`$.
 Fix a positive integer $`k`$. Let
 
 ```math
-\mathcal A=\{0\}\cup\{2^{-j}:j\in\mathbb N\},\qquad
+\mathcal A=\lbrace 0\rbrace \cup\lbrace 2^{-j}:j\in\mathbb N\rbrace ,\qquad
 \mathcal S_k=\underbrace{\mathcal A+\cdots+\mathcal A}_{k\text{ times}}.
 ```
 
@@ -971,14 +971,14 @@ The set of ratios
 
 ```math
 \mathcal C_k=
-\{x/y:x,y\in\mathcal S_k,\ y\ge1/2\}
+\lbrace x/y:x,y\in\mathcal S_k,\ y\ge1/2\rbrace
 ```
 
 is also compact and consists entirely of rational numbers. A fixed
 irrational $`\theta`$ consequently has a neighbourhood disjoint from
 $`\mathcal C_k`$.
 
-Suppose $`a<b`$ are exact layers and the interval of arrivals $`(a,b]`$
+Suppose $`a\lt b`$ are exact layers and the interval of arrivals $`(a,b]`$
 contains at least one event. Unrolling the floor recurrences gives
 nonnegative binary words $`U,V`$ with
 
@@ -987,7 +987,7 @@ a_b=2^{b-a}a_a+U,\qquad b_b=2^{b-a}b_a+V.
 ```
 
 Exactness at both ends implies $`qU=pV`$. Since some event occurs, the
-words are not both zero; since $`p,q>0`$, both are positive and $`U/V=p/q`$.
+words are not both zero; since $`p,q\gt 0`$, both are positive and $`U/V=p/q`$.
 
 If $`(a,b]`$ contained at most $`k`$ events, divide $`U`$ and $`V`$ by the
 largest power of two appearing in either word. Each normalized word
@@ -1028,7 +1028,7 @@ $`[B^i x,2B^i x]`$ lies in $`[0,T]`$ and contains more than $`E`$ layers.
 By (11.1), it contains an exact layer $`z_i`$. Consecutive choices satisfy
 
 ```math
-z_{i+1}\ge B^{i+1}x>R(2B^i x)\ge Rz_i.
+z_{i+1}\ge B^{i+1}x\gt R(2B^i x)\ge Rz_i.
 ```
 
 Moreover, $`z_i\ge n_0`$, so there is an event in $`(z_i,Rz_i]`$ and

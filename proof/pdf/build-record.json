@@ -1,8 +1,8 @@
 {
   "source": "proof/FORMALIZED_PROOF.md",
-  "source_sha256": "f54ff20cd0aca07c3fe131ba915d6fd2349c5828b087864e3da88a5791224d7c",
+  "source_sha256": "7bd722326da0f0b830d507b235d01c62410b56cc0ee6118b653fb46df19d6854",
   "pdf": "proof/FORMALIZED_PROOF.pdf",
-  "pdf_sha256": "6584885964bda94847590f6f3bd06060fe6f1545422c9ca2038fd2e14df73010",
+  "pdf_sha256": "2bb08aaf539389012259cec454a27dfea2873a04f9a45b99333cf3f1913bebb1",
   "tectonic": "Tectonic 0.16.9",
   "display_formulas": 90,
   "inline_formulas": 405,

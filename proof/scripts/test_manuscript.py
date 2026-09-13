@@ -14,7 +14,7 @@ class MathTests(unittest.TestCase):
                          {'displays': 90, 'inline_formulas': 405, 'equation_labels': 23})
 
     def test_balanced_groups_and_sets(self):
-        check(self.document(r'\{x_{n+1}: n\ge 0\}'))
+        check(self.document(r'\lbrace x_{n+1}: n\ge 0\rbrace'))
 
     def test_unbalanced_groups(self):
         with self.assertRaises(ValueError):
@@ -34,7 +34,15 @@ class MathTests(unittest.TestCase):
 
     def test_duplicate_equation_label(self):
         with self.assertRaises(ValueError):
-            check(self.document(r'x\tag{1}') + self.document(r'y\tag{1}'))
+            check(self.document(r'x\qquad\text{(1)}') + self.document(r'y\qquad\text{(1)}'))
+
+    def test_html_sensitive_relation(self):
+        with self.assertRaises(ValueError):
+            check(self.document('x<y'))
+
+    def test_floating_equation_tag(self):
+        with self.assertRaises(ValueError):
+            check(self.document(r'x\tag{1}'))
 
     def test_bare_row_break(self):
         with self.assertRaises(ValueError):

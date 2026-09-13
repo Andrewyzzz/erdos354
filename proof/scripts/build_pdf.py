@@ -114,6 +114,10 @@ def convert(source: str) -> tuple[str, dict]:
             assert j < len(lines), 'Unclosed math fence'
             formula = '\n'.join(lines[i+1:j])
             assert '$' not in formula, 'Nested math delimiters'
+            # GitHub displays labels inside the expression to avoid a broken
+            # floating-tag layout; print uses the standard right-margin tag.
+            formula = re.sub(r'\\qquad\\text\{\(([^)]+)\)\}\s*$',
+                             lambda match: r'\tag{' + match.group(1) + '}', formula)
             parts.append('\\[\n' + formula + '\n\\]')
             display_count += 1
             i = j + 1
