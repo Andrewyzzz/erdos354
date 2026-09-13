@@ -4,7 +4,7 @@
 
 原冻结稿日期：2026-09-12；本版整理日期：2026-09-12。
 
-项目贡献：Andrewyzzz 与 Chatgpt-6 Astra（AI 系统）。负责人：Andrewyzzz（GitHub: Andrewyzzz）。
+项目贡献：Andrewyzzz 与 Chatgpt-6 Astra（AI 系统）。
 
 本文件是公开核验用 Markdown 研究稿；不是已接收论文，也不是证明助理内核认证。
 

@@ -122,8 +122,6 @@ record. Their preparation-time descriptions refer to those original versions.
 
 We used **Chatgpt-6 Astra** in both the mathematical derivation and the Lean
 formalization, as detailed in [CREDITS.md](CREDITS.md).
-**[Andrewyzzz](https://github.com/Andrewyzzz)** is the human maintainer and
-responsible contact.
 
 ## Licensing
 

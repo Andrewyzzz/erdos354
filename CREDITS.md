@@ -23,12 +23,7 @@ dependencies. The complete theorem inventory, source hashes, compilation
 logs, and transitive axiom audits are described in
 [the verification record](formalization/RESULTS.md).
 
-## Responsibility and attribution
-
-Andrewyzzz is the human maintainer and responsible contact for this work,
-including its mathematical presentation, software, and responses to review.
-Chatgpt-6 Astra is identified as an AI system in our contributor attribution.
-Contact: [Andrewyzzz on GitHub](https://github.com/Andrewyzzz).
+## Upstream attribution
 
 The upstream-derived definitions retain the attribution and Apache 2.0
 notice of The Formal Conjectures Authors; see

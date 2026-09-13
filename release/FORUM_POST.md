@@ -27,8 +27,7 @@ GitHub Actions reproduces the build and audit on a hosted Ubuntu runner.
 We used Chatgpt-6 Astra in both the mathematical derivation and the Lean
 formalization; our
 [contribution statement](https://github.com/Andrewyzzz/erdos354/blob/main/CREDITS.md)
-describes these roles. Andrewyzzz is the human maintainer and responsible
-contact.
+describes these roles.
 
 We welcome mathematical examination of the argument, especially the legal
 mesh representations, changing-period boundary estimate, and rational-window

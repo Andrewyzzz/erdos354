@@ -26,7 +26,10 @@ Its cache link is excluded by Git. Fresh checkouts obtain the dependencies
 with `lake exe cache get`; no machine-specific path is required by the
 project configuration.
 
-## Frozen mathematical inputs
+## Mathematical input provenance
+
+The following hashes identify the inputs at the complete-proof source
+revision [59e5957](https://github.com/Andrewyzzz/erdos354/commit/59e5957ac8bf28623318cebec6c67b1a672ad49e).
 
 | File | SHA-256 |
 |---|---|
@@ -39,7 +42,12 @@ project configuration.
 The [current English exposition](../proof/FORMALIZED_PROOF.md) describes the
 formalized argument, including its proved alternatives to the original
 manuscript. Its hash is recorded separately in the repository manifest.
-The original manuscripts and certificate retain the bytes listed above.
+Subsequent edits to the original manuscripts concern contributor metadata
+only; their mathematical text is unchanged. The current file hashes are
+recorded in [the repository manifest](../MANIFEST.sha256.json), while the
+hashes above preserve the input provenance of the recorded builds.
+The certificate, certificate checker, and frozen targets retain the bytes
+listed above.
 
 ## Build and audit records
 

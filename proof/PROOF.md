@@ -2,8 +2,7 @@
 ## Propagating integer meshes and permanent descent of modular gap runs
 
 **Version:** v0.1.0-candidate — 12 September 2026.  
-**Project contributors:** Andrewyzzz and Chatgpt-6 Astra (AI system).  
-**Human maintainer:** Andrewyzzz, GitHub `Andrewyzzz`.
+**Project contributors:** Andrewyzzz and Chatgpt-6 Astra (AI system).
 
 This Markdown research note claims a complete proof of the theorem below and is
 being made available for independent checking. It is **not** a statement of
