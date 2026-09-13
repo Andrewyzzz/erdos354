@@ -10,6 +10,8 @@ Our primary review materials are:
 - [Theorem map](../formalization/STATUS.md) and
   [verification records](../formalization/RESULTS.md).
 - [Contribution and AI disclosure](../CREDITS.md).
+- [Licensing scope](../LICENSING.md), [Apache-2.0](../LICENSE),
+  [CC BY 4.0](../LICENSE-CC-BY-4.0), and [attribution notices](../NOTICE).
 - [Mathematical review summary](FORUM_POST.md).
 
 For a stable reference, link the commit examined together with the manuscript

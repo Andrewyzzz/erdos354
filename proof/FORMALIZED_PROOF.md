@@ -4,6 +4,11 @@ Andrewyzzz and Chatgpt-6 Astra (AI system)
 
 13 September 2026
 
+Copyright 2026 Andrewyzzz. The manuscript text is licensed under
+[CC BY 4.0](../LICENSE-CC-BY-4.0); code excerpts are offered under
+[Apache-2.0](../LICENSE). See [LICENSING.md](../LICENSING.md) for the scope
+and third-party notices.
+
 ## Abstract
 
 For positive real numbers $\alpha$ and $\beta$ with irrational ratio, we prove

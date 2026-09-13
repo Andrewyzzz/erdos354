@@ -124,3 +124,11 @@ We used **Chatgpt-6 Astra** in both the mathematical derivation and the Lean
 formalization, as detailed in [CREDITS.md](CREDITS.md).
 **[Andrewyzzz](https://github.com/Andrewyzzz)** is the human maintainer and
 responsible contact.
+
+## Licensing
+
+We license our code and scripts under [Apache-2.0](LICENSE), and our
+manuscripts and explanatory documentation under [CC BY 4.0](LICENSE-CC-BY-4.0).
+Third-party materials retain their original licenses and notices.
+[LICENSING.md](LICENSING.md) defines the component scope and attribution;
+[NOTICE](NOTICE) records the project and upstream notices.

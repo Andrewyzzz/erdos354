@@ -5,7 +5,7 @@ import re
 
 ROOT = Path(__file__).resolve().parents[2]
 DOCUMENTS = [
-    'README.md', 'CREDITS.md', 'CHANGELOG.md',
+    'README.md', 'CREDITS.md', 'CHANGELOG.md', 'LICENSING.md',
     'proof/FORMALIZED_PROOF.md',
     'formalization/README.md', 'formalization/STATUS.md',
     'formalization/RESULTS.md', 'formalization/ENVIRONMENT.md',

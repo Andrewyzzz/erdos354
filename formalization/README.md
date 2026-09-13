@@ -128,3 +128,11 @@ Historical compilation logs retain the development iterations and complete
 diagnostics; their mathematical content and exit statuses are preserved.
 Machine-local paths are replaced by symbolic locations according to the
 [public-log policy](logs/REDACTION.md).
+
+## Licensing
+
+We license our Lean code and verification scripts under
+[Apache-2.0](../LICENSE), and our explanatory documentation under
+[CC BY 4.0](../LICENSE-CC-BY-4.0). Upstream-derived definitions retain
+their existing Apache-2.0 notice. See [LICENSING.md](../LICENSING.md)
+for the scope and [NOTICE](../NOTICE) for attribution.

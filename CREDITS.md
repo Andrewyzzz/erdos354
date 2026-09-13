@@ -34,3 +34,12 @@ The upstream-derived definitions retain the attribution and Apache 2.0
 notice of The Formal Conjectures Authors; see
 [definition provenance](formalization/UPSTREAM.md) and
 [LICENSE.upstream](formalization/LICENSE.upstream).
+
+## Licensing
+
+Copyright 2026 Andrewyzzz. We license our software contributions under
+[Apache-2.0](LICENSE), and our manuscripts and explanatory documentation
+under [CC BY 4.0](LICENSE-CC-BY-4.0), to the extent that we hold the relevant
+rights. Third-party rights and notices are preserved.
+The component scope and manuscript attribution are specified in
+[LICENSING.md](LICENSING.md) and [NOTICE](NOTICE).

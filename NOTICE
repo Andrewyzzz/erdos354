@@ -1,0 +1,23 @@
+Strong completeness of two dyadic floor sequences
+https://github.com/Andrewyzzz/erdos354
+
+Copyright 2026 Andrewyzzz.
+
+Project contributors: Andrewyzzz and Chatgpt-6 Astra (AI system).
+The mathematical and formalization contributions are described in CREDITS.md.
+
+Our software contributions are licensed under the Apache License, Version 2.0.
+Our manuscripts and explanatory prose are licensed under Creative Commons
+Attribution 4.0 International. LICENSING.md defines the component scope;
+LICENSE and LICENSE-CC-BY-4.0 contain the complete license texts.
+
+This project includes definitions adapted or extracted from
+google-deepmind/formal-conjectures:
+Copyright 2025 The Formal Conjectures Authors.
+Licensed under the Apache License, Version 2.0.
+
+The upstream revision is a748dd915c908b21c4d864abf239f61049fa9d96.
+The original license is preserved in formalization/LICENSE.upstream.
+formalization/UPSTREAM.md identifies the source files and local adaptations.
+
+This notice records attribution and does not modify the applicable licenses.
