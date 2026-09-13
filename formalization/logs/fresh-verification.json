@@ -1,9 +1,15 @@
 {
   "status": "PASS",
-  "scope": "Certificate, meshes, legal representations, actual normalized floor-sequence permanent descent, uniform gap bounds, FE and FE-R with manuscript constants, DB at all good rational approximations and at the defined first good-denominator crossing, and BG including actual long windows, unbounded return costs and the cumulative contradiction. BG.normalized_complete proves indexed completeness assuming only 0 < floor(beta) < floor(alpha) < 2*floor(beta) and irrational alpha/beta. Global parameter normalization, strong set completeness and the unrestricted frozen Erd\u0151s 354(i) target remain unproved. The rational-window and compact-return arguments are proved alternatives to the manuscript continued-fraction enumeration and explicit minimum-popcount formulation.",
+  "scope": "The frozen unrestricted Erd\u0151s 354(i) PartI and manuscript StrongCompleteness are proved for all positive real alpha and beta with irrational alpha/beta, using actual upward dyadic tails and injective retained values. No FE/DB/BG, normalization, long-window or descent assumptions remain. The full chain includes certificate soundness, meshes, legal representations, permanent descent, FE, FE-R, DB, BG, global normalization, finite-deletion avoidance and set/index bridges. Exact extracted upstream definitions and the positive part (i) RHS are connected by kernel-checked bridge theorems and a frozen-source consistency check. This is not a build of the full upstream Lean 4.33.1 checkout, not an external-checker run, and not a proof of part (ii).",
+  "completed_targets": [
+    "Dyadic354.erdos354_part_i",
+    "Dyadic354.erdos354_strong_completeness",
+    "Dyadic354.UpstreamBridge.erdos354_part_i_upstream",
+    "Dyadic354.UpstreamBridge.erdos354_strong_upstream"
+  ],
   "fresh_project_build": true,
   "dependency_cache_reused": true,
-  "audited_theorems": 358,
+  "audited_theorems": 381,
   "allowed_axioms": [
     "Classical.choice",
     "Quot.sound",
@@ -1413,6 +1419,36 @@
       "Quot.sound",
       "propext"
     ],
+    "Dyadic354.Normalization.above_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.Normalization.balance": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.Normalization.balance_larger": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.Normalization.common_shift": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.Normalization.shifted_irrational": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.Normalization.term_shift": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
     "Dyadic354.PairReindex.index_cases": [
       "Quot.sound",
       "propext"
@@ -1749,6 +1785,41 @@
       "Quot.sound",
       "propext"
     ],
+    "Dyadic354.SetBridge.indexed_to_set": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.SetBridge.normalized_injective": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.SetBridge.normalized_lower_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.SetBridge.normalized_sorted_strictMono": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.SetBridge.setComplete_mono": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.SetBridge.set_to_indexed": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.SetBridge.shifted_range_subset": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
     "Dyadic354.UnitMesh.add_sum_mem_extend": [
       "Classical.choice",
       "Quot.sound",
@@ -1774,6 +1845,56 @@
       "Quot.sound",
       "propext"
     ],
+    "Dyadic354.UpstreamBridge.erdos354_part_i_upstream": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.UpstreamBridge.erdos354_strong_upstream": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.UpstreamBridge.floorMultiples_eq": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.UpstreamBridge.indexedComplete_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.UpstreamBridge.interleave_eq": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.UpstreamBridge.partITarget_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.UpstreamBridge.setComplete_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.UpstreamBridge.strongComplete_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.erdos354_part_i": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Dyadic354.erdos354_strong_completeness": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
     "Dyadic354.indexedComplete_iff": [
       "Classical.choice",
       "Quot.sound",
@@ -1786,7 +1907,7 @@
     ]
   },
   "source_sha256": {
-    "Dyadic354/Audit.lean": "b49091f171a5a763105cbf09dd6cafa50aed0d9a71a5cbffa4e6130a9e8c29d5",
+    "Dyadic354/Audit.lean": "63171f35c76a57e0dcc5d0eb34fc772ef4e34d9444a259c5728a4876f0534fd3",
     "Dyadic354/BG.lean": "3753ad828056e1ff269db9d0d45cb63d3edcdd6fa10d47884a7314cb6bafb661",
     "Dyadic354/BGBinaryRatio.lean": "d23440dd5edf822a43e470699ec295cf3fcf795257c090968d6ab9fafa753f80",
     "Dyadic354/BGCapacity.lean": "c23b1408d662f52492bc5d87666da5bb5e0d03e5f2d0556cfbc9e2e3e4fd6b76",
@@ -1827,8 +1948,10 @@
     "Dyadic354/InitialMesh.lean": "1781589dc0c30c9714b8ad987788473ca0257b43854c465c648f598365390bda",
     "Dyadic354/IntervalSums.lean": "0d16412b02ed90694714e99ce3b6ec7e2849dffef96eea37ebe9d7395e5b8e6d",
     "Dyadic354/LowGap.lean": "5b7daeb96146f74d6eadbe137a5797037f7ef4849ad3a0054e090d990f28d615",
+    "Dyadic354/Main.lean": "7ea4a5d3c136de053e7b41b5399ec0edba660d66fc0cfe9e5c679e2b7d443c0e",
     "Dyadic354/Mesh.lean": "333c65dfc0cce04089a803fe53d7cdb48911124cf1ad7344876ae8a576c16795",
     "Dyadic354/NodeRepresentations.lean": "42b67ead8d02eb3bd188596e52afd1c69aafa8d6082602841ceee36b59c6cd3f",
+    "Dyadic354/Normalization.lean": "68a67032ce90618e845c8472229c3dd73186427a7e95e0fc34b550146bf38180",
     "Dyadic354/PairReindex.lean": "a4ede0c4728bd690f0743acafd91a729c30f4ca1f7c3fa5a0f10f3bb98acb7d6",
     "Dyadic354/PeriodChange.lean": "6e596c93c8f2b50e886ee771177dbe88f467d931fa0932a432b8a0c7bc09432a",
     "Dyadic354/PeriodicWord.lean": "24e62d06f58e5195478b511e784e595b7e0949fb1086146d83bf19dfcab15cf3",
@@ -1837,11 +1960,23 @@
     "Dyadic354/PrefixMesh.lean": "d8acd058a252c3b303cce6e17ab2b2da6ef2539df5d18fe8a0ffa673507e92cc",
     "Dyadic354/RationalWindows.lean": "6fbb87a396193e742320462827c12a20524a9a481eab60a42bb5f35c53cc9b42",
     "Dyadic354/Representations.lean": "2800c95ac8e6100c830ac34e37dcea87e9c513654acf2a35bbe255b84e977860",
+    "Dyadic354/SetBridge.lean": "6fb1dfd02a44c9ed4139343cb389bfe2512e2c6164762de5ffbf6e454536bc04",
     "Dyadic354/Statements.lean": "623b20bab06c99013dcbefed752aa80ce29a879930eefc1d069e4944bc5ceb0e",
     "Dyadic354/UnitMesh.lean": "2374a02614070487e2a29b25a7c93c30282ba503937320cb5eb351f754332476",
+    "Dyadic354/UpstreamBridge.lean": "f634939935a83e150c6d02fede738ff0b8d5effc8697bf60f18bab21725a7a71",
+    "Dyadic354/UpstreamDefinitions.lean": "d313c240e4bf6e50f037fcf6a41f578c3d52721dd37e27caf8bc7bd1b84604f9",
     "Dyadic354.lean": "74042517586cadcbb0f604935164bdccb30e4c5686573e0b18ed720ca789295f",
     "lake-manifest.json": "5db7b78bdcaea358d67359ddcf24565fb8fefaf4cd3d8ee26a13002768da0716",
     "lakefile.toml": "a985dd11164e788e9993c56120a3b5fce1787fef89cdc2b8ec0b1231bbd72b77",
-    "lean-toolchain": "d55ca0039a5479db5b38919d005b2c427b89b3be4f0184a20f2f4eae931f5bdb"
+    "lean-toolchain": "d55ca0039a5479db5b38919d005b2c427b89b3be4f0184a20f2f4eae931f5bdb",
+    "scripts/check_upstream.py": "00e701063acabea9a28d8af5c07d39666d47341af972db2ef06f19a42691713c",
+    "scripts/generate_data.py": "507997b9eb39c37507f8c95f17952cd815a7251d785e258a1a0ed0ca6b7d598b",
+    "scripts/inspect_environment.py": "95e1f03f1894793364b2ecc2cc97804a1bcb486dbb3c8af088b556ec98fc4806",
+    "scripts/run_logged.py": "cc4325c72b1ccdeceb846fa0cdb09d74a512daec93323254dc0621f74b713ec1",
+    "scripts/verify.py": "7b7a1bd423a95446a276675b690f5e856a9fe68e4965fe1b9fabf448878bd210",
+    "upstream/354.lean.txt": "4d86f1ef94a95d1e392c41b792a299a3d2f6f2ac08d568a98b8da927b89bb200",
+    "upstream/AdditivelyComplete.lean.txt": "06bddf7abb7401cbfdd68cd8c3657b939f2fa27bd15d1aa26fb9d197f9020908",
+    "upstream/lean-toolchain.txt": "3aac669c7a910ec2389f4e4f921b605adf6ebf2d1e0c9b9cd0be4d33f3f5db71",
+    "upstream/lock.json": "28f56661e78607b5d77447bf945b555834c879def34dcf140649627e18c22ab2"
   }
 }

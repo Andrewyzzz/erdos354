@@ -1,0 +1,70 @@
+COMMAND: ["python3", "scripts/inspect_environment.py"]
+UTC: 2026-09-13T01:01:20.749339+00:00
+$ pwd
+/Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization
+exit: 0
+$ git status --short --branch
+## lean-formalization...origin/lean-formalization [ahead 1]
+ M Dyadic354/Audit.lean
+ M STATUS.md
+ M UPSTREAM.md
+ M scripts/verify.py
+?? Dyadic354/Main.lean
+?? Dyadic354/Normalization.lean
+?? Dyadic354/SetBridge.lean
+?? Dyadic354/UpstreamBridge.lean
+?? Dyadic354/UpstreamDefinitions.lean
+?? logs/eighth-batch-environment.log
+?? logs/main-01.log
+?? logs/main-02.log
+?? logs/main-03.log
+?? logs/main-04.log
+?? logs/normalization-01.log
+?? logs/upstream-provenance-offline.log
+?? logs/upstream-provenance-online.log
+?? logs/upstream-provenance.log
+?? scripts/check_upstream.py
+?? upstream/
+exit: 0
+$ git rev-parse HEAD
+1e6e6d93661dbaa67700ee77097901ea66f276cd
+exit: 0
+$ lean --version
+Lean (version 4.27.0, arm64-apple-darwin24.6.0, commit db93fe1608548721853390a10cd40580fe7d22ae, Release)
+exit: 0
+$ lake --version
+Lake version 5.0.0-src+db93fe1 (Lean version 4.27.0)
+exit: 0
+$ elan show
+warning: failed to query latest release, using existing version 'leanprover/lean4:v4.32.0'
+installed toolchains
+--------------------
+
+leanprover/lean4:v4.27.0
+leanprover/lean4:v4.32.0 (resolved from default 'leanprover/lean4:stable')
+
+active toolchain
+----------------
+
+leanprover/lean4:v4.27.0 (overridden by '/Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/lean-toolchain')
+Lean (version 4.27.0, arm64-apple-darwin24.6.0, commit db93fe1608548721853390a10cd40580fe7d22ae, Release)
+
+exit: 0
+PLATFORM: macOS-26.5.1-arm64-arm-64bit-Mach-O arm64
+INPUT SHA256: proof/PROOF.md 8662891ac64f4ed2805a889d087afc7848667b1519192bf368ebdefba30bbdd2
+INPUT SHA256: proof/PROOF.zh-CN.md a424bb9c470e0303bf9529add146911c1b2717375ecb458b4a0cafae450aa618
+INPUT SHA256: certificate/templates.json 3293a4fb061ba625ba1f11788dca751920a182d26d60d6298b31a058c065c048
+INPUT SHA256: certificate/check_templates.py 862b5ddbb55d134336029977961c4cf0391ff67024f2946b039ca584cab1b98d
+DEPENDENCY: mathlib locked= a3a10db0e9d66acbebf76c5e6a135066525ac900 actual= a3a10db0e9d66acbebf76c5e6a135066525ac900 tracked_changes= False
+DEPENDENCY: plausible locked= 009dc1e6f2feb2c96c081537d80a0905b2c6498f actual= 009dc1e6f2feb2c96c081537d80a0905b2c6498f tracked_changes= False
+DEPENDENCY: LeanSearchClient locked= 5ce7f0a355f522a952a3d678d696bd563bb4fd28 actual= 5ce7f0a355f522a952a3d678d696bd563bb4fd28 tracked_changes= False
+DEPENDENCY: importGraph locked= 8f497d55985a189cea8020d9dc51260af1e41ad2 actual= 8f497d55985a189cea8020d9dc51260af1e41ad2 tracked_changes= False
+DEPENDENCY: proofwidgets locked= c04225ee7c0585effbd933662b3151f01b600e40 actual= c04225ee7c0585effbd933662b3151f01b600e40 tracked_changes= False
+DEPENDENCY: aesop locked= cb837cc26236ada03c81837bebe0acd9c70ced7d actual= cb837cc26236ada03c81837bebe0acd9c70ced7d tracked_changes= False
+DEPENDENCY: Qq locked= bd58c9efe2086d56ca361807014141a860ddbf8c actual= bd58c9efe2086d56ca361807014141a860ddbf8c tracked_changes= False
+DEPENDENCY: batteries locked= b25b36a7caf8e237e7d1e6121543078a06777c8a actual= b25b36a7caf8e237e7d1e6121543078a06777c8a tracked_changes= False
+DEPENDENCY: Cli locked= 55c37290ff6186e2e965d68cf853a57c0702db82 actual= 55c37290ff6186e2e965d68cf853a57c0702db82 tracked_changes= False
+CACHE: /Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages
+
+EXIT CODE: 0
+ELAPSED SECONDS: 0.616

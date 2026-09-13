@@ -1,10 +1,21 @@
-# Erdős 354(i): FE, DB, BG and normalized completeness
+# Erdős 354(i): formalized indexed and strong set completeness
 
-已完成有限模板证书、网格基础、合法块表示、初始网格，并将条件永久下降接到
-实际地板序列、gcd 模数与到达层事件；进一步证明低缺口完全性、良基下降及
-不完全时的最终事件倍率4界，无理比值保证事件无界。现已完成 FE、FE-R、DB、BG
-及其累计矛盾，推出归一化完全性，累计审计 358 个定理。
-**整篇 #354(i) 与集合强完全性尚未证明。**
+已完成有限模板证书、网格、合法表示、永久下降、FE、FE-R、DB、BG、一般参数
+向上归一化与有限删除/去重连接。两个冻结目标现在均由实际定理实现：
+
+```lean
+Dyadic354.erdos354_part_i : Dyadic354.PartI
+Dyadic354.erdos354_strong_completeness : Dyadic354.StrongCompleteness
+```
+
+对任意 `α,β>0` 且 `Irrational (α/β)`，第一个结论允许选取不同自然数索引，
+第二个结论允许删除任意有限数值集后使用不同剩余数值。没有额外归一化、FE/DB/BG
+或长窗口前提。累计审计 381 个定理，公理闭包只允许 `propext`、`Classical.choice`、
+`Quot.sound`；不用占位证明、自定义公理或本地原生判定。
+
+上游精确定义和第 (i) 问正面命题的适配也已编译并审计，来源检查见 `UPSTREAM.md`。
+**这是本地 Lean 验证，不代表外部独立复核或社区接受；第 (ii) 问不在范围内。**
+原发布稿与归档保留原字节，其候选稿说明不自动改写；最新形式化状态以本目录为准。
 实际完成的声明和后续义务见 [STATUS.md](STATUS.md)，环境见
 [ENVIRONMENT.md](ENVIRONMENT.md)。
 
@@ -23,10 +34,13 @@ python3 scripts/verify.py --fresh
 `lean-toolchain`、`lakefile.toml`、`lake-manifest.json` 中，不需要更新版本。
 `verify.py` 默认构建根模块 `Dyadic354`，它导入目标定义、证书、循环缺口、网格、
 合法表示、初始网格、局部永久下降、实际地板/重排/事件接口、长度估计、
-单位网格完全性、有限下降、事件无限性、统一前缀界、FE／DB／BG 全链及公理审计。
+单位网格完全性、有限下降、事件无限性、统一前缀界、FE／DB／BG 全链、一般参数
+归一化、最终两个主定理、上游适配及公理审计。
 脚本再次执行 `Audit.lean`，核对全部本地定理的审计清单，检查实际公理闭包；
 缺少输出或出现允许列表以外的公理都会以非零退出码结束。运行开始时会清除旧的
 PASS 状态，成功记录附带实际 Lean 源码和依赖锁文件的 SHA-256。
+此外自动检查编译源码中的禁止机制、上游快照哈希、逐字提取的定义及精确目标 RHS；
+记录也包含校验脚本与上游来源数据的哈希。
 
 `--fresh` 会创建新的临时源码目录，不复制本项目的编译产物，再执行构建和审计。
 它复用锁定的 Mathlib 依赖缓存；不是从零重建 Mathlib，也不是独立编译器验证。
@@ -89,7 +103,7 @@ gap 直接定义为所有实际相邻点距离的最大值，`meshOn_iff_gap_le`
 
 `EventInfinitude.events_unbounded` 从无理比值证明真实事件无界；`nextEvent` 定义
 最小后继，相关定理保证它实际存在且中间没有其他事件。
-当前组合结论 `incomplete_nextEvent_factor_four` 的明确前提是无理比值、
+第五批组合结论 `incomplete_nextEvent_factor_four` 的明确前提是无理比值、
 归一化地板初值和不完全性，结论是实际后继事件最终满足倍率4界。
 
 第六批 `PrefixMesh.prefix_gap_bound` 证明首项控制全部前缀 gap，包含平移凸包
@@ -114,10 +128,16 @@ gap 直接定义为所有实际相邻点距离的最大值，`meshOn_iff_gap_le`
 归一化主定理的全部数学前提仅为
 `0 < ⌊β⌋ < ⌊α⌋ < 2⌊β⌋` 和 `Irrational (α/β)`；没有假设 FE、DB、BG 或长平台存在。
 
+第八批 `Normalization.above_bound` 对任意正实数参数与任意整数界，只用两列独立的
+非负整数移位和进一步共同移位，构造高于该界的归一化尾部；无理比值保持不变。
+`SetBridge.normalized_injective` 证明严格交错的尾部数值无重复。
+`erdos354_strong_completeness` 对有限删除集取上界，用这些尾部给出真正的集合表示；
+`erdos354_part_i` 再将集合表示转换为原索引表示。两种目标均已闭合。
+
 本实现采用经过证明的替代接口，不逐字复现连分数枚举、显式最小 popcount 或原稿
-每个渐近中间常数，具体对应见 `STATUS.md` 第七批部分。
-**仍需完成一般正参数的合法归一化、取尾与集合去重/有限删除，以及上游原题对接。
-归一化完全性不等于任意正参数的 `PartI`，更不等于集合强完全性。**
+每个渐近中间常数，具体对应见 `STATUS.md` 第七、八批部分。
+上游适配使用从锁定源码逐字提取的定义，不是完整上游 Lean 4.33.1 工程构建。
+本工程继续锁定 Lean 4.27.0；没有为集成而自动迁移工具链。
 
 ## Source map
 
@@ -156,8 +176,13 @@ gap 直接定义为所有实际相邻点距离的最大值，`meshOn_iff_gap_le`
 | `Dyadic354/BGSparseCompact.lean`、`BGBinaryRatio.lean`、`BGReturns.lean` | 有理紧集、二进制支持、统一返回成本发散 |
 | `Dyadic354/BGExactLayers.lean`、`BGWindowBounds.lean`、`BGWindows.lean` | 非精确层计数、逼近精度和实际任意长稀疏窗口 |
 | `Dyadic354/BGGeometric.lean`、`BGCapacity.lean`、`BG.lean` | 不重叠返回累计、窗口容量、BG 及归一化完全性 |
+| `Dyadic354/Normalization.lean` | 只向上移位、比例平衡、克服地板误差并避开任意有限删除界 |
+| `Dyadic354/SetBridge.lean` | 尾部单射与下界、合法值集包含、索引与集合表示转换 |
+| `Dyadic354/Main.lean` | 冻结 #354(i) 与集合强完全性两个最终定理 |
+| `Dyadic354/UpstreamDefinitions.lean`、`UpstreamBridge.lean` | 上游逐字定义、内核检查的类型等价与最终命题适配 |
 | `Dyadic354/Audit.lean` | 目标类型输出与全部已完成定理的公理审计 |
 | `scripts/generate_data.py` | 数据翻译及与 JSON 的一致性检查 |
 | `scripts/verify.py` | 构建、公理允许列表、独立目录重建 |
+| `scripts/check_upstream.py`、`upstream/` | 来源字节哈希、定义块与正面命题一致性检查；快照不作为 Lean 导入 |
 
 上游定义来源与许可见 [UPSTREAM.md](UPSTREAM.md)。公开稿件及原始证书保持原样。

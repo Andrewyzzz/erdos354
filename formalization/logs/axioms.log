@@ -1,6 +1,6 @@
 COMMAND: ["lake", "env", "lean", "Dyadic354/Audit.lean"]
 CWD: /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization
-UTC: 2026-09-12T18:14:46.548019+00:00
+UTC: 2026-09-13T01:04:57.136804+00:00
 def Dyadic354.PartI : Prop :=
 ∀ (α β : ℝ), 0 < α → 0 < β → Irrational (α / β) → Dyadic354.IndexedComplete (Dyadic354.interleave α β 2)
 def Dyadic354.StrongCompleteness : Prop :=
@@ -4630,6 +4630,73 @@ fun α β hb0 hba0 hab0 hirr =>
 'Dyadic354.BG.support_nonempty_of_event' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Dyadic354.BG.bounded_event_windows_complete' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Dyadic354.BG.normalized_complete' depends on axioms: [propext, Classical.choice, Quot.sound]
+theorem Dyadic354.erdos354_strong_completeness : Dyadic354.StrongCompleteness :=
+fun α β hα hβ hirr D hD =>
+  Exists.casesOn (Set.Finite.bddAbove hD) fun B hB =>
+    Exists.casesOn (Dyadic354.Normalization.above_bound α β hα hβ hirr B) fun u h =>
+      Exists.casesOn h fun v h =>
+        And.casesOn h fun hBv right =>
+          And.casesOn right fun hb right =>
+            And.casesOn right fun hba hab =>
+              let α' := 2 ^ u * α;
+              let β' := 2 ^ v * β;
+              have hi := Dyadic354.Normalization.shifted_irrational α β hirr u v;
+              have hc := Dyadic354.BG.normalized_complete α' β' hb hba hab hi;
+              have hs :=
+                Dyadic354.SetBridge.indexed_to_set (Dyadic354.interleave α' β' 2)
+                  (Dyadic354.SetBridge.normalized_injective α' β' hb hba hab) hc;
+              Dyadic354.SetBridge.setComplete_mono (Set.range (Dyadic354.interleave α' β' 2))
+                (Dyadic354.dyadicValueSet α β \ D)
+                (fun ⦃z⦄ a =>
+                  Exists.casesOn a fun i h =>
+                    h ▸
+                      have hlo := Dyadic354.SetBridge.normalized_lower_bound α' β' hb hba hab i;
+                      have hmem := Dyadic354.SetBridge.shifted_range_subset α β u v (Set.mem_range_self i);
+                      ⟨⟨hmem,
+                          Eq.mpr (id (congrArg Not Dyadic354.erdos354_strong_completeness._simp_1_1))
+                            (id (ne_of_gt (LT.lt.trans_le hb hlo)))⟩,
+                        fun hz => not_le_of_gt (LT.lt.trans_le hBv hlo) (hB hz)⟩)
+                hs
+theorem Dyadic354.erdos354_part_i : Dyadic354.PartI :=
+fun α β hα hβ hirr =>
+  have hs := Dyadic354.erdos354_strong_completeness α β hα hβ hirr ∅ Set.finite_empty;
+  have hc := Eq.mp (congrArg Dyadic354.SetComplete Set.diff_empty) hs;
+  Dyadic354.SetBridge.set_to_indexed (Dyadic354.interleave α β 2)
+    (Dyadic354.SetBridge.setComplete_mono (Dyadic354.dyadicValueSet α β) (Set.range (Dyadic354.interleave α β 2))
+      (fun x hx => hx.left) hc)
+def Dyadic354.UpstreamBridge.PartITarget : Prop :=
+∀ α > 0, ∀ β > 0, Irrational (α / β) → IsAddCompleteNatSeq' (Erdos354.FloorMultiples.interleave α β 2)
+theorem Dyadic354.UpstreamBridge.erdos354_part_i_upstream : Dyadic354.UpstreamBridge.PartITarget :=
+Dyadic354.UpstreamBridge.partITarget_iff.mpr Dyadic354.erdos354_part_i
+theorem Dyadic354.UpstreamBridge.erdos354_strong_upstream : ∀ (α β : ℝ),
+  0 < α →
+    0 < β → Irrational (α / β) → IsAddStronglyComplete (Set.range (Erdos354.FloorMultiples.interleave α β 2) \ {0}) :=
+fun α β hα hβ hirr =>
+  (Dyadic354.UpstreamBridge.strongComplete_iff (Set.range (Erdos354.FloorMultiples.interleave α β 2) \ {0})).mpr
+    (Dyadic354.erdos354_strong_completeness α β hα hβ hirr)
+'Dyadic354.Normalization.term_shift' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.Normalization.shifted_irrational' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.Normalization.balance_larger' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.Normalization.balance' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.Normalization.common_shift' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.Normalization.above_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.SetBridge.normalized_sorted_strictMono' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.SetBridge.normalized_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.SetBridge.normalized_lower_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.SetBridge.indexed_to_set' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.SetBridge.setComplete_mono' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.SetBridge.set_to_indexed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.SetBridge.shifted_range_subset' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.erdos354_strong_completeness' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.erdos354_part_i' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.UpstreamBridge.floorMultiples_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.UpstreamBridge.interleave_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.UpstreamBridge.indexedComplete_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.UpstreamBridge.setComplete_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.UpstreamBridge.strongComplete_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.UpstreamBridge.partITarget_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.UpstreamBridge.erdos354_part_i_upstream' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dyadic354.UpstreamBridge.erdos354_strong_upstream' depends on axioms: [propext, Classical.choice, Quot.sound]
 
 EXIT CODE: 0
-ELAPSED SECONDS: 52.536
+ELAPSED SECONDS: 58.292

@@ -6,7 +6,8 @@
 `logs/fourth-batch-environment.log`，第五批实际复核见
 `logs/fifth-batch-environment.log`，第六批实际复核见
 `logs/sixth-batch-environment.log`，第七批实际复核见
-`logs/seventh-batch-environment.log`；命令日志使用 UTC 时间。
+`logs/seventh-batch-environment.log`，第八批实际复核见
+`logs/eighth-batch-environment.log`；命令日志使用 UTC 时间。
 
 - 执行位置：本机 macOS 26.5.1，Apple Silicon / arm64。
 - 原稿基准提交：`dcdc3c255189ab4e0f9bbf9abea2ca0a3758de06`。
@@ -16,6 +17,7 @@
 - 第五批起点：第四批提交 `e3985208220a96030f454d3ab5e82ac42135a53c`。
 - 第六批起点：第五批提交 `ea7ad5fd1eb85db223878a6c92f37d77868532ee`。
 - 第七批起点：前六批发布记录提交 `f6c5d2ba8cbca95427ae6aea854d11116f06cd55`。
+- 第八批起点：FE／DB／BG 提交 `1e6e6d93661dbaa67700ee77097901ea66f276cd`。
 - 开发分支：`lean-formalization`。起始工作树干净，所有新增内容位于 `formalization/`。
 - 实际 Lean：`4.27.0`，commit `db93fe1608548721853390a10cd40580fe7d22ae`。
 - 实际 Lake：`5.0.0-src+db93fe1`，使用 Lean 4.27.0。
@@ -48,9 +50,9 @@ Elan 输出中有一次查询默认 stable 最新版本失败的警告。项目�
 首个完整构建成功记录为 `logs/certificate-04.log`：`lake build` 退出码 0。
 它包含初始 18 个定理的审计。第一批最终为 20 个定理；第二批增加 31 个，
 第三批增加 32 个，第四批增加 44 个，第五批增加 21 个，第六批增加 35 个，
-第七批增加 175 个，累计 358 个。
+第七批增加 175 个，第八批增加 23 个，累计 381 个。
 当前验收以 `logs/build.log`、`logs/axioms.log`、
-`logs/verification.json` 为准。前六批最终日志仍保存在对应提交与交付包中。
+`logs/verification.json` 为准。前七批最终日志仍保存在对应提交与交付包中。
 
 独立目录重建见 `logs/fresh-build.log`、`logs/fresh-axioms.log`、
 `logs/fresh-verification.json`。该检查重新编译本项目的源码，复用同版本 Mathlib
@@ -117,3 +119,26 @@ Git HEAD 全部匹配锁定值，且没有已跟踪修改。已证明部分的�
 `logs/seventh-batch-environment.log` 确认 Lean 4.27.0 和全部 9 个依赖实际提交匹配锁定值，
 依赖源码没有已跟踪修改。最终验收仍以 `verification.json`、`fresh-verification.json`
 及相应实际日志为准；清洁重建复用依赖缓存，不宣称从零重建 Mathlib 或运行外部 checker。
+
+## 第八批：一般参数、强完全性与上游目标
+
+本批增加 23 个定理，完成只向上取尾的归一化、无重复数值证明、有限删除集上界
+规避及集合/索引表示连接。`Main.lean` 实现未改动的 `PartI` 与 `StrongCompleteness`。
+`UpstreamBridge.lean` 实现精确上游定义中的正面命题与集合强完全性。
+所有新模块都由默认根目标实际导入；最终验收不是只构建旧模块。
+
+实际编译迭代保存在 `normalization-01.log`、`main-*.log`；初轮问题涉及严格风格检查、
+函数参数个数、重写顺序及局部缩写的算术识别，不是通过添加数学前提修复。
+来源检查见 `upstream-provenance-offline.log`、`upstream-provenance-online.log`；
+首次沙箱 DNS 失败日志保留，后续只读网络复核成功。
+
+上游锁定提交的真实工具链为 Lean 4.33.1。没有安装或升级本工程工具链；
+七段上游定义逐字提取，在现有 Lean 4.27.0 中编译，并核对精确 RHS 和内核类型等价。
+这不是完整上游 checkout 的构建，不声称已完成上游 PR 集成。完整来源说明见 `UPSTREAM.md`。
+
+`eighth-batch-input-integrity.log` 再次确认 36 个原发布文件哈希全部匹配。
+`eighth-batch-environment.log` 确认现有工具链、全部 9 个依赖实际提交和依赖源码未变。
+最终全量与独立源码目录重建的 381 项验收见 `verification.json`、`fresh-verification.json`；
+对应日志包含最终目标的实际 `#print` 与全部传递公理输出。
+`logs/final-clean-source-match.log` 另外逐项比较了清洁目录与交付工作树的源码、
+脚本和上游来源数据，退出码 0；只排除了编译缓存、日志、Markdown 说明和 Python 缓存。

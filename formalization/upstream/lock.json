@@ -1,0 +1,18 @@
+{
+  "repository": "https://github.com/google-deepmind/formal-conjectures",
+  "commit": "a748dd915c908b21c4d864abf239f61049fa9d96",
+  "files": {
+    "354.lean.txt": {
+      "path": "FormalConjectures/ErdosProblems/354.lean",
+      "sha256": "4d86f1ef94a95d1e392c41b792a299a3d2f6f2ac08d568a98b8da927b89bb200"
+    },
+    "AdditivelyComplete.lean.txt": {
+      "path": "FormalConjecturesForMathlib/NumberTheory/AdditivelyComplete.lean",
+      "sha256": "06bddf7abb7401cbfdd68cd8c3657b939f2fa27bd15d1aa26fb9d197f9020908"
+    },
+    "lean-toolchain.txt": {
+      "path": "lean-toolchain",
+      "sha256": "3aac669c7a910ec2389f4e4f921b605adf6ebf2d1e0c9b9cd0be4d33f3f5db71"
+    }
+  }
+}

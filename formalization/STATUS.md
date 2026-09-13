@@ -1,22 +1,20 @@
-# 第七批状态：FE／DB／BG
+# 第八批状态：原题与强完全性
 
-**FE、FE-R、DB 与 BG 的累计矛盾已经编译通过，并推出归一化地板初值下的完全性。
-任意正参数的 #354(i) 与集合强完全性仍未形式化完成。**
+**冻结的 #354(i) 与稿件的集合强完全性目标均已证明：参数为任意正实数，
+仅要求比值无理，不再要求归一化初值，也没有额外 FE／DB／BG 假设。**
 
-最新主结论为 `Dyadic354.BG.normalized_complete`：
+最终主结论为：
 
 ```lean
-∀ α β : ℝ, 0 < FloorSequence.term β 0 →
-  FloorSequence.term β 0 < FloorSequence.term α 0 →
-  FloorSequence.term α 0 < 2 * FloorSequence.term β 0 →
-  Irrational (α / β) → IndexedComplete (interleave α β 2)
+Dyadic354.erdos354_part_i : Dyadic354.PartI
+Dyadic354.erdos354_strong_completeness : Dyadic354.StrongCompleteness
 ```
 
-也就是 `0 < ⌊β⌋ < ⌊α⌋ < 2⌊β⌋` 与比值无理推出实际交错列完全。
-这里没有额外的 FE、DB、BG、永久下降、长窗口或事件间隔假设。
-上述初值归一化限制尚未消去，因此不能把该定理称为完整的 `PartI`。
-本批采用已证明的有理逼近窗口与紧致返回成本接口，替代原稿的连分数枚举和
-显式最小 popcount 表述；数学实现差异与具体边界见下文第七批部分。
+第一个结论使用有限自然数索引集选择求和项；第二个结论删除任意有限个数值，
+用剩余数值的有限集合表示充分大的整数。同一索引或数值均不会非法重复使用。
+上游正面命题的精确定义适配也已完成，见 `UpstreamBridge.erdos354_part_i_upstream`。
+这是本地 Lean 内核验证结果，不等于社区接受、期刊发表、外部 checker 复核或
+完整上游工程构建；工具链及定义适配边界见 `UPSTREAM.md`。
 
 实际证书由 Lean 内核计算核验，通过通用 soundness 定理得到全部合法整数参数上的
 系数覆盖与六项子集和语义。第二批证明主稿 Lemma 2.1、2.2、2.3，并补齐最长缺失段、
@@ -26,13 +24,14 @@
 完全性、良基下降、无理比值下的事件无限性及真实后继事件倍率界。
 第六批增加 35 个定理，完成 §1.1 的统一前缀/内部/模缺口界，以及 §8 的有限计数基础。
 第七批增加 175 个定理，将 FE／DB／BG 连接为实际归一化完全性结论。
-有限数据使用 `decide +kernel`，累计 358 个本地定理的
+第八批增加 23 个定理，完成合法取尾、去重、有限删除与最终目标适配。
+有限数据使用 `decide +kernel`，累计 381 个本地定理的
 传递公理依赖均为 `propext`、`Classical.choice`、`Quot.sound` 的子集。
 最终构建与审计见 `logs/verification.json`，独立目录重建见
 `logs/fresh-verification.json`；完整实际输出保存在同目录的日志。
 
-以下第一至第六批保留各阶段当时的接口与完成边界；其中“尚未完成”是历史状态，
-当前边界以第七批及文末“后续数学义务”为准。
+以下第一至第七批保留各阶段当时的接口与完成边界；其中“尚未完成”是历史状态，
+当前状态以第八批及文末验收边界为准。
 
 ## 第一批已编译定理与主稿对应（20个）
 
@@ -399,24 +398,56 @@ FE/DB/BG 仍未完成。
 6. 原始英文/中文主稿、证书、冻结 `Statements.lean`、工具链和依赖锁保持不变。
    源码无 `sorry`、自定义公理或 `native_decide`；传递公理审计是最终验收依据。
 
-## 固定但未证明的目标
+## 第八批已编译定理与主稿对应（23个）
+
+新增 `Normalization.lean`、`SetBridge.lean`、`Main.lean`、
+`UpstreamDefinitions.lean` 与 `UpstreamBridge.lean` 五个模块。
+下表名称省略共同前缀 `Dyadic354.`；全部定理及其辅助引理均列入公理审计。
+
+| 声明 | 对应内容 |
+|---|---|
+| `Normalization.term_shift` | 向上乘 `2^u` 的每项恰为原列第 `n+u` 项 |
+| `Normalization.shifted_irrational` | 两列独立向上移位保持比值无理 |
+| `Normalization.balance_larger`、`balance` | 正实数的相邻二幂界与无理性排除端点，只用非负整数移位得到严格比例 |
+| `Normalization.common_shift`、`above_bound` | 克服地板误差，并使归一化保留尾项高于任意指定整数界 |
+| `SetBridge.normalized_sorted_strictMono`、`normalized_injective` | 两列严格交错，原有 `a,b` 枚举虽非单调但数值仍单射 |
+| `SetBridge.normalized_lower_bound` | 所有保留项都不小于首个较小项 |
+| `SetBridge.indexed_to_set` | 单射数值序列的有限索引表示转换为无重复数值的有限集合表示 |
+| `SetBridge.setComplete_mono`、`set_to_indexed` | 集合完全性保序，以及任意原列的集合表示转为合法索引表示 |
+| `SetBridge.shifted_range_subset` | 独立移位后的两列确实取自原两列 |
+| `erdos354_strong_completeness` | 对任意有限删除集，取高于其上界的归一化尾部并应用完整证明链 |
+| `erdos354_part_i` | 冻结的全部正实数参数 #354(i)，没有额外前提 |
+| `UpstreamBridge.floorMultiples_eq`、`interleave_eq` | 原列与上游精确定义的等式 |
+| `UpstreamBridge.indexedComplete_iff`、`setComplete_iff`、`strongComplete_iff` | 两种表示、有限删除量词与上游定义之间的等价 |
+| `UpstreamBridge.partITarget_iff` | 上游扩展量词排列与冻结 `PartI` 的双向等价 |
+| `UpstreamBridge.erdos354_part_i_upstream`、`erdos354_strong_upstream` | 在上游精确定义类型中得到两个最终结论 |
+
+### 上游与工具链边界
+
+上游锁定提交使用 Lean/Mathlib 4.33.1，本工程继续使用 4.27.0，未升级。
+七段上游定义逐字提取，原题正面 RHS 只增加命名空间限定；来源快照哈希、定义块
+与目标文本均经自动检查，也实际与公开锁定源码进行在线字节核对。
+这些语法核对之外，Lean 又证明定义及目标类型之间的等价，最终结论接受同一公理审计。
+上游包含占位定理的完整文件仅以 `.txt` 保存为来源数据，没有被 Lean 导入。
+未在完整上游 4.33.1 工程中构建，未创建上游 PR，不将这两件事报告为已经完成。
+
+## 冻结目标的完成状态
 
 - `Dyadic354.PartI`：任意正实数 α、β，无理比值，固定底数 2，地板交错列的有限索引和最终覆盖。
 - `Dyadic354.StrongCompleteness`：删除任意有限个数值后的集合完全性。
 
-它们是 `Prop` 定义，不是已证明定理。工程中没有以占位符实现的主定理。
-工程借用了上游定义的独立副本；与安装后的 Formal Conjectures 工程进行直接类型
-对接仍未完成，来源和定义对应见 `UPSTREAM.md`。
+它们仍保留为未改动的 `Prop` 定义，由 `Main.lean` 中两个已证明定理分别实现。
+没有把原目标改弱，也没有通过增加类型类、占位定理或结论性前提完成它们。
 
-## 后续数学义务
+## 验收边界与可选后续工作
 
-1. §1、§7：一般正实数参数的合法向上归一化、截尾与原索引嵌入，消去当前主定理的
-   归一化地板初值限制，最终证明冻结的 `PartI`。
-2. 同参数合并、和值去重、有限删除与集合表示之间的连接，最终证明 `StrongCompleteness`。
-3. 与上游 Formal Conjectures 原题的直接类型连接与最终陈述核对；不引用其占位定理。
-4. 若要求逐字覆盖全部原稿表述，仍可补 §6 的 N−1 次更新预算、`limsup≤3`、
-   连分数编号版 (10.2) 和显式最小 popcount 形式。它们不是本批 FE／DB／BG
-   或 `normalized_complete` 的未完成依赖。
+1. 两个冻结数学目标已完成，没有剩余数学假设等待补证。第 (ii) 问不在本任务范围内。
+2. 清洁重建只复用锁定依赖缓存，不复用本项目编译产物；没有从零重建 Mathlib，
+   也未运行独立 checker 或 comparator。它们可用于进一步独立复核。
+3. 全上游工程适配、工具链迁移和上游 PR 是后续集成事项，本次未执行。
+4. 本实现使用已证明的有理逼近窗口及紧致返回接口。若要求逐字覆盖全部原稿表述，
+   可另补 §6 的 N−1 次预算、`limsup≤3`、连分数编号版 (10.2) 和显式最小 popcount。
+   它们不是最终 `PartI` 或 `StrongCompleteness` 的未完成依赖。
 
 本批没有剩余编译阻断。历史失败与修复日志均保留；没有通过添加结论性前提绕过失败。
 后续若遇到数学缺口，仍应独立报告，不能用工程构建成功代替未完成目标的证明。
@@ -431,4 +462,6 @@ FE/DB/BG 仍未完成。
 原公开稿件与证书保持不变，未合并到 `main`，未创建 Release，未发论坛帖子。
 公开的是分阶段形式化进展，不是整个 #354(i) 的完成证明。
 
-第七批 FE／DB／BG 成果目前保存在本地，尚未推送；不与前六批的远端提交混淆。
+第七批 FE／DB／BG 提交为 `1e6e6d93661dbaa67700ee77097901ea66f276cd`。
+第七、八批成果目前保存在本地，尚未推送；不与前六批的远端提交混淆。
+原公开稿、归档和证书保持原样，不自动修改其候选稿及社区接受状态说明。

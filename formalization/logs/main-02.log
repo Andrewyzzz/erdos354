@@ -1,0 +1,31 @@
+COMMAND: ["lake", "build", "Dyadic354.UpstreamBridge"]
+UTC: 2026-09-13T00:57:46.712323+00:00
+ℹ [3087/3125] Replayed Dyadic354.CyclicBoundary
+info: Dyadic354/CyclicBoundary.lean:78:6: Try this:
+  [apply] abel_nf
+✖ [3122/3125] Building Dyadic354.SetBridge (24s)
+trace: .> LEAN_PATH=/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/Cli/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/batteries/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/Qq/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/aesop/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/importGraph/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/plausible/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/mathlib/.lake/build/lib/lean:/Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean /Users/andrewyz/.elan/toolchains/leanprover--lean4---v4.27.0/bin/lean /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/Dyadic354/SetBridge.lean -o /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean/Dyadic354/SetBridge.olean -i /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/lib/lean/Dyadic354/SetBridge.ilean -c /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/ir/Dyadic354/SetBridge.c --setup /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/.lake/build/ir/Dyadic354/SetBridge.setup.json --json
+error: Dyadic354/SetBridge.lean:82:28: Application type mismatch: The argument
+  interleave_even α β ?m.115
+has type
+  ∀ (n : ℕ), interleave α β ?m.115 (2 * n) = floorMultiples α ?m.115 n
+but is expected to have type
+  interleave α β 2 (2 * (i / 2 + u)) = term α (i / 2 + u)
+in the application
+  Exists.intro (2 * (i / 2 + u)) (interleave_even α β ?m.115)
+error: Dyadic354/SetBridge.lean:86:32: Application type mismatch: The argument
+  interleave_odd α β ?m.174
+has type
+  ∀ (n : ℕ), interleave α β ?m.174 (2 * n + 1) = floorMultiples β ?m.174 n
+but is expected to have type
+  interleave α β 2 (2 * (i / 2 + v) + 1) = term β (i / 2 + v)
+in the application
+  Exists.intro (2 * (i / 2 + v) + 1) (interleave_odd α β ?m.174)
+error: Lean exited with code 1
+✔ [3124/3125] Built Dyadic354.UpstreamDefinitions (24s)
+Some required targets logged failures:
+- Dyadic354.SetBridge
+error: build failed
+
+EXIT CODE: 1
+ELAPSED SECONDS: 31.393

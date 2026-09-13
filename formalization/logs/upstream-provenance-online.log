@@ -1,0 +1,18 @@
+COMMAND: ["python3", "scripts/check_upstream.py", "--online"]
+UTC: 2026-09-13T00:58:00.492235+00:00
+PASS upstream bytes: 354.lean.txt sha256=4d86f1ef94a95d1e392c41b792a299a3d2f6f2ac08d568a98b8da927b89bb200
+PASS upstream bytes: AdditivelyComplete.lean.txt sha256=06bddf7abb7401cbfdd68cd8c3657b939f2fa27bd15d1aa26fb9d197f9020908
+PASS upstream bytes: lean-toolchain.txt sha256=3aac669c7a910ec2389f4e4f921b605adf6ebf2d1e0c9b9cd0be4d33f3f5db71
+PASS verbatim definition: FloorMultiples
+PASS verbatim definition: FloorMultiples.interleave
+PASS verbatim definition: subsetSums
+PASS verbatim definition: subseqSums'
+PASS verbatim definition: IsAddComplete
+PASS verbatim definition: IsAddStronglyComplete
+PASS verbatim definition: IsAddCompleteNatSeq'
+PASS exact positive part (i) target, modulo whitespace and namespace qualification.
+Upstream toolchain: leanprover/lean4:v4.33.1
+Integration mode: exact definition extraction on local Lean; not a full upstream checkout build.
+
+EXIT CODE: 0
+ELAPSED SECONDS: 2.097

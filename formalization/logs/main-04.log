@@ -1,0 +1,11 @@
+COMMAND: ["lake", "build", "Dyadic354.UpstreamBridge"]
+UTC: 2026-09-13T01:01:19.633219+00:00
+ℹ [3087/3125] Replayed Dyadic354.CyclicBoundary
+info: Dyadic354/CyclicBoundary.lean:78:6: Try this:
+  [apply] abel_nf
+✔ [3124/3125] Built Dyadic354.Main (35s)
+✔ [3125/3125] Built Dyadic354.UpstreamBridge (33s)
+Build completed successfully (3125 jobs).
+
+EXIT CODE: 0
+ELAPSED SECONDS: 74.981

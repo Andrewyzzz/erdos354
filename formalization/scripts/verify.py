@@ -43,6 +43,11 @@ result_path = ROOT / 'logs' / ('fresh-verification.json' if args.fresh else 'ver
 result_path.write_text(json.dumps({'status': 'INCOMPLETE',
     'started_utc': datetime.datetime.now(datetime.timezone.utc).isoformat()}) + '\n')
 run(['python3', 'scripts/generate_data.py', '--check'], ROOT, 'data-consistency')
+run(['python3', 'scripts/check_upstream.py'], ROOT, 'upstream-consistency')
+for source in sorted((ROOT / 'Dyadic354').glob('*.lean')):
+    if re.search(r'\b(?:sorry|admit|native_decide|axiom|unsafe|skipKernelTC|implemented_by|extern)\b|\+native',
+                 source.read_text()):
+        raise SystemExit(f'Forbidden proof mechanism or placeholder in source: {source.name}')
 project = ROOT
 prefix = ''
 if args.fresh:
@@ -80,7 +85,10 @@ if missing or bad:
     raise SystemExit(f'Axiom audit failed: missing={sorted(missing)}, disallowed={bad}')
 result = {
     'status': 'PASS',
-    'scope': 'Certificate, meshes, legal representations, actual normalized floor-sequence permanent descent, uniform gap bounds, FE and FE-R with manuscript constants, DB at all good rational approximations and at the defined first good-denominator crossing, and BG including actual long windows, unbounded return costs and the cumulative contradiction. BG.normalized_complete proves indexed completeness assuming only 0 < floor(beta) < floor(alpha) < 2*floor(beta) and irrational alpha/beta. Global parameter normalization, strong set completeness and the unrestricted frozen Erdős 354(i) target remain unproved. The rational-window and compact-return arguments are proved alternatives to the manuscript continued-fraction enumeration and explicit minimum-popcount formulation.',
+    'scope': 'The frozen unrestricted Erdős 354(i) PartI and manuscript StrongCompleteness are proved for all positive real alpha and beta with irrational alpha/beta, using actual upward dyadic tails and injective retained values. No FE/DB/BG, normalization, long-window or descent assumptions remain. The full chain includes certificate soundness, meshes, legal representations, permanent descent, FE, FE-R, DB, BG, global normalization, finite-deletion avoidance and set/index bridges. Exact extracted upstream definitions and the positive part (i) RHS are connected by kernel-checked bridge theorems and a frozen-source consistency check. This is not a build of the full upstream Lean 4.33.1 checkout, not an external-checker run, and not a proof of part (ii).',
+    'completed_targets': ['Dyadic354.erdos354_part_i', 'Dyadic354.erdos354_strong_completeness',
+                          'Dyadic354.UpstreamBridge.erdos354_part_i_upstream',
+                          'Dyadic354.UpstreamBridge.erdos354_strong_upstream'],
     'fresh_project_build': args.fresh,
     'dependency_cache_reused': True,
     'audited_theorems': len(records),
@@ -89,7 +97,8 @@ result = {
     'source_sha256': {
         str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest()
         for p in sorted([*ROOT.glob('*.lean'), *(ROOT / 'Dyadic354').glob('*.lean'),
-                         ROOT / 'lean-toolchain', ROOT / 'lakefile.toml', ROOT / 'lake-manifest.json'])
+                         ROOT / 'lean-toolchain', ROOT / 'lakefile.toml', ROOT / 'lake-manifest.json',
+                         *(ROOT / 'upstream').glob('*'), *(ROOT / 'scripts').glob('*.py')])
     },
 }
 result_path.write_text(json.dumps(result, indent=2) + '\n')

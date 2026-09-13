@@ -9,6 +9,7 @@ import Dyadic354.DB
 import Dyadic354.BGReturns
 import Dyadic354.RationalWindows
 import Dyadic354.BG
+import Dyadic354.UpstreamBridge
 
 #print Dyadic354.PartI
 #print Dyadic354.StrongCompleteness
@@ -484,3 +485,33 @@ import Dyadic354.BG
 #print axioms Dyadic354.BG.support_nonempty_of_event
 #print axioms Dyadic354.BG.bounded_event_windows_complete
 #print axioms Dyadic354.BG.normalized_complete
+
+#print Dyadic354.erdos354_strong_completeness
+#print Dyadic354.erdos354_part_i
+#print Dyadic354.UpstreamBridge.PartITarget
+#print Dyadic354.UpstreamBridge.erdos354_part_i_upstream
+#print Dyadic354.UpstreamBridge.erdos354_strong_upstream
+
+#print axioms Dyadic354.Normalization.term_shift
+#print axioms Dyadic354.Normalization.shifted_irrational
+#print axioms Dyadic354.Normalization.balance_larger
+#print axioms Dyadic354.Normalization.balance
+#print axioms Dyadic354.Normalization.common_shift
+#print axioms Dyadic354.Normalization.above_bound
+#print axioms Dyadic354.SetBridge.normalized_sorted_strictMono
+#print axioms Dyadic354.SetBridge.normalized_injective
+#print axioms Dyadic354.SetBridge.normalized_lower_bound
+#print axioms Dyadic354.SetBridge.indexed_to_set
+#print axioms Dyadic354.SetBridge.setComplete_mono
+#print axioms Dyadic354.SetBridge.set_to_indexed
+#print axioms Dyadic354.SetBridge.shifted_range_subset
+#print axioms Dyadic354.erdos354_strong_completeness
+#print axioms Dyadic354.erdos354_part_i
+#print axioms Dyadic354.UpstreamBridge.floorMultiples_eq
+#print axioms Dyadic354.UpstreamBridge.interleave_eq
+#print axioms Dyadic354.UpstreamBridge.indexedComplete_iff
+#print axioms Dyadic354.UpstreamBridge.setComplete_iff
+#print axioms Dyadic354.UpstreamBridge.strongComplete_iff
+#print axioms Dyadic354.UpstreamBridge.partITarget_iff
+#print axioms Dyadic354.UpstreamBridge.erdos354_part_i_upstream
+#print axioms Dyadic354.UpstreamBridge.erdos354_strong_upstream

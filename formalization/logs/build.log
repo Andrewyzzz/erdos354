@@ -1,37 +1,36 @@
 COMMAND: ["lake", "build"]
 CWD: /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization
-UTC: 2026-09-12T18:13:10.385501+00:00
-ℹ [3091/3123] Replayed Dyadic354.CyclicBoundary
+UTC: 2026-09-13T01:02:50.278206+00:00
+ℹ [3091/3128] Replayed Dyadic354.CyclicBoundary
 info: Dyadic354/CyclicBoundary.lean:78:6: Try this:
   [apply] abel_nf
-✔ [3120/3123] Built Dyadic354.BG (23s)
-ℹ [3121/3123] Built Dyadic354.Audit (52s)
-info: Dyadic354/Audit.lean:13:0: def Dyadic354.PartI : Prop :=
+ℹ [3126/3128] Built Dyadic354.Audit (117s)
+info: Dyadic354/Audit.lean:14:0: def Dyadic354.PartI : Prop :=
 ∀ (α β : ℝ), 0 < α → 0 < β → Irrational (α / β) → Dyadic354.IndexedComplete (Dyadic354.interleave α β 2)
-info: Dyadic354/Audit.lean:14:0: def Dyadic354.StrongCompleteness : Prop :=
+info: Dyadic354/Audit.lean:15:0: def Dyadic354.StrongCompleteness : Prop :=
 ∀ (α β : ℝ), 0 < α → 0 < β → Irrational (α / β) → Dyadic354.SetStronglyComplete (Dyadic354.dyadicValueSet α β)
-info: Dyadic354/Audit.lean:15:0: def Dyadic354.IndexedComplete : (ℕ → ℤ) → Prop :=
+info: Dyadic354/Audit.lean:16:0: def Dyadic354.IndexedComplete : (ℕ → ℤ) → Prop :=
 fun w => ∀ᶠ (k : ℤ) in Filter.atTop, Dyadic354.IsSubsetSum w k
-info: Dyadic354/Audit.lean:16:0: def Dyadic354.SetStronglyComplete : Set ℤ → Prop :=
+info: Dyadic354/Audit.lean:17:0: def Dyadic354.SetStronglyComplete : Set ℤ → Prop :=
 fun A => ∀ (B : Set ℤ), B.Finite → Dyadic354.SetComplete (A \ B)
-info: Dyadic354/Audit.lean:17:0: def Dyadic354.interleave : ℝ → ℝ → ℝ → ℕ → ℤ :=
+info: Dyadic354/Audit.lean:18:0: def Dyadic354.interleave : ℝ → ℝ → ℝ → ℕ → ℤ :=
 fun a b γ n => if n % 2 = 0 then Dyadic354.floorMultiples a γ (n / 2) else Dyadic354.floorMultiples b γ (n / 2)
-info: Dyadic354/Audit.lean:18:0: def Dyadic354.floorMultiples : ℝ → ℝ → ℕ → ℤ :=
+info: Dyadic354/Audit.lean:19:0: def Dyadic354.floorMultiples : ℝ → ℝ → ℕ → ℤ :=
 fun a γ n => ⌊γ ^ n * a⌋
-info: Dyadic354/Audit.lean:19:0: def Dyadic354.dyadicValueSet : ℝ → ℝ → Set ℤ :=
+info: Dyadic354/Audit.lean:20:0: def Dyadic354.dyadicValueSet : ℝ → ℝ → Set ℤ :=
 fun α β => Set.range (Dyadic354.interleave α β 2) \ {0}
-info: Dyadic354/Audit.lean:20:0: def Dyadic354.SetComplete : Set ℤ → Prop :=
+info: Dyadic354/Audit.lean:21:0: def Dyadic354.SetComplete : Set ℤ → Prop :=
 fun A => ∀ᶠ (k : ℤ) in Filter.atTop, ∃ s, ↑s ⊆ A ∧ k = ∑ x ∈ s, x
-info: Dyadic354/Audit.lean:21:0: def Dyadic354.IsSubsetSum.{u_1} : {ι : Type u_1} → (ι → ℤ) → ℤ → Prop :=
+info: Dyadic354/Audit.lean:22:0: def Dyadic354.IsSubsetSum.{u_1} : {ι : Type u_1} → (ι → ℤ) → ℤ → Prop :=
 fun {ι} w z => ∃ s, z = ∑ i ∈ s, w i
-info: Dyadic354/Audit.lean:22:0: def Dyadic354.Certificate.MathematicallyCorrect : List Dyadic354.Certificate.Template → Prop :=
+info: Dyadic354/Audit.lean:23:0: def Dyadic354.Certificate.MathematicallyCorrect : List Dyadic354.Certificate.Template → Prop :=
 fun data =>
   ∀ (first second : Dyadic354.Certificate.Digits),
     first ≠ (false, false) →
       ∀ (p q : ℤ),
         0 < q →
           q < p → p < 2 * q → ∃ t ∈ data, t.first = first ∧ t.second = second ∧ Dyadic354.Certificate.ChainMeaning t p q
-info: Dyadic354/Audit.lean:23:0: def Dyadic354.Certificate.ChainMeaning : Dyadic354.Certificate.Template → ℤ → ℤ → Prop :=
+info: Dyadic354/Audit.lean:24:0: def Dyadic354.Certificate.ChainMeaning : Dyadic354.Certificate.Template → ℤ → ℤ → Prop :=
 fun t p q =>
   0 < t.chain.length ∧
     (∀ (i : Fin t.chain.length),
@@ -47,7 +46,7 @@ fun t p q =>
                   ∃ i,
                     (Dyadic354.Certificate.nodeAt t ↑i).lo.eval p q ≤ z ∧
                       z ≤ (Dyadic354.Certificate.nodeAt t ↑i).hi.eval p q
-info: Dyadic354/Audit.lean:24:0: def Dyadic354.Certificate.NodeMeaning : Dyadic354.Certificate.Digits →
+info: Dyadic354/Audit.lean:25:0: def Dyadic354.Certificate.NodeMeaning : Dyadic354.Certificate.Digits →
   Dyadic354.Certificate.Digits → Dyadic354.Certificate.Node → ℤ → ℤ → Prop :=
 fun first second n p q =>
   n.mask0 < 16 ∧
@@ -73,11 +72,11 @@ fun first second n p q =>
                                 (d * K * (Dyadic354.Certificate.coefficient n.mask0 n.thirdMask).eval p q + c) ∧
                               Dyadic354.IsSubsetSum (Dyadic354.Certificate.weights first second third d K p q)
                                 (d * K * (Dyadic354.Certificate.coefficient n.mask1 n.thirdMask).eval p q + c + 1)
-info: Dyadic354/Audit.lean:25:0: Dyadic354.Certificate.certificate_correct : Dyadic354.Certificate.MathematicallyCorrect Dyadic354.Certificate.templates
-info: Dyadic354/Audit.lean:26:0: Dyadic354.Certificate.all_templates_correct (t : Dyadic354.Certificate.Template)
+info: Dyadic354/Audit.lean:26:0: Dyadic354.Certificate.certificate_correct : Dyadic354.Certificate.MathematicallyCorrect Dyadic354.Certificate.templates
+info: Dyadic354/Audit.lean:27:0: Dyadic354.Certificate.all_templates_correct (t : Dyadic354.Certificate.Template)
   (ht : t ∈ Dyadic354.Certificate.templates) (p q : ℤ) (hqp : q < p) (hpq : p < 2 * q) :
   Dyadic354.Certificate.ChainMeaning t p q
-info: Dyadic354/Audit.lean:27:0: Dyadic354.Certificate.weights_explicit (first second third : Dyadic354.Certificate.Digits) (d K p q : ℤ) :
+info: Dyadic354/Audit.lean:28:0: Dyadic354.Certificate.weights_explicit (first second third : Dyadic354.Certificate.Digits) (d K p q : ℤ) :
   Dyadic354.Certificate.weights first second third d K p q =
     ![d * K * p + Dyadic354.Certificate.digit first.1, d * K * q + Dyadic354.Certificate.digit first.2,
       2 * d * K * p + 2 * Dyadic354.Certificate.digit first.1 + Dyadic354.Certificate.digit second.1,
@@ -86,41 +85,41 @@ info: Dyadic354/Audit.lean:27:0: Dyadic354.Certificate.weights_explicit (first s
         Dyadic354.Certificate.digit third.1,
       4 * d * K * q + 4 * Dyadic354.Certificate.digit first.2 + 2 * Dyadic354.Certificate.digit second.2 +
         Dyadic354.Certificate.digit third.2]
-info: Dyadic354/Audit.lean:29:0: def Dyadic354.CyclicGaps.MissingRun : Set ℤ → ℕ → Prop :=
+info: Dyadic354/Audit.lean:30:0: def Dyadic354.CyclicGaps.MissingRun : Set ℤ → ℕ → Prop :=
 fun S r => ∃ a, ∀ i < r, a + ↑i ∉ S
-info: Dyadic354/Audit.lean:30:0: def Dyadic354.CyclicGaps.gap : {d : ℕ} → [NeZero d] → (X : Finset (ZMod d)) → X.Nonempty → ℕ :=
+info: Dyadic354/Audit.lean:31:0: def Dyadic354.CyclicGaps.gap : {d : ℕ} → [NeZero d] → (X : Finset (ZMod d)) → X.Nonempty → ℕ :=
 fun {d} [NeZero d] X hX => Nat.find ⋯
-info: Dyadic354/Audit.lean:31:0: def Dyadic354.Mesh.Consecutive : Finset ℤ → ℤ → ℤ → Prop :=
+info: Dyadic354/Audit.lean:32:0: def Dyadic354.Mesh.Consecutive : Finset ℤ → ℤ → ℤ → Prop :=
 fun W a b => a ∈ W ∧ b ∈ W ∧ a < b ∧ ∀ w ∈ W, a < w → b ≤ w
-info: Dyadic354/Audit.lean:32:0: def Dyadic354.Mesh.gap : Finset ℤ → ℕ :=
+info: Dyadic354/Audit.lean:33:0: def Dyadic354.Mesh.gap : Finset ℤ → ℕ :=
 fun W => (W.product W).sup fun ab => if Dyadic354.Mesh.Consecutive W ab.1 ab.2 then (ab.2 - ab.1).toNat else 0
-info: Dyadic354/Audit.lean:33:0: def Dyadic354.Mesh.span : (W : Finset ℤ) → W.Nonempty → ℤ :=
+info: Dyadic354/Audit.lean:34:0: def Dyadic354.Mesh.span : (W : Finset ℤ) → W.Nonempty → ℤ :=
 fun W hW => W.max' hW - W.min' hW
-info: Dyadic354/Audit.lean:34:0: def Dyadic354.Mesh.MeshOn : Finset ℤ → ℤ → ℤ → ℕ → Prop :=
+info: Dyadic354/Audit.lean:35:0: def Dyadic354.Mesh.MeshOn : Finset ℤ → ℤ → ℤ → ℕ → Prop :=
 fun W lo hi k => Dyadic354.Mesh.Encloses W lo hi ∧ ∀ (z : ℤ), lo ≤ z → z ≤ hi → ∃ w ∈ W, z ≤ w ∧ w < z + ↑k
-info: Dyadic354/Audit.lean:35:0: Dyadic354.CyclicGaps.erosion_exact {d : ℕ} [NeZero d] (X : Finset (ZMod d)) (hX : X.Nonempty) :
+info: Dyadic354/Audit.lean:36:0: Dyadic354.CyclicGaps.erosion_exact {d : ℕ} [NeZero d] (X : Finset (ZMod d)) (hX : X.Nonempty) :
   Dyadic354.CyclicGaps.gap (Dyadic354.CyclicGaps.erode X) ⋯ = Dyadic354.CyclicGaps.gap X hX - 1
-info: Dyadic354/Audit.lean:36:0: Dyadic354.Mesh.translate_union_gap_span (W : Finset ℤ) (hW : W.Nonempty) (c : ℤ) (k : ℕ) (hc : 0 < c)
+info: Dyadic354/Audit.lean:37:0: Dyadic354.Mesh.translate_union_gap_span (W : Finset ℤ) (hW : W.Nonempty) (c : ℤ) (k : ℕ) (hc : 0 < c)
   (hs : c ≤ Dyadic354.Mesh.span W hW) (hg : Dyadic354.Mesh.gap W ≤ k) :
   Dyadic354.Mesh.gap (W ∪ Dyadic354.Mesh.translate W c) ≤ k ∧
     Dyadic354.Mesh.span (W ∪ Dyadic354.Mesh.translate W c) ⋯ = Dyadic354.Mesh.span W hW + c
-info: Dyadic354/Audit.lean:37:0: Dyadic354.Mesh.projection_gap (W : Finset ℤ) (hW : W.Nonempty) (k m : ℕ) [NeZero m] (hs : ↑m ≤ Dyadic354.Mesh.span W hW)
+info: Dyadic354/Audit.lean:38:0: Dyadic354.Mesh.projection_gap (W : Finset ℤ) (hW : W.Nonempty) (k m : ℕ) [NeZero m] (hs : ↑m ≤ Dyadic354.Mesh.span W hW)
   (hg : Dyadic354.Mesh.gap W ≤ k) : Dyadic354.CyclicGaps.gap (Dyadic354.Mesh.residues W m) ⋯ ≤ k - 1
-info: Dyadic354/Audit.lean:38:0: Dyadic354.Mesh.propagate_iterate (W : Finset ℤ) (hW : W.Nonempty) (c : ℕ → ℤ) (k : ℕ) (hc : ∀ (n : ℕ), 0 < c n)
+info: Dyadic354/Audit.lean:39:0: Dyadic354.Mesh.propagate_iterate (W : Finset ℤ) (hW : W.Nonempty) (c : ℕ → ℤ) (k : ℕ) (hc : ∀ (n : ℕ), 0 < c n)
   (hd : ∀ (n : ℕ), c (n + 1) ≤ 2 * c n) (hs : c 0 ≤ Dyadic354.Mesh.span W hW) (hg : Dyadic354.Mesh.gap W ≤ k) (n : ℕ) :
   Dyadic354.Mesh.gap (Dyadic354.Mesh.extend W c n) ≤ k ∧
     c n ≤ Dyadic354.Mesh.span (Dyadic354.Mesh.extend W c n) ⋯ ∧
       Dyadic354.Mesh.span (Dyadic354.Mesh.extend W c n) ⋯ = Dyadic354.Mesh.span W hW + ∑ i ∈ Finset.range n, c i
-info: Dyadic354/Audit.lean:40:0: @[reducible] def Dyadic354.Representations.PackedIndex : ℕ → ℕ → Type :=
+info: Dyadic354/Audit.lean:41:0: @[reducible] def Dyadic354.Representations.PackedIndex : ℕ → ℕ → Type :=
 fun n ℓ => Fin (2 * n) ⊕ Dyadic354.Representations.BlockIndex ℓ ⊕ Fin 6
-info: Dyadic354/Audit.lean:41:0: def Dyadic354.Representations.position : (n ℓ : ℕ) → Dyadic354.Representations.PackedIndex n ℓ → ℕ :=
+info: Dyadic354/Audit.lean:42:0: def Dyadic354.Representations.position : (n ℓ : ℕ) → Dyadic354.Representations.PackedIndex n ℓ → ℕ :=
 fun n ℓ x =>
   match x with
   | Sum.inl i => ↑i
   | Sum.inr (Sum.inl (Sum.inl i)) => 2 * n + 2 * ↑i
   | Sum.inr (Sum.inl (Sum.inr i)) => 2 * n + 2 * ↑i + 1
   | Sum.inr (Sum.inr i) => 2 * n + 2 * ℓ + ↑i
-info: Dyadic354/Audit.lean:42:0: def Dyadic354.Representations.packedWeights : (n ℓ : ℕ) →
+info: Dyadic354/Audit.lean:43:0: def Dyadic354.Representations.packedWeights : (n ℓ : ℕ) →
   (Fin (2 * n) → ℤ) →
     Dyadic354.Certificate.Digits →
       Dyadic354.Certificate.Digits →
@@ -129,15 +128,15 @@ fun n ℓ old first second third d p q =>
   Sum.elim old
     (Sum.elim (Dyadic354.Representations.blockWeights ℓ d p q)
       (Dyadic354.Certificate.weights first second third d (2 ^ ℓ) p q))
-info: Dyadic354/Audit.lean:43:0: def Dyadic354.InitialMesh.threshold : ℤ → ℤ → ℤ :=
+info: Dyadic354/Audit.lean:44:0: def Dyadic354.InitialMesh.threshold : ℤ → ℤ → ℤ :=
 fun p q => 2 * q * (p - 1) + 4 * (p + q) + 64
-info: Dyadic354/Audit.lean:44:0: Dyadic354.CoefficientInterval.bounded_interval (p q K z : ℤ) (hq : 0 < q) (hqp : q < p) (hK : p ≤ K)
+info: Dyadic354/Audit.lean:45:0: Dyadic354.CoefficientInterval.bounded_interval (p q K z : ℤ) (hq : 0 < q) (hqp : q < p) (hK : p ≤ K)
   (hcop : IsCoprime p q) (hzlo : q * (p - 1) ≤ z) (hzhi : z ≤ (p + q) * (K - 1) - q * (p - 1)) :
   ∃ x y, 0 ≤ x ∧ x < K ∧ 0 ≤ y ∧ y < K ∧ p * x + q * y = z
-info: Dyadic354/Audit.lean:45:0: Dyadic354.Representations.block_interval (ℓ : ℕ) (d p q z : ℤ) (hq : 0 < q) (hqp : q < p) (hK : p ≤ 2 ^ ℓ)
+info: Dyadic354/Audit.lean:46:0: Dyadic354.Representations.block_interval (ℓ : ℕ) (d p q z : ℤ) (hq : 0 < q) (hqp : q < p) (hK : p ≤ 2 ^ ℓ)
   (hcop : IsCoprime p q) (hzlo : q * (p - 1) ≤ z) (hzhi : z ≤ (p + q) * (2 ^ ℓ - 1) - q * (p - 1)) :
   Dyadic354.IsSubsetSum (Dyadic354.Representations.blockWeights ℓ d p q) (d * z)
-info: Dyadic354/Audit.lean:46:0: Dyadic354.NodeRepresentations.node_representation (n ℓ : ℕ) (old : Fin (2 * n) → ℤ)
+info: Dyadic354/Audit.lean:47:0: Dyadic354.NodeRepresentations.node_representation (n ℓ : ℕ) (old : Fin (2 * n) → ℤ)
   (first second third : Dyadic354.Certificate.Digits) (node : Dyadic354.Certificate.Node) (d p q S z : ℤ) (hd : 0 < d)
   (hq : 0 < q) (hqp : q < p) (hK : p ≤ 2 ^ ℓ) (hcop : IsCoprime p q)
   (hbounds : ∀ (f : ℤ), Dyadic354.IsSubsetSum old f → 0 ≤ f ∧ f ≤ S)
@@ -150,7 +149,7 @@ info: Dyadic354/Audit.lean:46:0: Dyadic354.NodeRepresentations.node_representati
         (d ∣ z - Dyadic354.Certificate.constant first second third node.mask0 node.thirdMask - f ∨
           d ∣ z - (Dyadic354.Certificate.constant first second third node.mask0 node.thirdMask + 1) - f)) :
   Dyadic354.IsSubsetSum (Dyadic354.Representations.packedWeights n ℓ old first second third d p q) z
-info: Dyadic354/Audit.lean:47:0: Dyadic354.NodeRepresentations.node_window (n ℓ d : ℕ) [NeZero d] (old : Fin (2 * n) → ℤ)
+info: Dyadic354/Audit.lean:48:0: Dyadic354.NodeRepresentations.node_window (n ℓ d : ℕ) [NeZero d] (old : Fin (2 * n) → ℤ)
   (first second third : Dyadic354.Certificate.Digits) (node : Dyadic354.Certificate.Node) (p q S a : ℤ) (k : ℕ)
   (hq : 0 < q) (hqp : q < p) (hK : p ≤ 2 ^ ℓ) (hcop : IsCoprime p q)
   (hbounds : ∀ (f : ℤ), Dyadic354.IsSubsetSum old f → 0 ≤ f ∧ f ≤ S)
@@ -161,7 +160,7 @@ info: Dyadic354/Audit.lean:47:0: Dyadic354.NodeRepresentations.node_window (n �
   ∃ z,
     Dyadic354.IsSubsetSum (Dyadic354.Representations.packedWeights n ℓ old first second third (↑d) p q) z ∧
       a ≤ z ∧ z < a + ↑k
-info: Dyadic354/Audit.lean:48:0: Dyadic354.InitialMesh.certificate_initial_mesh (n ℓ d : ℕ) [NeZero d] (old : Fin (2 * n) → ℤ)
+info: Dyadic354/Audit.lean:49:0: Dyadic354.InitialMesh.certificate_initial_mesh (n ℓ d : ℕ) [NeZero d] (old : Fin (2 * n) → ℤ)
   (first second third : Dyadic354.Certificate.Digits) (p q : ℤ) (hfirst : first ≠ (false, false)) (hq : 0 < q)
   (hqp : q < p) (hpq : p < 2 * q) (hcop : IsCoprime p q) (hpos : ∀ (i : Fin (2 * n)), 0 ≤ old i)
   (hS : ∑ i, old i < ↑d * (p + q)) (hK : Dyadic354.InitialMesh.threshold p q ≤ 2 ^ ℓ) :
@@ -179,7 +178,7 @@ info: Dyadic354/Audit.lean:48:0: Dyadic354.InitialMesh.certificate_initial_mesh 
             2 * (↑k - 1) ≤
           Dyadic354.Mesh.span W hW ∧
         8 * ↑d * 2 ^ ℓ * q + 15 < Dyadic354.Mesh.span W hW
-info: Dyadic354/Audit.lean:49:0: Dyadic354.InitialMesh.prefix_initial_mesh (n ℓ d : ℕ) [NeZero d] (v : ℕ → ℤ)
+info: Dyadic354/Audit.lean:50:0: Dyadic354.InitialMesh.prefix_initial_mesh (n ℓ d : ℕ) [NeZero d] (v : ℕ → ℤ)
   (first second third : Dyadic354.Certificate.Digits) (p q : ℤ) (hfirst : first ≠ (false, false)) (hq : 0 < q)
   (hqp : q < p) (hpq : p < 2 * q) (hcop : IsCoprime p q) (hpos : ∀ (i : Fin (2 * n)), 0 ≤ v ↑i)
   (hS : ∑ i, v ↑i < ↑d * (p + q)) (hK : Dyadic354.InitialMesh.threshold p q ≤ 2 ^ ℓ)
@@ -192,13 +191,13 @@ info: Dyadic354/Audit.lean:49:0: Dyadic354.InitialMesh.prefix_initial_mesh (n �
     ∃ (hW : W.Nonempty),
       W ⊆ Dyadic354.finiteSubsetSums v (Finset.range (2 * (n + ℓ + 3))) ∧
         Dyadic354.Mesh.gap W ≤ k ∧ 8 * ↑d * 2 ^ ℓ * q + 15 < Dyadic354.Mesh.span W hW
-info: Dyadic354/Audit.lean:50:0: Dyadic354.PermanentMesh.permanent_projection (v : ℕ → ℤ) (N : ℕ) (W : Finset ℤ) (hW : W.Nonempty) (k : ℕ)
+info: Dyadic354/Audit.lean:51:0: Dyadic354.PermanentMesh.permanent_projection (v : ℕ → ℤ) (N : ℕ) (W : Finset ℤ) (hW : W.Nonempty) (k : ℕ)
   (hsub : W ⊆ Dyadic354.PermanentMesh.prefixSums v N) (hg : Dyadic354.Mesh.gap W ≤ k)
   (hs : v N ≤ Dyadic354.Mesh.span W hW) (hpos : ∀ (t : ℕ), 0 < v (N + t))
   (hdbl : ∀ (t : ℕ), v (N + (t + 1)) ≤ 2 * v (N + t)) (t m : ℕ) (_hm : NeZero m) :
   ↑m ≤ v (N + t) →
     Dyadic354.CyclicGaps.gap (Dyadic354.Mesh.residues (Dyadic354.PermanentMesh.prefixSums v (N + t)) m) ⋯ ≤ k - 1
-info: Dyadic354/Audit.lean:51:0: Dyadic354.PermanentMesh.certificate_permanent_descent (n ℓ d : ℕ) [NeZero d] (v : ℕ → ℤ)
+info: Dyadic354/Audit.lean:52:0: Dyadic354.PermanentMesh.certificate_permanent_descent (n ℓ d : ℕ) [NeZero d] (v : ℕ → ℤ)
   (first second third : Dyadic354.Certificate.Digits) (p q : ℤ) (hfirst : first ≠ (false, false)) (hq : 0 < q)
   (hqp : q < p) (hpq : p < 2 * q) (hcop : IsCoprime p q) (hpos : ∀ (i : Fin (2 * n)), 0 ≤ v ↑i)
   (hS : ∑ i, v ↑i < ↑d * (p + q)) (hK : Dyadic354.InitialMesh.threshold p q ≤ 2 ^ ℓ)
@@ -213,51 +212,51 @@ info: Dyadic354/Audit.lean:51:0: Dyadic354.PermanentMesh.certificate_permanent_d
       Dyadic354.CyclicGaps.gap (Dyadic354.Mesh.residues (Dyadic354.PermanentMesh.prefixSums v (2 * (n + ℓ + 3) + t)) m)
           ⋯ ≤
         Dyadic354.CyclicGaps.gap (Dyadic354.NodeRepresentations.oldResidues n d old) ⋯ - 1
-info: Dyadic354/Audit.lean:53:0: def Dyadic354.FloorSequence.correction : ℝ → ℕ → ℤ :=
+info: Dyadic354/Audit.lean:54:0: def Dyadic354.FloorSequence.correction : ℝ → ℕ → ℤ :=
 fun α n => Dyadic354.FloorSequence.term α (n + 1) - 2 * Dyadic354.FloorSequence.term α n
-info: Dyadic354/Audit.lean:54:0: def Dyadic354.FloorSequence.bit : ℝ → ℕ → Bool :=
+info: Dyadic354/Audit.lean:55:0: def Dyadic354.FloorSequence.bit : ℝ → ℕ → Bool :=
 fun α n => decide (Dyadic354.FloorSequence.correction α n = 1)
-info: Dyadic354/Audit.lean:55:0: def Dyadic354.ExactBlock.IsEvent : ℝ → ℝ → ℕ → Prop :=
+info: Dyadic354/Audit.lean:56:0: def Dyadic354.ExactBlock.IsEvent : ℝ → ℝ → ℕ → Prop :=
 fun α β t => 0 < t ∧ Dyadic354.ExactBlock.digits α β (t - 1) ≠ (false, false)
-info: Dyadic354/Audit.lean:56:0: def Dyadic354.PairReindex.swapAfter : ℕ → ℕ → ℕ :=
+info: Dyadic354/Audit.lean:57:0: def Dyadic354.PairReindex.swapAfter : ℕ → ℕ → ℕ :=
 fun r j => if j < 2 * r then j else if j % 2 = 0 then j + 1 else j - 1
-info: Dyadic354/Audit.lean:57:0: def Dyadic354.FloorDescent.modulus : ℝ → ℝ → ℕ → ℕ :=
+info: Dyadic354/Audit.lean:58:0: def Dyadic354.FloorDescent.modulus : ℝ → ℝ → ℕ → ℕ :=
 fun α β n => (Dyadic354.FloorSequence.term α n).gcd (Dyadic354.FloorSequence.term β n)
-info: Dyadic354/Audit.lean:58:0: def Dyadic354.FloorDescent.pCoord : ℝ → ℝ → ℕ → ℤ :=
+info: Dyadic354/Audit.lean:59:0: def Dyadic354.FloorDescent.pCoord : ℝ → ℝ → ℕ → ℤ :=
 fun α β n => Dyadic354.FloorSequence.term α n / ↑(Dyadic354.FloorDescent.modulus α β n)
-info: Dyadic354/Audit.lean:59:0: def Dyadic354.FloorDescent.qCoord : ℝ → ℝ → ℕ → ℤ :=
+info: Dyadic354/Audit.lean:60:0: def Dyadic354.FloorDescent.qCoord : ℝ → ℝ → ℕ → ℤ :=
 fun α β n => Dyadic354.FloorSequence.term β n / ↑(Dyadic354.FloorDescent.modulus α β n)
-info: Dyadic354/Audit.lean:60:0: def Dyadic354.FloorDescent.gapAt : ℝ → (β : ℝ) → (n : ℕ) → 0 < Dyadic354.FloorSequence.term β n → ℕ :=
+info: Dyadic354/Audit.lean:61:0: def Dyadic354.FloorDescent.gapAt : ℝ → (β : ℝ) → (n : ℕ) → 0 < Dyadic354.FloorSequence.term β n → ℕ :=
 fun α β n hb =>
   Dyadic354.CyclicGaps.gap
     (Dyadic354.Mesh.residues (Dyadic354.PermanentMesh.prefixSums (Dyadic354.interleave α β 2) (2 * n))
       (Dyadic354.FloorDescent.modulus α β n))
     ⋯
-info: Dyadic354/Audit.lean:61:0: def Dyadic354.BlockLength.growthConstant : ℝ → ℕ :=
+info: Dyadic354/Audit.lean:62:0: def Dyadic354.BlockLength.growthConstant : ℝ → ℕ :=
 fun α => (16 * (Dyadic354.FloorSequence.term α 0 + 1) ^ 2).toNat
-info: Dyadic354/Audit.lean:62:0: Dyadic354.FloorSequence.recurrence (α : ℝ) (n : ℕ) :
+info: Dyadic354/Audit.lean:63:0: Dyadic354.FloorSequence.recurrence (α : ℝ) (n : ℕ) :
   Dyadic354.FloorSequence.term α (n + 1) =
     2 * Dyadic354.FloorSequence.term α n + Dyadic354.Certificate.digit (Dyadic354.FloorSequence.bit α n)
-info: Dyadic354/Audit.lean:63:0: Dyadic354.FloorSequence.normalized_bounds (α β : ℝ) (hb : 0 < Dyadic354.FloorSequence.term β 0)
+info: Dyadic354/Audit.lean:64:0: Dyadic354.FloorSequence.normalized_bounds (α β : ℝ) (hb : 0 < Dyadic354.FloorSequence.term β 0)
   (hba : Dyadic354.FloorSequence.term β 0 < Dyadic354.FloorSequence.term α 0)
   (hab : Dyadic354.FloorSequence.term α 0 < 2 * Dyadic354.FloorSequence.term β 0) (n : ℕ) :
   0 < Dyadic354.FloorSequence.term β n ∧
     Dyadic354.FloorSequence.term β n < Dyadic354.FloorSequence.term α n ∧
       Dyadic354.FloorSequence.term α n < 2 * Dyadic354.FloorSequence.term β n
-info: Dyadic354/Audit.lean:64:0: Dyadic354.FloorSequence.prefix_deficit (α : ℝ) (n : ℕ) :
+info: Dyadic354/Audit.lean:65:0: Dyadic354.FloorSequence.prefix_deficit (α : ℝ) (n : ℕ) :
   Dyadic354.FloorSequence.term α n - ∑ i ∈ Finset.range n, Dyadic354.FloorSequence.term α i =
     Dyadic354.FloorSequence.term α 0 + ∑ i ∈ Finset.range n, Dyadic354.FloorSequence.correction α i
-info: Dyadic354/Audit.lean:65:0: Dyadic354.PairReindex.prefixSums_reindex (v : ℕ → ℤ) (r t : ℕ) :
+info: Dyadic354/Audit.lean:66:0: Dyadic354.PairReindex.prefixSums_reindex (v : ℕ → ℤ) (r t : ℕ) :
   Dyadic354.PermanentMesh.prefixSums (fun j => v (Dyadic354.PairReindex.swapAfter r j)) (2 * t) =
     Dyadic354.PermanentMesh.prefixSums v (2 * t)
-info: Dyadic354/Audit.lean:66:0: Dyadic354.ExactBlock.six_after_exact_block (α β : ℝ) (n ℓ : ℕ) (d p q : ℤ) (hℓ : 0 < ℓ)
+info: Dyadic354/Audit.lean:67:0: Dyadic354.ExactBlock.six_after_exact_block (α β : ℝ) (n ℓ : ℕ) (d p q : ℤ) (hℓ : 0 < ℓ)
   (ha : Dyadic354.FloorSequence.term α n = d * p) (hb : Dyadic354.FloorSequence.term β n = d * q)
   (hza : ∀ (i : ℕ), i + 1 < ℓ → Dyadic354.FloorSequence.bit α (n + i) = false)
   (hzb : ∀ (i : ℕ), i + 1 < ℓ → Dyadic354.FloorSequence.bit β (n + i) = false) (i : Fin 6) :
   Dyadic354.interleave α β 2 (2 * n + 2 * ℓ + ↑i) =
     Dyadic354.Certificate.weights (Dyadic354.ExactBlock.digits α β (n + ℓ - 1))
       (Dyadic354.ExactBlock.digits α β (n + ℓ)) (Dyadic354.ExactBlock.digits α β (n + ℓ + 1)) d (2 ^ ℓ) p q i
-info: Dyadic354/Audit.lean:67:0: Dyadic354.FloorDescent.long_block_descent (α β : ℝ) (n ℓ : ℕ) (hb0 : 0 < Dyadic354.FloorSequence.term β 0)
+info: Dyadic354/Audit.lean:68:0: Dyadic354.FloorDescent.long_block_descent (α β : ℝ) (n ℓ : ℕ) (hb0 : 0 < Dyadic354.FloorSequence.term β 0)
   (hba0 : Dyadic354.FloorSequence.term β 0 < Dyadic354.FloorSequence.term α 0)
   (hab0 : Dyadic354.FloorSequence.term α 0 < 2 * Dyadic354.FloorSequence.term β 0) (hℓ : 0 < ℓ)
   (hzero : ∀ (i : ℕ), i + 1 < ℓ → Dyadic354.ExactBlock.digits α β (n + i) = (false, false))
@@ -265,7 +264,7 @@ info: Dyadic354/Audit.lean:67:0: Dyadic354.FloorDescent.long_block_descent (α �
   (hK :
     Dyadic354.InitialMesh.threshold (Dyadic354.FloorDescent.pCoord α β n) (Dyadic354.FloorDescent.qCoord α β n) ≤ 2 ^ ℓ)
   (t : ℕ) : n + ℓ + 3 ≤ t → Dyadic354.FloorDescent.gapAt α β t ⋯ ≤ Dyadic354.FloorDescent.gapAt α β n ⋯ - 1
-info: Dyadic354/Audit.lean:68:0: Dyadic354.FloorDescent.next_event_descent (α β : ℝ) (n m : ℕ) (hb0 : 0 < Dyadic354.FloorSequence.term β 0)
+info: Dyadic354/Audit.lean:69:0: Dyadic354.FloorDescent.next_event_descent (α β : ℝ) (n m : ℕ) (hb0 : 0 < Dyadic354.FloorSequence.term β 0)
   (hba0 : Dyadic354.FloorSequence.term β 0 < Dyadic354.FloorSequence.term α 0)
   (hab0 : Dyadic354.FloorSequence.term α 0 < 2 * Dyadic354.FloorSequence.term β 0) (hnm : n < m)
   (hno : ∀ (t : ℕ), n < t → t < m → ¬Dyadic354.ExactBlock.IsEvent α β t) (hm : Dyadic354.ExactBlock.IsEvent α β m)
@@ -273,46 +272,46 @@ info: Dyadic354/Audit.lean:68:0: Dyadic354.FloorDescent.next_event_descent (α �
     Dyadic354.InitialMesh.threshold (Dyadic354.FloorDescent.pCoord α β n) (Dyadic354.FloorDescent.qCoord α β n) ≤
       2 ^ (m - n))
   (t : ℕ) : m + 3 ≤ t → Dyadic354.FloorDescent.gapAt α β t ⋯ ≤ Dyadic354.FloorDescent.gapAt α β n ⋯ - 1
-info: Dyadic354/Audit.lean:69:0: Dyadic354.BlockLength.threshold_of_length (α β : ℝ) (n ℓ : ℕ) (hb0 : 0 < Dyadic354.FloorSequence.term β 0)
+info: Dyadic354/Audit.lean:70:0: Dyadic354.BlockLength.threshold_of_length (α β : ℝ) (n ℓ : ℕ) (hb0 : 0 < Dyadic354.FloorSequence.term β 0)
   (hba0 : Dyadic354.FloorSequence.term β 0 < Dyadic354.FloorSequence.term α 0)
   (hab0 : Dyadic354.FloorSequence.term α 0 < 2 * Dyadic354.FloorSequence.term β 0)
   (hℓ : 2 * n + Dyadic354.BlockLength.growthConstant α ≤ ℓ) :
   Dyadic354.InitialMesh.threshold (Dyadic354.FloorDescent.pCoord α β n) (Dyadic354.FloorDescent.qCoord α β n) ≤ 2 ^ ℓ
-info: Dyadic354/Audit.lean:70:0: Dyadic354.BlockLength.next_event_length_descent (α β : ℝ) (n m : ℕ) (hb0 : 0 < Dyadic354.FloorSequence.term β 0)
+info: Dyadic354/Audit.lean:71:0: Dyadic354.BlockLength.next_event_length_descent (α β : ℝ) (n m : ℕ) (hb0 : 0 < Dyadic354.FloorSequence.term β 0)
   (hba0 : Dyadic354.FloorSequence.term β 0 < Dyadic354.FloorSequence.term α 0)
   (hab0 : Dyadic354.FloorSequence.term α 0 < 2 * Dyadic354.FloorSequence.term β 0) (hnm : n < m)
   (hno : ∀ (t : ℕ), n < t → t < m → ¬Dyadic354.ExactBlock.IsEvent α β t) (hm : Dyadic354.ExactBlock.IsEvent α β m)
   (hlen : 2 * n + Dyadic354.BlockLength.growthConstant α ≤ m - n) (t : ℕ) :
   m + 3 ≤ t → Dyadic354.FloorDescent.gapAt α β t ⋯ ≤ Dyadic354.FloorDescent.gapAt α β n ⋯ - 1
-info: Dyadic354/Audit.lean:72:0: def Dyadic354.EventGaps.QualifyingGap : ℝ → ℝ → ℕ → ℕ → Prop :=
+info: Dyadic354/Audit.lean:73:0: def Dyadic354.EventGaps.QualifyingGap : ℝ → ℝ → ℕ → ℕ → Prop :=
 fun α β n m =>
   n < m ∧
     (∀ (t : ℕ), n < t → t < m → ¬Dyadic354.ExactBlock.IsEvent α β t) ∧
       Dyadic354.ExactBlock.IsEvent α β m ∧ 2 * n + Dyadic354.BlockLength.growthConstant α ≤ m - n
-info: Dyadic354/Audit.lean:73:0: def Dyadic354.EventInfinitude.nextEvent : (α β : ℝ) → Irrational (α / β) → ℕ → ℕ :=
+info: Dyadic354/Audit.lean:74:0: def Dyadic354.EventInfinitude.nextEvent : (α β : ℝ) → Irrational (α / β) → ℕ → ℕ :=
 fun α β hirr n => Nat.find ⋯
-info: Dyadic354/Audit.lean:74:0: Dyadic354.UnitMesh.unit_mesh_half_line (v : ℕ → ℤ) (N : ℕ) (W : Finset ℤ) (hW : W.Nonempty)
+info: Dyadic354/Audit.lean:75:0: Dyadic354.UnitMesh.unit_mesh_half_line (v : ℕ → ℤ) (N : ℕ) (W : Finset ℤ) (hW : W.Nonempty)
   (hsub : W ⊆ Dyadic354.PermanentMesh.prefixSums v N) (hg : Dyadic354.Mesh.gap W ≤ 1)
   (hs : v N ≤ Dyadic354.Mesh.span W hW) (hpos : ∀ (t : ℕ), 0 < v (N + t))
   (hdbl : ∀ (t : ℕ), v (N + (t + 1)) ≤ 2 * v (N + t)) (z : ℤ) : W.min' hW ≤ z → Dyadic354.IsSubsetSum v z
-info: Dyadic354/Audit.lean:75:0: Dyadic354.UnitMesh.unit_mesh_complete (v : ℕ → ℤ) (N : ℕ) (W : Finset ℤ) (hW : W.Nonempty)
+info: Dyadic354/Audit.lean:76:0: Dyadic354.UnitMesh.unit_mesh_complete (v : ℕ → ℤ) (N : ℕ) (W : Finset ℤ) (hW : W.Nonempty)
   (hsub : W ⊆ Dyadic354.PermanentMesh.prefixSums v N) (hg : Dyadic354.Mesh.gap W ≤ 1)
   (hs : v N ≤ Dyadic354.Mesh.span W hW) (hpos : ∀ (t : ℕ), 0 < v (N + t))
   (hdbl : ∀ (t : ℕ), v (N + (t + 1)) ≤ 2 * v (N + t)) : Dyadic354.IndexedComplete v
-info: Dyadic354/Audit.lean:76:0: Dyadic354.LowGap.next_event_length_complete (α β : ℝ) (n m : ℕ) (hb0 : 0 < Dyadic354.FloorSequence.term β 0)
+info: Dyadic354/Audit.lean:77:0: Dyadic354.LowGap.next_event_length_complete (α β : ℝ) (n m : ℕ) (hb0 : 0 < Dyadic354.FloorSequence.term β 0)
   (hba0 : Dyadic354.FloorSequence.term β 0 < Dyadic354.FloorSequence.term α 0)
   (hab0 : Dyadic354.FloorSequence.term α 0 < 2 * Dyadic354.FloorSequence.term β 0) (hnm : n < m)
   (hno : ∀ (t : ℕ), n < t → t < m → ¬Dyadic354.ExactBlock.IsEvent α β t) (hm : Dyadic354.ExactBlock.IsEvent α β m)
   (hlen : 2 * n + Dyadic354.BlockLength.growthConstant α ≤ m - n) (hlow : Dyadic354.FloorDescent.gapAt α β n ⋯ ≤ 1) :
   Dyadic354.IndexedComplete (Dyadic354.interleave α β 2)
-info: Dyadic354/Audit.lean:77:0: Dyadic354.EventGaps.eventually_not_of_eventual_descent (g : ℕ → ℕ) (Q : ℕ → Prop)
+info: Dyadic354/Audit.lean:78:0: Dyadic354.EventGaps.eventually_not_of_eventual_descent (g : ℕ → ℕ) (Q : ℕ → Prop)
   (hd : ∀ (n : ℕ), Q n → ∃ B, ∀ (t : ℕ), B ≤ t → Q t → g t < g n) : ∃ N, ∀ (n : ℕ), N ≤ n → ¬Q n
-info: Dyadic354/Audit.lean:78:0: Dyadic354.EventGaps.unbounded_qualifying_complete (α β : ℝ) (hb0 : 0 < Dyadic354.FloorSequence.term β 0)
+info: Dyadic354/Audit.lean:79:0: Dyadic354.EventGaps.unbounded_qualifying_complete (α β : ℝ) (hb0 : 0 < Dyadic354.FloorSequence.term β 0)
   (hba0 : Dyadic354.FloorSequence.term β 0 < Dyadic354.FloorSequence.term α 0)
   (hab0 : Dyadic354.FloorSequence.term α 0 < 2 * Dyadic354.FloorSequence.term β 0)
   (hQ : ∀ (N : ℕ), ∃ n m, N ≤ n ∧ Dyadic354.EventGaps.QualifyingGap α β n m) :
   Dyadic354.IndexedComplete (Dyadic354.interleave α β 2)
-info: Dyadic354/Audit.lean:79:0: Dyadic354.EventGaps.incomplete_event_step_bound (α β : ℝ) (hb0 : 0 < Dyadic354.FloorSequence.term β 0)
+info: Dyadic354/Audit.lean:80:0: Dyadic354.EventGaps.incomplete_event_step_bound (α β : ℝ) (hb0 : 0 < Dyadic354.FloorSequence.term β 0)
   (hba0 : Dyadic354.FloorSequence.term β 0 < Dyadic354.FloorSequence.term α 0)
   (hab0 : Dyadic354.FloorSequence.term α 0 < 2 * Dyadic354.FloorSequence.term β 0)
   (hinc : ¬Dyadic354.IndexedComplete (Dyadic354.interleave α β 2)) :
@@ -323,7 +322,7 @@ info: Dyadic354/Audit.lean:79:0: Dyadic354.EventGaps.incomplete_event_step_bound
           n < m →
             (∀ (t : ℕ), n < t → t < m → ¬Dyadic354.ExactBlock.IsEvent α β t) →
               Dyadic354.ExactBlock.IsEvent α β m → m < 3 * n + Dyadic354.BlockLength.growthConstant α
-info: Dyadic354/Audit.lean:80:0: Dyadic354.EventGaps.incomplete_event_factor_four (α β : ℝ) (hb0 : 0 < Dyadic354.FloorSequence.term β 0)
+info: Dyadic354/Audit.lean:81:0: Dyadic354.EventGaps.incomplete_event_factor_four (α β : ℝ) (hb0 : 0 < Dyadic354.FloorSequence.term β 0)
   (hba0 : Dyadic354.FloorSequence.term β 0 < Dyadic354.FloorSequence.term α 0)
   (hab0 : Dyadic354.FloorSequence.term α 0 < 2 * Dyadic354.FloorSequence.term β 0)
   (hinc : ¬Dyadic354.IndexedComplete (Dyadic354.interleave α β 2)) :
@@ -334,283 +333,283 @@ info: Dyadic354/Audit.lean:80:0: Dyadic354.EventGaps.incomplete_event_factor_fou
           n < m →
             (∀ (t : ℕ), n < t → t < m → ¬Dyadic354.ExactBlock.IsEvent α β t) →
               Dyadic354.ExactBlock.IsEvent α β m → m ≤ 4 * n
-info: Dyadic354/Audit.lean:81:0: Dyadic354.EventInfinitude.zero_tail_dyadic (α : ℝ) (N : ℕ)
+info: Dyadic354/Audit.lean:82:0: Dyadic354.EventInfinitude.zero_tail_dyadic (α : ℝ) (N : ℕ)
   (hz : ∀ (i : ℕ), Dyadic354.FloorSequence.bit α (N + i) = false) : α = ↑(Dyadic354.FloorSequence.term α N) / 2 ^ N
-info: Dyadic354/Audit.lean:82:0: Dyadic354.EventInfinitude.events_unbounded (α β : ℝ) (hirr : Irrational (α / β)) (N : ℕ) :
+info: Dyadic354/Audit.lean:83:0: Dyadic354.EventInfinitude.events_unbounded (α β : ℝ) (hirr : Irrational (α / β)) (N : ℕ) :
   ∃ t, N < t ∧ Dyadic354.ExactBlock.IsEvent α β t
-info: Dyadic354/Audit.lean:83:0: Dyadic354.EventInfinitude.incomplete_nextEvent_factor_four (α β : ℝ) (hirr : Irrational (α / β))
+info: Dyadic354/Audit.lean:84:0: Dyadic354.EventInfinitude.incomplete_nextEvent_factor_four (α β : ℝ) (hirr : Irrational (α / β))
   (hb0 : 0 < Dyadic354.FloorSequence.term β 0)
   (hba0 : Dyadic354.FloorSequence.term β 0 < Dyadic354.FloorSequence.term α 0)
   (hab0 : Dyadic354.FloorSequence.term α 0 < 2 * Dyadic354.FloorSequence.term β 0)
   (hinc : ¬Dyadic354.IndexedComplete (Dyadic354.interleave α β 2)) :
   ∃ N, ∀ (n : ℕ), N ≤ n → Dyadic354.EventInfinitude.nextEvent α β hirr n ≤ 4 * n
-info: Dyadic354/Audit.lean:85:0: def Dyadic354.PrefixBounds.total : ℝ → ℝ → ℕ → ℤ :=
+info: Dyadic354/Audit.lean:86:0: def Dyadic354.PrefixBounds.total : ℝ → ℝ → ℕ → ℤ :=
 fun α β n => ∑ i ∈ Finset.range (2 * n), Dyadic354.interleave α β 2 i
-info: Dyadic354/Audit.lean:86:0: def Dyadic354.PrefixBounds.period : ℝ → ℝ → ℕ → ℤ :=
+info: Dyadic354/Audit.lean:87:0: def Dyadic354.PrefixBounds.period : ℝ → ℝ → ℕ → ℤ :=
 fun α β n => Dyadic354.FloorSequence.term α n + Dyadic354.FloorSequence.term β n
-info: Dyadic354/Audit.lean:87:0: @[reducible] def Dyadic354.FECounting.values : ℝ → ℝ → ℕ → Finset ℤ :=
+info: Dyadic354/Audit.lean:88:0: @[reducible] def Dyadic354.FECounting.values : ℝ → ℝ → ℕ → Finset ℤ :=
 fun α β n => Dyadic354.PermanentMesh.prefixSums (Dyadic354.interleave α β 2) (2 * n)
-info: Dyadic354/Audit.lean:88:0: def Dyadic354.FECounting.digitSum : ℝ → ℝ → ℕ → ℤ :=
+info: Dyadic354/Audit.lean:89:0: def Dyadic354.FECounting.digitSum : ℝ → ℝ → ℕ → ℤ :=
 fun α β n => Dyadic354.FloorSequence.correction α n + Dyadic354.FloorSequence.correction β n
-info: Dyadic354/Audit.lean:89:0: def Dyadic354.FECounting.padding : ℝ → ℝ → ℕ → ℤ :=
+info: Dyadic354/Audit.lean:90:0: def Dyadic354.FECounting.padding : ℝ → ℝ → ℕ → ℤ :=
 fun α β n => Dyadic354.PrefixBounds.period α β n - Dyadic354.PrefixBounds.total α β n
-info: Dyadic354/Audit.lean:90:0: def Dyadic354.FECounting.deficit : ℝ → ℝ → ℕ → ℤ :=
+info: Dyadic354/Audit.lean:91:0: def Dyadic354.FECounting.deficit : ℝ → ℝ → ℕ → ℤ :=
 fun α β n => Dyadic354.PrefixBounds.period α β n - ↑(Dyadic354.FECounting.values α β n).card
-info: Dyadic354/Audit.lean:91:0: def Dyadic354.FECounting.growth : ℝ → ℝ → ℕ → ℤ :=
+info: Dyadic354/Audit.lean:92:0: def Dyadic354.FECounting.growth : ℝ → ℝ → ℕ → ℤ :=
 fun α β n => ↑(Dyadic354.FECounting.values α β (n + 1)).card - 2 * ↑(Dyadic354.FECounting.values α β n).card
-info: Dyadic354/Audit.lean:92:0: def Dyadic354.FECounting.holes : ℝ → ℝ → ℕ → Finset ℤ :=
+info: Dyadic354/Audit.lean:93:0: def Dyadic354.FECounting.holes : ℝ → ℝ → ℕ → Finset ℤ :=
 fun α β n => Finset.Ico 0 (Dyadic354.PrefixBounds.period α β n) \ Dyadic354.FECounting.values α β n
-info: Dyadic354/Audit.lean:93:0: def Dyadic354.FECounting.newValues : ℝ → ℝ → ℕ → Finset ℤ :=
+info: Dyadic354/Audit.lean:94:0: def Dyadic354.FECounting.newValues : ℝ → ℝ → ℕ → Finset ℤ :=
 fun α β n =>
   Dyadic354.FECounting.values α β (n + 1) \
     (Dyadic354.FECounting.values α β n ∪
       Dyadic354.Mesh.translate (Dyadic354.FECounting.values α β n) (Dyadic354.PrefixBounds.period α β n))
-info: Dyadic354/Audit.lean:94:0: Dyadic354.PrefixMesh.prefix_gap_bound (v : ℕ → ℤ) (hp : ∀ (i : ℕ), 0 < v i) (hd : ∀ (i : ℕ), v (i + 1) ≤ 2 * v i)
+info: Dyadic354/Audit.lean:95:0: Dyadic354.PrefixMesh.prefix_gap_bound (v : ℕ → ℤ) (hp : ∀ (i : ℕ), 0 < v i) (hd : ∀ (i : ℕ), v (i + 1) ≤ 2 * v i)
   (n : ℕ) : Dyadic354.Mesh.gap (Dyadic354.PermanentMesh.prefixSums v n) ≤ (v 0).toNat
-info: Dyadic354/Audit.lean:95:0: Dyadic354.PrefixBounds.total_ge_first (α β : ℝ) (hb0 : 0 < Dyadic354.FloorSequence.term β 0)
+info: Dyadic354/Audit.lean:96:0: Dyadic354.PrefixBounds.total_ge_first (α β : ℝ) (hb0 : 0 < Dyadic354.FloorSequence.term β 0)
   (hba0 : Dyadic354.FloorSequence.term β 0 < Dyadic354.FloorSequence.term α 0)
   (hab0 : Dyadic354.FloorSequence.term α 0 < 2 * Dyadic354.FloorSequence.term β 0) (n : ℕ) (hn : 2 ≤ n) :
   Dyadic354.FloorSequence.term α n ≤ Dyadic354.PrefixBounds.total α β n
-info: Dyadic354/Audit.lean:96:0: Dyadic354.PrefixBounds.uniform_cyclic_gap (α β : ℝ) (hb0 : 0 < Dyadic354.FloorSequence.term β 0)
+info: Dyadic354/Audit.lean:97:0: Dyadic354.PrefixBounds.uniform_cyclic_gap (α β : ℝ) (hb0 : 0 < Dyadic354.FloorSequence.term β 0)
   (hba0 : Dyadic354.FloorSequence.term β 0 < Dyadic354.FloorSequence.term α 0)
   (hab0 : Dyadic354.FloorSequence.term α 0 < 2 * Dyadic354.FloorSequence.term β 0) (n : ℕ) (hn : 2 ≤ n) :
   Dyadic354.FloorDescent.gapAt α β n ⋯ ≤ (Dyadic354.FloorSequence.term β 0).toNat - 1
-info: Dyadic354/Audit.lean:97:0: Dyadic354.PrefixBounds.internal_missing_run_bound (α β : ℝ) (hb0 : 0 < Dyadic354.FloorSequence.term β 0)
+info: Dyadic354/Audit.lean:98:0: Dyadic354.PrefixBounds.internal_missing_run_bound (α β : ℝ) (hb0 : 0 < Dyadic354.FloorSequence.term β 0)
   (hba0 : Dyadic354.FloorSequence.term β 0 < Dyadic354.FloorSequence.term α 0)
   (hab0 : Dyadic354.FloorSequence.term α 0 < 2 * Dyadic354.FloorSequence.term β 0) (n : ℕ) (a : ℤ) (r : ℕ) (ha : 0 ≤ a)
   (hr : a + ↑r - 1 ≤ Dyadic354.PrefixBounds.total α β n)
   (hmiss : ∀ i < r, a + ↑i ∉ Dyadic354.PermanentMesh.prefixSums (Dyadic354.interleave α β 2) (2 * n)) :
   r ≤ (Dyadic354.FloorSequence.term β 0).toNat - 1
-info: Dyadic354/Audit.lean:98:0: Dyadic354.FECounting.values_step (α β : ℝ) (n : ℕ) :
+info: Dyadic354/Audit.lean:99:0: Dyadic354.FECounting.values_step (α β : ℝ) (n : ℕ) :
   Dyadic354.FECounting.values α β (n + 1) =
     Dyadic354.FECounting.values α β n ∪
           Dyadic354.Mesh.translate (Dyadic354.FECounting.values α β n) (Dyadic354.FloorSequence.term α n) ∪
         Dyadic354.Mesh.translate (Dyadic354.FECounting.values α β n) (Dyadic354.FloorSequence.term β n) ∪
       Dyadic354.Mesh.translate (Dyadic354.FECounting.values α β n) (Dyadic354.PrefixBounds.period α β n)
-info: Dyadic354/Audit.lean:99:0: Dyadic354.FECounting.basic_copies_disjoint (α β : ℝ) (hb0 : 0 < Dyadic354.FloorSequence.term β 0)
+info: Dyadic354/Audit.lean:100:0: Dyadic354.FECounting.basic_copies_disjoint (α β : ℝ) (hb0 : 0 < Dyadic354.FloorSequence.term β 0)
   (hba0 : Dyadic354.FloorSequence.term β 0 < Dyadic354.FloorSequence.term α 0)
   (hab0 : Dyadic354.FloorSequence.term α 0 < 2 * Dyadic354.FloorSequence.term β 0) (n : ℕ) :
   Disjoint (Dyadic354.FECounting.values α β n)
     (Dyadic354.Mesh.translate (Dyadic354.FECounting.values α β n) (Dyadic354.PrefixBounds.period α β n))
-info: Dyadic354/Audit.lean:100:0: Dyadic354.FECounting.growth_nonneg (α β : ℝ) (hb0 : 0 < Dyadic354.FloorSequence.term β 0)
+info: Dyadic354/Audit.lean:101:0: Dyadic354.FECounting.growth_nonneg (α β : ℝ) (hb0 : 0 < Dyadic354.FloorSequence.term β 0)
   (hba0 : Dyadic354.FloorSequence.term β 0 < Dyadic354.FloorSequence.term α 0)
   (hab0 : Dyadic354.FloorSequence.term α 0 < 2 * Dyadic354.FloorSequence.term β 0) (n : ℕ) :
   0 ≤ Dyadic354.FECounting.growth α β n
-info: Dyadic354/Audit.lean:101:0: Dyadic354.FECounting.deficit_step (α β : ℝ) (n : ℕ) :
+info: Dyadic354/Audit.lean:102:0: Dyadic354.FECounting.deficit_step (α β : ℝ) (n : ℕ) :
   Dyadic354.FECounting.deficit α β (n + 1) =
     2 * Dyadic354.FECounting.deficit α β n + Dyadic354.FECounting.digitSum α β n - Dyadic354.FECounting.growth α β n
-info: Dyadic354/Audit.lean:102:0: Dyadic354.FECounting.padding_identity (α β : ℝ) (n : ℕ) :
+info: Dyadic354/Audit.lean:103:0: Dyadic354.FECounting.padding_identity (α β : ℝ) (n : ℕ) :
   Dyadic354.FECounting.padding α β n =
     Dyadic354.FloorSequence.term α 0 + Dyadic354.FloorSequence.term β 0 +
       ∑ i ∈ Finset.range n, Dyadic354.FECounting.digitSum α β i
-info: Dyadic354/Audit.lean:103:0: Dyadic354.FECounting.padding_bound (α β : ℝ)
+info: Dyadic354/Audit.lean:104:0: Dyadic354.FECounting.padding_bound (α β : ℝ)
   (hba0 : Dyadic354.FloorSequence.term β 0 < Dyadic354.FloorSequence.term α 0)
   (hab0 : Dyadic354.FloorSequence.term α 0 < 2 * Dyadic354.FloorSequence.term β 0) (n : ℕ) :
   0 < Dyadic354.FECounting.padding α β n ∧
     Dyadic354.FECounting.padding α β n < 3 * Dyadic354.FloorSequence.term β 0 + 2 * ↑n
-info: Dyadic354/Audit.lean:104:0: Dyadic354.FECounting.deficit_eq_holes (α β : ℝ) (hb0 : 0 < Dyadic354.FloorSequence.term β 0)
+info: Dyadic354/Audit.lean:105:0: Dyadic354.FECounting.deficit_eq_holes (α β : ℝ) (hb0 : 0 < Dyadic354.FloorSequence.term β 0)
   (hba0 : Dyadic354.FloorSequence.term β 0 < Dyadic354.FloorSequence.term α 0)
   (hab0 : Dyadic354.FloorSequence.term α 0 < 2 * Dyadic354.FloorSequence.term β 0) (n : ℕ) :
   Dyadic354.FECounting.deficit α β n = ↑(Dyadic354.FECounting.holes α β n).card
-info: Dyadic354/Audit.lean:105:0: Dyadic354.FECounting.growth_eq_newValues (α β : ℝ) (hb0 : 0 < Dyadic354.FloorSequence.term β 0)
+info: Dyadic354/Audit.lean:106:0: Dyadic354.FECounting.growth_eq_newValues (α β : ℝ) (hb0 : 0 < Dyadic354.FloorSequence.term β 0)
   (hba0 : Dyadic354.FloorSequence.term β 0 < Dyadic354.FloorSequence.term α 0)
   (hab0 : Dyadic354.FloorSequence.term α 0 < 2 * Dyadic354.FloorSequence.term β 0) (n : ℕ) :
   Dyadic354.FECounting.growth α β n = ↑(Dyadic354.FECounting.newValues α β n).card
-info: Dyadic354/Audit.lean:107:0: 'Dyadic354.mem_finiteSubsetSums' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:108:0: 'Dyadic354.Linear.eval_add' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:109:0: 'Dyadic354.Linear.eval_sub' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:110:0: 'Dyadic354.Linear.cone_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:111:0: 'Dyadic354.Linear.nonneg_on_cone' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:112:0: 'Dyadic354.Linear.positive_on_cone' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:113:0: 'Dyadic354.indexedComplete_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:114:0: 'Dyadic354.Certificate.offset_eq_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:115:0: 'Dyadic354.Certificate.offset_isSubsetSum' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:116:0: 'Dyadic354.Certificate.weights_explicit' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:117:0: 'Dyadic354.Certificate.endpoints_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:118:0: 'Dyadic354.Certificate.node_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:119:0: 'Dyadic354.Certificate.interval_chain_covers' depends on axioms: [propext, Quot.sound]
-info: Dyadic354/Audit.lean:120:0: 'Dyadic354.Certificate.chain_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:121:0: 'Dyadic354.Certificate.checkCertificate_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:122:0: 'Dyadic354.Certificate.certificate_checked' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:123:0: 'Dyadic354.Certificate.certificate_correct' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:124:0: 'Dyadic354.Certificate.all_templates_checked' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:125:0: 'Dyadic354.Certificate.all_templates_correct' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:126:0: 'Dyadic354.Certificate.certificate_counts' depends on axioms: [propext]
-info: Dyadic354/Audit.lean:128:0: 'Dyadic354.CyclicGaps.gapBound_mono' does not depend on any axioms
-info: Dyadic354/Audit.lean:129:0: 'Dyadic354.CyclicGaps.not_missingRun_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:130:0: 'Dyadic354.CyclicGaps.gapBound_erode_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:131:0: 'Dyadic354.CyclicGaps.modulus_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:132:0: 'Dyadic354.CyclicGaps.gap_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:133:0: 'Dyadic354.CyclicGaps.gap_le_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:134:0: 'Dyadic354.CyclicGaps.gap_lt_modulus' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:135:0: 'Dyadic354.CyclicGaps.missingRun_iff_le_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:136:0: 'Dyadic354.CyclicGaps.erode_nonempty' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:137:0: 'Dyadic354.CyclicGaps.lift_erode' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:138:0: 'Dyadic354.CyclicGaps.erosion_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:139:0: 'Dyadic354.CyclicGaps.gap_eq_zero_iff_full' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:140:0: 'Dyadic354.CyclicGaps.gap_modulus_one' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:141:0: 'Dyadic354.Mesh.gap_le_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:142:0: 'Dyadic354.Mesh.gap_empty' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:143:0: 'Dyadic354.Mesh.gap_singleton' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:144:0: 'Dyadic354.Mesh.encloses_min_max' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:145:0: 'Dyadic354.Mesh.span_of_encloses' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:146:0: 'Dyadic354.Mesh.span_singleton' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:147:0: 'Dyadic354.Mesh.meshOn_gap_le' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:148:0: 'Dyadic354.Mesh.meshOn_of_gap_le' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:149:0: 'Dyadic354.Mesh.meshOn_iff_gap_le' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:150:0: 'Dyadic354.Mesh.gap_positive_of_encloses' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:151:0: 'Dyadic354.Mesh.meshOn_translate_union' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:152:0: 'Dyadic354.Mesh.translate_union_nonempty' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:153:0: 'Dyadic354.Mesh.translate_union_gap_span' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:154:0: 'Dyadic354.Mesh.residues_nonempty' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:155:0: 'Dyadic354.Mesh.projection_window_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:156:0: 'Dyadic354.Mesh.projection_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:157:0: 'Dyadic354.Mesh.extend_nonempty' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:158:0: 'Dyadic354.Mesh.propagate_iterate' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:160:0: 'Dyadic354.CoefficientInterval.lower_interval' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:161:0: 'Dyadic354.CoefficientInterval.bounded_interval' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:162:0: 'Dyadic354.CoefficientInterval.binary_sum_exists' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:163:0: 'Dyadic354.Representations.subsetSum_disjSum' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:164:0: 'Dyadic354.Representations.subsetSum_embed' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:165:0: 'Dyadic354.Representations.binary_scaled' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:166:0: 'Dyadic354.Representations.block_interval' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:167:0: 'Dyadic354.Representations.position_injective' depends on axioms: [propext, Quot.sound]
-info: Dyadic354/Audit.lean:168:0: 'Dyadic354.Representations.position_lt' depends on axioms: [propext, Quot.sound]
-info: Dyadic354/Audit.lean:169:0: 'Dyadic354.Representations.packed_weights_match' depends on axioms: [propext]
-info: Dyadic354/Audit.lean:170:0: 'Dyadic354.Representations.packed_to_prefix' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:171:0: 'Dyadic354.Representations.prefix_block_offset' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:172:0: 'Dyadic354.NodeRepresentations.residual_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:173:0: 'Dyadic354.NodeRepresentations.old_sum_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:174:0: 'Dyadic354.NodeRepresentations.mask_representation' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:175:0: 'Dyadic354.NodeRepresentations.node_representation' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:176:0: 'Dyadic354.NodeRepresentations.oldResidues_nonempty' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:177:0: 'Dyadic354.NodeRepresentations.lift_oldResidues_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:178:0: 'Dyadic354.NodeRepresentations.node_window' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:179:0: 'Dyadic354.InitialMesh.margin_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:180:0: 'Dyadic354.InitialMesh.trimmed_chain_covers' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:181:0: 'Dyadic354.InitialMesh.chain_windows' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:182:0: 'Dyadic354.InitialMesh.mesh_from_windows' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:183:0: 'Dyadic354.InitialMesh.span_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:184:0: 'Dyadic354.InitialMesh.certificate_initial_mesh' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:185:0: 'Dyadic354.InitialMesh.prefix_initial_mesh' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:186:0: 'Dyadic354.PermanentMesh.prefix_nonempty' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:187:0: 'Dyadic354.PermanentMesh.extend_step_subset' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:188:0: 'Dyadic354.PermanentMesh.extend_subset_prefix' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:189:0: 'Dyadic354.PermanentMesh.gap_of_subset' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:190:0: 'Dyadic354.PermanentMesh.permanent_projection' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:191:0: 'Dyadic354.PermanentMesh.certificate_permanent_descent' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:193:0: 'Dyadic354.FloorSequence.correction_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:194:0: 'Dyadic354.FloorSequence.digit_bit' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:195:0: 'Dyadic354.FloorSequence.recurrence' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:196:0: 'Dyadic354.FloorSequence.next_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:197:0: 'Dyadic354.FloorSequence.normalized_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:198:0: 'Dyadic354.FloorSequence.prefix_deficit' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:199:0: 'Dyadic354.FloorSequence.prefix_sum_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:200:0: 'Dyadic354.FloorSequence.interleave_even' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:201:0: 'Dyadic354.FloorSequence.interleave_odd' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:202:0: 'Dyadic354.FloorSequence.paired_prefix_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:203:0: 'Dyadic354.FloorSequence.paired_prefix_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:204:0: 'Dyadic354.PairReindex.swapAfter_before' depends on axioms: [propext]
-info: Dyadic354/Audit.lean:205:0: 'Dyadic354.PairReindex.swapAfter_even' depends on axioms: [propext, Quot.sound]
-info: Dyadic354/Audit.lean:206:0: 'Dyadic354.PairReindex.swapAfter_odd' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:207:0: 'Dyadic354.PairReindex.index_cases' depends on axioms: [propext, Quot.sound]
-info: Dyadic354/Audit.lean:208:0: 'Dyadic354.PairReindex.swapAfter_involutive' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:209:0: 'Dyadic354.PairReindex.swapAfter_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:210:0: 'Dyadic354.PairReindex.swapAfter_lt_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:211:0: 'Dyadic354.PairReindex.prefixSums_reindex_subset' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:212:0: 'Dyadic354.PairReindex.prefixSums_reindex' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:213:0: 'Dyadic354.PairReindex.sortedTail_even' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:214:0: 'Dyadic354.PairReindex.sortedTail_odd' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:215:0: 'Dyadic354.PairReindex.sortedTail_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:216:0: 'Dyadic354.PairReindex.sortedTail_doubling' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:217:0: 'Dyadic354.ExactBlock.no_events_zero_digits' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:218:0: 'Dyadic354.ExactBlock.exact_block' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:219:0: 'Dyadic354.ExactBlock.after_exact_block' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:220:0: 'Dyadic354.ExactBlock.interleave_block' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:221:0: 'Dyadic354.ExactBlock.three_pairs' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:222:0: 'Dyadic354.ExactBlock.six_after_exact_block' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:223:0: 'Dyadic354.ExactBlock.next_small_weight_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:224:0: 'Dyadic354.FloorDescent.fin_prefix_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:225:0: 'Dyadic354.FloorDescent.oldResidues_prefix' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:226:0: 'Dyadic354.FloorDescent.modulus_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:227:0: 'Dyadic354.FloorDescent.gcd_coordinates' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:228:0: 'Dyadic354.FloorDescent.interleave_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:229:0: 'Dyadic354.FloorDescent.long_block_descent' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:230:0: 'Dyadic354.FloorDescent.next_event_descent' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:231:0: 'Dyadic354.BlockLength.threshold_le_square' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:232:0: 'Dyadic354.BlockLength.floor_upper' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:233:0: 'Dyadic354.BlockLength.coordinate_upper' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:234:0: 'Dyadic354.BlockLength.growthConstant_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:235:0: 'Dyadic354.BlockLength.threshold_of_length' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:236:0: 'Dyadic354.BlockLength.next_event_length_descent' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:238:0: 'Dyadic354.PairReindex.isSubsetSum_reindex_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:239:0: 'Dyadic354.PairReindex.indexedComplete_reindex_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:240:0: 'Dyadic354.FloorDescent.long_block_mesh' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:241:0: 'Dyadic354.UnitMesh.mem_extend' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:242:0: 'Dyadic354.UnitMesh.add_sum_mem_extend' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:243:0: 'Dyadic354.UnitMesh.positive_sum_ge_length' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:244:0: 'Dyadic354.UnitMesh.unit_mesh_half_line' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:245:0: 'Dyadic354.UnitMesh.unit_mesh_complete' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:246:0: 'Dyadic354.LowGap.long_block_complete' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:247:0: 'Dyadic354.LowGap.next_event_length_complete' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:248:0: 'Dyadic354.EventGaps.eventually_not_of_eventual_descent' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:249:0: 'Dyadic354.EventGaps.incomplete_eventually_no_qualifying' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:250:0: 'Dyadic354.EventGaps.unbounded_qualifying_complete' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:251:0: 'Dyadic354.EventGaps.incomplete_event_step_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:252:0: 'Dyadic354.EventGaps.incomplete_event_factor_four' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:253:0: 'Dyadic354.EventInfinitude.zero_tail_dyadic' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:254:0: 'Dyadic354.EventInfinitude.no_events_tail_digits' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:255:0: 'Dyadic354.EventInfinitude.events_unbounded' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:256:0: 'Dyadic354.EventInfinitude.nextEvent_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:257:0: 'Dyadic354.EventInfinitude.no_event_before_next' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:258:0: 'Dyadic354.EventInfinitude.incomplete_nextEvent_factor_four' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:260:0: 'Dyadic354.PrefixMesh.translate_union_mesh' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:261:0: 'Dyadic354.PrefixMesh.prefix_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:262:0: 'Dyadic354.PrefixMesh.prefix_step' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:263:0: 'Dyadic354.PrefixMesh.prefix_encloses' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:264:0: 'Dyadic354.PrefixMesh.prefix_span' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:265:0: 'Dyadic354.PrefixMesh.next_weight_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:266:0: 'Dyadic354.PrefixMesh.prefix_gap_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:267:0: 'Dyadic354.PrefixMesh.internal_run_bound' depends on axioms: [propext, Quot.sound]
-info: Dyadic354/Audit.lean:268:0: 'Dyadic354.PrefixBounds.total_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:269:0: 'Dyadic354.PrefixBounds.total_step' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:270:0: 'Dyadic354.PrefixBounds.actual_prefix_encloses' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:271:0: 'Dyadic354.PrefixBounds.actual_prefix_span' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:272:0: 'Dyadic354.PrefixBounds.actual_prefix_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:273:0: 'Dyadic354.PrefixBounds.total_ge_first' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:274:0: 'Dyadic354.PrefixBounds.uniform_cyclic_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:275:0: 'Dyadic354.PrefixBounds.internal_missing_run_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:276:0: 'Dyadic354.FECounting.translate_translate' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:277:0: 'Dyadic354.FECounting.values_step' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:278:0: 'Dyadic354.FECounting.period_step' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:279:0: 'Dyadic354.FECounting.digitSum_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:280:0: 'Dyadic354.FECounting.digitSum_event_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:281:0: 'Dyadic354.FECounting.total_lt_period' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:282:0: 'Dyadic354.FECounting.basic_copies_subset' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:283:0: 'Dyadic354.FECounting.basic_copies_disjoint' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:284:0: 'Dyadic354.FECounting.card_translate' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:285:0: 'Dyadic354.FECounting.growth_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:286:0: 'Dyadic354.FECounting.deficit_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:287:0: 'Dyadic354.FECounting.padding_step' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:288:0: 'Dyadic354.FECounting.padding_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:289:0: 'Dyadic354.FECounting.padding_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:290:0: 'Dyadic354.FECounting.deficit_step' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:291:0: 'Dyadic354.FECounting.deficit_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:292:0: 'Dyadic354.FECounting.values_subset_period' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:293:0: 'Dyadic354.FECounting.deficit_eq_holes' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:294:0: 'Dyadic354.FECounting.growth_eq_newValues' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:296:0: Dyadic354.FE.deficit_exponential_bound (α β : ℝ) (hb0 : 0 < Dyadic354.FloorSequence.term β 0)
+info: Dyadic354/Audit.lean:108:0: 'Dyadic354.mem_finiteSubsetSums' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:109:0: 'Dyadic354.Linear.eval_add' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:110:0: 'Dyadic354.Linear.eval_sub' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:111:0: 'Dyadic354.Linear.cone_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:112:0: 'Dyadic354.Linear.nonneg_on_cone' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:113:0: 'Dyadic354.Linear.positive_on_cone' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:114:0: 'Dyadic354.indexedComplete_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:115:0: 'Dyadic354.Certificate.offset_eq_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:116:0: 'Dyadic354.Certificate.offset_isSubsetSum' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:117:0: 'Dyadic354.Certificate.weights_explicit' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:118:0: 'Dyadic354.Certificate.endpoints_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:119:0: 'Dyadic354.Certificate.node_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:120:0: 'Dyadic354.Certificate.interval_chain_covers' depends on axioms: [propext, Quot.sound]
+info: Dyadic354/Audit.lean:121:0: 'Dyadic354.Certificate.chain_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:122:0: 'Dyadic354.Certificate.checkCertificate_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:123:0: 'Dyadic354.Certificate.certificate_checked' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:124:0: 'Dyadic354.Certificate.certificate_correct' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:125:0: 'Dyadic354.Certificate.all_templates_checked' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:126:0: 'Dyadic354.Certificate.all_templates_correct' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:127:0: 'Dyadic354.Certificate.certificate_counts' depends on axioms: [propext]
+info: Dyadic354/Audit.lean:129:0: 'Dyadic354.CyclicGaps.gapBound_mono' does not depend on any axioms
+info: Dyadic354/Audit.lean:130:0: 'Dyadic354.CyclicGaps.not_missingRun_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:131:0: 'Dyadic354.CyclicGaps.gapBound_erode_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:132:0: 'Dyadic354.CyclicGaps.modulus_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:133:0: 'Dyadic354.CyclicGaps.gap_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:134:0: 'Dyadic354.CyclicGaps.gap_le_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:135:0: 'Dyadic354.CyclicGaps.gap_lt_modulus' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:136:0: 'Dyadic354.CyclicGaps.missingRun_iff_le_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:137:0: 'Dyadic354.CyclicGaps.erode_nonempty' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:138:0: 'Dyadic354.CyclicGaps.lift_erode' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:139:0: 'Dyadic354.CyclicGaps.erosion_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:140:0: 'Dyadic354.CyclicGaps.gap_eq_zero_iff_full' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:141:0: 'Dyadic354.CyclicGaps.gap_modulus_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:142:0: 'Dyadic354.Mesh.gap_le_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:143:0: 'Dyadic354.Mesh.gap_empty' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:144:0: 'Dyadic354.Mesh.gap_singleton' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:145:0: 'Dyadic354.Mesh.encloses_min_max' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:146:0: 'Dyadic354.Mesh.span_of_encloses' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:147:0: 'Dyadic354.Mesh.span_singleton' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:148:0: 'Dyadic354.Mesh.meshOn_gap_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:149:0: 'Dyadic354.Mesh.meshOn_of_gap_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:150:0: 'Dyadic354.Mesh.meshOn_iff_gap_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:151:0: 'Dyadic354.Mesh.gap_positive_of_encloses' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:152:0: 'Dyadic354.Mesh.meshOn_translate_union' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:153:0: 'Dyadic354.Mesh.translate_union_nonempty' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:154:0: 'Dyadic354.Mesh.translate_union_gap_span' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:155:0: 'Dyadic354.Mesh.residues_nonempty' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:156:0: 'Dyadic354.Mesh.projection_window_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:157:0: 'Dyadic354.Mesh.projection_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:158:0: 'Dyadic354.Mesh.extend_nonempty' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:159:0: 'Dyadic354.Mesh.propagate_iterate' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:161:0: 'Dyadic354.CoefficientInterval.lower_interval' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:162:0: 'Dyadic354.CoefficientInterval.bounded_interval' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:163:0: 'Dyadic354.CoefficientInterval.binary_sum_exists' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:164:0: 'Dyadic354.Representations.subsetSum_disjSum' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:165:0: 'Dyadic354.Representations.subsetSum_embed' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:166:0: 'Dyadic354.Representations.binary_scaled' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:167:0: 'Dyadic354.Representations.block_interval' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:168:0: 'Dyadic354.Representations.position_injective' depends on axioms: [propext, Quot.sound]
+info: Dyadic354/Audit.lean:169:0: 'Dyadic354.Representations.position_lt' depends on axioms: [propext, Quot.sound]
+info: Dyadic354/Audit.lean:170:0: 'Dyadic354.Representations.packed_weights_match' depends on axioms: [propext]
+info: Dyadic354/Audit.lean:171:0: 'Dyadic354.Representations.packed_to_prefix' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:172:0: 'Dyadic354.Representations.prefix_block_offset' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:173:0: 'Dyadic354.NodeRepresentations.residual_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:174:0: 'Dyadic354.NodeRepresentations.old_sum_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:175:0: 'Dyadic354.NodeRepresentations.mask_representation' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:176:0: 'Dyadic354.NodeRepresentations.node_representation' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:177:0: 'Dyadic354.NodeRepresentations.oldResidues_nonempty' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:178:0: 'Dyadic354.NodeRepresentations.lift_oldResidues_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:179:0: 'Dyadic354.NodeRepresentations.node_window' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:180:0: 'Dyadic354.InitialMesh.margin_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:181:0: 'Dyadic354.InitialMesh.trimmed_chain_covers' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:182:0: 'Dyadic354.InitialMesh.chain_windows' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:183:0: 'Dyadic354.InitialMesh.mesh_from_windows' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:184:0: 'Dyadic354.InitialMesh.span_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:185:0: 'Dyadic354.InitialMesh.certificate_initial_mesh' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:186:0: 'Dyadic354.InitialMesh.prefix_initial_mesh' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:187:0: 'Dyadic354.PermanentMesh.prefix_nonempty' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:188:0: 'Dyadic354.PermanentMesh.extend_step_subset' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:189:0: 'Dyadic354.PermanentMesh.extend_subset_prefix' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:190:0: 'Dyadic354.PermanentMesh.gap_of_subset' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:191:0: 'Dyadic354.PermanentMesh.permanent_projection' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:192:0: 'Dyadic354.PermanentMesh.certificate_permanent_descent' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:194:0: 'Dyadic354.FloorSequence.correction_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:195:0: 'Dyadic354.FloorSequence.digit_bit' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:196:0: 'Dyadic354.FloorSequence.recurrence' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:197:0: 'Dyadic354.FloorSequence.next_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:198:0: 'Dyadic354.FloorSequence.normalized_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:199:0: 'Dyadic354.FloorSequence.prefix_deficit' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:200:0: 'Dyadic354.FloorSequence.prefix_sum_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:201:0: 'Dyadic354.FloorSequence.interleave_even' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:202:0: 'Dyadic354.FloorSequence.interleave_odd' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:203:0: 'Dyadic354.FloorSequence.paired_prefix_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:204:0: 'Dyadic354.FloorSequence.paired_prefix_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:205:0: 'Dyadic354.PairReindex.swapAfter_before' depends on axioms: [propext]
+info: Dyadic354/Audit.lean:206:0: 'Dyadic354.PairReindex.swapAfter_even' depends on axioms: [propext, Quot.sound]
+info: Dyadic354/Audit.lean:207:0: 'Dyadic354.PairReindex.swapAfter_odd' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:208:0: 'Dyadic354.PairReindex.index_cases' depends on axioms: [propext, Quot.sound]
+info: Dyadic354/Audit.lean:209:0: 'Dyadic354.PairReindex.swapAfter_involutive' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:210:0: 'Dyadic354.PairReindex.swapAfter_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:211:0: 'Dyadic354.PairReindex.swapAfter_lt_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:212:0: 'Dyadic354.PairReindex.prefixSums_reindex_subset' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:213:0: 'Dyadic354.PairReindex.prefixSums_reindex' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:214:0: 'Dyadic354.PairReindex.sortedTail_even' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:215:0: 'Dyadic354.PairReindex.sortedTail_odd' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:216:0: 'Dyadic354.PairReindex.sortedTail_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:217:0: 'Dyadic354.PairReindex.sortedTail_doubling' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:218:0: 'Dyadic354.ExactBlock.no_events_zero_digits' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:219:0: 'Dyadic354.ExactBlock.exact_block' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:220:0: 'Dyadic354.ExactBlock.after_exact_block' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:221:0: 'Dyadic354.ExactBlock.interleave_block' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:222:0: 'Dyadic354.ExactBlock.three_pairs' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:223:0: 'Dyadic354.ExactBlock.six_after_exact_block' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:224:0: 'Dyadic354.ExactBlock.next_small_weight_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:225:0: 'Dyadic354.FloorDescent.fin_prefix_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:226:0: 'Dyadic354.FloorDescent.oldResidues_prefix' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:227:0: 'Dyadic354.FloorDescent.modulus_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:228:0: 'Dyadic354.FloorDescent.gcd_coordinates' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:229:0: 'Dyadic354.FloorDescent.interleave_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:230:0: 'Dyadic354.FloorDescent.long_block_descent' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:231:0: 'Dyadic354.FloorDescent.next_event_descent' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:232:0: 'Dyadic354.BlockLength.threshold_le_square' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:233:0: 'Dyadic354.BlockLength.floor_upper' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:234:0: 'Dyadic354.BlockLength.coordinate_upper' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:235:0: 'Dyadic354.BlockLength.growthConstant_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:236:0: 'Dyadic354.BlockLength.threshold_of_length' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:237:0: 'Dyadic354.BlockLength.next_event_length_descent' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:239:0: 'Dyadic354.PairReindex.isSubsetSum_reindex_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:240:0: 'Dyadic354.PairReindex.indexedComplete_reindex_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:241:0: 'Dyadic354.FloorDescent.long_block_mesh' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:242:0: 'Dyadic354.UnitMesh.mem_extend' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:243:0: 'Dyadic354.UnitMesh.add_sum_mem_extend' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:244:0: 'Dyadic354.UnitMesh.positive_sum_ge_length' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:245:0: 'Dyadic354.UnitMesh.unit_mesh_half_line' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:246:0: 'Dyadic354.UnitMesh.unit_mesh_complete' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:247:0: 'Dyadic354.LowGap.long_block_complete' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:248:0: 'Dyadic354.LowGap.next_event_length_complete' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:249:0: 'Dyadic354.EventGaps.eventually_not_of_eventual_descent' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:250:0: 'Dyadic354.EventGaps.incomplete_eventually_no_qualifying' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:251:0: 'Dyadic354.EventGaps.unbounded_qualifying_complete' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:252:0: 'Dyadic354.EventGaps.incomplete_event_step_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:253:0: 'Dyadic354.EventGaps.incomplete_event_factor_four' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:254:0: 'Dyadic354.EventInfinitude.zero_tail_dyadic' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:255:0: 'Dyadic354.EventInfinitude.no_events_tail_digits' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:256:0: 'Dyadic354.EventInfinitude.events_unbounded' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:257:0: 'Dyadic354.EventInfinitude.nextEvent_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:258:0: 'Dyadic354.EventInfinitude.no_event_before_next' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:259:0: 'Dyadic354.EventInfinitude.incomplete_nextEvent_factor_four' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:261:0: 'Dyadic354.PrefixMesh.translate_union_mesh' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:262:0: 'Dyadic354.PrefixMesh.prefix_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:263:0: 'Dyadic354.PrefixMesh.prefix_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:264:0: 'Dyadic354.PrefixMesh.prefix_encloses' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:265:0: 'Dyadic354.PrefixMesh.prefix_span' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:266:0: 'Dyadic354.PrefixMesh.next_weight_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:267:0: 'Dyadic354.PrefixMesh.prefix_gap_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:268:0: 'Dyadic354.PrefixMesh.internal_run_bound' depends on axioms: [propext, Quot.sound]
+info: Dyadic354/Audit.lean:269:0: 'Dyadic354.PrefixBounds.total_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:270:0: 'Dyadic354.PrefixBounds.total_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:271:0: 'Dyadic354.PrefixBounds.actual_prefix_encloses' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:272:0: 'Dyadic354.PrefixBounds.actual_prefix_span' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:273:0: 'Dyadic354.PrefixBounds.actual_prefix_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:274:0: 'Dyadic354.PrefixBounds.total_ge_first' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:275:0: 'Dyadic354.PrefixBounds.uniform_cyclic_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:276:0: 'Dyadic354.PrefixBounds.internal_missing_run_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:277:0: 'Dyadic354.FECounting.translate_translate' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:278:0: 'Dyadic354.FECounting.values_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:279:0: 'Dyadic354.FECounting.period_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:280:0: 'Dyadic354.FECounting.digitSum_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:281:0: 'Dyadic354.FECounting.digitSum_event_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:282:0: 'Dyadic354.FECounting.total_lt_period' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:283:0: 'Dyadic354.FECounting.basic_copies_subset' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:284:0: 'Dyadic354.FECounting.basic_copies_disjoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:285:0: 'Dyadic354.FECounting.card_translate' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:286:0: 'Dyadic354.FECounting.growth_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:287:0: 'Dyadic354.FECounting.deficit_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:288:0: 'Dyadic354.FECounting.padding_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:289:0: 'Dyadic354.FECounting.padding_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:290:0: 'Dyadic354.FECounting.padding_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:291:0: 'Dyadic354.FECounting.deficit_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:292:0: 'Dyadic354.FECounting.deficit_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:293:0: 'Dyadic354.FECounting.values_subset_period' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:294:0: 'Dyadic354.FECounting.deficit_eq_holes' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:295:0: 'Dyadic354.FECounting.growth_eq_newValues' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:297:0: Dyadic354.FE.deficit_exponential_bound (α β : ℝ) (hb0 : 0 < Dyadic354.FloorSequence.term β 0)
   (hba0 : Dyadic354.FloorSequence.term β 0 < Dyadic354.FloorSequence.term α 0)
   (hab0 : Dyadic354.FloorSequence.term α 0 < 2 * Dyadic354.FloorSequence.term β 0) (n : ℕ) :
   ↑(Dyadic354.FECounting.deficit α β n) ≤
     Dyadic354.FE.constant α β * 2 ^ n *
       Real.exp (-Dyadic354.FE.decayRate β * ↑(Dyadic354.FERecurrence.eventCount α β n))
-info: Dyadic354/Audit.lean:297:0: Dyadic354.FER.seed_exponential_bound (α β : ℝ) (hb0 : 0 < Dyadic354.FloorSequence.term β 0)
+info: Dyadic354/Audit.lean:298:0: Dyadic354.FER.seed_exponential_bound (α β : ℝ) (hb0 : 0 < Dyadic354.FloorSequence.term β 0)
   (hba0 : Dyadic354.FloorSequence.term β 0 < Dyadic354.FloorSequence.term α 0)
   (hab0 : Dyadic354.FloorSequence.term α 0 < 2 * Dyadic354.FloorSequence.term β 0) (n : ℕ) (hn : 1 ≤ n) :
   Dyadic354.FER.seedConstant α β * Real.exp (Dyadic354.FE.decayRate β * ↑(Dyadic354.FERecurrence.eventCount α β n)) ≤
     ↑(Dyadic354.FER.seedWidth α β n) + 2
-info: Dyadic354/Audit.lean:298:0: Dyadic354.DB.digit_propagation (α β : ℝ) (hb0 : 0 < Dyadic354.FloorSequence.term β 0)
+info: Dyadic354/Audit.lean:299:0: Dyadic354.DB.digit_propagation (α β : ℝ) (hb0 : 0 < Dyadic354.FloorSequence.term β 0)
   (hba0 : Dyadic354.FloorSequence.term β 0 < Dyadic354.FloorSequence.term α 0)
   (hab0 : Dyadic354.FloorSequence.term α 0 < 2 * Dyadic354.FloorSequence.term β 0)
   (hi : ¬Dyadic354.IndexedComplete (Dyadic354.interleave α β 2)) (n k : ℕ) (hn : 1 ≤ n) (p q : ℤ) (hq : 2 ≤ q)
@@ -620,11 +619,11 @@ info: Dyadic354/Audit.lean:298:0: Dyadic354.DB.digit_propagation (α β : ℝ) (
           Real.exp (Dyadic354.FE.decayRate β * ↑(Dyadic354.FERecurrence.eventCount α β n)) -
       3 ≤
     ↑(Dyadic354.FERecurrence.eventCount α β (n + k))
-info: Dyadic354/Audit.lean:299:0: Dyadic354.BGExactLayers.nonexact_count (α β : ℝ) (p q : ℤ) (T h : ℕ)
+info: Dyadic354/Audit.lean:300:0: Dyadic354.BGExactLayers.nonexact_count (α β : ℝ) (p q : ℤ) (T h : ℕ)
   (hb : ∀ j ≤ T, |Dyadic354.BGExactLayers.delta α β p q j| < 2 ^ h) :
   {i ∈ Finset.range (T + 1) | Dyadic354.BGExactLayers.delta α β p q i ≠ 0}.card ≤
     h * Dyadic354.FERecurrence.eventCount α β T + h
-info: Dyadic354/Audit.lean:300:0: Dyadic354.BGReturns.return_cost_unbounded (α β : ℝ) (hirr : Irrational (α / β)) (k : ℕ) :
+info: Dyadic354/Audit.lean:301:0: Dyadic354.BGReturns.return_cost_unbounded (α β : ℝ) (hirr : Irrational (α / β)) (k : ℕ) :
   ∃ ε,
     0 < ε ∧
       ∀ (p q : ℤ),
@@ -637,156 +636,156 @@ info: Dyadic354/Audit.lean:300:0: Dyadic354.BGReturns.return_cost_unbounded (α 
                     Dyadic354.BGExactLayers.delta α β p q (n + h) = 0 →
                       (Dyadic354.BGReturns.support α β n h).Nonempty →
                         k < Dyadic354.FERecurrence.eventCount α β (n + h) - Dyadic354.FERecurrence.eventCount α β n
-info: Dyadic354/Audit.lean:302:0: 'Dyadic354.BGBinaryRatio.normalize_power' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:303:0: 'Dyadic354.BGBinaryRatio.ratio_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:304:0: 'Dyadic354.BGExactLayers.delta_error_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:305:0: 'Dyadic354.BGExactLayers.quiet_scaling' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:306:0: 'Dyadic354.BGExactLayers.exact_of_quiet' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:307:0: 'Dyadic354.BGExactLayers.nonexact_sees_event' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:308:0: 'Dyadic354.BGExactLayers.window_count_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:309:0: 'Dyadic354.BGExactLayers.nonexact_count' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:310:0: 'Dyadic354.BGReturns.word_step' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:311:0: 'Dyadic354.BGReturns.word_polynomial' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:312:0: 'Dyadic354.BGReturns.support_card' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:313:0: 'Dyadic354.BGReturns.support_polynomials' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:314:0: 'Dyadic354.BGReturns.exact_word_relation' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:315:0: 'Dyadic354.BGReturns.return_ratio_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:316:0: 'Dyadic354.BGReturns.return_cost_unbounded' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:317:0: 'Dyadic354.BGSparseCompact.atoms_compact' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:318:0: 'Dyadic354.BGSparseCompact.atom_rational' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:319:0: 'Dyadic354.BGSparseCompact.sums_compact' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:320:0: 'Dyadic354.BGSparseCompact.sum_rational' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:321:0: 'Dyadic354.BGSparseCompact.zero_mem_sums' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:322:0: 'Dyadic354.BGSparseCompact.sums_mono' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:323:0: 'Dyadic354.BGSparseCompact.finset_sum_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:324:0: 'Dyadic354.BGSparseCompact.ratios_compact' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:325:0: 'Dyadic354.BGSparseCompact.ratio_rational' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:326:0: 'Dyadic354.BGSparseCompact.irrational_not_mem_ratios' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:327:0: 'Dyadic354.BGSparseCompact.irrational_separation' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:328:0: 'Dyadic354.BGSparseCompact.eventually_not_bounded' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:329:0: 'Dyadic354.ContiguousSeed.interval_width_le' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:330:0: 'Dyadic354.ContiguousSeed.width_attained' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:331:0: 'Dyadic354.ContiguousSeed.next_hole' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:332:0: 'Dyadic354.ContiguousSeed.represented_card_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:333:0: 'Dyadic354.ContiguousSeed.width_count_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:334:0: 'Dyadic354.CyclicBoundary.sum_shift' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:335:0: 'Dyadic354.CyclicBoundary.variation_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:336:0: 'Dyadic354.CyclicBoundary.variation_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:337:0: 'Dyadic354.CyclicBoundary.variation_neg' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:338:0: 'Dyadic354.CyclicBoundary.variation_add_le' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:339:0: 'Dyadic354.CyclicBoundary.missing_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:340:0: 'Dyadic354.CyclicBoundary.variation_missing' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:341:0: 'Dyadic354.CyclicBoundary.variation_double' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:342:0: 'Dyadic354.CyclicBoundary.variation_shift' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:343:0: 'Dyadic354.CyclicBoundary.variation_boundary_le' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:344:0: 'Dyadic354.DB.interval_complete' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:345:0: 'Dyadic354.DB.incomplete_seed_lt_error' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:346:0: 'Dyadic354.DB.incomplete_seed_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:347:0: 'Dyadic354.DB.digit_propagation' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:348:0: 'Dyadic354.DBCover.real_normalization' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:349:0: 'Dyadic354.DBCover.coefficient_approximation' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:350:0: 'Dyadic354.DBCover.propagated_interval' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:351:0: 'Dyadic354.DBDigits.residual_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:352:0: 'Dyadic354.DBDigits.residual_step' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:353:0: 'Dyadic354.DBDigits.residual_telescope' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:354:0: 'Dyadic354.DBDigits.digit_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:355:0: 'Dyadic354.DBDigits.error_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:356:0: 'Dyadic354.DBDigits.error_lt_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:357:0: 'Dyadic354.DBDigits.error_le_length' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:358:0: 'Dyadic354.DBDigits.column_suffix' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:359:0: 'Dyadic354.DBDigits.subset_error_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:360:0: 'Dyadic354.DBDigits.suffix_legality' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:361:0: 'Dyadic354.DBDigits.suffix_approximation' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:362:0: 'Dyadic354.DBDigits.prefix_suffix_add' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:363:0: 'Dyadic354.DBPhases.residue_lift' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:364:0: 'Dyadic354.DBPhases.phase_after' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:365:0: 'Dyadic354.DBWindows.start_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:366:0: 'Dyadic354.DBWindows.window_after' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:367:0: 'Dyadic354.DBWindows.global_after' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:368:0: 'Dyadic354.DBWindows.span_large' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:369:0: 'Dyadic354.DBWindows.endpoints_legal' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:370:0: 'Dyadic354.DBWindows.global_at_or_after' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:371:0: 'Dyadic354.EventBoundary.segment_variation_le' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:372:0: 'Dyadic354.EventBoundary.compare_segment' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:373:0: 'Dyadic354.EventBoundary.add_shift_cancel' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:374:0: 'Dyadic354.EventBoundary.first_digit_one' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:375:0: 'Dyadic354.EventBoundary.second_digit_one' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:376:0: 'Dyadic354.EventBoundary.actual_nonzero_boundary' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:377:0: 'Dyadic354.EventDecay.block_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:378:0: 'Dyadic354.EventDecay.power_le_exp' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:379:0: 'Dyadic354.FE.potential_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:380:0: 'Dyadic354.FE.normalized_power_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:381:0: 'Dyadic354.FE.rate_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:382:0: 'Dyadic354.FE.constant_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:383:0: 'Dyadic354.FE.deficit_exponential_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:384:0: 'Dyadic354.FEMissingRuns.successor_after_hole' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:385:0: 'Dyadic354.FEMissingRuns.internal_holes_card' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:386:0: 'Dyadic354.FEMissingRuns.holes_split_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:387:0: 'Dyadic354.FEMissingRuns.holes_boundary_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:388:0: 'Dyadic354.FEMissingRuns.actual_holes_boundary_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:389:0: 'Dyadic354.FER.term_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:390:0: 'Dyadic354.FER.total_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:391:0: 'Dyadic354.FER.exp_count_le_pow' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:392:0: 'Dyadic354.FER.seed_constant_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:393:0: 'Dyadic354.FER.seed_exponential_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:394:0: 'Dyadic354.FER.seed_interval_exists' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:395:0: 'Dyadic354.FERecurrence.eventCount_card' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:396:0: 'Dyadic354.FERecurrence.eventCount_step' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:397:0: 'Dyadic354.FERecurrence.eventCount_step_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:398:0: 'Dyadic354.FERecurrence.eventCount_mono' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:399:0: 'Dyadic354.FERecurrence.eventCount_le' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:400:0: 'Dyadic354.FERecurrence.eventCount_unbounded' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:401:0: 'Dyadic354.FERecurrence.initial_second_ge_two' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:402:0: 'Dyadic354.FERecurrence.two_step_scaled' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:403:0: 'Dyadic354.FERecurrence.normalized_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:404:0: 'Dyadic354.FERecurrence.normalized_zero_step' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:405:0: 'Dyadic354.FERecurrence.rho_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:406:0: 'Dyadic354.FERecurrence.sigma_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:407:0: 'Dyadic354.FERecurrence.normalized_step' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:408:0: 'Dyadic354.FERecurrence.normalized_two_step' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:409:0: 'Dyadic354.FERecurrence.potential_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:410:0: 'Dyadic354.FERecurrence.normalized_le_potential' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:411:0: 'Dyadic354.FERecurrence.potential_zero_step' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:412:0: 'Dyadic354.FERecurrence.potential_two_step' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:413:0: 'Dyadic354.FERecurrence.normalized_step_le_potential' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:414:0: 'Dyadic354.FEShift.exits_le_new_values' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:415:0: 'Dyadic354.FEShift.variation_le_new_values' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:416:0: 'Dyadic354.FEShift.length_cast' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:417:0: 'Dyadic354.FEShift.length_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:418:0: 'Dyadic354.FEShift.boundary_eq_cyclic' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:419:0: 'Dyadic354.FEShift.boundary_a_le' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:420:0: 'Dyadic354.FEShift.boundary_b_eq_a' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:421:0: 'Dyadic354.FEShift.boundary_double_a_le' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:422:0: 'Dyadic354.IntervalSums.split' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:423:0: 'Dyadic354.IntervalSums.mono' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:424:0: 'Dyadic354.IntervalSums.sum_period_start' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:425:0: 'Dyadic354.IntervalSums.interval_le_period' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:426:0: 'Dyadic354.IntervalSums.two_arcs_cover' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:427:0: 'Dyadic354.IntervalSums.replace_variation' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:428:0: 'Dyadic354.PeriodChange.basic_word' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:429:0: 'Dyadic354.PeriodChange.missing_difference' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:430:0: 'Dyadic354.PeriodChange.sum_indicator_le_card' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:431:0: 'Dyadic354.PeriodChange.changing_period_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:432:0: 'Dyadic354.PeriodChange.actual_changing_period_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:433:0: 'Dyadic354.PeriodicWord.cast_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:434:0: 'Dyadic354.PeriodicWord.cast_mem_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:435:0: 'Dyadic354.PeriodicWord.word_on_period' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:436:0: 'Dyadic354.PeriodicWord.word_add_period' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:437:0: 'Dyadic354.PeriodicWord.word_sub_period' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:438:0: 'Dyadic354.PeriodicWord.word_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:439:0: 'Dyadic354.PeriodicWord.sum_period' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:440:0: 'Dyadic354.PeriodicWord.variation_eq_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:441:0: 'Dyadic354.PeriodicWord.word_periodic' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:442:0: 'Dyadic354.RationalWindows.cast_mul_den' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:443:0: 'Dyadic354.RationalWindows.good_distance_lt_one' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:444:0: 'Dyadic354.RationalWindows.bounded_good_finite' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:445:0: 'Dyadic354.RationalWindows.good_den_unbounded' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:446:0: 'Dyadic354.RationalWindows.crossing_exists' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:447:0: 'Dyadic354.RationalWindows.crossing_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:448:0: 'Dyadic354.RationalWindows.crossingRat_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:449:0: 'Dyadic354.RationalWindows.crossing_minimal' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:450:0: 'Dyadic354.RationalWindows.before_crossing' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:452:0: theorem Dyadic354.FE.deficit_exponential_bound : ∀ (α β : ℝ),
+info: Dyadic354/Audit.lean:303:0: 'Dyadic354.BGBinaryRatio.normalize_power' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:304:0: 'Dyadic354.BGBinaryRatio.ratio_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:305:0: 'Dyadic354.BGExactLayers.delta_error_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:306:0: 'Dyadic354.BGExactLayers.quiet_scaling' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:307:0: 'Dyadic354.BGExactLayers.exact_of_quiet' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:308:0: 'Dyadic354.BGExactLayers.nonexact_sees_event' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:309:0: 'Dyadic354.BGExactLayers.window_count_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:310:0: 'Dyadic354.BGExactLayers.nonexact_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:311:0: 'Dyadic354.BGReturns.word_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:312:0: 'Dyadic354.BGReturns.word_polynomial' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:313:0: 'Dyadic354.BGReturns.support_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:314:0: 'Dyadic354.BGReturns.support_polynomials' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:315:0: 'Dyadic354.BGReturns.exact_word_relation' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:316:0: 'Dyadic354.BGReturns.return_ratio_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:317:0: 'Dyadic354.BGReturns.return_cost_unbounded' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:318:0: 'Dyadic354.BGSparseCompact.atoms_compact' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:319:0: 'Dyadic354.BGSparseCompact.atom_rational' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:320:0: 'Dyadic354.BGSparseCompact.sums_compact' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:321:0: 'Dyadic354.BGSparseCompact.sum_rational' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:322:0: 'Dyadic354.BGSparseCompact.zero_mem_sums' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:323:0: 'Dyadic354.BGSparseCompact.sums_mono' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:324:0: 'Dyadic354.BGSparseCompact.finset_sum_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:325:0: 'Dyadic354.BGSparseCompact.ratios_compact' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:326:0: 'Dyadic354.BGSparseCompact.ratio_rational' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:327:0: 'Dyadic354.BGSparseCompact.irrational_not_mem_ratios' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:328:0: 'Dyadic354.BGSparseCompact.irrational_separation' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:329:0: 'Dyadic354.BGSparseCompact.eventually_not_bounded' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:330:0: 'Dyadic354.ContiguousSeed.interval_width_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:331:0: 'Dyadic354.ContiguousSeed.width_attained' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:332:0: 'Dyadic354.ContiguousSeed.next_hole' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:333:0: 'Dyadic354.ContiguousSeed.represented_card_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:334:0: 'Dyadic354.ContiguousSeed.width_count_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:335:0: 'Dyadic354.CyclicBoundary.sum_shift' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:336:0: 'Dyadic354.CyclicBoundary.variation_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:337:0: 'Dyadic354.CyclicBoundary.variation_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:338:0: 'Dyadic354.CyclicBoundary.variation_neg' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:339:0: 'Dyadic354.CyclicBoundary.variation_add_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:340:0: 'Dyadic354.CyclicBoundary.missing_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:341:0: 'Dyadic354.CyclicBoundary.variation_missing' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:342:0: 'Dyadic354.CyclicBoundary.variation_double' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:343:0: 'Dyadic354.CyclicBoundary.variation_shift' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:344:0: 'Dyadic354.CyclicBoundary.variation_boundary_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:345:0: 'Dyadic354.DB.interval_complete' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:346:0: 'Dyadic354.DB.incomplete_seed_lt_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:347:0: 'Dyadic354.DB.incomplete_seed_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:348:0: 'Dyadic354.DB.digit_propagation' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:349:0: 'Dyadic354.DBCover.real_normalization' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:350:0: 'Dyadic354.DBCover.coefficient_approximation' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:351:0: 'Dyadic354.DBCover.propagated_interval' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:352:0: 'Dyadic354.DBDigits.residual_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:353:0: 'Dyadic354.DBDigits.residual_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:354:0: 'Dyadic354.DBDigits.residual_telescope' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:355:0: 'Dyadic354.DBDigits.digit_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:356:0: 'Dyadic354.DBDigits.error_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:357:0: 'Dyadic354.DBDigits.error_lt_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:358:0: 'Dyadic354.DBDigits.error_le_length' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:359:0: 'Dyadic354.DBDigits.column_suffix' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:360:0: 'Dyadic354.DBDigits.subset_error_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:361:0: 'Dyadic354.DBDigits.suffix_legality' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:362:0: 'Dyadic354.DBDigits.suffix_approximation' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:363:0: 'Dyadic354.DBDigits.prefix_suffix_add' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:364:0: 'Dyadic354.DBPhases.residue_lift' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:365:0: 'Dyadic354.DBPhases.phase_after' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:366:0: 'Dyadic354.DBWindows.start_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:367:0: 'Dyadic354.DBWindows.window_after' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:368:0: 'Dyadic354.DBWindows.global_after' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:369:0: 'Dyadic354.DBWindows.span_large' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:370:0: 'Dyadic354.DBWindows.endpoints_legal' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:371:0: 'Dyadic354.DBWindows.global_at_or_after' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:372:0: 'Dyadic354.EventBoundary.segment_variation_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:373:0: 'Dyadic354.EventBoundary.compare_segment' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:374:0: 'Dyadic354.EventBoundary.add_shift_cancel' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:375:0: 'Dyadic354.EventBoundary.first_digit_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:376:0: 'Dyadic354.EventBoundary.second_digit_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:377:0: 'Dyadic354.EventBoundary.actual_nonzero_boundary' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:378:0: 'Dyadic354.EventDecay.block_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:379:0: 'Dyadic354.EventDecay.power_le_exp' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:380:0: 'Dyadic354.FE.potential_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:381:0: 'Dyadic354.FE.normalized_power_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:382:0: 'Dyadic354.FE.rate_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:383:0: 'Dyadic354.FE.constant_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:384:0: 'Dyadic354.FE.deficit_exponential_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:385:0: 'Dyadic354.FEMissingRuns.successor_after_hole' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:386:0: 'Dyadic354.FEMissingRuns.internal_holes_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:387:0: 'Dyadic354.FEMissingRuns.holes_split_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:388:0: 'Dyadic354.FEMissingRuns.holes_boundary_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:389:0: 'Dyadic354.FEMissingRuns.actual_holes_boundary_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:390:0: 'Dyadic354.FER.term_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:391:0: 'Dyadic354.FER.total_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:392:0: 'Dyadic354.FER.exp_count_le_pow' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:393:0: 'Dyadic354.FER.seed_constant_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:394:0: 'Dyadic354.FER.seed_exponential_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:395:0: 'Dyadic354.FER.seed_interval_exists' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:396:0: 'Dyadic354.FERecurrence.eventCount_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:397:0: 'Dyadic354.FERecurrence.eventCount_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:398:0: 'Dyadic354.FERecurrence.eventCount_step_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:399:0: 'Dyadic354.FERecurrence.eventCount_mono' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:400:0: 'Dyadic354.FERecurrence.eventCount_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:401:0: 'Dyadic354.FERecurrence.eventCount_unbounded' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:402:0: 'Dyadic354.FERecurrence.initial_second_ge_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:403:0: 'Dyadic354.FERecurrence.two_step_scaled' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:404:0: 'Dyadic354.FERecurrence.normalized_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:405:0: 'Dyadic354.FERecurrence.normalized_zero_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:406:0: 'Dyadic354.FERecurrence.rho_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:407:0: 'Dyadic354.FERecurrence.sigma_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:408:0: 'Dyadic354.FERecurrence.normalized_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:409:0: 'Dyadic354.FERecurrence.normalized_two_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:410:0: 'Dyadic354.FERecurrence.potential_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:411:0: 'Dyadic354.FERecurrence.normalized_le_potential' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:412:0: 'Dyadic354.FERecurrence.potential_zero_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:413:0: 'Dyadic354.FERecurrence.potential_two_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:414:0: 'Dyadic354.FERecurrence.normalized_step_le_potential' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:415:0: 'Dyadic354.FEShift.exits_le_new_values' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:416:0: 'Dyadic354.FEShift.variation_le_new_values' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:417:0: 'Dyadic354.FEShift.length_cast' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:418:0: 'Dyadic354.FEShift.length_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:419:0: 'Dyadic354.FEShift.boundary_eq_cyclic' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:420:0: 'Dyadic354.FEShift.boundary_a_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:421:0: 'Dyadic354.FEShift.boundary_b_eq_a' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:422:0: 'Dyadic354.FEShift.boundary_double_a_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:423:0: 'Dyadic354.IntervalSums.split' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:424:0: 'Dyadic354.IntervalSums.mono' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:425:0: 'Dyadic354.IntervalSums.sum_period_start' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:426:0: 'Dyadic354.IntervalSums.interval_le_period' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:427:0: 'Dyadic354.IntervalSums.two_arcs_cover' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:428:0: 'Dyadic354.IntervalSums.replace_variation' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:429:0: 'Dyadic354.PeriodChange.basic_word' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:430:0: 'Dyadic354.PeriodChange.missing_difference' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:431:0: 'Dyadic354.PeriodChange.sum_indicator_le_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:432:0: 'Dyadic354.PeriodChange.changing_period_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:433:0: 'Dyadic354.PeriodChange.actual_changing_period_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:434:0: 'Dyadic354.PeriodicWord.cast_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:435:0: 'Dyadic354.PeriodicWord.cast_mem_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:436:0: 'Dyadic354.PeriodicWord.word_on_period' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:437:0: 'Dyadic354.PeriodicWord.word_add_period' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:438:0: 'Dyadic354.PeriodicWord.word_sub_period' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:439:0: 'Dyadic354.PeriodicWord.word_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:440:0: 'Dyadic354.PeriodicWord.sum_period' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:441:0: 'Dyadic354.PeriodicWord.variation_eq_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:442:0: 'Dyadic354.PeriodicWord.word_periodic' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:443:0: 'Dyadic354.RationalWindows.cast_mul_den' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:444:0: 'Dyadic354.RationalWindows.good_distance_lt_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:445:0: 'Dyadic354.RationalWindows.bounded_good_finite' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:446:0: 'Dyadic354.RationalWindows.good_den_unbounded' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:447:0: 'Dyadic354.RationalWindows.crossing_exists' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:448:0: 'Dyadic354.RationalWindows.crossing_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:449:0: 'Dyadic354.RationalWindows.crossingRat_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:450:0: 'Dyadic354.RationalWindows.crossing_minimal' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:451:0: 'Dyadic354.RationalWindows.before_crossing' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:453:0: theorem Dyadic354.FE.deficit_exponential_bound : ∀ (α β : ℝ),
   0 < Dyadic354.FloorSequence.term β 0 →
     Dyadic354.FloorSequence.term β 0 < Dyadic354.FloorSequence.term α 0 →
       Dyadic354.FloorSequence.term α 0 < 2 * Dyadic354.FloorSequence.term β 0 →
@@ -1353,7 +1352,7 @@ fun α β hb0 hba0 hab0 n =>
             (Mathlib.Tactic.Ring.cast_zero (Mathlib.Meta.NormNum.isNat_ofNat ℝ Nat.cast_zero))))
         (Mathlib.Tactic.Linarith.add_lt_of_le_of_neg (Mathlib.Tactic.Linarith.sub_nonpos_of_le hout)
           (Mathlib.Tactic.Linarith.sub_neg_of_lt a)))
-info: Dyadic354/Audit.lean:453:0: theorem Dyadic354.FER.seed_exponential_bound : ∀ (α β : ℝ),
+info: Dyadic354/Audit.lean:454:0: theorem Dyadic354.FER.seed_exponential_bound : ∀ (α β : ℝ),
   0 < Dyadic354.FloorSequence.term β 0 →
     Dyadic354.FloorSequence.term β 0 < Dyadic354.FloorSequence.term α 0 →
       Dyadic354.FloorSequence.term α 0 < 2 * Dyadic354.FloorSequence.term β 0 →
@@ -2446,7 +2445,7 @@ fun α β hb0 hba0 hab0 n hn =>
               ⋯);
       ⋯)
     ⋯
-info: Dyadic354/Audit.lean:454:0: theorem Dyadic354.DB.digit_propagation : ∀ (α β : ℝ),
+info: Dyadic354/Audit.lean:455:0: theorem Dyadic354.DB.digit_propagation : ∀ (α β : ℝ),
   0 < Dyadic354.FloorSequence.term β 0 →
     Dyadic354.FloorSequence.term β 0 < Dyadic354.FloorSequence.term α 0 →
       Dyadic354.FloorSequence.term α 0 < 2 * Dyadic354.FloorSequence.term β 0 →
@@ -2912,7 +2911,7 @@ fun α β hb0 hba0 hab0 hi n k hn p q hq hK hc happrox hscale =>
             (Mathlib.Tactic.Linarith.mul_neg (Mathlib.Tactic.Linarith.sub_neg_of_lt a)
               (Mathlib.Meta.NormNum.isNat_lt_true (Mathlib.Meta.NormNum.isNat_ofNat ℝ Nat.cast_zero)
                 (Mathlib.Meta.NormNum.isNat_ofNat ℝ (Eq.refl 2)) (Eq.refl false))))))
-info: Dyadic354/Audit.lean:455:0: theorem Dyadic354.DBScale.advance_increment : ∀ (α β : ℝ),
+info: Dyadic354/Audit.lean:456:0: theorem Dyadic354.DBScale.advance_increment : ∀ (α β : ℝ),
   0 < Dyadic354.FloorSequence.term β 0 →
     Dyadic354.FloorSequence.term β 0 < Dyadic354.FloorSequence.term α 0 →
       Dyadic354.FloorSequence.term α 0 < 2 * Dyadic354.FloorSequence.term β 0 →
@@ -2951,7 +2950,7 @@ fun α β hb0 hba0 hab0 hi hirr n hn =>
           (Eq.mp (congrArg (fun x => |α / β - ↑r| < 1 / ↑x ^ 2) hr.left) hr.right))
         hscale)
     hr
-info: Dyadic354/Audit.lean:456:0: theorem Dyadic354.BGWindows.arbitrarily_large_windows : ∀ (α β : ℝ),
+info: Dyadic354/Audit.lean:457:0: theorem Dyadic354.BGWindows.arbitrarily_large_windows : ∀ (α β : ℝ),
   0 < Dyadic354.FloorSequence.term β 0 →
     Dyadic354.FloorSequence.term β 0 < Dyadic354.FloorSequence.term α 0 →
       Dyadic354.FloorSequence.term α 0 < 2 * Dyadic354.FloorSequence.term β 0 →
@@ -4326,7 +4325,7 @@ fun α β hb0 hba0 hab0 hi hirr ε hε N =>
                           ⋯))
                       ⋯);
               ⋯
-info: Dyadic354/Audit.lean:457:0: theorem Dyadic354.BGReturns.return_cost_unbounded : ∀ (α β : ℝ),
+info: Dyadic354/Audit.lean:458:0: theorem Dyadic354.BGReturns.return_cost_unbounded : ∀ (α β : ℝ),
   Irrational (α / β) →
     ∀ (k : ℕ),
       ∃ ε,
@@ -4460,7 +4459,7 @@ fun α β hirr k =>
                       (congrArg (fun _a => _a ≤ 0)
                         (Mathlib.Tactic.Linarith.without_one_mul (CancelDenoms.sub_subst rfl rfl)))
                       (Mathlib.Tactic.Linarith.sub_nonpos_of_le hfar)))))⟩
-info: Dyadic354/Audit.lean:458:0: theorem Dyadic354.BG.bounded_event_windows_complete : ∀ (α β : ℝ),
+info: Dyadic354/Audit.lean:459:0: theorem Dyadic354.BG.bounded_event_windows_complete : ∀ (α β : ℝ),
   0 < Dyadic354.FloorSequence.term β 0 →
     Dyadic354.FloorSequence.term β 0 < Dyadic354.FloorSequence.term α 0 →
       Dyadic354.FloorSequence.term α 0 < 2 * Dyadic354.FloorSequence.term β 0 →
@@ -4593,7 +4592,7 @@ fun α β hb0 hba0 hab0 hirr R hR hwindows =>
                                     have hcost := fun a b hxa hbT hda hdb hab => ⋯;
                                     have htotal := ⋯;
                                     ⋯
-info: Dyadic354/Audit.lean:459:0: theorem Dyadic354.BG.normalized_complete : ∀ (α β : ℝ),
+info: Dyadic354/Audit.lean:460:0: theorem Dyadic354.BG.normalized_complete : ∀ (α β : ℝ),
   0 < Dyadic354.FloorSequence.term β 0 →
     Dyadic354.FloorSequence.term β 0 < Dyadic354.FloorSequence.term α 0 →
       Dyadic354.FloorSequence.term α 0 < 2 * Dyadic354.FloorSequence.term β 0 →
@@ -4609,34 +4608,101 @@ fun α β hb0 hba0 hab0 hirr =>
             Exists.intro (Dyadic354.EventInfinitude.nextEvent α β hirr n)
               ⟨(Dyadic354.EventInfinitude.nextEvent_spec α β hirr n).left,
                 ⟨hN n hn, (Dyadic354.EventInfinitude.nextEvent_spec α β hirr n).right⟩⟩))
-info: Dyadic354/Audit.lean:461:0: 'Dyadic354.BGCapacity.logarithmic_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:462:0: 'Dyadic354.BGCapacity.seed_size_eventually' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:463:0: 'Dyadic354.BGCapacity.event_power_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:464:0: 'Dyadic354.BGCapacity.eventual_capacity' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:465:0: 'Dyadic354.BGGeometric.exact_in_interval' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:466:0: 'Dyadic354.BGGeometric.cost_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:467:0: 'Dyadic354.BGWindowBounds.height_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:468:0: 'Dyadic354.BGWindowBounds.precision_to_delta' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:469:0: 'Dyadic354.BGWindowBounds.crossing_close' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:470:0: 'Dyadic354.BGWindows.inverse_scale_small' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:471:0: 'Dyadic354.BGWindows.arbitrarily_large_windows' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:472:0: 'Dyadic354.DBScale.block_sufficient' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:473:0: 'Dyadic354.DBScale.matching_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:474:0: 'Dyadic354.DBScale.block_matching_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:475:0: 'Dyadic354.DBScale.threshold_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:476:0: 'Dyadic354.DBScale.threshold_ge_two' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:477:0: 'Dyadic354.DBScale.advance_increment' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:478:0: 'Dyadic354.DBScale.matching_exp_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:479:0: 'Dyadic354.DBScale.arbitrarily_large_advance' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:480:0: 'Dyadic354.DBScale.large_advance_matching' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:481:0: 'Dyadic354.CubicGrowth.no_eventual_quartic' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:482:0: 'Dyadic354.CubicGrowth.exponential_eventually_dominates' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:483:0: 'Dyadic354.CubicGrowth.no_eventual_cubic_advance' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:484:0: 'Dyadic354.BG.support_nonempty_of_event' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:485:0: 'Dyadic354.BG.bounded_event_windows_complete' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: Dyadic354/Audit.lean:486:0: 'Dyadic354.BG.normalized_complete' depends on axioms: [propext, Classical.choice, Quot.sound]
-✔ [3122/3123] Built Dyadic354 (16s)
-Build completed successfully (3123 jobs).
+info: Dyadic354/Audit.lean:462:0: 'Dyadic354.BGCapacity.logarithmic_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:463:0: 'Dyadic354.BGCapacity.seed_size_eventually' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:464:0: 'Dyadic354.BGCapacity.event_power_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:465:0: 'Dyadic354.BGCapacity.eventual_capacity' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:466:0: 'Dyadic354.BGGeometric.exact_in_interval' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:467:0: 'Dyadic354.BGGeometric.cost_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:468:0: 'Dyadic354.BGWindowBounds.height_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:469:0: 'Dyadic354.BGWindowBounds.precision_to_delta' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:470:0: 'Dyadic354.BGWindowBounds.crossing_close' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:471:0: 'Dyadic354.BGWindows.inverse_scale_small' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:472:0: 'Dyadic354.BGWindows.arbitrarily_large_windows' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:473:0: 'Dyadic354.DBScale.block_sufficient' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:474:0: 'Dyadic354.DBScale.matching_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:475:0: 'Dyadic354.DBScale.block_matching_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:476:0: 'Dyadic354.DBScale.threshold_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:477:0: 'Dyadic354.DBScale.threshold_ge_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:478:0: 'Dyadic354.DBScale.advance_increment' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:479:0: 'Dyadic354.DBScale.matching_exp_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:480:0: 'Dyadic354.DBScale.arbitrarily_large_advance' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:481:0: 'Dyadic354.DBScale.large_advance_matching' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:482:0: 'Dyadic354.CubicGrowth.no_eventual_quartic' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:483:0: 'Dyadic354.CubicGrowth.exponential_eventually_dominates' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:484:0: 'Dyadic354.CubicGrowth.no_eventual_cubic_advance' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:485:0: 'Dyadic354.BG.support_nonempty_of_event' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:486:0: 'Dyadic354.BG.bounded_event_windows_complete' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:487:0: 'Dyadic354.BG.normalized_complete' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:489:0: theorem Dyadic354.erdos354_strong_completeness : Dyadic354.StrongCompleteness :=
+fun α β hα hβ hirr D hD =>
+  Exists.casesOn (Set.Finite.bddAbove hD) fun B hB =>
+    Exists.casesOn (Dyadic354.Normalization.above_bound α β hα hβ hirr B) fun u h =>
+      Exists.casesOn h fun v h =>
+        And.casesOn h fun hBv right =>
+          And.casesOn right fun hb right =>
+            And.casesOn right fun hba hab =>
+              let α' := 2 ^ u * α;
+              let β' := 2 ^ v * β;
+              have hi := Dyadic354.Normalization.shifted_irrational α β hirr u v;
+              have hc := Dyadic354.BG.normalized_complete α' β' hb hba hab hi;
+              have hs :=
+                Dyadic354.SetBridge.indexed_to_set (Dyadic354.interleave α' β' 2)
+                  (Dyadic354.SetBridge.normalized_injective α' β' hb hba hab) hc;
+              Dyadic354.SetBridge.setComplete_mono (Set.range (Dyadic354.interleave α' β' 2))
+                (Dyadic354.dyadicValueSet α β \ D)
+                (fun ⦃z⦄ a =>
+                  Exists.casesOn a fun i h =>
+                    h ▸
+                      have hlo := Dyadic354.SetBridge.normalized_lower_bound α' β' hb hba hab i;
+                      have hmem := Dyadic354.SetBridge.shifted_range_subset α β u v (Set.mem_range_self i);
+                      ⟨⟨hmem,
+                          Eq.mpr (id (congrArg Not Dyadic354.erdos354_strong_completeness._simp_1_1))
+                            (id (ne_of_gt (LT.lt.trans_le hb hlo)))⟩,
+                        fun hz => not_le_of_gt (LT.lt.trans_le hBv hlo) (hB hz)⟩)
+                hs
+info: Dyadic354/Audit.lean:490:0: theorem Dyadic354.erdos354_part_i : Dyadic354.PartI :=
+fun α β hα hβ hirr =>
+  have hs := Dyadic354.erdos354_strong_completeness α β hα hβ hirr ∅ Set.finite_empty;
+  have hc := Eq.mp (congrArg Dyadic354.SetComplete Set.diff_empty) hs;
+  Dyadic354.SetBridge.set_to_indexed (Dyadic354.interleave α β 2)
+    (Dyadic354.SetBridge.setComplete_mono (Dyadic354.dyadicValueSet α β) (Set.range (Dyadic354.interleave α β 2))
+      (fun x hx => hx.left) hc)
+info: Dyadic354/Audit.lean:491:0: def Dyadic354.UpstreamBridge.PartITarget : Prop :=
+∀ α > 0, ∀ β > 0, Irrational (α / β) → IsAddCompleteNatSeq' (Erdos354.FloorMultiples.interleave α β 2)
+info: Dyadic354/Audit.lean:492:0: theorem Dyadic354.UpstreamBridge.erdos354_part_i_upstream : Dyadic354.UpstreamBridge.PartITarget :=
+Dyadic354.UpstreamBridge.partITarget_iff.mpr Dyadic354.erdos354_part_i
+info: Dyadic354/Audit.lean:493:0: theorem Dyadic354.UpstreamBridge.erdos354_strong_upstream : ∀ (α β : ℝ),
+  0 < α →
+    0 < β → Irrational (α / β) → IsAddStronglyComplete (Set.range (Erdos354.FloorMultiples.interleave α β 2) \ {0}) :=
+fun α β hα hβ hirr =>
+  (Dyadic354.UpstreamBridge.strongComplete_iff (Set.range (Erdos354.FloorMultiples.interleave α β 2) \ {0})).mpr
+    (Dyadic354.erdos354_strong_completeness α β hα hβ hirr)
+info: Dyadic354/Audit.lean:495:0: 'Dyadic354.Normalization.term_shift' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:496:0: 'Dyadic354.Normalization.shifted_irrational' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:497:0: 'Dyadic354.Normalization.balance_larger' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:498:0: 'Dyadic354.Normalization.balance' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:499:0: 'Dyadic354.Normalization.common_shift' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:500:0: 'Dyadic354.Normalization.above_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:501:0: 'Dyadic354.SetBridge.normalized_sorted_strictMono' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:502:0: 'Dyadic354.SetBridge.normalized_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:503:0: 'Dyadic354.SetBridge.normalized_lower_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:504:0: 'Dyadic354.SetBridge.indexed_to_set' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:505:0: 'Dyadic354.SetBridge.setComplete_mono' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:506:0: 'Dyadic354.SetBridge.set_to_indexed' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:507:0: 'Dyadic354.SetBridge.shifted_range_subset' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:508:0: 'Dyadic354.erdos354_strong_completeness' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:509:0: 'Dyadic354.erdos354_part_i' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:510:0: 'Dyadic354.UpstreamBridge.floorMultiples_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:511:0: 'Dyadic354.UpstreamBridge.interleave_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:512:0: 'Dyadic354.UpstreamBridge.indexedComplete_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:513:0: 'Dyadic354.UpstreamBridge.setComplete_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:514:0: 'Dyadic354.UpstreamBridge.strongComplete_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:515:0: 'Dyadic354.UpstreamBridge.partITarget_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:516:0: 'Dyadic354.UpstreamBridge.erdos354_part_i_upstream' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dyadic354/Audit.lean:517:0: 'Dyadic354.UpstreamBridge.erdos354_strong_upstream' depends on axioms: [propext, Classical.choice, Quot.sound]
+✔ [3127/3128] Built Dyadic354 (4.1s)
+Build completed successfully (3128 jobs).
 
 EXIT CODE: 0
-ELAPSED SECONDS: 96.158
+ELAPSED SECONDS: 126.831
