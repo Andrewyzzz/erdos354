@@ -1,1 +1,3 @@
 .lake/
+logs/ci/
+logs/local/
