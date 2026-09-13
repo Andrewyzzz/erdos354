@@ -1,168 +1,126 @@
-# Erdős Problem 354(i) — Lean formalization and candidate manuscript
+# Strong completeness of two dyadic floor sequences
 
-Lean formalization of indexed completeness and strong set completeness for two
-dyadic floor sequences, together with the original candidate manuscript.
+[![Lean verification](https://github.com/Andrewyzzz/erdos354/actions/workflows/lean.yml/badge.svg)](https://github.com/Andrewyzzz/erdos354/actions/workflows/lean.yml)
 
-Original manuscript package: **v0.1.0-candidate** · Prepared: **12 September 2026**
+Andrewyzzz and Chatgpt-6 Astra (AI system)
 
-Contributors: **Andrewyzzz and Chatgpt-6 Astra (AI system)** · Human maintainer: **[@Andrewyzzz](https://github.com/Andrewyzzz)**
+**[English manuscript](proof/FORMALIZED_PROOF.md)** ·
+**[Lean formalization](formalization/README.md)** ·
+**[Verification records](formalization/RESULTS.md)**
 
-> **Current status:** the frozen part-(i) and strong-completeness targets have
-> passed local Lean verification, including a fresh-directory rebuild and
-> transitive axiom audits of all 381 local theorems. This is not a claim of
-> external independent checking, community acceptance, or journal publication.
-> The original manuscript remains a candidate released for independent scrutiny.
+We prove that, for arbitrary positive real numbers $\alpha,\beta$ with
+irrational ratio, the set
 
-English is the primary language for repository navigation and maintained
-documentation. Chinese manuscripts and historical inputs are explicitly marked
-with the `.zh-CN.md` suffix and retained for provenance.
+$$
+A_{\alpha,\beta}
+=\{\lfloor2^n\alpha\rfloor,\lfloor2^n\beta\rfloor:n\in\mathbb N\}
+ \setminus\{0\}
+$$
 
-## Lean verification
+is strongly complete: after deleting any finite set of values, every
+sufficiently large integer is a sum of distinct remaining values.
+This gives the indexed completeness assertion in
+[Erdős Problem 354(i)](https://www.erdosproblems.com/354), with base exactly $2$.
 
-Start with the [formalization README](formalization/README.md),
-[verification results](formalization/RESULTS.md), and
-[detailed theorem status](formalization/STATUS.md).
+## The argument
+
+We construct finite integer meshes from a certificate of twelve coefficient
+chains. Their gap bounds persist under the addition of every subsequent
+weight and under projection to each future endpoint modulus. Long
+intervals between binary events therefore force permanent descent of a
+modular gap invariant.
+
+A complementary argument establishes finite-event decay (FE), digit-budget
+propagation (DB), and long sparse rational-approximation windows.
+Compactness of ratios of sparse binary sums gives a uniform lower bound
+on the event cost of a nontrivial return between exact layers. A geometric
+counting argument (BG) contradicts the event-spacing bound forced by
+incompleteness. Upward tail normalization gives the finite-deletion result
+with distinct values.
+
+The [English manuscript](proof/FORMALIZED_PROOF.md) includes the complete
+coefficient table and follows the formalized proofs. It explains the use
+of good rational approximants, the FE potential, and the $T^{3/4}$ estimate
+in the BG argument.
+
+## Formal statements
 
 ```lean
 Dyadic354.erdos354_part_i : Dyadic354.PartI
 Dyadic354.erdos354_strong_completeness : Dyadic354.StrongCompleteness
 ```
 
-Both targets cover arbitrary positive real parameters with irrational ratio,
-with base fixed at 2. The final theorems have no extra normalization, FE/DB/BG,
-permanent-descent, or long-window hypotheses. Their audited dependencies use
-only subsets of `propext`, `Classical.choice`, and `Quot.sound`, without `sorry`,
-custom axioms, or `native_decide`.
+The [frozen definitions](formalization/Dyadic354/Statements.lean)
+distinguish finite-index sums from sums of distinct values. The final
+theorems assume only positivity and an irrational ratio. FE, DB, BG,
+normalization, and permanent descent are proved within the dependency
+chain.
 
-The project pins Lean 4.27.0 and all dependencies. Reproduce it from the repository root:
+We audit all 381 local theorems. Every transitive axiom set is a subset
+of `{propext, Classical.choice, Quot.sound}`.
+The certificate is checked by kernel computation; the project uses no
+`sorry`, custom axioms, or `native_decide`.
+An [extracted-definition adapter](formalization/UPSTREAM.md) proves the
+positive part-(i) statement in the upstream definitions.
+
+## Reproduction
+
+We pin Lean 4.27.0, Mathlib, and all transitive dependencies. From a checkout
+of this repository, run:
 
 ```sh
 cd formalization
 lake exe cache get
-python3 scripts/verify.py
-python3 scripts/verify.py --fresh
+python3 scripts/verify.py --log-directory logs/local
 ```
 
-The fresh build reuses the pinned dependency cache, not this project's compiled
-artifacts. No external checker or comparator was run. The adapter to exact
-upstream definitions is verified locally, not in a full upstream 4.33.1 checkout;
-see [definition provenance and toolchain boundaries](formalization/UPSTREAM.md).
-Part (ii) is outside the formalization's scope.
+The verifier runs `lake build`, executes the complete
+`Audit.lean`, checks the theorem inventory and axiom allowlist,
+and records source hashes and dependency revisions. For a fresh project
+build using the pinned dependency cache:
 
-## Read the proof
+```sh
+python3 scripts/verify.py --fresh --log-directory logs/local
+```
 
-**[Full English proof](proof/PROOF.md)** · **[Chinese proof](proof/PROOF.zh-CN.md)**
+Our [GitHub Actions workflow](.github/workflows/lean.yml) performs the
+build and audit on a GitHub-hosted Ubuntu runner. Each run publishes its
+verification report, build log, and axiom output as an artifact.
+The [results](formalization/RESULTS.md) and
+[environment record](formalization/ENVIRONMENT.md) describe the recorded checks.
 
-The manuscript files retain their original bytes and candidate-status notices.
-Those preparation-time notices predate the Lean work; current formalization
-results are recorded separately in [`formalization/`](formalization/README.md).
+The standalone finite certificate can also be checked with Python 3.10+
+from the repository root:
 
-The claimed theorem is that, for all real $\alpha,\beta>0$ with
-$\alpha/\beta\notin\mathbb Q$, the ordinary set
-
-$$
-\{\lfloor2^n\alpha\rfloor,\lfloor2^n\beta\rfloor:n\ge0\}\setminus\{0\}
-$$
-
-remains complete after any finite deletion. Every sufficiently large integer
-would therefore be a sum of distinct remaining elements.
-
-This is **part (i), with base fixed at 2**. No claim of priority for part (ii),
-which asks for a suitable base in $(1,2)$, is made. The precise mathematical
-statement, rather than the problem number alone, defines this submission's scope.
-
-## The two parts of the argument
-
-The proof first constructs an actual finite integer mesh after a long exact-doubling
-block and a nonzero binary conversion. Its improved maximum gap propagates through
-all subsequent original weights, and bounds missing runs modulo *every future*
-endpoint gcd. A bounded nonnegative integer gap measure can therefore descend only
-finitely often. An incomplete sequence with infinitely many events would have
-bounded ratios between successive event positions.
-
-The other part establishes a finite-event decay estimate (FE), a digit-budget
-propagation lemma (DB), and a continued-fraction return-cost contradiction. For an
-irrational parameter ratio, these rule out incompleteness under bounded event
-ratios. Both arguments use the same normalized parameters and arrival-indexed event
-set. They are given in full; FE and DB are not being treated as previously accepted
-external theorems.
-
-## Reproduce the finite checks
-
-Python **3.10 or newer**, standard library only. No package installation or network
-access is needed. Do **not** use `python -O` or `PYTHONOPTIMIZE`: historical scripts
-use assertions.
-
-```bash
+```sh
 python3 certificate/check_templates.py
-python3 verification/run_checks.py --full
 ```
 
-The first command reconstructs the finite coefficient certificate from subset
-masks and checks all ratios $q<p<2q$ by exact cone inequalities. It checks **12
-chains, 125 nodes, 113 strict overlaps, and 500 third-digit instances**, including
-agreement with the proof appendices.
+This checks all twelve chains symbolically on the whole cone $0<q<p<2q$.
+The [finite regression suites](verification/README.md) are supplementary
+tests, distinct from the Lean proof of the infinite statements.
 
-The second command additionally runs the preserved finite regression suites for
-permanent descent, FE, DB, and bounded event ratios. It runs legacy scripts in
-temporary directories and writes fresh records to
-`verification/local_run.json` and
-`verification/local_logs/`.
+## Scope and review
 
-[The preparation-time full run](verification/release_run.json) records all five checks passing. Its logs are preserved in [`verification/release_logs/`](verification/release_logs/); reruns write separate local files.
+Our theorem addresses the irrational-ratio, base-$2$ statement and its
+strong-completeness strengthening. Hegyvári's broader conjecture also
+includes rational ratios other than powers of two; part (ii) asks about
+a base in $(1,2)$. These are separate mathematical questions.
 
-**These Python checks are not a formal proof of the infinite theorem.** Only the
-explicitly finite coefficient lemma is certified by the finite symbolic table.
-They do not establish the infinite claims by sampling. See the
-[finite-check scope](verification/README.md); the separate Lean proof and its
-recorded audits are described under [Lean verification](#lean-verification).
+For mathematical discussion, please identify the relevant section or
+Lean declaration and the revision examined in a
+[repository issue](https://github.com/Andrewyzzz/erdos354/issues).
 
-## Where independent scrutiny is most useful
+English is the primary language of the maintained exposition and documentation.
+The [original English manuscript](proof/PROOF.md), its
+[Chinese counterpart](proof/PROOF.zh-CN.md), and the
+[frozen source](archive/FROZEN_20260912.zh-CN.md) preserve the development
+record. Their preparation-time descriptions refer to those original versions.
+[MANIFEST.sha256.json](MANIFEST.sha256.json) records the listed file hashes.
 
-The key interfaces are Sections 3.2–5 (legal representations, overlapping windows,
-and permanent projection to changing moduli), Section 8.1 (different-period boundary
-comparison), and Sections 9–11 (finite coefficient windows and infinite quantifiers).
+## Contributions
 
-Please report the earliest false statement, a concrete counterexample, or the
-precise unproved implication. If no error is found, please state exactly what was
-read or checked. [Open a repository issue](https://github.com/Andrewyzzz/erdos354/issues)
-with the version, section, and reasoning.
-
-## Files and provenance
-
-| Path | Purpose |
-|---|---|
-| `formalization/` | Lean proofs, locked dependencies, English documentation, and actual build/axiom-audit logs |
-| `proof/PROOF.md` | Complete English rendering with explicit definitions and expanded interfaces |
-| `proof/PROOF.zh-CN.md` | Chinese proof with accepted post-review clarifications incorporated |
-| `certificate/` | Finite mask table and separately implemented checker |
-| `verification/` | Preserved regression code, historical inputs, and fresh run records |
-| `review/CHANGES.md` | Review decisions and exact revision scope |
-| `archive/FROZEN_20260912.zh-CN.md` | Unmodified frozen candidate proof |
-| `release/FORUM_POST.md` | Suggested announcement text; this file is not evidence of an actual forum post |
-| `MANIFEST.sha256.json` | Integrity record for the listed package files, including updated documentation hashes; not a correctness or priority certificate |
-
-The frozen source SHA-256 is
-`582ac11509316f060bfce6ff7afabf11572ea1342bc2c0ebdb0e93d3698edfa8`.
-The appendix masks and proof constants are unchanged. The package date is a
-preparation date, not a claimed public timestamp. Public availability is recorded
-by the actual repository history once uploaded.
-
-The original package manifest remains available in the Git history at
-[`dcdc3c2`](https://github.com/Andrewyzzz/erdos354/blob/dcdc3c255189ab4e0f9bbf9abea2ca0a3758de06/MANIFEST.sha256.json).
-The current manifest updates documentation hashes only; mathematical inputs and
-historical logs are unchanged. Lean-source and dependency hashes are recorded
-separately in [`formalization/logs/verification.json`](formalization/logs/verification.json).
-
-## Attribution and disclosure
-
-Andrewyzzz and Chatgpt-6 Astra are credited for the project; Chatgpt-6 Astra is explicitly an AI
-system, not a human researcher. Andrewyzzz is the responsible human maintainer.
-AI contributed substantially to proof development, code, exposition, and critical
-checking. Three review reports were supplied during development; this repository
-does not represent them as three verified independent professional endorsements.
-No institutional endorsement is claimed. See [CREDITS.md](CREDITS.md).
-
-No preprint or journal submission is made by publishing this repository.
-No full priority review has been completed. References in the proof are distinguished
-from internal lemmas and do not certify this candidate's correctness.
+We used **Chatgpt-6 Astra** in both the mathematical derivation and the Lean
+formalization, as detailed in [CREDITS.md](CREDITS.md).
+**[Andrewyzzz](https://github.com/Andrewyzzz)** is the human maintainer and
+responsible contact.

@@ -1,63 +1,79 @@
-# Final verification summary
+# Verification results
 
-2026-09-13. Local Lean formalization verification: **PASS**.
+The frozen part-(i) and strong-completeness targets have passed the full
+Lean build and transitive axiom audit locally and on a GitHub-hosted Ubuntu
+runner. The local checks also include a fresh-source rebuild. We audit
+all 381 local theorems.
 
-## Completed mathematical targets
+## Mathematical conclusions
 
-- `Dyadic354.erdos354_part_i : PartI`: for arbitrary positive real α and β with
-  irrational ratio and fixed base 2, every sufficiently large integer is a
-  legal finite-index sum of the interleaved floor sequences.
-- `Dyadic354.erdos354_strong_completeness : StrongCompleteness`: after deleting
-  any finite set of values from the original nonzero value set, every sufficiently
-  large integer is still a finite sum of distinct remaining values.
+- `Dyadic354.erdos354_part_i : PartI`: for arbitrary positive real
+  parameters with irrational ratio, every sufficiently large integer is
+  a finite-index sum of the two interleaved dyadic floor sequences.
+- `Dyadic354.erdos354_strong_completeness : StrongCompleteness`: after
+  deleting any finite set of values from the original nonzero value set,
+  every sufficiently large integer is a sum of distinct remaining values.
+- `UpstreamBridge.erdos354_part_i_upstream` and
+  `UpstreamBridge.erdos354_strong_upstream`: the corresponding conclusions
+  in the exact extracted upstream definitions.
 
-Both target definitions are unchanged from their batch 1 frozen versions.
-The final theorems have no additional normalization, FE, DB, BG, permanent-descent,
-long-window, or event-spacing hypotheses.
-See [Main.lean](Dyadic354/Main.lean) for the proofs and
-[Statements.lean](Dyadic354/Statements.lean) for the exact target definitions.
+The final definitions are unchanged from the initial frozen statements.
+The final theorems add no FE/DB/BG, normalization, event-spacing,
+permanent-descent, or long-window hypotheses.
 
-## Recorded checks
+## Recorded local checks
 
-| Check | Result and record |
+| Check | Result |
 |---|---|
-| Full default build and complete axiom audit | PASS, 381 theorems; [verification.json](logs/verification.json) |
-| Fresh-source-directory rebuild and repeated axiom audit | PASS, 381 theorems; [fresh-verification.json](logs/fresh-verification.json) |
-| Source hashes and individual axiom dependencies across both runs | Identical |
-| Fresh directory versus delivery sources, scripts, and upstream data | Exit code 0; [comparison log](logs/final-clean-source-match.log) |
-| Original release input integrity at the verification revision | All 36 file hashes matched; [integrity log](logs/eighth-batch-input-integrity.log) |
-| Pinned upstream provenance and exact target | Online byte comparison and offline definition checks passed; [provenance log](logs/upstream-provenance-online.log) |
+| Full default build and all-theorem audit | PASS, 381 theorems; [report](logs/verification.json) |
+| Fresh-source rebuild and repeated audit | PASS, 381 theorems; [report](logs/fresh-verification.json) |
+| Source hashes and individual axiom sets in the two runs | Identical |
+| Fresh directory versus delivery source comparison | Exit code 0; [log](logs/final-clean-source-match.log) |
+| Original package integrity at the verification revision | All 36 listed hashes matched; [log](logs/eighth-batch-input-integrity.log) |
+| Pinned upstream source and extracted definitions | Byte comparison and definition checks passed; [log](logs/upstream-provenance-online.log) |
 
-Every theorem depends only on a subset of `propext`, `Classical.choice`, and
-`Quot.sound`. Compiled sources contain no `sorry`, custom axioms,
-`native_decide`, or mechanism that skips kernel checking.
-Actual `#print` output and transitive axiom dependencies for the final theorems
-are in [axioms.log](logs/axioms.log), with the fresh run in
+The verified Lean source commit is
+[59e5957](https://github.com/Andrewyzzz/erdos354/commit/59e5957ac8bf28623318cebec6c67b1a672ad49e).
+Subsequent publication edits retain these Lean sources and their target
+definitions. Historical reports identify the verification scripts used
+at their recorded revisions.
+
+Every theorem's transitive axiom set is a subset of
+`{propext, Classical.choice, Quot.sound}`.
+The compiled project uses no `sorry`, custom axioms, or `native_decide`.
+The actual final types and axiom dependencies appear in
+[axioms.log](logs/axioms.log) and
 [fresh-axioms.log](logs/fresh-axioms.log).
 
-## Scope and trust boundaries
+## Public reproducibility
 
-- This project remains on Lean 4.27.0 and pinned Mathlib dependencies; no upgrade
-  was performed.
-- The fresh build does not reuse this project's compiled artifacts, but does
-  reuse the pinned dependency cache. Mathlib was not rebuilt from scratch;
-  no external independent checker or comparator was run.
-- Seven upstream definitions were extracted verbatim. The exact positive
-  part-(i) RHS was checked, and Lean proves type equivalence and the corresponding
-  conclusions. No upstream placeholder theorem was imported. The entire
-  upstream Lean 4.33.1 project was not built.
-- Some intermediate proofs use proved alternative implementations rather than
-  line-by-line translations of the manuscript; see [STATUS.md](STATUS.md).
-- Part (ii), an upstream PR, community acceptance, and journal publication are
-  not among the completed results.
-- The manuscripts and archive retain their original bytes. On 2026-09-13,
-  at the maintainer's explicit request, batches 7 and 8 were pushed and
-  `lean-formalization` was fast-forward merged into `main`.
-  The verified source commit is
-  [59e5957](https://github.com/Andrewyzzz/erdos354/commit/59e5957ac8bf28623318cebec6c67b1a672ad49e).
-  Later English-first documentation edits do not change the verified sources
-  or rewrite the historical verification logs.
+The [public run at 038ec88](https://github.com/Andrewyzzz/erdos354/actions/runs/34732546472)
+completed successfully on 13 September 2026. Its artifact reports PASS for
+all 381 theorems on the clean commit
+`038ec88d64a4fa815f73c4c7784862ba6ddabb87`. We checked the downloaded report
+against the release sources: every Lean source hash and dependency-lock
+hash agrees, and every reported axiom set satisfies the allowlist.
 
-See [README.md](README.md) for reproduction commands and the module map,
-[ENVIRONMENT.md](ENVIRONMENT.md) for environment and dependency records,
-and [UPSTREAM.md](UPSTREAM.md) for adapter details.
+The [Lean verification workflow](https://github.com/Andrewyzzz/erdos354/actions/workflows/lean.yml)
+runs the manifest and certificate checks, `lake exe cache get`,
+`lake build`, and the complete axiom audit on a GitHub-hosted Ubuntu
+runner. Each run attaches the actual build output and
+`verification.json` in a commit-labelled artifact.
+
+The workflow's audit rejects missing, duplicate, or additional theorem
+records and every axiom outside the three-element allowlist. The report
+records the exact commit, source hashes, platform, and CI run URL.
+
+## Environment and exposition
+
+We use Lean 4.27.0 and pinned Mathlib dependencies. The fresh local build
+recompiles this project while reusing the pinned dependency cache.
+The upstream adapter compiles the extracted definitions under this same
+environment; [UPSTREAM.md](UPSTREAM.md) gives their provenance.
+
+The [English manuscript](../proof/FORMALIZED_PROOF.md) follows the
+formalized proof, including the good-rational crossing argument, FE
+potential, and BG capacity estimate.
+[STATUS.md](STATUS.md) maps its principal steps to Lean declarations.
+[ENVIRONMENT.md](ENVIRONMENT.md) records toolchain and input hashes,
+and the [README](README.md) gives reproduction commands.

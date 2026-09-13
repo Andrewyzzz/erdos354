@@ -1,5 +1,6 @@
+LOG FORMAT: public; machine-local paths are replaced by symbolic locations. Diagnostic text and exit status are retained.
 COMMAND: ["lake", "env", "lean", "Dyadic354/Audit.lean"]
-CWD: /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization
+CWD: $REPOSITORY/formalization
 UTC: 2026-09-13T01:04:57.136804+00:00
 def Dyadic354.PartI : Prop :=
 ∀ (α β : ℝ), 0 < α → 0 < β → Irrational (α / β) → Dyadic354.IndexedComplete (Dyadic354.interleave α β 2)

@@ -1,5 +1,6 @@
+LOG FORMAT: public; machine-local paths are replaced by symbolic locations. Diagnostic text and exit status are retained.
 COMMAND: ["lake", "build"]
-CWD: /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization
+CWD: $REPOSITORY/formalization
 UTC: 2026-09-13T01:02:50.278206+00:00
 ℹ [3091/3128] Replayed Dyadic354.CyclicBoundary
 info: Dyadic354/CyclicBoundary.lean:78:6: Try this:

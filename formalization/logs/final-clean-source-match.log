@@ -1,4 +1,5 @@
-COMMAND: ["diff", "-rq", "-x", ".lake", "-x", "logs", "-x", "*.md", "-x", "__pycache__", ".", "/var/folders/jh/s0mgjxhd7qn3zb1wp19mgsp40000gn/T/erdos354-lean-clean-tr9_r6x3/formalization"]
+LOG FORMAT: public; machine-local paths are replaced by symbolic locations. Diagnostic text and exit status are retained.
+COMMAND: ["diff", "-rq", "-x", ".lake", "-x", "logs", "-x", "*.md", "-x", "__pycache__", ".", "$FRESH_PROJECT"]
 UTC: 2026-09-13T01:10:16.375212+00:00
 
 EXIT CODE: 0

@@ -1,16 +1,29 @@
 # Changelog
 
-## v0.1.0-candidate — package prepared 2026-09-12
+## Formalization and review package — 2026-09-13
 
-- Prepare a candidate-proof GitHub package for Erdős Problem 354(i), without a
-  preprint or journal submission.
-- Incorporate the review-reconciliation clarifications into the Chinese main proof.
-- Add a full English Markdown rendering and a clear statement of scope and status.
-- Preserve the original frozen proof and all appendix masks.
-- Add a portable, separately implemented symbolic checker and a clean-directory
-  runner for the unchanged descent/FE/DB/BG finite regression scripts.
-- Record fresh verification results, file hashes, attribution, and limitations.
-- Supply a short forum-announcement draft, not an announcement already posted.
+- Prove the frozen part-(i) and strong set-completeness targets for arbitrary
+  positive parameters with irrational ratio.
+- Complete the finite certificate, permanent-descent, FE, DB, BG,
+  normalization, finite-deletion, and upstream-definition proof chains.
+- Audit all 381 local theorems and reproduce the project build in a fresh
+  source directory using pinned dependencies.
+- Add a GitHub-hosted Lean build and a fail-closed, all-theorem axiom audit.
+- Provide a formalization-aligned English manuscript, a concise theorem map,
+  and a complete first-person AI contribution statement.
+- Publish historical logs with machine-local paths replaced by symbolic
+  locations, preserving diagnostic text, exit statuses, and hash provenance.
 
-The candidate claims the full theorem; this changelog does not claim it has been
-accepted by the community, checked in Lean, or published in a journal.
+## v0.1.0-candidate — 2026-09-12
+
+- Prepare the original mathematical manuscript package for Erdős Problem 354(i).
+- Incorporate the proof clarifications into the Chinese manuscript and provide
+  a complete English rendering.
+- Preserve the frozen source and all appendix masks.
+- Add a separately implemented symbolic certificate checker and finite
+  regression suites for descent, FE, DB, and bounded event ratios.
+- Record package integrity hashes and development provenance.
+
+The original manuscripts retain their preparation-time descriptions and
+unchanged mathematical inputs. The current entry point is the
+[formalization-aligned English manuscript](proof/FORMALIZED_PROOF.md).

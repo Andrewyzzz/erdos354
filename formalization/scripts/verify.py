@@ -116,8 +116,8 @@ def main():
         'scope': 'The frozen positive statement of Erdos 354(i) and strong set completeness, '
                  'for all positive real parameters with irrational ratio. No additional '
                  'FE/DB/BG, normalization, long-window, or descent hypotheses. '
-                 'Includes the exact extracted-upstream-definition adapter; not a full upstream '
-                 'checkout build, external-checker run, or proof of part (ii).',
+                 'Includes the exact extracted-upstream-definition adapter, compiled under '
+                 'the pinned Lean 4.27.0 project environment.',
         'completed_targets': sorted(TARGETS),
         'git_commit': git_commit,
         'git_worktree_dirty': git_dirty,

@@ -1,8 +1,9 @@
+LOG FORMAT: public; machine-local paths are replaced by symbolic locations. Diagnostic text and exit status are retained.
 COMMAND: ["lake", "build", "Dyadic354.Certificate", "Dyadic354.CertificateData"]
 UTC: 2026-09-12T15:13:04.347137+00:00
 ✖ [911/932] Running Mathlib.Data.Fintype.Bool
 error: no such file or directory (error code: 2)
-  file: /Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/mathlib/Mathlib/Data/Fintype/Bool.lean
+  file: $DEPENDENCY_CACHE/mathlib/Mathlib/Data/Fintype/Bool.lean
 ✖ [931/932] Running Dyadic354.Certificate
 error: Dyadic354/Certificate.lean: bad import 'Mathlib.Data.Fintype.Bool'
 ✖ [932/932] Running Dyadic354.CertificateData

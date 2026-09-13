@@ -1,5 +1,6 @@
+LOG FORMAT: public; machine-local paths are replaced by symbolic locations. Diagnostic text and exit status are retained.
 COMMAND: ["lake", "build"]
-CWD: /var/folders/jh/s0mgjxhd7qn3zb1wp19mgsp40000gn/T/erdos354-lean-clean-tr9_r6x3/formalization
+CWD: $FRESH_PROJECT
 UTC: 2026-09-13T01:02:51.379536+00:00
 ✔ [3069/3128] Built Dyadic354.UpstreamDefinitions (31s)
 ✔ [3070/3128] Built Dyadic354.Basic (33s)

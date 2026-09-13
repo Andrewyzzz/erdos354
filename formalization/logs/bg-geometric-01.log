@@ -1,8 +1,9 @@
+LOG FORMAT: public; machine-local paths are replaced by symbolic locations. Diagnostic text and exit status are retained.
 COMMAND: ["lake", "build", "Dyadic354.BGGeometric"]
 UTC: 2026-09-12T17:56:59.496462+00:00
 ✖ [2/269] Running Mathlib.Data.Nat.Interval
 error: no such file or directory (error code: 2)
-  file: /Users/andrewyz/Documents/Codex/2026-08-16/github-com-shouqiaow-erdos/outputs/erdos1-reproduction/lean/.lake/packages/mathlib/Mathlib/Data/Nat/Interval.lean
+  file: $DEPENDENCY_CACHE/mathlib/Mathlib/Data/Nat/Interval.lean
 ✖ [3067/3067] Running Dyadic354.BGGeometric
 error: Dyadic354/BGGeometric.lean: bad import 'Mathlib.Data.Nat.Interval'
 Some required targets logged failures:

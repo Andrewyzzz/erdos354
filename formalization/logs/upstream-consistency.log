@@ -1,5 +1,6 @@
+LOG FORMAT: public; machine-local paths are replaced by symbolic locations. Diagnostic text and exit status are retained.
 COMMAND: ["python3", "scripts/check_upstream.py"]
-CWD: /Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization
+CWD: $REPOSITORY/formalization
 UTC: 2026-09-13T01:02:51.274488+00:00
 PASS upstream bytes: 354.lean.txt sha256=4d86f1ef94a95d1e392c41b792a299a3d2f6f2ac08d568a98b8da927b89bb200
 PASS upstream bytes: AdditivelyComplete.lean.txt sha256=06bddf7abb7401cbfdd68cd8c3657b939f2fa27bd15d1aa26fb9d197f9020908

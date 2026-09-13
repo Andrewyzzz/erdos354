@@ -1,8 +1,9 @@
+LOG FORMAT: public; machine-local paths are replaced by symbolic locations. Diagnostic text and exit status are retained.
 COMMAND: ["python3", "scripts/check_upstream.py", "--online"]
 UTC: 2026-09-13T00:57:24.789025+00:00
 curl: (6) Could not resolve host: raw.githubusercontent.com
 Traceback (most recent call last):
-  File "/Users/andrewyz/Documents/Codex/2026-09-12/b/work/erdos354-repo/formalization/scripts/check_upstream.py", line 28, in <module>
+  File "$REPOSITORY/formalization/scripts/check_upstream.py", line 28, in <module>
     online = subprocess.check_output(['curl', '-LfsS', url])
   File "/opt/homebrew/Cellar/python@3.14/3.14.6/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 473, in check_output
     return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
