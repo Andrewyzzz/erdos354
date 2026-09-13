@@ -1,10 +1,8 @@
 # Erdős Problem 354(i): Strong Completeness of Two Dyadic Floor Sequences
 
-Andrewyzzz and Chatgpt-6 Astra (AI system)
-
 13 September 2026
 
-Copyright 2026 Andrewyzzz. The manuscript text is licensed under
+The manuscript text is licensed under
 [CC BY 4.0](../LICENSE-CC-BY-4.0); code excerpts are offered under
 [Apache-2.0](../LICENSE). See [LICENSING.md](../LICENSING.md) for the scope
 and third-party notices.
@@ -60,9 +58,9 @@ indexed and strong-completeness targets under exactly the hypotheses above.
 This exposition follows its use of good rational approximants, an explicit
 decay potential, and a $`T^{3/4}`$ bound in the final counting argument.
 The [original English manuscript](PROOF.md) is retained as the fixed
-pre-formalization source. Our [contribution statement](../CREDITS.md)
-describes the use of Chatgpt-6 Astra in both the mathematical development
-and the Lean formalization.
+pre-formalization source. The mathematical development and Lean formalization
+were carried out with assistance from ChatGPT and OpenAI Codex, using GPT-6 (Astra).
+Our [AI disclosure](../CREDITS.md) describes the scope of this assistance.
 
 ## 1. Normalization, indices, and two different notions of gap
 

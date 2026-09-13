@@ -24,10 +24,10 @@ Its complete build and audit cover 381 local theorems, whose transitive
 axiom sets are subsets of `{propext, Classical.choice, Quot.sound}`.
 GitHub Actions reproduces the build and audit on a hosted Ubuntu runner.
 
-We used Chatgpt-6 Astra in both the mathematical derivation and the Lean
-formalization; our
-[contribution statement](https://github.com/Andrewyzzz/erdos354/blob/main/CREDITS.md)
-describes these roles.
+The mathematical development and Lean formalization were carried out
+with assistance from ChatGPT and OpenAI Codex, using GPT-6 (Astra).
+Our [AI disclosure](https://github.com/Andrewyzzz/erdos354/blob/main/CREDITS.md)
+describes the scope of this assistance.
 
 We welcome mathematical examination of the argument, especially the legal
 mesh representations, changing-period boundary estimate, and rational-window

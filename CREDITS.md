@@ -1,21 +1,21 @@
-# Contributions and AI disclosure
+# AI assistance and provenance
 
-Project contributors: **Andrewyzzz and Chatgpt-6 Astra (AI system)**.
+This work was developed with assistance from ChatGPT and OpenAI Codex, using GPT-6 (Astra).
 
 ## Mathematical development
 
-We used Chatgpt-6 Astra throughout the mathematical development, including
+We used these systems throughout the mathematical development, including
 the exploration of proof strategies, derivation of intermediate arguments,
 construction of finite certificates, examination of objections, and revision
-of the exposition. Its contribution was substantive and extended beyond
+of the exposition. Their contribution was substantive and extended beyond
 language editing.
 
 ## Lean formalization
 
-We also used Chatgpt-6 Astra to develop the Lean proofs, formulate auxiliary
+We also used these systems to develop the Lean proofs, formulate auxiliary
 lemmas, adapt the mathematical arguments to the library interfaces, and
-iterate on the code through compilation and correction. We used the same
-model to develop the verification scripts and to prepare the English
+iterate on the code through compilation and correction. We used them
+to develop the verification scripts and to prepare the English
 documentation and its correspondence with the formal proof.
 
 We verify the resulting declarations with Lean 4.27.0 and the pinned
@@ -32,7 +32,7 @@ notice of The Formal Conjectures Authors; see
 
 ## Licensing
 
-Copyright 2026 Andrewyzzz. We license our software contributions under
+We license our software contributions under
 [Apache-2.0](LICENSE), and our manuscripts and explanatory documentation
 under [CC BY 4.0](LICENSE-CC-BY-4.0), to the extent that we hold the relevant
 rights. Third-party rights and notices are preserved.

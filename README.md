@@ -2,8 +2,6 @@
 
 [![Lean verification](https://github.com/Andrewyzzz/erdos354/actions/workflows/lean.yml/badge.svg)](https://github.com/Andrewyzzz/erdos354/actions/workflows/lean.yml)
 
-Andrewyzzz and Chatgpt-6 Astra (AI system)
-
 **[English manuscript](proof/FORMALIZED_PROOF.md)** ·
 **[PDF](proof/FORMALIZED_PROOF.pdf)** ·
 **[Lean formalization](formalization/README.md)** ·
@@ -119,10 +117,11 @@ The [original English manuscript](proof/PROOF.md), its
 record. Their preparation-time descriptions refer to those original versions.
 [MANIFEST.sha256.json](MANIFEST.sha256.json) records the listed file hashes.
 
-## Contributions
+## AI assistance
 
-We used **Chatgpt-6 Astra** in both the mathematical derivation and the Lean
-formalization, as detailed in [CREDITS.md](CREDITS.md).
+The mathematical development and Lean formalization were carried out
+with assistance from ChatGPT and OpenAI Codex, using GPT-6 (Astra).
+The scope of this assistance is detailed in [CREDITS.md](CREDITS.md).
 
 ## Licensing
 

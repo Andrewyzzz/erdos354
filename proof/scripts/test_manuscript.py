@@ -66,6 +66,16 @@ class MathTests(unittest.TestCase):
                          r'\title{Erdős Problem 354(i):\\' + '\n'
                          + 'Strong Completeness of Two Dyadic Floor Sequences}')
 
+    def test_authorless_manuscript_and_pdf(self):
+        source = SOURCE.read_text()
+        tex, _ = convert(source)
+        self.assertIn(r'\author{}', tex)
+        self.assertNotIn('Andrewyzzz and', source)
+        self.assertNotIn('Chatgpt-6 Astra', source)
+        self.assertIn('with assistance from ChatGPT and OpenAI Codex, using GPT-6 (Astra).', source)
+        preamble = (SOURCE.parent / 'pdf/preamble.tex').read_text()
+        self.assertIn('pdfauthor={}', preamble)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -98,12 +98,13 @@ def table(lines: list[str]) -> str:
 def convert(source: str) -> tuple[str, dict]:
     lines = source.splitlines()
     assert lines[0].startswith('# ')
-    title, authors, date = lines[0][2:], lines[2], lines[4]
+    title, date = lines[0][2:], lines[2]
+    assert re.fullmatch(r'\d{1,2} [A-Za-z]+ \d{4}', date), 'Expected date without an author byline'
     # Keep the problem identifier and mathematical title on separate lines.
     title_tex = escape(title).replace(': ', r':\\' + '\n', 1)
-    parts = [r'\title{' + title_tex + '}', r'\author{' + escape(authors) + '}',
+    parts = [r'\title{' + title_tex + '}', r'\author{}',
              r'\date{' + escape(date) + '}', r'\maketitle']
-    i, display_count, paragraph_count, table_count = 6, 0, 0, 0
+    i, display_count, paragraph_count, table_count = 4, 0, 0, 0
     while i < len(lines):
         line = lines[i]
         if not line.strip():

@@ -2,6 +2,8 @@
 
 ## Formalization and review package — 2026-09-13
 
+- Remove document author bylines and PDF author metadata; describe AI
+  assistance consistently while preserving copyright and third-party notices.
 - Identify Erdős Problem 354(i) explicitly in the manuscript title, repository
   heading, and PDF metadata.
 - Standardize GitHub math delimiters and provide a typeset PDF generated

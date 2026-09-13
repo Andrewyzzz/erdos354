@@ -49,8 +49,8 @@ describes its permissions and attribution requirements.
 
 For the manuscript, the attribution information is:
 
-> Andrewyzzz and Chatgpt-6 Astra (AI system), *Strong completeness of two
-> dyadic floor sequences*, 2026. Source:
+> *Erdős Problem 354(i): Strong Completeness of Two Dyadic Floor Sequences*,
+> 2026. Source:
 > [Andrewyzzz/erdos354](https://github.com/Andrewyzzz/erdos354).
 > Licensed under CC BY 4.0. Copyright 2026 Andrewyzzz.
 
